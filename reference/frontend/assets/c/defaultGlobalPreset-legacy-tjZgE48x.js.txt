@@ -1,0 +1,423 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function e(t) {
+    return e = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+      return typeof e
+    } : function(e) {
+      return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
+    }, e(t)
+  }
+
+  function t(t) {
+    if (null != t) {
+      var n = t["function" == typeof Symbol && Symbol.iterator || "@@iterator"],
+        r = 0;
+      if (n) return n.call(t);
+      if ("function" == typeof t.next) return t;
+      if (!isNaN(t.length)) return {
+        next: function() {
+          return t && r >= t.length && (t = void 0), {
+            value: t && t[r++],
+            done: !t
+          }
+        }
+      }
+    }
+    throw new TypeError(e(t) + " is not iterable")
+  }
+
+  function n() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var e, t, o = "function" == typeof Symbol ? Symbol : {},
+      a = o.iterator || "@@iterator",
+      i = o.toStringTag || "@@toStringTag";
+
+    function u(n, o, a, i) {
+      var u = o && o.prototype instanceof l ? o : l,
+        f = Object.create(u.prototype);
+      return r(f, "_invoke", function(n, r, o) {
+        var a, i, u, l = 0,
+          f = o || [],
+          s = !1,
+          p = {
+            p: 0,
+            n: 0,
+            v: e,
+            a: v,
+            f: v.bind(e, 4),
+            d: function(t, n) {
+              return a = t, i = 0, u = e, p.n = n, c
+            }
+          };
+
+        function v(n, r) {
+          for (i = n, u = r, t = 0; !s && l && !o && t < f.length; t++) {
+            var o, a = f[t],
+              v = p.p,
+              d = a[2];
+            n > 3 ? (o = d === r) && (u = a[(i = a[4]) ? 5 : (i = 3, 3)], a[4] = a[5] = e) : a[0] <= v && ((o = n < 2 && v < a[1]) ? (i = 0, p.v = r, p.n = a[1]) : v < d && (o = n < 3 || a[0] > r || r > d) && (a[4] = n, a[5] = r, p.n = d, i = 0))
+          }
+          if (o || n > 1) return c;
+          throw s = !0, r
+        }
+        return function(o, f, d) {
+          if (l > 1) throw TypeError("Generator is already running");
+          for (s && 1 === f && v(f, d), i = f, u = d;
+            (t = i < 2 ? e : u) || !s;) {
+            a || (i ? i < 3 ? (i > 1 && (p.n = -1), v(i, u)) : p.n = u : p.v = u);
+            try {
+              if (l = 2, a) {
+                if (i || (o = "next"), t = a[o]) {
+                  if (!(t = t.call(a, u))) throw TypeError("iterator result is not an object");
+                  if (!t.done) return t;
+                  u = t.value, i < 2 && (i = 0)
+                } else 1 === i && (t = a.return) && t.call(a), i < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), i = 1);
+                a = e
+              } else if ((t = (s = p.n < 0) ? u : n.call(r, p)) !== c) break
+            } catch (t) {
+              a = e, i = 1, u = t
+            } finally {
+              l = 1
+            }
+          }
+          return {
+            value: t,
+            done: s
+          }
+        }
+      }(n, a, i), !0), f
+    }
+    var c = {};
+
+    function l() {}
+
+    function f() {}
+
+    function s() {}
+    t = Object.getPrototypeOf;
+    var p = [][a] ? t(t([][a]())) : (r(t = {}, a, function() {
+        return this
+      }), t),
+      v = s.prototype = l.prototype = Object.create(p);
+
+    function d(e) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(e, s) : (e.__proto__ = s, r(e, i, "GeneratorFunction")), e.prototype = Object.create(v), e
+    }
+    return f.prototype = s, r(v, "constructor", s), r(s, "constructor", f), f.displayName = "GeneratorFunction", r(s, i, "GeneratorFunction"), r(v), r(v, i, "Generator"), r(v, a, function() {
+      return this
+    }), r(v, "toString", function() {
+      return "[object Generator]"
+    }), (n = function() {
+      return {
+        w: u,
+        m: d
+      }
+    })()
+  }
+
+  function r(e, t, n, o) {
+    var a = Object.defineProperty;
+    try {
+      a({}, "", {})
+    } catch (e) {
+      a = 0
+    }
+    r = function(e, t, n, o) {
+      function i(t, n) {
+        r(e, t, function(e) {
+          return this._invoke(t, n, e)
+        })
+      }
+      t ? a ? a(e, t, {
+        value: n,
+        enumerable: !o,
+        configurable: !o,
+        writable: !o
+      }) : e[t] = n : (i("next", 0), i("throw", 1), i("return", 2))
+    }, r(e, t, n, o)
+  }
+
+  function o(e, t) {
+    var n = "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
+    if (!n) {
+      if (Array.isArray(e) || (n = function(e, t) {
+          if (e) {
+            if ("string" == typeof e) return a(e, t);
+            var n = {}.toString.call(e).slice(8, -1);
+            return "Object" === n && e.constructor && (n = e.constructor.name), "Map" === n || "Set" === n ? Array.from(e) : "Arguments" === n || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n) ? a(e, t) : void 0
+          }
+        }(e)) || t && e && "number" == typeof e.length) {
+        n && (e = n);
+        var r = 0,
+          o = function() {};
+        return {
+          s: o,
+          n: function() {
+            return r >= e.length ? {
+              done: !0
+            } : {
+              done: !1,
+              value: e[r++]
+            }
+          },
+          e: function(e) {
+            throw e
+          },
+          f: o
+        }
+      }
+      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }
+    var i, u = !0,
+      c = !1;
+    return {
+      s: function() {
+        n = n.call(e)
+      },
+      n: function() {
+        var e = n.next();
+        return u = e.done, e
+      },
+      e: function(e) {
+        c = !0, i = e
+      },
+      f: function() {
+        try {
+          u || null == n.return || n.return()
+        } finally {
+          if (c) throw i
+        }
+      }
+    }
+  }
+
+  function a(e, t) {
+    (null == t || t > e.length) && (t = e.length);
+    for (var n = 0, r = Array(t); n < t; n++) r[n] = e[n];
+    return r
+  }
+
+  function i(e, t, n, r, o, a, i) {
+    try {
+      var u = e[a](i),
+        c = u.value
+    } catch (e) {
+      return void n(e)
+    }
+    u.done ? t(c) : Promise.resolve(c).then(r, o)
+  }
+  System.register(["../e/index-legacy-B0tYRju5.js", "./app-security-legacy-BdXLf8ML.js"], function(e, r) {
+    "use strict";
+    var a;
+    return {
+      setters: [function(e) {
+        a = e.bf
+      }, null],
+      execute: function() {
+        e("installDefaultGlobalPreset", function(e) {
+          var s = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : localStorage,
+            p = f.get(e);
+          if (p) return p;
+          var v = (d = n().m(function i() {
+            var f, p, v, d, b, y, m, h, g, S, _, k, w, E, P, T, O, j, I, x, G, N, A, D, F, R, L, C, U;
+            return n().w(function(i) {
+              for (;;) switch (i.p = i.n) {
+                case 0:
+                  return i.n = 1, e.ensureGlobalPresetStorageReady();
+                case 1:
+                  if (!(p = Boolean(s.getItem(r))) || s.getItem(u) !== c) {
+                    i.n = 2;
+                    break
+                  }
+                  return i.a(2);
+                case 2:
+                  if (v = e.globalPresets.some(function(e) {
+                      return e.name === l
+                    }), !p || v) {
+                    i.n = 3;
+                    break
+                  }
+                  return s.setItem(u, c), i.a(2);
+                case 3:
+                  return i.n = 4, fetch("/".concat("presets/default-global-preset.json?v=", c));
+                case 4:
+                  if ((d = i.v).ok) {
+                    i.n = 5;
+                    break
+                  }
+                  throw new Error("默认预设读取失败，请重试");
+                case 5:
+                  return F = a, i.n = 6, d.text();
+                case 6:
+                  if ((b = F(i.v)).prompts.some(function(e) {
+                      return "main" === e.identifier && e.content.trim()
+                    }) && b.prompt_order.some(function(e) {
+                      return e.order.some(function(e) {
+                        return "main" === e.identifier && e.enabled
+                      })
+                    })) {
+                    i.n = 7;
+                    break
+                  }
+                  throw new Error("默认预设内容不完整，请稍后重试");
+                case 7:
+                  if (y = e.globalPresets.filter(function(e) {
+                      return e.name === l
+                    }), m = null === (f = y[0]) || void 0 === f ? void 0 : f.id, !y.length) {
+                    i.n = 34;
+                    break
+                  }
+                  h = o(y), i.p = 8, h.s();
+                case 9:
+                  if ((g = h.n()).done) {
+                    i.n = 30;
+                    break
+                  }
+                  if (_ = g.value, !p || "20261010-neutral-expanded-1" !== s.getItem(u)) {
+                    i.n = 11;
+                    break
+                  }
+                  return i.n = 10, null === (S = e.loadGlobalPreset) || void 0 === S ? void 0 : S.call(e, _.id);
+                case 10:
+                  R = i.v, i.n = 12;
+                  break;
+                case 11:
+                  R = null;
+                case 12:
+                  if (!(k = R)) {
+                    i.n = 28;
+                    break
+                  }
+                  E = JSON.parse(JSON.stringify(k)), P = E.extensions, T = b.extensions, O = (null == P ? void 0 : P.regex_scripts) || [], j = o(O), i.p = 13, x = n().m(function e() {
+                    var t, r, o, a, i, u;
+                    return n().w(function(e) {
+                      for (;;) switch (e.n) {
+                        case 0:
+                          r = I.value, o = null == T || null === (t = T.regex_scripts) || void 0 === t ? void 0 : t.find(function(e) {
+                            return e.id === r.id
+                          }), a = null == o ? void 0 : o.replaceString, i = '```html\n<!DOCTYPE html>\n<html><head><meta charset="utf-8"></head><body>\n', u = "\n</body></html>\n```", "string" == typeof a && a.startsWith(i) && a.endsWith(u) && r.replaceString === a.slice(72, -19) && (r.replaceString = a);
+                        case 1:
+                          return e.a(2)
+                      }
+                    }, e)
+                  }), j.s();
+                case 14:
+                  if ((I = j.n()).done) {
+                    i.n = 16;
+                    break
+                  }
+                  return i.d(t(x()), 15);
+                case 15:
+                  i.n = 14;
+                  break;
+                case 16:
+                  i.n = 18;
+                  break;
+                case 17:
+                  i.p = 17, L = i.v, j.e(L);
+                case 18:
+                  return i.p = 18, j.f(), i.f(18);
+                case 19:
+                  G = (null == P || null === (w = P.tavern_helper) || void 0 === w ? void 0 : w.scripts) || [], N = o(G), i.p = 20, D = n().m(function e() {
+                    var t, r, o, a, i, u;
+                    return n().w(function(e) {
+                      for (;;) switch (e.n) {
+                        case 0:
+                          o = A.value, a = o.value || o, i = null == T || null === (t = T.tavern_helper) || void 0 === t || null === (t = t.scripts) || void 0 === t ? void 0 : t.find(function(e) {
+                            return (e.value || e).id === a.id
+                          }), "string" == typeof(u = null === (r = (null == i ? void 0 : i.value) || i) || void 0 === r ? void 0 : r.content) && a.content === u.split("if (e.cancelable) e.preventDefault();").join("e.preventDefault();") && (a.content = u);
+                        case 1:
+                          return e.a(2)
+                      }
+                    }, e)
+                  }), N.s();
+                case 21:
+                  if ((A = N.n()).done) {
+                    i.n = 23;
+                    break
+                  }
+                  return i.d(t(D()), 22);
+                case 22:
+                  i.n = 21;
+                  break;
+                case 23:
+                  i.n = 25;
+                  break;
+                case 24:
+                  i.p = 24, C = i.v, N.e(C);
+                case 25:
+                  return i.p = 25, N.f(), i.f(25);
+                case 26:
+                  return i.n = 27, e.updateGlobalPresetItem(_.id, _.name || l, E);
+                case 27:
+                  i.n = 29;
+                  break;
+                case 28:
+                  return i.n = 29, e.updateGlobalPresetItem(_.id, l, b);
+                case 29:
+                  i.n = 9;
+                  break;
+                case 30:
+                  i.n = 32;
+                  break;
+                case 31:
+                  i.p = 31, U = i.v, h.e(U);
+                case 32:
+                  return i.p = 32, h.f(), i.f(32);
+                case 33:
+                  i.n = 36;
+                  break;
+                case 34:
+                  if (p || v) {
+                    i.n = 36;
+                    break
+                  }
+                  return i.n = 35, e.addGlobalPreset(l, b);
+                case 35:
+                  m = i.v;
+                case 36:
+                  p || void 0 === m || null !== e.activeGlobalPresetId || e.setActiveGlobalPreset(m), s.setItem(r, "1"), s.setItem(u, c);
+                case 37:
+                  return i.a(2)
+              }
+            }, i, null, [
+              [20, 24, 25, 26],
+              [13, 17, 18, 19],
+              [8, 31, 32, 33]
+            ])
+          }), function() {
+            var e = this,
+              t = arguments;
+            return new Promise(function(n, r) {
+              var o = d.apply(e, t);
+
+              function a(e) {
+                i(o, n, r, a, u, "next", e)
+              }
+
+              function u(e) {
+                i(o, n, r, a, u, "throw", e)
+              }
+              a(void 0)
+            })
+          })().finally(function() {
+            return f.delete(e)
+          });
+          var d;
+          return f.set(e, v), v
+        });
+        var r = e("DEFAULT_PRESET_INSTALLED_KEY", "piupiu_default_global_preset_v2"),
+          u = e("DEFAULT_PRESET_CONTENT_VERSION_KEY", "piupiu_default_global_preset_content_version"),
+          c = e("DEFAULT_PRESET_CONTENT_VERSION", "20261012-helper-frontends-1"),
+          l = "双人成行",
+          f = new WeakMap
+      }
+    }
+  })
+}();

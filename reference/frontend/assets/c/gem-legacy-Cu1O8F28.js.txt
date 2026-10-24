@@ -1,0 +1,53 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+System.register(["../e/index-legacy-B0tYRju5.js"], function(e, a) {
+  "use strict";
+  var t;
+  return {
+    setters: [function(e) {
+      t = e.c
+    }],
+    execute: function() {
+      /**
+       * @license lucide-vue-next v0.562.0 - ISC
+       *
+       * This source code is licensed under the ISC license.
+       * See the LICENSE file in the root directory of this source tree.
+       */
+      e("C", t("crown", [
+        ["path", {
+          d: "M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z",
+          key: "1vdc57"
+        }],
+        ["path", {
+          d: "M5 21h14",
+          key: "11awu3"
+        }]
+      ])), e("G", t("gem", [
+        ["path", {
+          d: "M10.5 3 8 9l4 13 4-13-2.5-6",
+          key: "b3dvk1"
+        }],
+        ["path", {
+          d: "M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z",
+          key: "7w4byz"
+        }],
+        ["path", {
+          d: "M2 9h20",
+          key: "16fsjt"
+        }]
+      ]))
+      /**
+       * @license lucide-vue-next v0.562.0 - ISC
+       *
+       * This source code is licensed under the ISC license.
+       * See the LICENSE file in the root directory of this source tree.
+       */
+    }
+  }
+});

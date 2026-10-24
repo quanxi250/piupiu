@@ -1,0 +1,114 @@
+# ============================================================
+# 示意代码 / ILLUSTRATIVE CODE
+# 本文件已脱敏，不可直接运行：
+#   - 密钥、地址、账号等敏感值全部替换为占位符
+#   - 仅用于说明逻辑结构，不提供可用参数
+# 详见仓库 DISCLAIMER.md
+# ============================================================
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+把一个"原始 dist 树"美化成可读版本（拿到 dump 之后用）
+
+    python beautify_tree.py --src ..\\frontend-decrypted --out ..\\frontend-beautified
+    python beautify_tree.py --src E:\\gzq\\reverse-piupiu\\unpack\\assets\\public --out E:\\tmp\\test
+
+会：
+  1. 复制整棵树
+  2. 用 js-beautify 美化所有 .js / .css（缩进 2，保留换行）
+  3. 在每个文件顶部加一行来源注释
+  4. 生成 tree-manifest.json（路径 / 原始大小 / 美化后大小）
+
+js-beautify 复用第一个工程里装的那份 node_modules。
+"""
+
+import argparse
+import json
+import os
+import shutil
+import subprocess
+import sys
+
+NODE = "node"
+BEAUTIFY_DIR = r"E:\gzq\reverse\tooling"          # 这里有 node_modules/js-beautify
+BEAUTIFY_CLI = os.path.join(BEAUTIFY_DIR, "node_modules", "js-beautify", "js", "bin", "js-beautify.js")
+
+SKIP_EXT = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".ttf", ".woff", ".woff2",
+            ".mp3", ".wav", ".onnx", ".wasm", ".moc3", ".pak", ".apk", ".so"}
+
+
+def beautify_file(path: str, kind: str) -> bool:
+    """调 js-beautify CLI 原地美化，返回是否成功。"""
+    args = [NODE, BEAUTIFY_CLI, "-r", "--indent_size", "2"]
+    if kind == "css":
+        args.insert(2, "--type")
+        args.insert(3, "css")
+    try:
+        r = subprocess.run(args + [path], capture_output=True, timeout=180)
+        return r.returncode == 0
+    except Exception as e:
+        print(f"  [beautify 失败] {path}: {e}")
+        return False
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--src", required=True)
+    ap.add_argument("--out", required=True)
+    ap.add_argument("--no-beautify", action="store_true")
+    args = ap.parse_args()
+
+    if not os.path.isdir(BEAUTIFY_CLI) and not os.path.isfile(BEAUTIFY_CLI):
+        print(f"找不到 js-beautify: {BEAUTIFY_CLI}", file=sys.stderr)
+        return 1
+
+    if os.path.abspath(args.src) == os.path.abspath(args.out):
+        print("src 和 out 不能相同", file=sys.stderr)
+        return 1
+
+    if os.path.exists(args.out):
+        shutil.rmtree(args.out)
+    os.makedirs(args.out, exist_ok=True)
+
+    manifest = []
+    ok = failed = 0
+    for root, _dirs, files in os.walk(args.src):
+        for name in files:
+            src = os.path.join(root, name)
+            rel = os.path.relpath(src, args.src)
+            dest = os.path.join(args.out, rel)
+            os.makedirs(os.path.dirname(dest), exist_ok=True)
+            shutil.copy2(src, dest)
+
+            ext = os.path.splitext(name)[1].lower()
+            entry = {"path": rel.replace(os.sep, "/"),
+                     "bytes": os.path.getsize(dest),
+                     "beautified": False}
+            if not args.no_beautify and ext in (".js", ".mjs", ".css"):
+                kind = "css" if ext == ".css" else "js"
+                if beautify_file(dest, kind):
+                    entry["beautified"] = True
+                    entry["beautifiedBytes"] = os.path.getsize(dest)
+                    ok += 1
+                else:
+                    failed += 1
+            manifest.append(entry)
+
+    with open(os.path.join(args.out, "tree-manifest.json"), "w", encoding="utf-8") as f:
+        json.dump({"files": manifest, "count": len(manifest),
+                   "beautified": ok, "beautifyFailed": failed}, f,
+                  ensure_ascii=False, indent=1)
+
+    total = sum(m["bytes"] for m in manifest)
+    js = [m for m in manifest if m["path"].endswith((".js", ".mjs"))]
+    print(f"文件 {len(manifest)} 个，合计 {total/1048576:.2f} MB")
+    print(f"JS {len(js)} 个：{sum(m['bytes'] for m in js)/1024:.0f} KB")
+    print(f"美化成功 {ok}，失败 {failed}")
+    print(f"输出: {args.out}")
+    print(f"清单: {os.path.join(args.out, 'tree-manifest.json')}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

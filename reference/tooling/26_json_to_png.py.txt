@@ -1,0 +1,133 @@
+# ============================================================
+# 示意代码 / ILLUSTRATIVE CODE
+# 本文件已脱敏，不可直接运行：
+#   - 密钥、地址、账号等敏感值全部替换为占位符
+#   - 仅用于说明逻辑结构，不提供可用参数
+# 详见仓库 DISCLAIMER.md
+# ============================================================
+
+# -*- coding: utf-8 -*-
+"""把市场下载的 JSON 角色卡封装成 SillyTavern 可导入的 PNG 卡
+   - 取封面图（webp）转 PNG 作为底图
+   - 注入 tEXt 块 chara = base64(UTF-8 JSON)
+   - 同时注入 ccv3（V3）便于新版酒馆识别
+"""
+import base64, glob, io, json, os, re, struct, zlib, sys, urllib.request
+from concurrent.futures import ThreadPoolExecutor
+from PIL import Image
+
+ROOT = r"E:\gzq\piupiu-market"
+SRC = os.path.join(ROOT, "角色卡_JSON")     # 现有 JSON
+DST = os.path.join(ROOT, "角色卡_PNG")
+URLDIR = os.path.join(ROOT, "_原始响应", "roleurl")
+UA = "Mozilla/5.0 (Linux; Android 15) AppleWebKit/537.36 Chrome/120 Mobile Safari/537.36"
+os.makedirs(DST, exist_ok=True)
+
+# ---------- PNG tEXt 注入 ----------
+def png_chunk(typ: bytes, data: bytes) -> bytes:
+    return struct.pack(">I", len(data)) + typ + data + struct.pack(">I", zlib.crc32(typ + data) & 0xFFFFFFFF)
+
+
+def add_text_chunks(png_bytes: bytes, items: dict) -> bytes:
+    """在 IEND 之前插入 tEXt 块（keyword\0text）"""
+    out = bytearray(png_bytes[:8])  # signature
+    pos = 8
+    inserted = False
+    while pos < len(png_bytes):
+        length = struct.unpack(">I", png_bytes[pos:pos + 4])[0]
+        typ = png_bytes[pos + 4:pos + 8]
+        total = 12 + length
+        if typ == b"IEND" and not inserted:
+            for k, v in items.items():
+                out += png_chunk(b"tEXt", k.encode("latin-1") + b"\x00" + v.encode("latin-1"))
+            inserted = True
+        out += png_bytes[pos:pos + total]
+        pos += total
+    return bytes(out)
+
+
+def cover_to_png(cover_url: str) -> bytes:
+    req = urllib.request.Request(cover_url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        raw = r.read()
+    im = Image.open(io.BytesIO(raw)).convert("RGB")
+    buf = io.BytesIO()
+    im.save(buf, format="PNG")
+    return buf.getvalue()
+
+
+def safe(n, fb):
+    n = re.sub(r'[\\/:*?"<>|\r\n\t]', "_", (n or "").strip())
+    return (re.sub(r"\s+", " ", n).strip(" .")[:80] or fb)
+
+
+# 建立 id -> cover 映射
+covers = {}
+for p in glob.glob(os.path.join(URLDIR, "*.json")):
+    try:
+        j = json.load(open(p, encoding="utf-8"))
+        if j.get("id") and j.get("cover"):
+            covers[str(j["id"])] = j["cover"]
+    except Exception:
+        pass
+print("封面映射:", len(covers))
+
+
+def convert(path):
+    m = re.search(r"__(\d+)\.json$", path)
+    if not m:
+        return ("skip", path, "")
+    rid = m.group(1)
+    dest = os.path.join(DST, os.path.basename(path)[:-5] + ".png")
+    if os.path.exists(dest):
+        return ("skip", rid, "")
+    try:
+        raw = open(path, "rb").read()
+        j = json.loads(raw.decode("utf-8"))
+        # 统一成 V2 结构
+        card = {"spec": "chara_card_v2", "spec_version": "2.0", "data": j.get("data", j)}
+        if j.get("spec"):
+            card["spec"] = j["spec"]
+            card = j
+        payload = json.dumps(card, ensure_ascii=False).encode("utf-8")
+        b64 = base64.b64encode(payload).decode("ascii")
+        b64v3 = base64.b64encode(json.dumps(
+            {"spec": "chara_card_v3", "spec_version": "3.0", "data": card.get("data", {})},
+            ensure_ascii=False).encode("utf-8")).decode("ascii")
+
+        cover = covers.get(rid)
+        try:
+            base_png = cover_to_png(cover) if cover else None
+        except Exception:
+            base_png = None
+        if base_png is None:
+            im = Image.new("RGB", (400, 600), (255, 240, 246))
+            buf = io.BytesIO()
+            im.save(buf, format="PNG")
+            base_png = buf.getvalue()
+
+        out = add_text_chunks(base_png, {"chara": b64, "ccv3": b64v3})
+        open(dest, "wb").write(out)
+        return ("ok", rid, len(out))
+    except Exception as e:
+        return ("fail", rid, str(e))
+
+
+files = sorted(glob.glob(os.path.join(SRC, "*.json")))
+limit = int(sys.argv[1]) if len(sys.argv) > 1 else len(files)
+files = files[:limit]
+print(f"待转换 {len(files)} 个")
+
+ok = skip = fail = 0
+with ThreadPoolExecutor(max_workers=6) as ex:
+    for st, rid, info in ex.map(convert, files):
+        if st == "ok":
+            ok += 1
+        elif st == "skip":
+            skip += 1
+        else:
+            fail += 1
+            if fail <= 5:
+                print("  FAIL", rid, info)
+print(f"成功 {ok} 跳过 {skip} 失败 {fail}")
+print("输出:", DST)

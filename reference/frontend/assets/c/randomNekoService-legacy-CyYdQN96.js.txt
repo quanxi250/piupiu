@@ -1,0 +1,261 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function t() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var r, e, o = "function" == typeof Symbol ? Symbol : {},
+      i = o.iterator || "@@iterator",
+      u = o.toStringTag || "@@toStringTag";
+
+    function c(t, o, i, u) {
+      var c = o && o.prototype instanceof f ? o : f,
+        s = Object.create(c.prototype);
+      return n(s, "_invoke", function(t, n, o) {
+        var i, u, c, f = 0,
+          s = o || [],
+          p = !1,
+          l = {
+            p: 0,
+            n: 0,
+            v: r,
+            a: h,
+            f: h.bind(r, 4),
+            d: function(t, n) {
+              return i = t, u = 0, c = r, l.n = n, a
+            }
+          };
+
+        function h(t, n) {
+          for (u = t, c = n, e = 0; !p && f && !o && e < s.length; e++) {
+            var o, i = s[e],
+              h = l.p,
+              v = i[2];
+            t > 3 ? (o = v === n) && (c = i[(u = i[4]) ? 5 : (u = 3, 3)], i[4] = i[5] = r) : i[0] <= h && ((o = t < 2 && h < i[1]) ? (u = 0, l.v = n, l.n = i[1]) : h < v && (o = t < 3 || i[0] > n || n > v) && (i[4] = t, i[5] = n, l.n = v, u = 0))
+          }
+          if (o || t > 1) return a;
+          throw p = !0, n
+        }
+        return function(o, s, v) {
+          if (f > 1) throw TypeError("Generator is already running");
+          for (p && 1 === s && h(s, v), u = s, c = v;
+            (e = u < 2 ? r : c) || !p;) {
+            i || (u ? u < 3 ? (u > 1 && (l.n = -1), h(u, c)) : l.n = c : l.v = c);
+            try {
+              if (f = 2, i) {
+                if (u || (o = "next"), e = i[o]) {
+                  if (!(e = e.call(i, c))) throw TypeError("iterator result is not an object");
+                  if (!e.done) return e;
+                  c = e.value, u < 2 && (u = 0)
+                } else 1 === u && (e = i.return) && e.call(i), u < 2 && (c = TypeError("The iterator does not provide a '" + o + "' method"), u = 1);
+                i = r
+              } else if ((e = (p = l.n < 0) ? c : t.call(n, l)) !== a) break
+            } catch (e) {
+              i = r, u = 1, c = e
+            } finally {
+              f = 1
+            }
+          }
+          return {
+            value: e,
+            done: p
+          }
+        }
+      }(t, i, u), !0), s
+    }
+    var a = {};
+
+    function f() {}
+
+    function s() {}
+
+    function p() {}
+    e = Object.getPrototypeOf;
+    var l = [][i] ? e(e([][i]())) : (n(e = {}, i, function() {
+        return this
+      }), e),
+      h = p.prototype = f.prototype = Object.create(l);
+
+    function v(t) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(t, p) : (t.__proto__ = p, n(t, u, "GeneratorFunction")), t.prototype = Object.create(h), t
+    }
+    return s.prototype = p, n(h, "constructor", p), n(p, "constructor", s), s.displayName = "GeneratorFunction", n(p, u, "GeneratorFunction"), n(h), n(h, u, "Generator"), n(h, i, function() {
+      return this
+    }), n(h, "toString", function() {
+      return "[object Generator]"
+    }), (t = function() {
+      return {
+        w: c,
+        m: v
+      }
+    })()
+  }
+
+  function n(t, r, e, o) {
+    var i = Object.defineProperty;
+    try {
+      i({}, "", {})
+    } catch (t) {
+      i = 0
+    }
+    n = function(t, r, e, o) {
+      function u(r, e) {
+        n(t, r, function(t) {
+          return this._invoke(r, e, t)
+        })
+      }
+      r ? i ? i(t, r, {
+        value: e,
+        enumerable: !o,
+        configurable: !o,
+        writable: !o
+      }) : t[r] = e : (u("next", 0), u("throw", 1), u("return", 2))
+    }, n(t, r, e, o)
+  }
+
+  function r(t, n, r, e, o, i, u) {
+    try {
+      var c = t[i](u),
+        a = c.value
+    } catch (t) {
+      return void r(t)
+    }
+    c.done ? n(a) : Promise.resolve(a).then(e, o)
+  }
+
+  function e(t) {
+    return function() {
+      var n = this,
+        e = arguments;
+      return new Promise(function(o, i) {
+        var u = t.apply(n, e);
+
+        function c(t) {
+          r(u, o, i, c, a, "next", t)
+        }
+
+        function a(t) {
+          r(u, o, i, c, a, "throw", t)
+        }
+        c(void 0)
+      })
+    }
+  }
+  System.register([], function(n, r) {
+    "use strict";
+    return {
+      execute: function() {
+        n({
+          a: function() {
+            return p.apply(this, arguments)
+          },
+          f: function() {
+            return s.apply(this, arguments)
+          }
+        });
+        var r = "https://www.piupiuchan.top/proxy_image.php";
+
+        function o(t) {
+          return btoa(t)
+        }
+
+        function i(t) {
+          return "".concat(r, "?url=").concat(encodeURIComponent(o(t)))
+        }
+
+        function u(t) {
+          return c.apply(this, arguments)
+        }
+
+        function c() {
+          return (c = e(t().m(function n(e) {
+            return t().w(function(t) {
+              for (;;)
+                if (0 === t.n) return t.a(2, fetch(r, {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                  },
+                  body: new URLSearchParams({
+                    url: o(e)
+                  })
+                }))
+            }, n)
+          }))).apply(this, arguments)
+        }
+
+        function a() {
+          return f.apply(this, arguments)
+        }
+
+        function f() {
+          return (f = e(t().m(function n() {
+            var r, e, o, i;
+            return t().w(function(t) {
+              for (;;) switch (t.n) {
+                case 0:
+                  return t.n = 1, u("https://nekos.best/api/v2/neko");
+                case 1:
+                  if ((e = t.v).ok) {
+                    t.n = 2;
+                    break
+                  }
+                  throw new Error("Failed to fetch random neko image: ".concat(e.status));
+                case 2:
+                  return t.n = 3, e.json();
+                case 3:
+                  if (o = t.v, "string" == typeof(i = null == o || null === (r = o.results) || void 0 === r || null === (r = r[0]) || void 0 === r ? void 0 : r.url) && "" !== i.trim()) {
+                    t.n = 4;
+                    break
+                  }
+                  throw new Error("Random neko API returned no image URL");
+                case 4:
+                  return t.a(2, i)
+              }
+            }, n)
+          }))).apply(this, arguments)
+        }
+
+        function s() {
+          return (s = e(t().m(function n() {
+            var r;
+            return t().w(function(t) {
+              for (;;) switch (t.n) {
+                case 0:
+                  return r = i, t.n = 1, a();
+                case 1:
+                  return t.a(2, r(t.v))
+              }
+            }, n)
+          }))).apply(this, arguments)
+        }
+
+        function p() {
+          return (p = e(t().m(function n() {
+            var r, e;
+            return t().w(function(t) {
+              for (;;) switch (t.n) {
+                case 0:
+                  return t.n = 1, a();
+                case 1:
+                  return r = t.v, t.n = 2, u(r);
+                case 2:
+                  if ((e = t.v).ok) {
+                    t.n = 3;
+                    break
+                  }
+                  throw new Error("Failed to fetch random neko image blob: ".concat(e.status));
+                case 3:
+                  return t.a(2, e.blob())
+              }
+            }, n)
+          }))).apply(this, arguments)
+        }
+      }
+    }
+  })
+}();

@@ -1,0 +1,61 @@
+# ============================================================
+# 示意代码 / ILLUSTRATIVE CODE
+# 本文件已脱敏，不可直接运行：
+#   - 密钥、地址、账号等敏感值全部替换为占位符
+#   - 仅用于说明逻辑结构，不提供可用参数
+# 详见仓库 DISCLAIMER.md
+# ============================================================
+
+# -*- coding: utf-8 -*-
+"""角色卡同步循环（纯 Python，避免 PowerShell 编码问题）
+   每轮：从模拟器拉地址 → 下载新 JSON → 转 PNG → 打印计数
+"""
+import os, subprocess, sys, tarfile, time, glob
+
+ADB = r"E:\gzq\reverse-piupiu\tooling\platform-tools\platform-tools\adb.exe"
+SERIAL = "emulator-5554"
+ROOT = r"E:\gzq\piupiu-market"
+RAW = os.path.join(ROOT, "_原始响应", "roleurl")
+DL = r"E:\gzq\reverse-piupiu\tooling\25_dl_roles.py"
+CONV = r"E:\gzq\reverse-piupiu\tooling\26_json_to_png.py"
+TGZ = os.path.join(ROOT, "_sync.tgz")
+INTERVAL = 120
+ROUNDS = 80
+
+os.makedirs(RAW, exist_ok=True)
+
+
+def sh(args, **kw):
+    return subprocess.run(args, capture_output=True, text=True, encoding="utf-8", errors="replace", **kw)
+
+
+def count(folder):
+    return len(glob.glob(os.path.join(ROOT, folder, "*")))
+
+
+for i in range(1, ROUNDS + 1):
+    ts = time.strftime("%H:%M:%S")
+    try:
+        sh([ADB, "-s", SERIAL, "shell", "cd /sdcard/Download && tar -czf /sdcard/_sync.tgz _roleurl_*.json 2>/dev/null"])
+        sh([ADB, "-s", SERIAL, "pull", "/sdcard/_sync.tgz", TGZ])
+        got = 0
+        if os.path.exists(TGZ):
+            with tarfile.open(TGZ) as t:
+                for m in t.getmembers():
+                    if not m.isfile():
+                        continue
+                    f = t.extractfile(m)
+                    if f is None:
+                        continue
+                    open(os.path.join(RAW, os.path.basename(m.name)), "wb").write(f.read())
+                    got += 1
+        r1 = sh([sys.executable, DL])
+        line1 = [l for l in (r1.stdout or "").splitlines() if "成功" in l or "待下载" in l]
+        r2 = sh([sys.executable, CONV])
+        line2 = [l for l in (r2.stdout or "").splitlines() if "成功" in l]
+        print(f"[{ts}] round {i} urls={got} | {' '.join(line1)} | {' '.join(line2)} | "
+              f"JSON={count('角色卡_JSON')} PNG={count('角色卡_PNG')}", flush=True)
+    except Exception as e:
+        print(f"[{ts}] round {i} ERROR: {e}", flush=True)
+    time.sleep(INTERVAL)
+print("sync loop finished", flush=True)

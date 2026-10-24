@@ -1,0 +1,710 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function t(n) {
+    return t = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
+      return typeof t
+    } : function(t) {
+      return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
+    }, t(n)
+  }
+
+  function n(n) {
+    if (null != n) {
+      var e = n["function" == typeof Symbol && Symbol.iterator || "@@iterator"],
+        i = 0;
+      if (e) return e.call(n);
+      if ("function" == typeof n.next) return n;
+      if (!isNaN(n.length)) return {
+        next: function() {
+          return n && i >= n.length && (n = void 0), {
+            value: n && n[i++],
+            done: !n
+          }
+        }
+      }
+    }
+    throw new TypeError(t(n) + " is not iterable")
+  }
+
+  function e() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var t, n, r = "function" == typeof Symbol ? Symbol : {},
+      o = r.iterator || "@@iterator",
+      u = r.toStringTag || "@@toStringTag";
+
+    function a(e, r, o, u) {
+      var a = r && r.prototype instanceof f ? r : f,
+        s = Object.create(a.prototype);
+      return i(s, "_invoke", function(e, i, r) {
+        var o, u, a, f = 0,
+          s = r || [],
+          l = !1,
+          p = {
+            p: 0,
+            n: 0,
+            v: t,
+            a: h,
+            f: h.bind(t, 4),
+            d: function(n, e) {
+              return o = n, u = 0, a = t, p.n = e, c
+            }
+          };
+
+        function h(e, i) {
+          for (u = e, a = i, n = 0; !l && f && !r && n < s.length; n++) {
+            var r, o = s[n],
+              h = p.p,
+              d = o[2];
+            e > 3 ? (r = d === i) && (a = o[(u = o[4]) ? 5 : (u = 3, 3)], o[4] = o[5] = t) : o[0] <= h && ((r = e < 2 && h < o[1]) ? (u = 0, p.v = i, p.n = o[1]) : h < d && (r = e < 3 || o[0] > i || i > d) && (o[4] = e, o[5] = i, p.n = d, u = 0))
+          }
+          if (r || e > 1) return c;
+          throw l = !0, i
+        }
+        return function(r, s, d) {
+          if (f > 1) throw TypeError("Generator is already running");
+          for (l && 1 === s && h(s, d), u = s, a = d;
+            (n = u < 2 ? t : a) || !l;) {
+            o || (u ? u < 3 ? (u > 1 && (p.n = -1), h(u, a)) : p.n = a : p.v = a);
+            try {
+              if (f = 2, o) {
+                if (u || (r = "next"), n = o[r]) {
+                  if (!(n = n.call(o, a))) throw TypeError("iterator result is not an object");
+                  if (!n.done) return n;
+                  a = n.value, u < 2 && (u = 0)
+                } else 1 === u && (n = o.return) && n.call(o), u < 2 && (a = TypeError("The iterator does not provide a '" + r + "' method"), u = 1);
+                o = t
+              } else if ((n = (l = p.n < 0) ? a : e.call(i, p)) !== c) break
+            } catch (n) {
+              o = t, u = 1, a = n
+            } finally {
+              f = 1
+            }
+          }
+          return {
+            value: n,
+            done: l
+          }
+        }
+      }(e, o, u), !0), s
+    }
+    var c = {};
+
+    function f() {}
+
+    function s() {}
+
+    function l() {}
+    n = Object.getPrototypeOf;
+    var p = [][o] ? n(n([][o]())) : (i(n = {}, o, function() {
+        return this
+      }), n),
+      h = l.prototype = f.prototype = Object.create(p);
+
+    function d(t) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(t, l) : (t.__proto__ = l, i(t, u, "GeneratorFunction")), t.prototype = Object.create(h), t
+    }
+    return s.prototype = l, i(h, "constructor", l), i(l, "constructor", s), s.displayName = "GeneratorFunction", i(l, u, "GeneratorFunction"), i(h), i(h, u, "Generator"), i(h, o, function() {
+      return this
+    }), i(h, "toString", function() {
+      return "[object Generator]"
+    }), (e = function() {
+      return {
+        w: a,
+        m: d
+      }
+    })()
+  }
+
+  function i(t, n, e, r) {
+    var o = Object.defineProperty;
+    try {
+      o({}, "", {})
+    } catch (t) {
+      o = 0
+    }
+    i = function(t, n, e, r) {
+      function u(n, e) {
+        i(t, n, function(t) {
+          return this._invoke(n, e, t)
+        })
+      }
+      n ? o ? o(t, n, {
+        value: e,
+        enumerable: !r,
+        configurable: !r,
+        writable: !r
+      }) : t[n] = e : (u("next", 0), u("throw", 1), u("return", 2))
+    }, i(t, n, e, r)
+  }
+
+  function r(t, n) {
+    var e = "undefined" != typeof Symbol && t[Symbol.iterator] || t["@@iterator"];
+    if (!e) {
+      if (Array.isArray(t) || (e = function(t, n) {
+          if (t) {
+            if ("string" == typeof t) return o(t, n);
+            var e = {}.toString.call(t).slice(8, -1);
+            return "Object" === e && t.constructor && (e = t.constructor.name), "Map" === e || "Set" === e ? Array.from(t) : "Arguments" === e || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(e) ? o(t, n) : void 0
+          }
+        }(t)) || n && t && "number" == typeof t.length) {
+        e && (t = e);
+        var i = 0,
+          r = function() {};
+        return {
+          s: r,
+          n: function() {
+            return i >= t.length ? {
+              done: !0
+            } : {
+              done: !1,
+              value: t[i++]
+            }
+          },
+          e: function(t) {
+            throw t
+          },
+          f: r
+        }
+      }
+      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }
+    var u, a = !0,
+      c = !1;
+    return {
+      s: function() {
+        e = e.call(t)
+      },
+      n: function() {
+        var t = e.next();
+        return a = t.done, t
+      },
+      e: function(t) {
+        c = !0, u = t
+      },
+      f: function() {
+        try {
+          a || null == e.return || e.return()
+        } finally {
+          if (c) throw u
+        }
+      }
+    }
+  }
+
+  function o(t, n) {
+    (null == n || n > t.length) && (n = t.length);
+    for (var e = 0, i = Array(n); e < n; e++) i[e] = t[e];
+    return i
+  }
+
+  function u(t, n, e, i, r, o, u) {
+    try {
+      var a = t[o](u),
+        c = a.value
+    } catch (t) {
+      return void e(t)
+    }
+    a.done ? n(c) : Promise.resolve(c).then(i, r)
+  }
+
+  function a(t) {
+    return function() {
+      var n = this,
+        e = arguments;
+      return new Promise(function(i, r) {
+        var o = t.apply(n, e);
+
+        function a(t) {
+          u(o, i, r, a, c, "next", t)
+        }
+
+        function c(t) {
+          u(o, i, r, a, c, "throw", t)
+        }
+        a(void 0)
+      })
+    }
+  }
+
+  function c(t, n) {
+    for (var e = 0; e < n.length; e++) {
+      var i = n[e];
+      i.enumerable = i.enumerable || !1, i.configurable = !0, "value" in i && (i.writable = !0), Object.defineProperty(t, f(i.key), i)
+    }
+  }
+
+  function f(n) {
+    var e = function(n, e) {
+      if ("object" != t(n) || !n) return n;
+      var i = n[Symbol.toPrimitive];
+      if (void 0 !== i) {
+        var r = i.call(n, e || "default");
+        if ("object" != t(r)) return r;
+        throw new TypeError("@@toPrimitive must return a primitive value.")
+      }
+      return ("string" === e ? String : Number)(n)
+    }(n, "string");
+    return "symbol" == t(e) ? e : e + ""
+  }
+
+  function s(n, e, i) {
+    return e = p(e),
+      function(n, e) {
+        if (e && ("object" == t(e) || "function" == typeof e)) return e;
+        if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined");
+        return function(t) {
+          if (void 0 === t) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+          return t
+        }(n)
+      }(n, l() ? Reflect.construct(e, i || [], p(n).constructor) : e.apply(n, i))
+  }
+
+  function l() {
+    try {
+      var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {}))
+    } catch (t) {}
+    return (l = function() {
+      return !!t
+    })()
+  }
+
+  function p(t) {
+    return p = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(t) {
+      return t.__proto__ || Object.getPrototypeOf(t)
+    }, p(t)
+  }
+
+  function h(t, n) {
+    return h = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(t, n) {
+      return t.__proto__ = n, t
+    }, h(t, n)
+  }
+  System.register(["./app-security-legacy-BdXLf8ML.js"], function(t, i) {
+    "use strict";
+    var o;
+    return {
+      setters: [function(t) {
+        o = t.bI
+      }],
+      execute: function() {
+        var i = function(t) {
+          function i() {
+            var t;
+            return function(t, n) {
+              if (!(t instanceof n)) throw new TypeError("Cannot call a class as a function")
+            }(this, i), (t = s(this, i, arguments)).pending = [], t.deliveredNotifications = [], t.hasNotificationSupport = function() {
+              if (!("Notification" in window) || !Notification.requestPermission) return !1;
+              if ("granted" !== Notification.permission) try {
+                new Notification("")
+              } catch (o) {
+                if (o instanceof Error && "TypeError" === o.name) return !1
+              }
+              return !0
+            }, t
+          }
+          return function(t, n) {
+            if ("function" != typeof n && null !== n) throw new TypeError("Super expression must either be null or a function");
+            t.prototype = Object.create(n && n.prototype, {
+              constructor: {
+                value: t,
+                writable: !0,
+                configurable: !0
+              }
+            }), Object.defineProperty(t, "prototype", {
+              writable: !1
+            }), n && h(t, n)
+          }(i, t), o = i, u = [{
+            key: "getDeliveredNotifications",
+            value: (j = a(e().m(function t() {
+              var n, i, o, u, a;
+              return e().w(function(t) {
+                for (;;)
+                  if (0 === t.n) {
+                    n = [], i = r(this.deliveredNotifications);
+                    try {
+                      for (i.s(); !(o = i.n()).done;) u = o.value, a = {
+                        title: u.title,
+                        id: parseInt(u.tag),
+                        body: u.body
+                      }, n.push(a)
+                    } catch (e) {
+                      i.e(e)
+                    } finally {
+                      i.f()
+                    }
+                    return t.a(2, {
+                      notifications: n
+                    })
+                  }
+              }, t, this)
+            })), function() {
+              return j.apply(this, arguments)
+            })
+          }, {
+            key: "removeDeliveredNotifications",
+            value: (O = a(e().m(function t(i) {
+              var o, u, a, c, f = this;
+              return e().w(function(t) {
+                for (;;) switch (t.p = t.n) {
+                  case 0:
+                    o = r(i.notifications), t.p = 1, a = e().m(function t() {
+                      var n, i;
+                      return e().w(function(t) {
+                        for (;;) switch (t.n) {
+                          case 0:
+                            n = u.value, null == (i = f.deliveredNotifications.find(function(t) {
+                              return t.tag === String(n.id)
+                            })) || i.close(), f.deliveredNotifications = f.deliveredNotifications.filter(function() {
+                              return !i
+                            });
+                          case 1:
+                            return t.a(2)
+                        }
+                      }, t)
+                    }), o.s();
+                  case 2:
+                    if ((u = o.n()).done) {
+                      t.n = 4;
+                      break
+                    }
+                    return t.d(n(a()), 3);
+                  case 3:
+                    t.n = 2;
+                    break;
+                  case 4:
+                    t.n = 6;
+                    break;
+                  case 5:
+                    t.p = 5, c = t.v, o.e(c);
+                  case 6:
+                    return t.p = 6, o.f(), t.f(6);
+                  case 7:
+                    return t.a(2)
+                }
+              }, t, null, [
+                [1, 5, 6, 7]
+              ])
+            })), function(t) {
+              return O.apply(this, arguments)
+            })
+          }, {
+            key: "removeAllDeliveredNotifications",
+            value: (P = a(e().m(function t() {
+              var n, i;
+              return e().w(function(t) {
+                for (;;) switch (t.n) {
+                  case 0:
+                    n = r(this.deliveredNotifications);
+                    try {
+                      for (n.s(); !(i = n.n()).done;) i.value.close()
+                    } catch (e) {
+                      n.e(e)
+                    } finally {
+                      n.f()
+                    }
+                    this.deliveredNotifications = [];
+                  case 1:
+                    return t.a(2)
+                }
+              }, t, this)
+            })), function() {
+              return P.apply(this, arguments)
+            })
+          }, {
+            key: "createChannel",
+            value: (S = a(e().m(function t() {
+              return e().w(function(t) {
+                for (;;) switch (t.n) {
+                  case 0:
+                    throw this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return t.a(2)
+                }
+              }, t, this)
+            })), function() {
+              return S.apply(this, arguments)
+            })
+          }, {
+            key: "deleteChannel",
+            value: (k = a(e().m(function t() {
+              return e().w(function(t) {
+                for (;;) switch (t.n) {
+                  case 0:
+                    throw this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return t.a(2)
+                }
+              }, t, this)
+            })), function() {
+              return k.apply(this, arguments)
+            })
+          }, {
+            key: "listChannels",
+            value: (N = a(e().m(function t() {
+              return e().w(function(t) {
+                for (;;) switch (t.n) {
+                  case 0:
+                    throw this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return t.a(2)
+                }
+              }, t, this)
+            })), function() {
+              return N.apply(this, arguments)
+            })
+          }, {
+            key: "schedule",
+            value: (g = a(e().m(function t(n) {
+              var i, o, u;
+              return e().w(function(t) {
+                for (;;) switch (t.n) {
+                  case 0:
+                    if (this.hasNotificationSupport()) {
+                      t.n = 1;
+                      break
+                    }
+                    throw this.unavailable("Notifications not supported in this browser.");
+                  case 1:
+                    i = r(n.notifications);
+                    try {
+                      for (i.s(); !(o = i.n()).done;) u = o.value, this.sendNotification(u)
+                    } catch (e) {
+                      i.e(e)
+                    } finally {
+                      i.f()
+                    }
+                    return t.a(2, {
+                      notifications: n.notifications.map(function(t) {
+                        return {
+                          id: t.id
+                        }
+                      })
+                    })
+                }
+              }, t, this)
+            })), function(t) {
+              return g.apply(this, arguments)
+            })
+          }, {
+            key: "getPending",
+            value: (w = a(e().m(function t() {
+              return e().w(function(t) {
+                for (;;)
+                  if (0 === t.n) return t.a(2, {
+                    notifications: this.pending
+                  })
+              }, t, this)
+            })), function() {
+              return w.apply(this, arguments)
+            })
+          }, {
+            key: "registerActionTypes",
+            value: (b = a(e().m(function t() {
+              return e().w(function(t) {
+                for (;;) switch (t.n) {
+                  case 0:
+                    throw this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return t.a(2)
+                }
+              }, t, this)
+            })), function() {
+              return b.apply(this, arguments)
+            })
+          }, {
+            key: "cancel",
+            value: (m = a(e().m(function t(n) {
+              return e().w(function(t) {
+                for (;;) switch (t.n) {
+                  case 0:
+                    this.pending = this.pending.filter(function(t) {
+                      return !n.notifications.find(function(n) {
+                        return n.id === t.id
+                      })
+                    });
+                  case 1:
+                    return t.a(2)
+                }
+              }, t, this)
+            })), function(t) {
+              return m.apply(this, arguments)
+            })
+          }, {
+            key: "areEnabled",
+            value: (v = a(e().m(function t() {
+              var n, i;
+              return e().w(function(t) {
+                for (;;) switch (t.n) {
+                  case 0:
+                    return t.n = 1, this.checkPermissions();
+                  case 1:
+                    return n = t.v, i = n.display, t.a(2, {
+                      value: "granted" === i
+                    })
+                }
+              }, t, this)
+            })), function() {
+              return v.apply(this, arguments)
+            })
+          }, {
+            key: "changeExactNotificationSetting",
+            value: (y = a(e().m(function t() {
+              return e().w(function(t) {
+                for (;;) switch (t.n) {
+                  case 0:
+                    throw this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return t.a(2)
+                }
+              }, t, this)
+            })), function() {
+              return y.apply(this, arguments)
+            })
+          }, {
+            key: "checkExactNotificationSetting",
+            value: (d = a(e().m(function t() {
+              return e().w(function(t) {
+                for (;;) switch (t.n) {
+                  case 0:
+                    throw this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return t.a(2)
+                }
+              }, t, this)
+            })), function() {
+              return d.apply(this, arguments)
+            })
+          }, {
+            key: "requestPermissions",
+            value: (p = a(e().m(function t() {
+              var n, i;
+              return e().w(function(t) {
+                for (;;) switch (t.n) {
+                  case 0:
+                    if (this.hasNotificationSupport()) {
+                      t.n = 1;
+                      break
+                    }
+                    throw this.unavailable("Notifications not supported in this browser.");
+                  case 1:
+                    return i = this, t.n = 2, Notification.requestPermission();
+                  case 2:
+                    return n = i.transformNotificationPermission.call(i, t.v), t.a(2, {
+                      display: n
+                    })
+                }
+              }, t, this)
+            })), function() {
+              return p.apply(this, arguments)
+            })
+          }, {
+            key: "checkPermissions",
+            value: (l = a(e().m(function t() {
+              var n;
+              return e().w(function(t) {
+                for (;;) switch (t.n) {
+                  case 0:
+                    if (this.hasNotificationSupport()) {
+                      t.n = 1;
+                      break
+                    }
+                    throw this.unavailable("Notifications not supported in this browser.");
+                  case 1:
+                    return n = this.transformNotificationPermission(Notification.permission), t.a(2, {
+                      display: n
+                    })
+                }
+              }, t, this)
+            })), function() {
+              return l.apply(this, arguments)
+            })
+          }, {
+            key: "transformNotificationPermission",
+            value: function(t) {
+              switch (t) {
+                case "granted":
+                  return "granted";
+                case "denied":
+                  return "denied";
+                default:
+                  return "prompt"
+              }
+            }
+          }, {
+            key: "sendPending",
+            value: function() {
+              var t, n, e = [],
+                i = (new Date).getTime(),
+                o = r(this.pending);
+              try {
+                for (o.s(); !(n = o.n()).done;) {
+                  var u = n.value;
+                  (null === (t = u.schedule) || void 0 === t ? void 0 : t.at) && u.schedule.at.getTime() <= i && (this.buildNotification(u), e.push(u))
+                }
+              } catch (a) {
+                o.e(a)
+              } finally {
+                o.f()
+              }
+              this.pending = this.pending.filter(function(t) {
+                return !e.find(function(n) {
+                  return n === t
+                })
+              })
+            }
+          }, {
+            key: "sendNotification",
+            value: function(t) {
+              var n, e = this;
+              if (null === (n = t.schedule) || void 0 === n ? void 0 : n.at) {
+                var i = t.schedule.at.getTime() - (new Date).getTime();
+                return this.pending.push(t), void setTimeout(function() {
+                  e.sendPending()
+                }, i)
+              }
+              this.buildNotification(t)
+            }
+          }, {
+            key: "buildNotification",
+            value: function(t) {
+              var n = this,
+                e = new Notification(t.title, {
+                  body: t.body,
+                  tag: String(t.id)
+                });
+              return e.addEventListener("click", this.onClick.bind(this, t), !1), e.addEventListener("show", this.onShow.bind(this, t), !1), e.addEventListener("close", function() {
+                n.deliveredNotifications = n.deliveredNotifications.filter(function() {
+                  return !n
+                })
+              }, !1), this.deliveredNotifications.push(e), e
+            }
+          }, {
+            key: "onClick",
+            value: function(t) {
+              var n = {
+                actionId: "tap",
+                notification: t
+              };
+              this.notifyListeners("localNotificationActionPerformed", n)
+            }
+          }, {
+            key: "onShow",
+            value: function(t) {
+              this.notifyListeners("localNotificationReceived", t)
+            }
+          }], u && c(o.prototype, u), f && c(o, f), Object.defineProperty(o, "prototype", {
+            writable: !1
+          }), o;
+          var o, u, f, l, p, d, y, v, m, b, w, g, N, k, S, P, O, j
+        }(o);
+        t("LocalNotificationsWeb", i)
+      }
+    }
+  })
+}();

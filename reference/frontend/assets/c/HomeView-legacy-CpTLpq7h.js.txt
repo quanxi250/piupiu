@@ -1,0 +1,2810 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function e(e, a) {
+    return function(e) {
+      if (Array.isArray(e)) return e
+    }(e) || function(e, a) {
+      var t = null == e ? null : "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
+      if (null != t) {
+        var r, o, n, i, l = [],
+          d = !0,
+          s = !1;
+        try {
+          if (n = (t = t.call(e)).next, 0 === a) {
+            if (Object(t) !== t) return;
+            d = !1
+          } else
+            for (; !(d = (r = n.call(t)).done) && (l.push(r.value), l.length !== a); d = !0);
+        } catch (e) {
+          s = !0, o = e
+        } finally {
+          try {
+            if (!d && null != t.return && (i = t.return(), Object(i) !== i)) return
+          } finally {
+            if (s) throw o
+          }
+        }
+        return l
+      }
+    }(e, a) || c(e, a) || function() {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }()
+  }
+
+  function a(e, a) {
+    var t = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+      var r = Object.getOwnPropertySymbols(e);
+      a && (r = r.filter(function(a) {
+        return Object.getOwnPropertyDescriptor(e, a).enumerable
+      })), t.push.apply(t, r)
+    }
+    return t
+  }
+
+  function t(e) {
+    for (var t = 1; t < arguments.length; t++) {
+      var o = null != arguments[t] ? arguments[t] : {};
+      t % 2 ? a(Object(o), !0).forEach(function(a) {
+        r(e, a, o[a])
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(o)) : a(Object(o)).forEach(function(a) {
+        Object.defineProperty(e, a, Object.getOwnPropertyDescriptor(o, a))
+      })
+    }
+    return e
+  }
+
+  function r(e, a, t) {
+    return (a = function(e) {
+      var a = function(e, a) {
+        if ("object" != o(e) || !e) return e;
+        var t = e[Symbol.toPrimitive];
+        if (void 0 !== t) {
+          var r = t.call(e, a || "default");
+          if ("object" != o(r)) return r;
+          throw new TypeError("@@toPrimitive must return a primitive value.")
+        }
+        return ("string" === a ? String : Number)(e)
+      }(e, "string");
+      return "symbol" == o(a) ? a : a + ""
+    }(a)) in e ? Object.defineProperty(e, a, {
+      value: t,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }) : e[a] = t, e
+  }
+
+  function o(e) {
+    return o = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+      return typeof e
+    } : function(e) {
+      return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
+    }, o(e)
+  }
+
+  function n() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var e, a, t = "function" == typeof Symbol ? Symbol : {},
+      r = t.iterator || "@@iterator",
+      o = t.toStringTag || "@@toStringTag";
+
+    function l(t, r, o, n) {
+      var l = r && r.prototype instanceof s ? r : s,
+        c = Object.create(l.prototype);
+      return i(c, "_invoke", function(t, r, o) {
+        var n, i, l, s = 0,
+          c = o || [],
+          u = !1,
+          p = {
+            p: 0,
+            n: 0,
+            v: e,
+            a: f,
+            f: f.bind(e, 4),
+            d: function(a, t) {
+              return n = a, i = 0, l = e, p.n = t, d
+            }
+          };
+
+        function f(t, r) {
+          for (i = t, l = r, a = 0; !u && s && !o && a < c.length; a++) {
+            var o, n = c[a],
+              f = p.p,
+              v = n[2];
+            t > 3 ? (o = v === r) && (l = n[(i = n[4]) ? 5 : (i = 3, 3)], n[4] = n[5] = e) : n[0] <= f && ((o = t < 2 && f < n[1]) ? (i = 0, p.v = r, p.n = n[1]) : f < v && (o = t < 3 || n[0] > r || r > v) && (n[4] = t, n[5] = r, p.n = v, i = 0))
+          }
+          if (o || t > 1) return d;
+          throw u = !0, r
+        }
+        return function(o, c, v) {
+          if (s > 1) throw TypeError("Generator is already running");
+          for (u && 1 === c && f(c, v), i = c, l = v;
+            (a = i < 2 ? e : l) || !u;) {
+            n || (i ? i < 3 ? (i > 1 && (p.n = -1), f(i, l)) : p.n = l : p.v = l);
+            try {
+              if (s = 2, n) {
+                if (i || (o = "next"), a = n[o]) {
+                  if (!(a = a.call(n, l))) throw TypeError("iterator result is not an object");
+                  if (!a.done) return a;
+                  l = a.value, i < 2 && (i = 0)
+                } else 1 === i && (a = n.return) && a.call(n), i < 2 && (l = TypeError("The iterator does not provide a '" + o + "' method"), i = 1);
+                n = e
+              } else if ((a = (u = p.n < 0) ? l : t.call(r, p)) !== d) break
+            } catch (a) {
+              n = e, i = 1, l = a
+            } finally {
+              s = 1
+            }
+          }
+          return {
+            value: a,
+            done: u
+          }
+        }
+      }(t, o, n), !0), c
+    }
+    var d = {};
+
+    function s() {}
+
+    function c() {}
+
+    function u() {}
+    a = Object.getPrototypeOf;
+    var p = [][r] ? a(a([][r]())) : (i(a = {}, r, function() {
+        return this
+      }), a),
+      f = u.prototype = s.prototype = Object.create(p);
+
+    function v(e) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(e, u) : (e.__proto__ = u, i(e, o, "GeneratorFunction")), e.prototype = Object.create(f), e
+    }
+    return c.prototype = u, i(f, "constructor", u), i(u, "constructor", c), c.displayName = "GeneratorFunction", i(u, o, "GeneratorFunction"), i(f), i(f, o, "Generator"), i(f, r, function() {
+      return this
+    }), i(f, "toString", function() {
+      return "[object Generator]"
+    }), (n = function() {
+      return {
+        w: l,
+        m: v
+      }
+    })()
+  }
+
+  function i(e, a, t, r) {
+    var o = Object.defineProperty;
+    try {
+      o({}, "", {})
+    } catch (e) {
+      o = 0
+    }
+    i = function(e, a, t, r) {
+      function n(a, t) {
+        i(e, a, function(e) {
+          return this._invoke(a, t, e)
+        })
+      }
+      a ? o ? o(e, a, {
+        value: t,
+        enumerable: !r,
+        configurable: !r,
+        writable: !r
+      }) : e[a] = t : (n("next", 0), n("throw", 1), n("return", 2))
+    }, i(e, a, t, r)
+  }
+
+  function l(e, a, t, r, o, n, i) {
+    try {
+      var l = e[n](i),
+        d = l.value
+    } catch (e) {
+      return void t(e)
+    }
+    l.done ? a(d) : Promise.resolve(d).then(r, o)
+  }
+
+  function d(e) {
+    return function() {
+      var a = this,
+        t = arguments;
+      return new Promise(function(r, o) {
+        var n = e.apply(a, t);
+
+        function i(e) {
+          l(n, r, o, i, d, "next", e)
+        }
+
+        function d(e) {
+          l(n, r, o, i, d, "throw", e)
+        }
+        i(void 0)
+      })
+    }
+  }
+
+  function s(e) {
+    return function(e) {
+      if (Array.isArray(e)) return u(e)
+    }(e) || function(e) {
+      if ("undefined" != typeof Symbol && null != e[Symbol.iterator] || null != e["@@iterator"]) return Array.from(e)
+    }(e) || c(e) || function() {
+      throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }()
+  }
+
+  function c(e, a) {
+    if (e) {
+      if ("string" == typeof e) return u(e, a);
+      var t = {}.toString.call(e).slice(8, -1);
+      return "Object" === t && e.constructor && (t = e.constructor.name), "Map" === t || "Set" === t ? Array.from(e) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? u(e, a) : void 0
+    }
+  }
+
+  function u(e, a) {
+    (null == a || a > e.length) && (a = e.length);
+    for (var t = 0, r = Array(a); t < a; t++) r[t] = e[t];
+    return r
+  }
+  System.register(["./app-security-legacy-BdXLf8ML.js", "../e/index-legacy-B0tYRju5.js", "./Live2DViewer-legacy-Cs35RHtK.js", "./bell-legacy-CHOiGGYc.js", "./lock-legacy-DIp3fFDa.js", "./circle-check-legacy-DZDuDdoN.js", "./ConfirmModal-legacy-NP3AE2aY.js", "./refresh-cw-legacy-8ZRhP8a6.js", "./trash-2-legacy-D4qdzvtP.js", "./randomNekoService-legacy-CyYdQN96.js", "./volume-2-legacy-CkUYK7Ir.js", "./volume-x-legacy-DtasbnGi.js", "./sun-legacy-xJ81SYqA.js"], function(a, r) {
+    "use strict";
+    var i, l, c, u, p, f, v, b, g, m, x, h, y, w, k, L, z, _, C, j, S, P, q, M, O, I, N, A, E, U, T, D, F, B, G, R, V, Y, H, J, $, K, X, W, Z, Q, ee, ae, te, re, oe, ne, ie, le, de, se, ce, ue, pe, fe, ve, be, ge, me, xe, he, ye, we, ke;
+    return {
+      setters: [function(e) {
+        i = e.k, l = e.G, c = e.M, u = e.W, p = e.c, f = e.L, v = e.Q, b = e.Y, g = e.u, m = e.K, x = e.R, h = e.N, y = e.J, w = e.Z, k = e.$, L = e.a2, z = e.O, _ = e.V, C = e.aa, j = e.T, S = e.aX, P = e.w, q = e.r, M = e.a1, O = e.v, I = e.A, N = e.aY, A = e.aZ, E = e.H, U = e.ac
+      }, function(e) {
+        T = e.c, D = e.a, F = e._, B = e.b, G = e.d, R = e.s, V = e.e, Y = e.f, H = e.g, J = e.F, $ = e.M, K = e.S, X = e.h, W = e.i, Z = e.j, Q = e.k, ee = e.l, ae = e.m, te = e.u, re = e.n, oe = e.o
+      }, function(e) {
+        ne = e.o, ie = e.c, le = e.L, de = e.a, se = e.s
+      }, function(e) {
+        ce = e.B
+      }, function(e) {
+        ue = e.L
+      }, function(e) {
+        pe = e.C
+      }, function(e) {
+        fe = e.C
+      }, function(e) {
+        ve = e.R
+      }, function(e) {
+        be = e.C, ge = e.T, me = e.a
+      }, function(e) {
+        xe = e.f
+      }, function(e) {
+        he = e.V
+      }, function(e) {
+        ye = e.V
+      }, function(e) {
+        we = e.M, ke = e.S
+      }],
+      execute: function() {
+        var r = document.createElement("style");
+        r.textContent = '@charset "UTF-8";.affection-card[data-v-2ca32021]{display:flex;align-items:center;gap:12px;padding:10px 16px;border-radius:24px;background:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.3);box-shadow:0 4px 12px rgba(0,0,0,.05);pointer-events:auto;transition:all .3s ease}.dark-mode .affection-card[data-v-2ca32021]{background:rgba(30,30,30,.85);border-color:rgba(255,255,255,.1)}.affection-card.level-warm[data-v-2ca32021]{background:linear-gradient(135deg,rgba(255,200,200,.5),rgba(255,255,255,.4));border-color:rgba(255,150,150,.4)}.affection-card.level-lovely[data-v-2ca32021]{background:linear-gradient(135deg,rgba(255,150,180,.5),rgba(255,200,220,.4));border-color:rgba(255,100,150,.5);box-shadow:0 4px 16px rgba(255,100,150,.2)}.affection-card.level-passionate[data-v-2ca32021]{background:linear-gradient(135deg,rgba(255,100,130,.6),rgba(255,150,180,.5));border-color:rgba(255,50,100,.6);box-shadow:0 4px 20px rgba(255,50,100,.3),inset 0 0 10px rgba(255,255,255,.2)}.affection-card.level-eternal[data-v-2ca32021]{background:linear-gradient(135deg,rgba(255,0,100,.6),rgba(180,0,80,.5));border:2px solid transparent;background-clip:padding-box;position:relative;box-shadow:0 4px 24px rgba(255,0,100,.4),0 0 40px rgba(255,0,100,.2)}.affection-card.level-eternal[data-v-2ca32021]:before{content:"";position:absolute;top:-2px;right:-2px;bottom:-2px;left:-2px;border-radius:26px;background:linear-gradient(135deg,#f06,#f69,#f06);z-index:-1;animation:borderGlow-2ca32021 2s linear infinite}.heart-container[data-v-2ca32021]{position:relative;display:flex;align-items:center;justify-content:center;width:40px;height:40px}.heart-icon[data-v-2ca32021]{width:100%;height:100%;filter:drop-shadow(0 2px 4px rgba(255,71,87,.4));animation:heartbeat-2ca32021 1.5s infinite ease-in-out}.level-badge[data-v-2ca32021]{position:absolute;bottom:-4px;right:-8px;background:linear-gradient(135deg,#ff6b81,#ff4757);color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:10px;box-shadow:0 2px 4px rgba(0,0,0,.1)}.info-container[data-v-2ca32021]{display:flex;flex-direction:column;gap:4px}.label[data-v-2ca32021]{font-size:12px;color:var(--text-color);font-weight:600;opacity:.9}.progress-bar-bg[data-v-2ca32021]{width:80px;height:6px;background:rgba(0,0,0,.1);border-radius:3px;overflow:hidden}.dark-mode .progress-bar-bg[data-v-2ca32021]{background:rgba(255,255,255,.15)}.progress-bar-fill[data-v-2ca32021]{height:100%;background:linear-gradient(90deg,#ff9ff3,#feaca0);border-radius:3px;transition:width .3s ease}.level-lovely .progress-bar-fill[data-v-2ca32021],.level-passionate .progress-bar-fill[data-v-2ca32021],.level-eternal .progress-bar-fill[data-v-2ca32021]{background:linear-gradient(90deg,#ff6b9d,#f36)}@keyframes heartbeat-2ca32021{0%,to{transform:scale(1)}50%{transform:scale(1.1)}}@keyframes borderGlow-2ca32021{0%{opacity:.8}50%{opacity:1}to{opacity:.8}}.announcement-badge[data-v-29031f73]{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;background:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.3);box-shadow:0 4px 12px rgba(0,0,0,.05);color:var(--text-color);transition:all .2s}.announcement-badge[data-v-29031f73]:active{transform:scale(.95)}.dark-mode .announcement-badge[data-v-29031f73]{background:rgba(30,30,30,.5);border-color:rgba(255,255,255,.1);color:var(--text-color)}.icon-wrapper[data-v-29031f73]{position:relative;display:flex;color:#ff6b6b;filter:drop-shadow(0 2px 4px rgba(255,107,107,.3))}.notification-dot[data-v-29031f73]{position:absolute;top:-2px;right:-2px;width:8px;height:8px;background:#ff4757;border-radius:50%;border:2px solid #fff}.achievement-badge[data-v-ce577d21]{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;background:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.3);box-shadow:0 4px 12px rgba(0,0,0,.05);color:var(--text-color);transition:all .2s}.achievement-badge[data-v-ce577d21]:active{transform:scale(.95)}.dark-mode .achievement-badge[data-v-ce577d21]{background:rgba(30,30,30,.5);border-color:rgba(255,255,255,.1);color:var(--text-color)}.icon-wrapper[data-v-ce577d21]{position:relative;color:#f1c40f;display:flex;filter:drop-shadow(0 2px 4px rgba(241,196,15,.3))}.notification-dot[data-v-ce577d21]{position:absolute;top:-2px;right:-2px;width:8px;height:8px;background:#ff4757;border-radius:50%;border:2px solid #fff}.modal-overlay[data-v-7b7f027a]{position:fixed;top:0;right:0;bottom:0;left:0;background:radial-gradient(circle at top,rgba(247,140,171,.2),transparent 38%),rgba(16,18,27,.64);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px}.modal-content[data-v-7b7f027a]{width:100%;max-width:396px;max-height:min(var(--app-viewport-height) * .84,var(--app-viewport-height) - 40px);background:linear-gradient(180deg,rgba(255,252,254,.98),rgba(255,246,249,.98));border:1px solid rgba(247,140,171,.18);border-radius:30px;display:flex;flex-direction:column;box-shadow:0 26px 60px rgba(233,136,168,.22),0 12px 28px rgba(0,0,0,.14);overflow:hidden}.dark-mode .modal-content[data-v-7b7f027a]{background:linear-gradient(180deg,rgba(45,34,42,.98),rgba(31,26,33,.98));border-color:rgba(255,192,214,.16)}.modal-header[data-v-7b7f027a]{padding:26px 20px 18px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid rgba(247,140,171,.12)}.dark-mode .modal-header[data-v-7b7f027a]{border-bottom-color:rgba(255,192,214,.1)}.header-title[data-v-7b7f027a]{display:flex;align-items:center;gap:10px;color:#f78cab}.header-title h3[data-v-7b7f027a]{margin:0;font-size:22px;font-weight:700;color:var(--text-color)}.achievement-list[data-v-7b7f027a]{padding:18px;overflow-y:auto;display:flex;flex-direction:column;gap:14px}.achievement-item[data-v-7b7f027a]{display:flex;gap:12px;padding:14px;background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,247,250,.92));border-radius:20px;border:1px solid rgba(247,140,171,.12);box-shadow:inset 0 1px rgba(255,255,255,.75),0 8px 18px rgba(247,140,171,.08)}.dark-mode .achievement-item[data-v-7b7f027a]{background:rgba(255,255,255,.05);border-color:rgba(255,192,214,.12);box-shadow:none}.achievement-item.is-locked[data-v-7b7f027a]{opacity:.7}.achievement-item.is-locked .item-icon[data-v-7b7f027a]{background:rgba(0,0,0,.1);color:#999}.item-icon[data-v-7b7f027a]{width:48px;height:48px;border-radius:16px;background:linear-gradient(180deg,rgba(249,167,192,.18),rgba(247,140,171,.12));display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:inset 0 1px rgba(255,255,255,.7);flex-shrink:0}.dark-mode .item-icon[data-v-7b7f027a]{background:rgba(255,192,214,.12)}.item-content[data-v-7b7f027a]{flex:1;display:flex;flex-direction:column;gap:4px;min-width:0}.item-top[data-v-7b7f027a]{display:flex;justify-content:space-between;align-items:center}.item-title[data-v-7b7f027a]{font-weight:600;font-size:14px}.status-badge[data-v-7b7f027a]{font-size:11px;padding:4px 8px;border-radius:999px;display:flex;align-items:center;gap:4px}.status-badge.solved[data-v-7b7f027a]{background:rgba(76,217,100,.15);color:#4cd964}.status-badge.todo[data-v-7b7f027a]{background:rgba(247,140,171,.1);color:#999}.dark-mode .status-badge.todo[data-v-7b7f027a]{background:rgba(255,192,214,.12)}.item-desc[data-v-7b7f027a]{margin:0 0 4px;font-size:12px;color:var(--text-secondary-color)}.progress-wrapper[data-v-7b7f027a]{display:flex;align-items:center;gap:8px}.progress-bar-bg[data-v-7b7f027a]{flex:1;height:6px;background:rgba(247,140,171,.12);border-radius:999px;overflow:hidden}.dark-mode .progress-bar-bg[data-v-7b7f027a]{background:rgba(255,192,214,.12)}.progress-bar-fill[data-v-7b7f027a]{height:100%;background:linear-gradient(180deg,#f9a7c0,#f78cab);border-radius:999px}.progress-text[data-v-7b7f027a]{font-size:10px;color:var(--text-secondary-color);min-width:30px;text-align:right}.dialogue-anchor[data-v-e1607932]{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:auto;min-width:200px;max-width:80%;z-index:20;pointer-events:none}.bubble-accessory[data-v-e1607932]{position:absolute;top:100%;left:50%;transform:translate(-50%);margin-top:12px;pointer-events:auto}.bubble-accessory.standalone[data-v-e1607932]{top:50%;margin-top:0;transform:translate(-50%,-50%)}.dialogue-bubble[data-v-e1607932]{background:rgba(255,255,255,.85);border-radius:16px;padding:16px 20px;box-shadow:0 4px 20px rgba(0,0,0,.1);border:1px solid rgba(255,255,255,.4);pointer-events:none;z-index:20}.dark-mode .dialogue-bubble[data-v-e1607932]{background:rgba(40,40,40,.85);border-color:rgba(255,255,255,.1);color:var(--text-color)}.bubble-content[data-v-e1607932]{font-size:15px;line-height:1.5;text-align:center;font-weight:500;color:var(--text-color)}.bubble-fade-enter-active[data-v-e1607932],.bubble-fade-leave-active[data-v-e1607932]{transition:all .3s ease}.bubble-fade-enter-from[data-v-e1607932],.bubble-fade-leave-to[data-v-e1607932]{opacity:0;transform:translateY(10px)}.mail-overlay[data-v-b2ad4eca],.detail-overlay[data-v-b2ad4eca]{position:fixed;top:0;right:0;bottom:0;left:0;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at top,rgba(255,143,171,.16),transparent 34%),rgba(16,18,24,.68)}.mail-overlay[data-v-b2ad4eca]{z-index:3200}.detail-overlay[data-v-b2ad4eca]{z-index:3300}.mail-modal[data-v-b2ad4eca],.detail-modal[data-v-b2ad4eca]{width:100%;background:linear-gradient(180deg,rgba(255,247,250,.98),rgba(255,255,255,.98) 30%),#fff;border:1px solid rgba(255,143,171,.16);border-radius:24px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 28px 70px rgba(15,23,42,.22),0 1px rgba(255,255,255,.55) inset}.dark-mode .mail-modal[data-v-b2ad4eca],.dark-mode .detail-modal[data-v-b2ad4eca]{background:linear-gradient(180deg,rgba(60,40,52,.96),rgba(27,28,34,.98) 28%),#1a1b21;border-color:rgba(255,143,171,.2)}.mail-modal[data-v-b2ad4eca]{max-width:440px;max-height:min(var(--app-viewport-height) * .84,var(--app-viewport-height) - 40px)}.detail-modal[data-v-b2ad4eca]{max-width:410px;max-height:min(var(--app-viewport-height) * .78,var(--app-viewport-height) - 40px)}.mail-hero[data-v-b2ad4eca],.detail-hero[data-v-b2ad4eca]{position:relative;padding:22px 22px 14px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;border-bottom:1px solid rgba(255,143,171,.1)}.dark-mode .mail-hero[data-v-b2ad4eca],.dark-mode .detail-hero[data-v-b2ad4eca]{border-bottom-color:rgba(255,143,171,.12)}.mail-title-row[data-v-b2ad4eca]{display:flex;align-items:center;gap:10px;color:#cf6d90}.mail-title-row h3[data-v-b2ad4eca]{margin:0;color:var(--text-color);font-size:24px;line-height:1.15;font-weight:700}.mail-hero p[data-v-b2ad4eca]{margin:0;color:var(--text-secondary-color);font-size:13px;line-height:1.5}.mail-refresh-btn[data-v-b2ad4eca]{position:absolute;top:16px;right:16px;width:34px;height:34px;border:1px solid rgba(255,143,171,.12);border-radius:12px;background:rgba(255,255,255,.78);color:#cf6d90;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s ease,background .2s ease,border-color .2s ease}.mail-refresh-btn[data-v-b2ad4eca]:active:not(:disabled){transform:scale(.94)}.mail-refresh-btn[data-v-b2ad4eca]:disabled{cursor:default;opacity:.72}.dark-mode .mail-refresh-btn[data-v-b2ad4eca]{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08)}.spinning[data-v-b2ad4eca]{animation:mail-spin-b2ad4eca .8s linear infinite}.mail-list[data-v-b2ad4eca]{min-height:0;padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}.mail-item[data-v-b2ad4eca]{position:relative;display:grid;grid-template-columns:42px minmax(0,1fr) 18px;align-items:center;gap:12px;width:100%;padding:14px 13px;border:1px solid rgba(255,143,171,.12);border-radius:18px;background:rgba(255,255,255,.68);color:inherit;font-family:inherit;text-align:left;user-select:none;cursor:pointer;transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease}.mail-item[data-v-b2ad4eca]:active{transform:scale(.98)}.mail-item.unread[data-v-b2ad4eca]{border-color:rgba(255,143,171,.26);box-shadow:0 10px 24px rgba(255,143,171,.1)}.mail-item.loading[data-v-b2ad4eca]{pointer-events:none;opacity:.72}.dark-mode .mail-item[data-v-b2ad4eca]{background:#22232a;border-color:rgba(255,255,255,.08)}.dark-mode .mail-item.unread[data-v-b2ad4eca]{border-color:rgba(255,143,171,.22);box-shadow:none}.mail-icon[data-v-b2ad4eca]{width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#cf6d90;background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,243,247,.92));border:1px solid rgba(255,143,171,.14)}.dark-mode .mail-icon[data-v-b2ad4eca]{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,143,171,.08));border-color:rgba(255,143,171,.18)}.mail-copy[data-v-b2ad4eca]{min-width:0;display:flex;flex-direction:column;gap:4px}.mail-item-top[data-v-b2ad4eca]{display:flex;align-items:center;gap:8px;min-width:0}.mail-item-title[data-v-b2ad4eca]{min-width:0;flex:1;color:var(--text-color);font-size:15px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.read-state[data-v-b2ad4eca]{flex-shrink:0;padding:4px 8px;border-radius:999px;background:rgba(148,163,184,.12);color:var(--text-secondary-color);font-size:11px;font-weight:700}.read-state.unread[data-v-b2ad4eca]{background:rgba(255,143,171,.12);color:#cf6d90}.mail-time[data-v-b2ad4eca],.detail-hero span[data-v-b2ad4eca]{color:var(--text-secondary-color);font-size:11px}.mail-chevron[data-v-b2ad4eca]{color:var(--text-secondary-color)}.mail-item-actions[data-v-b2ad4eca]{display:flex;align-items:center;justify-content:flex-end}.detail-delete-btn[data-v-b2ad4eca]{position:absolute;top:16px;right:16px;width:34px;height:34px;border:1px solid rgba(255,143,171,.12);border-radius:12px;background:rgba(255,255,255,.78);color:#cf6d90;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s ease,background .2s ease,border-color .2s ease}.detail-delete-btn[data-v-b2ad4eca]:active:not(:disabled){transform:scale(.94)}.detail-delete-btn[data-v-b2ad4eca]:disabled{cursor:default;opacity:.58}.dark-mode .detail-delete-btn[data-v-b2ad4eca]{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08)}.mail-empty[data-v-b2ad4eca]{min-height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--text-secondary-color);font-size:14px}.detail-hero h3[data-v-b2ad4eca]{margin:0;color:var(--text-color);font-size:22px;line-height:1.25;font-weight:700}.detail-content[data-v-b2ad4eca]{min-height:0;padding:20px 22px;overflow-y:auto;color:var(--text-color);font-size:14px;line-height:1.8;white-space:pre-wrap}.mail-actions[data-v-b2ad4eca]{padding:16px;display:flex;justify-content:center;border-top:1px solid rgba(255,143,171,.1)}.dark-mode .mail-actions[data-v-b2ad4eca]{border-top-color:rgba(255,143,171,.12)}.close-btn[data-v-b2ad4eca]{width:100%;min-height:44px;border:1px solid rgba(255,143,171,.12);border-radius:16px;background:rgba(255,255,255,.72);color:var(--text-secondary-color);font-family:inherit;font-size:15px;font-weight:650;cursor:pointer;transition:transform .2s ease}.close-btn[data-v-b2ad4eca]:active{transform:scale(.97)}.dark-mode .close-btn[data-v-b2ad4eca]{background:rgba(255,255,255,.06);color:rgba(255,255,255,.82);border-color:rgba(255,255,255,.08)}@keyframes mail-spin-b2ad4eca{0%{transform:rotate(0)}to{transform:rotate(360deg)}}.daily-fortune-badge[data-v-1fab6b1a]{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;background:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.3);box-shadow:0 4px 12px rgba(0,0,0,.05);transition:all .2s}.daily-fortune-badge[data-v-1fab6b1a]:active{transform:scale(.95)}.dark-mode .daily-fortune-badge[data-v-1fab6b1a]{background:rgba(30,30,30,.5);border-color:rgba(255,255,255,.1)}.icon-wrapper[data-v-1fab6b1a]{position:relative;color:#9b59b6;display:flex;filter:drop-shadow(0 2px 4px rgba(155,89,182,.3))}.notification-dot[data-v-1fab6b1a]{position:absolute;top:-2px;right:-2px;width:8px;height:8px;background:#ff4757;border-radius:50%;border:2px solid #fff}.fortune-overlay[data-v-cf51fe43]{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1000;display:grid;place-items:center;padding:18px;background:rgba(19,15,24,.68);backdrop-filter:blur(8px)}.fortune-sheet[data-v-cf51fe43]{width:min(390px,100%);height:min(720px,100svh - 36px);position:relative;overflow:hidden;display:flex;flex-direction:column;color:#3b2935;border:1px solid rgba(255,255,255,.72);border-radius:32px;background:#fff9fb;box-shadow:0 30px 90px rgba(40,19,34,.38)}.fortune-image[data-v-cf51fe43]{position:absolute;inset:0 0 auto;height:265px;opacity:.24}.fortune-image img[data-v-cf51fe43]{width:100%;height:100%;object-fit:cover}.fortune-wash[data-v-cf51fe43]{position:absolute;top:0;right:0;bottom:0;left:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,247,251,.35),#fff9fb 38%,#fff9fb)}.sheet-header[data-v-cf51fe43]{position:relative;z-index:2;display:grid;grid-template-columns:40px 1fr 40px;align-items:center;padding:18px 18px 8px}.header-mark[data-v-cf51fe43],.icon-button[data-v-cf51fe43]{width:40px;height:40px;display:grid;place-items:center;border:0;border-radius:50%;color:#9c617e;background:rgba(255,255,255,.62)}.icon-button[data-v-cf51fe43]{position:relative;cursor:pointer;opacity:.68}.icon-button.active[data-v-cf51fe43]{opacity:1;color:#e874a0;box-shadow:0 5px 16px rgba(232,116,160,.16)}.icon-button[data-v-cf51fe43]:active{transform:scale(.94)}.poll-dot[data-v-cf51fe43]{position:absolute;top:3px;right:3px;width:9px;height:9px;border:2px solid #fff9fb;border-radius:50%;background:#ff4757}.header-copy[data-v-cf51fe43]{text-align:center}.header-copy span[data-v-cf51fe43]{display:block;color:#b6819b;font-size:9px;letter-spacing:.2em}.header-copy strong[data-v-cf51fe43]{display:block;margin-top:3px;font-size:12px}.overview-view[data-v-cf51fe43],.game-view[data-v-cf51fe43]{position:relative;z-index:1;flex:1;min-height:0;overflow-y:auto;padding:10px 22px 24px;scrollbar-width:none}.oracle-hero[data-v-cf51fe43]{min-height:185px;display:flex;flex-direction:column;justify-content:flex-end;text-align:center;padding:10px 14px 20px}.eyebrow[data-v-cf51fe43]{margin:0 0 8px;color:#b06f90;font-size:10px;font-weight:700;letter-spacing:.14em}.oracle-hero h2[data-v-cf51fe43]{margin:0;color:#ef769f;font-size:40px;line-height:1.15;text-shadow:0 8px 22px rgba(239,118,159,.2)}.oracle-message[data-v-cf51fe43]{max-width:300px;margin:14px auto 0;color:#59414e;font-size:14px;line-height:1.7}.score-line[data-v-cf51fe43]{display:grid;grid-template-columns:repeat(5,1fr);padding:15px 2px;border-block:1px solid rgba(176,111,144,.14)}.score-item[data-v-cf51fe43]{text-align:center}.score-item>span[data-v-cf51fe43]{color:#8e7381;font-size:11px}.score-dots[data-v-cf51fe43]{display:flex;justify-content:center;gap:3px;margin-top:7px}.score-dots i[data-v-cf51fe43]{width:5px;height:5px;border-radius:50%;background:#eadde3}.score-dots i.active[data-v-cf51fe43]{background:#ef86a9}.daily-details[data-v-cf51fe43]{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;padding:10px 0}.daily-details>div[data-v-cf51fe43]{display:flex;align-items:center;gap:8px;padding:9px 2px;border-bottom:1px dashed rgba(176,111,144,.13);font-size:12px}.daily-details>div span[data-v-cf51fe43]{flex:none;color:#a28a96}.daily-details>div strong[data-v-cf51fe43]{flex:1;min-width:0;text-align:center}.daily-details .wide[data-v-cf51fe43]{grid-column:1/-1}.advice-block[data-v-cf51fe43]{margin:8px 0 16px}.advice-block>div[data-v-cf51fe43]{display:flex;align-items:center;gap:10px;margin-top:8px}.advice-block p[data-v-cf51fe43]{margin:0;font-size:12px;line-height:1.5}.advice-label[data-v-cf51fe43]{flex:0 0 26px;height:26px;display:grid;place-items:center;border-radius:50%;font-size:12px;font-weight:800}.advice-label.good[data-v-cf51fe43]{color:#38866e;background:#def4ea}.advice-label.avoid[data-v-cf51fe43]{color:#a65d72;background:#f9e1e8}.play-actions[data-v-cf51fe43]{display:grid;grid-template-columns:1fr 1fr;gap:10px}.play-actions button[data-v-cf51fe43]{min-height:78px;display:flex;align-items:center;gap:9px;padding:12px;text-align:left;color:inherit;border:1px solid rgba(225,139,171,.2);border-radius:18px;background:rgba(255,255,255,.72);box-shadow:0 8px 20px rgba(176,91,125,.07);cursor:pointer}.play-actions button>span[data-v-cf51fe43]{color:#e87da2;font-size:24px}.play-actions button strong[data-v-cf51fe43],.play-actions button small[data-v-cf51fe43]{display:block}.play-actions button strong[data-v-cf51fe43]{font-size:12px}.play-actions button small[data-v-cf51fe43]{margin-top:5px;color:#a48b97;font-size:9px}.game-heading[data-v-cf51fe43]{padding:28px 8px 22px;text-align:center}.game-heading h2[data-v-cf51fe43]{margin:0;font-size:24px}.game-heading>p[data-v-cf51fe43]:last-child{margin:10px auto 0;max-width:300px;color:#8b707e;font-size:12px;line-height:1.65}.star-stage[data-v-cf51fe43]{display:flex;align-items:center;justify-content:center;gap:12px;min-height:205px}.star-choice[data-v-cf51fe43]{width:92px;height:142px;color:#754f67;border:1px solid rgba(240,162,192,.34);border-radius:48px 48px 18px 18px;background:linear-gradient(160deg,#fff,#faeaf2);box-shadow:0 14px 26px rgba(148,80,112,.12);cursor:pointer;transition:transform .28s ease,opacity .28s ease}.star-choice[data-v-cf51fe43]:nth-child(2){transform:translateY(-18px)}.star-choice[data-v-cf51fe43]:not(:disabled):active{transform:scale(.96)}.star-choice.selected[data-v-cf51fe43]{transform:translateY(-14px) scale(1.06);border-color:#ee8bb0}.star-choice.dimmed[data-v-cf51fe43]{opacity:.35;transform:scale(.9)}.star-choice strong[data-v-cf51fe43]{display:block;margin-top:10px;font-size:11px}.star-symbol[data-v-cf51fe43]{display:block;color:#ee8bb0;font-size:34px;filter:drop-shadow(0 6px 9px rgba(232,109,157,.24))}.star-message[data-v-cf51fe43]{margin:0 8px 18px;padding:18px;text-align:center;color:#754b61;border-left:0;border-radius:18px;background:rgba(255,255,255,.7);font-size:15px;line-height:1.7}.game-note[data-v-cf51fe43]{text-align:center;color:#ad929f;font-size:10px}.quest-list[data-v-cf51fe43]{display:grid;gap:10px}.quest-list button[data-v-cf51fe43]{display:grid;grid-template-columns:42px 1fr 30px;align-items:center;gap:10px;width:100%;padding:14px;text-align:left;color:inherit;border:1px solid rgba(225,139,171,.18);border-radius:18px;background:rgba(255,255,255,.7);cursor:pointer;transition:opacity .2s,border-color .2s}.quest-list button.selected[data-v-cf51fe43]{border-color:#ed88ae;background:#fff}.quest-list button.muted[data-v-cf51fe43]{opacity:.38}.quest-list button strong[data-v-cf51fe43]{font-size:13px}.quest-list button p[data-v-cf51fe43]{margin:4px 0 0;color:#927986;font-size:10px;line-height:1.5}.quest-list button small[data-v-cf51fe43]{color:#df749c;font-weight:700}.quest-icon[data-v-cf51fe43]{font-size:26px;text-align:center}.complete-button[data-v-cf51fe43]{width:100%;min-height:48px;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;color:#fff;border:0;border-radius:16px;background:#ec82aa;box-shadow:0 9px 22px rgba(219,102,148,.24);font-weight:700;cursor:pointer}.complete-button.completed[data-v-cf51fe43]{color:#568373;background:#dff4eb;box-shadow:none}.poll-view[data-v-cf51fe43]{padding-top:22px}.poll-heading[data-v-cf51fe43]{text-align:center}.poll-heading h2[data-v-cf51fe43]{margin:10px 0 8px;font-size:25px;line-height:1.3}.poll-heading>p[data-v-cf51fe43]:not(.eyebrow){margin:0 auto;max-width:300px;color:#806675;font-size:13px;line-height:1.7;white-space:pre-wrap}.poll-heading>small[data-v-cf51fe43]{display:block;margin-top:10px;color:#ac8c9b;font-size:10px}.poll-status[data-v-cf51fe43]{display:inline-flex;padding:4px 9px;color:#d76591;border-radius:99px;background:#fde7ef;font-size:10px;font-weight:700}.poll-options[data-v-cf51fe43]{display:grid;gap:11px;margin-top:24px}.poll-option-row[data-v-cf51fe43]{position:relative;min-height:62px;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:13px 15px;color:inherit;text-align:left;border:1px solid rgba(225,139,171,.22);border-radius:18px;background:rgba(255,255,255,.75);cursor:pointer}.poll-option-row.selected[data-v-cf51fe43]{border-color:#eb78a2;box-shadow:0 7px 20px rgba(219,102,148,.12)}.poll-fill[data-v-cf51fe43]{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,rgba(244,142,179,.24),rgba(244,142,179,.08));transition:width .35s ease}.poll-option-copy[data-v-cf51fe43],.poll-result[data-v-cf51fe43]{position:relative;z-index:1;display:flex;align-items:center;gap:9px;min-width:0}.poll-option-copy i[data-v-cf51fe43],.poll-result i[data-v-cf51fe43]{color:#e4749d;font-style:normal}.poll-option-copy strong[data-v-cf51fe43],.poll-result strong[data-v-cf51fe43]{font-size:13px}.poll-result[data-v-cf51fe43]{flex-direction:column;align-items:flex-end;gap:2px;flex:none}.poll-result b[data-v-cf51fe43]{color:#d9628e;font-size:13px}.poll-result small[data-v-cf51fe43]{color:#a68b98;font-size:9px}.poll-option-actions[data-v-cf51fe43]{position:relative;z-index:2;display:flex;align-items:center;gap:8px;flex:none}.poll-detail-button[data-v-cf51fe43]{min-width:42px;min-height:27px;padding:0 9px;color:#c85d88;border:1px solid rgba(220,102,148,.2);border-radius:99px;background:rgba(255,255,255,.8);font-family:inherit;font-size:10px;font-weight:700;cursor:pointer}.poll-detail-overlay[data-v-cf51fe43]{position:absolute;top:0;right:0;bottom:0;left:0;z-index:8;display:grid;place-items:center;padding:24px;background:rgba(41,27,37,.48);backdrop-filter:blur(5px)}.poll-detail-card[data-v-cf51fe43]{width:100%;max-height:72%;overflow-y:auto;padding:24px 22px 20px;text-align:center;border:1px solid rgba(242,155,188,.2);border-radius:24px;background:#fff9fb;box-shadow:0 20px 60px rgba(48,24,40,.28)}.poll-detail-card h3[data-v-cf51fe43]{margin:9px 0 12px;font-size:21px}.poll-detail-card p[data-v-cf51fe43]{margin:0;color:#755a69;font-size:13px;line-height:1.8;text-align:left;white-space:pre-wrap}.poll-detail-card>button[data-v-cf51fe43]{width:100%;min-height:42px;margin-top:20px;color:#fff;border:0;border-radius:14px;background:#e878a1;font-family:inherit;font-weight:700;cursor:pointer}.poll-note[data-v-cf51fe43]{margin:16px 0 0;text-align:center;color:#a88b99;font-size:10px}.poll-submit[data-v-cf51fe43]{width:100%;min-height:46px;margin-top:14px;color:#fff;border:0;border-radius:16px;background:linear-gradient(135deg,#ed82a8,#e06d99);box-shadow:0 9px 22px rgba(219,102,148,.22);font-family:inherit;font-weight:700;cursor:pointer}.poll-submit[data-v-cf51fe43]:disabled{opacity:.7;cursor:default}.poll-empty[data-v-cf51fe43]{min-height:430px;display:grid;place-content:center;justify-items:center;text-align:center;color:#a7748d}.poll-empty h2[data-v-cf51fe43]{margin:12px 0 5px}.poll-empty p[data-v-cf51fe43]{max-width:250px;margin:0;color:#a68b98;font-size:12px;line-height:1.65}.sheet-footer[data-v-cf51fe43]{position:relative;z-index:2;padding:9px 0 14px;text-align:center;color:#ae929f;font-size:9px;letter-spacing:.08em}.loading-state[data-v-cf51fe43]{position:relative;z-index:2;flex:1;display:grid;place-content:center;justify-items:center;gap:12px;color:#bc7997;font-size:12px}.loading-state svg[data-v-cf51fe43]{animation:twinkle-cf51fe43 1.3s ease-in-out infinite}.fortune-modal-enter-active[data-v-cf51fe43],.fortune-modal-leave-active[data-v-cf51fe43]{transition:opacity .22s ease}.fortune-modal-enter-active .fortune-sheet[data-v-cf51fe43],.fortune-modal-leave-active .fortune-sheet[data-v-cf51fe43]{transition:transform .32s cubic-bezier(.2,.8,.2,1),opacity .22s}.fortune-modal-enter-from[data-v-cf51fe43],.fortune-modal-leave-to[data-v-cf51fe43]{opacity:0}.fortune-modal-enter-from .fortune-sheet[data-v-cf51fe43],.fortune-modal-leave-to .fortune-sheet[data-v-cf51fe43]{opacity:0;transform:translateY(18px) scale(.96)}.reveal-enter-active[data-v-cf51fe43]{transition:all .35s ease}.reveal-enter-from[data-v-cf51fe43]{opacity:0;transform:translateY(10px)}@keyframes twinkle-cf51fe43{50%{transform:scale(1.22) rotate(8deg);opacity:.55}}.dark-mode .fortune-sheet[data-v-cf51fe43]{color:#f2e6ec;border-color:rgba(255,255,255,.1);background:#282128}.dark-mode .fortune-wash[data-v-cf51fe43]{background:linear-gradient(180deg,rgba(38,29,37,.2),#282128 38%,#282128)}.dark-mode .oracle-message[data-v-cf51fe43],.dark-mode .game-heading>p[data-v-cf51fe43]:last-child{color:#cfb9c5}.dark-mode .header-mark[data-v-cf51fe43],.dark-mode .icon-button[data-v-cf51fe43],.dark-mode .play-actions button[data-v-cf51fe43],.dark-mode .star-message[data-v-cf51fe43],.dark-mode .quest-list button[data-v-cf51fe43]{background:rgba(255,255,255,.055)}.dark-mode .score-line[data-v-cf51fe43]{border-color:rgba(255,255,255,.09)}.dark-mode .score-dots i[data-v-cf51fe43]{background:#51434b}.dark-mode .score-dots i.active[data-v-cf51fe43]{background:#ef86a9}.dark-mode .daily-details>div[data-v-cf51fe43]{border-color:rgba(255,255,255,.08)}.dark-mode .star-choice[data-v-cf51fe43]{color:#ecd7e2;border-color:rgba(255,175,205,.18);background:linear-gradient(160deg,#3e323b,#30262e)}.dark-mode .poll-option-row[data-v-cf51fe43]{background:rgba(255,255,255,.055);border-color:rgba(255,175,205,.15)}.dark-mode .poll-detail-button[data-v-cf51fe43]{color:#ffc0d5;background:rgba(255,255,255,.07)}.dark-mode .poll-detail-card[data-v-cf51fe43]{background:#332932}.dark-mode .poll-detail-card p[data-v-cf51fe43]{color:#d2bdc8}.dark-mode .poll-heading>p[data-v-cf51fe43]:not(.eyebrow){color:#d2bdc8}.dark-mode .poll-status[data-v-cf51fe43]{color:#ffc0d5;background:rgba(255,137,179,.12)}.dark-mode .complete-button.completed[data-v-cf51fe43]{color:#a8dec9;background:#31483f}@media(max-height:650px){.fortune-sheet[data-v-cf51fe43]{height:calc(100svh - 20px);border-radius:26px}.oracle-hero[data-v-cf51fe43]{min-height:135px}.fortune-image[data-v-cf51fe43]{height:210px}}.home-view[data-v-535c5b6b]{position:relative;height:100%;width:100%;overflow:hidden}.hud-container[data-v-535c5b6b]{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10;display:flex;flex-direction:column;justify-content:space-between;padding:calc(var(--safe-area-inset-top) + 10px) 20px 20px 20px}.hud-top-bar[data-v-535c5b6b]{display:flex;justify-content:space-between;align-items:flex-start;padding-top:0}.hud-tools-row[data-v-535c5b6b]{display:flex;gap:12px;pointer-events:auto}.hud-side-tools[data-v-535c5b6b]{position:absolute;top:calc(var(--safe-area-inset-top) + 10px);right:20px;display:flex;flex-direction:column;gap:12px;align-items:flex-end;pointer-events:auto}.tool-row[data-v-535c5b6b]{display:flex;gap:12px;align-items:center}.side-tool-btn[data-v-535c5b6b]{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;cursor:pointer;background:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.3);box-shadow:0 4px 12px rgba(0,0,0,.05);color:var(--text-color);transition:all .2s}.side-tool-btn[data-v-535c5b6b]:active{transform:scale(.95)}.dark-mode .side-tool-btn[data-v-535c5b6b]{background:rgba(30,30,30,.5);border-color:rgba(255,255,255,.1);color:var(--text-color)}.outfit-btn[data-v-535c5b6b]{color:#dc86a5}.outfit-dismiss-layer[data-v-535c5b6b]{position:absolute;top:0;right:0;bottom:0;left:0;z-index:5;background:transparent;pointer-events:auto}.outfit-palette[data-v-535c5b6b]{display:flex;flex-direction:column;gap:14px;padding:16px;max-width:calc(100vw - 40px);width:420px;box-sizing:border-box;overflow-x:hidden;overflow-y:auto;max-height:65vh;overscroll-behavior:contain}.outfit-palette.below-bubble[data-v-535c5b6b]{max-height:30vh}.outfit-palette[data-v-535c5b6b]{border-radius:24px;background:rgba(255,255,255,.94);border:1px solid rgba(230,180,200,.45);box-shadow:0 5px 20px rgba(85,45,65,.12)}.dark-mode .outfit-palette[data-v-535c5b6b]{background:rgba(36,32,39,.96);border-color:rgba(255,255,255,.15)}.outfit-parts[data-v-535c5b6b]{flex-shrink:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding:4px;border-radius:18px;background:rgba(150,120,140,.08)}.outfit-part[data-v-535c5b6b]{min-width:0;min-height:38px;padding:6px 0;border:0;border-radius:13px;background:transparent;color:var(--text-color);font:inherit;font-size:13px;cursor:pointer;transition:background .15s,color .15s}.outfit-part.active[data-v-535c5b6b]{background:#f8dfeb;color:#a9416a}.dark-mode .outfit-part.active[data-v-535c5b6b]{background:#644252;color:#ffd9e8}.outfit-row[data-v-535c5b6b]{flex-shrink:0;display:flex;flex-direction:column;gap:12px;width:100%;min-width:0}.outfit-detail-heading[data-v-535c5b6b]{display:flex;justify-content:space-between;align-items:center;width:100%;color:var(--text-color);font-size:13px}.outfit-color-name[data-v-535c5b6b]{opacity:.6;font-size:12px}.outfit-colors[data-v-535c5b6b]{width:100%;box-sizing:border-box;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:clamp(3px,1.2vw,8px);padding:4px;min-width:0}.outfit-part[data-v-535c5b6b]:focus-visible,.outfit-swatch[data-v-535c5b6b]:focus-visible{outline:2px solid #d8799d;outline-offset:4px}.outfit-swatch[data-v-535c5b6b]{position:relative;width:100%;height:0;padding:0 0 100%;box-sizing:content-box;border-radius:50%;border:0;display:block}.outfit-swatch svg[data-v-535c5b6b]{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:60%;height:60%}.outfit-swatch[data-v-535c5b6b]{color:#473b46;cursor:pointer;transition:transform .15s}.outfit-swatch.selected[data-v-535c5b6b]{box-shadow:0 0 0 2px #fff,0 0 0 4px #d8799d}.outfit-swatch[data-v-535c5b6b]:active{transform:scale(.9)}.outfit-pop-enter-active[data-v-535c5b6b],.outfit-pop-leave-active[data-v-535c5b6b]{transition:opacity .16s,transform .16s}.outfit-pop-enter-from[data-v-535c5b6b],.outfit-pop-leave-to[data-v-535c5b6b]{opacity:0;transform:translateY(-5px)}.music-btn[data-v-535c5b6b]{color:#9b59b6}.music-btn svg[data-v-535c5b6b]{filter:drop-shadow(0 2px 4px rgba(155,89,182,.3))}.theme-btn[data-v-535c5b6b]{color:#f39c12}.theme-btn svg[data-v-535c5b6b]{filter:drop-shadow(0 2px 4px rgba(243,156,18,.3))}.dark-mode .theme-btn[data-v-535c5b6b]{color:#3498db}.dark-mode .theme-btn svg[data-v-535c5b6b]{filter:drop-shadow(0 2px 4px rgba(52,152,219,.3))}.mailbox-btn[data-v-535c5b6b]{color:#cf6d90}.mailbox-btn svg[data-v-535c5b6b]{filter:drop-shadow(0 2px 4px rgba(207,109,144,.28))}.mail-icon-wrapper[data-v-535c5b6b]{position:relative;display:flex}.mail-notification-dot[data-v-535c5b6b]{position:absolute;top:-3px;right:-3px;width:9px;height:9px;background:#ff4778;border-radius:50%;border:2px solid #fff}.dark-mode .mail-notification-dot[data-v-535c5b6b]{border-color:#1e1e1e}\n/*$vite$:1*/', document.head.appendChild(r);
+        /**
+         * @license lucide-vue-next v0.562.0 - ISC
+         *
+         * This source code is licensed under the ISC license.
+         * See the LICENSE file in the root directory of this source tree.
+         */
+        var Le = T("chart-column", [
+            ["path", {
+              d: "M3 3v16a2 2 0 0 0 2 2h16",
+              key: "c24i48"
+            }],
+            ["path", {
+              d: "M18 17V9",
+              key: "2bz60n"
+            }],
+            ["path", {
+              d: "M13 17V5",
+              key: "1frdt8"
+            }],
+            ["path", {
+              d: "M8 17v-3",
+              key: "17ska0"
+            }]
+          ]),
+          ze = T("shirt", [
+            ["path", {
+              d: "M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z",
+              key: "1wgbhj"
+            }]
+          ]),
+          _e = T("trophy", [
+            ["path", {
+              d: "M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978",
+              key: "1n3hpd"
+            }],
+            ["path", {
+              d: "M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978",
+              key: "rfe1zi"
+            }],
+            ["path", {
+              d: "M18 9h1.5a1 1 0 0 0 0-5H18",
+              key: "7xy6bh"
+            }],
+            ["path", {
+              d: "M4 22h16",
+              key: "57wxv0"
+            }],
+            ["path", {
+              d: "M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z",
+              key: "1mhfuq"
+            }],
+            ["path", {
+              d: "M6 9H4.5a1 1 0 0 1 0-5H6",
+              key: "tex48p"
+            }]
+          ]),
+          Ce = {
+            class: "heart-container"
+          },
+          je = {
+            class: "level-badge"
+          },
+          Se = {
+            class: "info-container"
+          },
+          Pe = {
+            class: "progress-bar-bg"
+          },
+          qe = F(i({
+            __name: "AffectionCard",
+            setup: function(e) {
+              var a = D();
+              l(function() {
+                a.init()
+              });
+              var t = p(function() {
+                  var e = a.level;
+                  return e <= 2 ? "level-basic" : e <= 4 ? "level-warm" : e <= 6 ? "level-lovely" : e <= 8 ? "level-passionate" : "level-eternal"
+                }),
+                r = p(function() {
+                  return {
+                    color: {
+                      1: "#ffb3ba",
+                      2: "#ff9eb5",
+                      3: "#ff6b9d",
+                      4: "#ff4d7a",
+                      5: "#ff3366",
+                      6: "#ff1a4d",
+                      7: "#e6005c",
+                      8: "#cc0052",
+                      9: "#b30047",
+                      10: "#ff0066"
+                    } [a.level] || "#ff4757"
+                  }
+                });
+              return function(e, o) {
+                return m(), c("div", {
+                  class: u(["affection-card glass-card", t.value])
+                }, [f("div", Ce, [(m(), c("svg", {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  viewBox: "0 0 24 24",
+                  fill: "currentColor",
+                  class: "heart-icon",
+                  style: v(r.value)
+                }, s(o[0] || (o[0] = [f("path", {
+                  d: "M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z"
+                }, null, -1)])), 4)), f("div", je, "Lv." + b(g(a).level), 1)]), f("div", Se, [o[1] || (o[1] = f("div", {
+                  class: "label"
+                }, "好感度等级", -1)), f("div", Pe, [f("div", {
+                  class: "progress-bar-fill",
+                  style: v({
+                    width: g(a).progress + "%"
+                  })
+                }, null, 4)])])], 2)
+              }
+            }
+          }), [
+            ["__scopeId", "data-v-2ca32021"]
+          ]),
+          Me = {
+            class: "icon-wrapper"
+          },
+          Oe = {
+            key: 0,
+            class: "notification-dot"
+          },
+          Ie = F(i({
+            __name: "AnnouncementBadge",
+            setup: function(e) {
+              var a = B();
+
+              function t() {
+                a.toggleAnnouncement(!0)
+              }
+              return function(e, r) {
+                return m(), c("button", {
+                  class: "announcement-badge glass-btn",
+                  onClick: t
+                }, [f("div", Me, [x(g(ce), {
+                  size: 20
+                }), g(a).hasNewAnnouncement ? (m(), c("span", Oe)) : h("", !0)])])
+              }
+            }
+          }), [
+            ["__scopeId", "data-v-29031f73"]
+          ]),
+          Ne = {
+            class: "icon-wrapper"
+          },
+          Ae = {
+            key: 0,
+            class: "notification-dot"
+          },
+          Ee = F(i({
+            __name: "AchievementBadge",
+            emits: ["click"],
+            setup: function(e, a) {
+              var t = a.emit,
+                r = G();
+              return function(e, a) {
+                return m(), c("button", {
+                  class: "achievement-badge glass-btn",
+                  onClick: a[0] || (a[0] = function(e) {
+                    return t("click")
+                  })
+                }, [f("div", Ne, [x(g(_e), {
+                  size: 20
+                }), g(r).hasNewUnlocked ? (m(), c("span", Ae)) : h("", !0)])])
+              }
+            }
+          }), [
+            ["__scopeId", "data-v-ce577d21"]
+          ]),
+          Ue = {
+            class: "modal-content glass-card"
+          },
+          Te = {
+            class: "modal-header"
+          },
+          De = {
+            class: "header-title"
+          },
+          Fe = {
+            class: "achievement-list"
+          },
+          Be = {
+            class: "item-icon"
+          },
+          Ge = {
+            key: 0
+          },
+          Re = {
+            class: "item-content"
+          },
+          Ve = {
+            class: "item-top"
+          },
+          Ye = {
+            class: "item-title"
+          },
+          He = {
+            key: 0,
+            class: "status-badge solved"
+          },
+          Je = {
+            key: 1,
+            class: "status-badge todo"
+          },
+          $e = {
+            class: "item-desc"
+          },
+          Ke = {
+            class: "progress-wrapper"
+          },
+          Xe = {
+            class: "progress-bar-bg"
+          },
+          We = {
+            class: "progress-text"
+          },
+          Ze = i({
+            __name: "AchievementModal",
+            props: {
+              show: {
+                type: Boolean
+              }
+            },
+            emits: ["close"],
+            setup: function(e, a) {
+              var t = a.emit,
+                r = e,
+                o = t,
+                n = G(),
+                i = R(n).achievements;
+
+              function l() {
+                o("close")
+              }
+              return n.init(), V(function() {
+                  return r.show
+                }, l),
+                function(a, t) {
+                  return m(), y(j, {
+                    to: "body"
+                  }, [x(w, {
+                    name: "modal-fade"
+                  }, {
+                    default: k(function() {
+                      return [e.show ? (m(), c("div", {
+                        key: 0,
+                        class: "modal-overlay",
+                        onClick: L(l, ["self"])
+                      }, [f("div", Ue, [f("div", Te, [f("div", De, [x(g(_e), {
+                        class: "title-icon",
+                        size: 24
+                      }), t[0] || (t[0] = f("h3", null, "成就一览", -1))])]), f("div", Fe, [(m(!0), c(z, null, _(g(i), function(e) {
+                        return m(), c("div", {
+                          key: e.id,
+                          class: u(["achievement-item", {
+                            "is-locked": !e.unlocked
+                          }])
+                        }, [f("div", Be, [e.unlocked ? (m(), c("span", Ge, b(e.icon), 1)) : (m(), y(g(ue), {
+                          key: 1,
+                          size: 20,
+                          class: "lock-icon"
+                        }))]), f("div", Re, [f("div", Ve, [f("span", Ye, b(e.title), 1), e.unlocked ? (m(), c("span", He, [x(g(pe), {
+                          size: 12
+                        }), t[1] || (t[1] = C(" 已达成 ", -1))])) : (m(), c("span", Je, "进行中"))]), f("p", $e, b(e.description), 1), f("div", Ke, [f("div", Xe, [f("div", {
+                          class: "progress-bar-fill",
+                          style: v({
+                            width: e.current / e.target * 100 + "%"
+                          })
+                        }, null, 4)]), f("span", We, b(e.current) + "/" + b(e.target), 1)])])], 2)
+                      }), 128))])])])) : h("", !0)]
+                    }),
+                    _: 1
+                  })])
+                }
+            }
+          }),
+          Qe = F(Ze, [
+            ["__scopeId", "data-v-7b7f027a"]
+          ]),
+          ea = {
+            class: "dialogue-anchor"
+          },
+          aa = {
+            key: 0,
+            class: "dialogue-bubble glass-card"
+          },
+          ta = {
+            class: "bubble-content"
+          },
+          ra = i({
+            __name: "DialogueBubble",
+            props: {
+              text: {},
+              show: {
+                type: Boolean
+              }
+            },
+            setup: function(e) {
+              return function(a, t) {
+                return m(), c("div", ea, [x(w, {
+                  name: "bubble-fade"
+                }, {
+                  default: k(function() {
+                    return [e.show ? (m(), c("div", aa, [f("div", ta, b(e.text), 1)])) : h("", !0)]
+                  }),
+                  _: 1
+                }), f("div", {
+                  class: u(["bubble-accessory", {
+                    standalone: !e.show
+                  }])
+                }, [S(a.$slots, "default", {}, void 0)], 2)])
+              }
+            }
+          }),
+          oa = F(ra, [
+            ["__scopeId", "data-v-e1607932"]
+          ]),
+          na = {
+            class: "mail-modal"
+          },
+          ia = {
+            class: "mail-hero"
+          },
+          la = {
+            class: "mail-title-row"
+          },
+          da = ["disabled"],
+          sa = {
+            class: "mail-list"
+          },
+          ca = ["onClick", "onKeydown"],
+          ua = {
+            class: "mail-icon"
+          },
+          pa = {
+            class: "mail-copy"
+          },
+          fa = {
+            class: "mail-item-top"
+          },
+          va = {
+            class: "mail-item-title"
+          },
+          ba = {
+            class: "mail-time"
+          },
+          ga = {
+            class: "mail-item-actions"
+          },
+          ma = {
+            key: 0,
+            class: "mail-empty"
+          },
+          xa = {
+            key: 1,
+            class: "mail-empty"
+          },
+          ha = {
+            class: "detail-modal"
+          },
+          ya = {
+            class: "detail-hero"
+          },
+          wa = ["disabled"],
+          ka = {
+            class: "detail-content"
+          },
+          La = i({
+            __name: "SiteMailboxModal",
+            props: {
+              show: {
+                type: Boolean
+              }
+            },
+            emits: ["update:show"],
+            setup: function(e, a) {
+              var t = a.emit,
+                r = e,
+                o = t,
+                i = Y(),
+                l = R(i),
+                v = l.loading,
+                C = l.messages,
+                S = q(null),
+                O = q(null),
+                I = q(null),
+                N = q(!1),
+                A = H().showToast,
+                E = p(function() {
+                  return s(C.value).sort(function(e, a) {
+                    return a.id - e.id
+                  })
+                });
+
+              function U() {
+                o("update:show", !1)
+              }
+
+              function T() {
+                return D.apply(this, arguments)
+              }
+
+              function D() {
+                return (D = d(n().m(function e() {
+                  return n().w(function(e) {
+                    for (;;) switch (e.n) {
+                      case 0:
+                        return e.n = 1, i.refresh();
+                      case 1:
+                        if (!i.error) {
+                          e.n = 2;
+                          break
+                        }
+                        return A(i.error, "error"), e.a(2);
+                      case 2:
+                        A("站内邮箱已刷新", "success");
+                      case 3:
+                        return e.a(2)
+                    }
+                  }, e)
+                }))).apply(this, arguments)
+              }
+
+              function F(e) {
+                return B.apply(this, arguments)
+              }
+
+              function B() {
+                return (B = d(n().m(function e(a) {
+                  var t;
+                  return n().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (null === O.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        return O.value = a.id, e.p = 2, e.n = 3, i.openMessage(a.id);
+                      case 3:
+                        S.value = e.v, e.n = 5;
+                        break;
+                      case 4:
+                        e.p = 4, t = e.v, console.warn("[SiteMailbox] Failed to open message:", t), A("读取失败，请重试", "error");
+                      case 5:
+                        return e.p = 5, O.value = null, e.f(5);
+                      case 6:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [2, 4, 5, 6]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function G() {
+                S.value = null
+              }
+
+              function K(e) {
+                return X.apply(this, arguments)
+              }
+
+              function X() {
+                return (X = d(n().m(function e(a) {
+                  var t, r;
+                  return n().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (a.read && null === I.value && null === O.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        return I.value = a.id, e.p = 2, e.n = 3, i.deleteMessage(a.id);
+                      case 3:
+                        (null === (t = S.value) || void 0 === t ? void 0 : t.id) === a.id && (S.value = null), A("邮件已删除", "success"), e.n = 5;
+                        break;
+                      case 4:
+                        e.p = 4, r = e.v, console.warn("[SiteMailbox] Failed to delete message:", r), A(r instanceof Error ? r.message : "删除失败，请重试", "error");
+                      case 5:
+                        return e.p = 5, I.value = null, e.f(5);
+                      case 6:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [2, 4, 5, 6]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function W() {
+                S.value && S.value.read && (N.value = !0)
+              }
+
+              function Z() {
+                return Q.apply(this, arguments)
+              }
+
+              function Q() {
+                return (Q = d(n().m(function e() {
+                  var a;
+                  return n().w(function(e) {
+                    for (;;) switch (e.n) {
+                      case 0:
+                        if (a = S.value, N.value = !1, a) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        return e.n = 2, K(a);
+                      case 2:
+                        return e.a(2)
+                    }
+                  }, e)
+                }))).apply(this, arguments)
+              }
+              return P(function() {
+                  return r.show
+                }, function(e) {
+                  e ? i.refresh() : (S.value = null, O.value = null, I.value = null, N.value = !1)
+                }, {
+                  immediate: !0
+                }), V(function() {
+                  return r.show
+                }, U), V(function() {
+                  return Boolean(S.value)
+                }, G),
+                function(a, t) {
+                  return m(), y(j, {
+                    to: "body"
+                  }, [x(J, {
+                    show: null !== O.value,
+                    text: "正在读取邮件..."
+                  }, null, 8, ["show"]), x(w, {
+                    name: "modal-fade"
+                  }, {
+                    default: k(function() {
+                      return [e.show ? (m(), c("div", {
+                        key: 0,
+                        class: "mail-overlay",
+                        onClick: L(U, ["self"])
+                      }, [f("div", na, [f("div", ia, [f("div", la, [x(g($), {
+                        size: 22
+                      }), t[1] || (t[1] = f("h3", null, "站内邮箱", -1))]), t[2] || (t[2] = f("p", null, "PiuPiu酱给你的消息都在这里哦", -1)), f("button", {
+                        class: "mail-refresh-btn",
+                        disabled: g(v),
+                        type: "button",
+                        title: "刷新",
+                        onClick: T
+                      }, [x(g(ve), {
+                        size: 17,
+                        class: u({
+                          spinning: g(v)
+                        })
+                      }, null, 8, ["class"])], 8, da)]), f("div", sa, [(m(!0), c(z, null, _(E.value, function(e) {
+                        return m(), c("div", {
+                          key: e.id,
+                          class: u(["mail-item", {
+                            unread: !e.read,
+                            loading: O.value === e.id || I.value === e.id
+                          }]),
+                          role: "button",
+                          tabindex: "0",
+                          onClick: function(a) {
+                            return F(e)
+                          },
+                          onKeydown: [M(L(function(a) {
+                            return F(e)
+                          }, ["prevent"]), ["enter"]), M(L(function(a) {
+                            return F(e)
+                          }, ["prevent"]), ["space"])]
+                        }, [f("div", ua, [x(g($), {
+                          size: 18
+                        })]), f("div", pa, [f("div", fa, [f("span", va, b(e.title), 1), f("span", {
+                          class: u(["read-state", {
+                            unread: !e.read
+                          }])
+                        }, b(e.read ? "已读" : "未读"), 3)]), f("span", ba, b(e.createdAt), 1)]), f("div", ga, [x(g(be), {
+                          size: 18,
+                          class: "mail-chevron"
+                        })])], 42, ca)
+                      }), 128)), g(v) && 0 === E.value.length ? (m(), c("div", ma, [x(g(ce), {
+                        size: 28
+                      }), t[3] || (t[3] = f("span", null, "正在读取消息哦", -1))])) : 0 === E.value.length ? (m(), c("div", xa, [x(g(ce), {
+                        size: 28
+                      }), t[4] || (t[4] = f("span", null, "暂时没有消息哦", -1))])) : h("", !0)]), f("div", {
+                        class: "mail-actions"
+                      }, [f("button", {
+                        class: "close-btn",
+                        type: "button",
+                        onClick: U
+                      }, "关闭")])])])) : h("", !0)]
+                    }),
+                    _: 1
+                  }), x(w, {
+                    name: "modal-fade"
+                  }, {
+                    default: k(function() {
+                      return [S.value ? (m(), c("div", {
+                        key: 0,
+                        class: "detail-overlay",
+                        onClick: L(G, ["self"])
+                      }, [f("div", ha, [f("div", ya, [f("h3", null, b(S.value.title), 1), f("span", null, b(S.value.createdAt), 1), S.value.read ? (m(), c("button", {
+                        key: 0,
+                        class: "detail-delete-btn",
+                        type: "button",
+                        title: "删除邮件",
+                        disabled: I.value === S.value.id,
+                        onClick: W
+                      }, [x(g(ge), {
+                        size: 17
+                      })], 8, wa)) : h("", !0)]), f("div", ka, b(S.value.content), 1), f("div", {
+                        class: "mail-actions"
+                      }, [f("button", {
+                        class: "close-btn",
+                        type: "button",
+                        onClick: G
+                      }, "我知道了")])])])) : h("", !0)]
+                    }),
+                    _: 1
+                  }), x(fe, {
+                    show: N.value,
+                    "onUpdate:show": t[0] || (t[0] = function(e) {
+                      return N.value = e
+                    }),
+                    title: "删除邮件",
+                    message: "确定要删除这封邮件吗？删除后就看不到啦。",
+                    "confirm-text": "删除",
+                    "cancel-text": "取消",
+                    danger: "",
+                    onConfirm: Z
+                  }, null, 8, ["show"])])
+                }
+            }
+          }),
+          za = F(La, [
+            ["__scopeId", "data-v-b2ad4eca"]
+          ]),
+          _a = [{
+            text: "你好呀，我是PiuPiu酱。",
+            minLevel: 1,
+            maxLevel: 3
+          }, {
+            text: "那个...有什么事吗？",
+            minLevel: 1,
+            maxLevel: 3
+          }, {
+            text: "今天天气真不错呢。",
+            minLevel: 1,
+            maxLevel: 3
+          }, {
+            text: "我会努力工作的！",
+            minLevel: 1,
+            maxLevel: 3
+          }, {
+            text: "请多关照哦。",
+            minLevel: 1,
+            maxLevel: 3
+          }, {
+            text: "有点无聊呢...",
+            minLevel: 1,
+            maxLevel: 3
+          }, {
+            text: "你可以叫我PiuPiu酱。",
+            minLevel: 1,
+            maxLevel: 3
+          }, {
+            text: "希望能和你好好相处。",
+            minLevel: 1,
+            maxLevel: 3
+          }, {
+            text: "在看什么呢？",
+            minLevel: 1,
+            maxLevel: 3
+          }, {
+            text: "如果不忙的话，可以陪我聊聊天吗？",
+            minLevel: 1,
+            maxLevel: 3
+          }, {
+            text: "我正在学习怎么做一个好助手。",
+            minLevel: 1,
+            maxLevel: 3
+          }, {
+            text: "发呆中...",
+            minLevel: 1,
+            maxLevel: 3
+          }, {
+            text: "那个...请问现在几点了？",
+            minLevel: 1,
+            maxLevel: 3
+          }, {
+            text: "要不要喝杯茶休息一下？",
+            minLevel: 1,
+            maxLevel: 3
+          }, {
+            text: "虽然刚认识不久，但感觉你是个好人呢。",
+            minLevel: 1,
+            maxLevel: 3
+          }, {
+            text: "只要你在身边，我就很安心。",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "不要总是熬夜哦，我会心疼的。",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "今天的你看起来很有精神呢！",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "想听我唱歌吗？虽然只会一点点...",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "呐呐，下次带我去游乐园好不好？",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "肚子饿了吗？我...我可以试着做点什么...",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "呼...有点困了，我可以靠一会吗？",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "欧尼酱，今天也要元气满满哦！",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "欸？欧尼酱要陪我一起玩吗？好开心！",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "看到欧尼酱，心情就变好了呢。",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "欧尼酱，注意身体，不要太勉强自己哦。",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "我会一直为欧尼酱加油的！",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "欧尼酱，有什么心事都可以和我说哦。",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "欧尼酱，要不要一起吃点心？",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "欧尼酱，今天有想我不？",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "嘿嘿，被我抓到了吧！",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "不许欺负我哦，欧尼酱！",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "欧尼酱发呆的样子也好可爱。",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "欧尼酱，不要皱眉头嘛，会长皱纹的。",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "欢迎回来，欧尼酱！辛苦啦~",
+            minLevel: 4,
+            maxLevel: 6
+          }, {
+            text: "最喜欢欧尼酱了，嘿嘿~",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "欧尼酱的摸摸头，最舒服了...",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "只要欧尼酱开心，我也就开心啦。",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "欧尼酱，今天的笑容也很治愈呢。",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "想一直待在欧尼酱身边...",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "如果是欧尼酱的话，做什么都可以哦。",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "欧尼酱的手，好温暖...",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "欧尼酱，要抱抱~",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "盯着我看...脸会红的啦...",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "无论发生什么，我都会一直陪着你的。",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "欧尼酱的味道，让人很安心呢。",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "不仅是助手，我还想成为欧尼酱更重要的人...",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "哪怕全世界都背叛你，我也会站在你这边的。",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "能不能...再多依赖我一点呢？",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "想把时间停止在这一刻...",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "我做了一个梦，梦里全是欧尼酱。",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "只要是为了欧尼酱，我什么都愿意做。",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "欧尼酱...喜欢...最喜欢了...",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "不想和欧尼酱分开...",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "欧尼酱是我的...只是我的...",
+            minLevel: 7,
+            maxLevel: 9
+          }, {
+            text: "欧尼酱，你就是我的全世界。",
+            minLevel: 10,
+            maxLevel: 0
+          }, {
+            text: "执子之手，与子偕老...我是认真的哦。",
+            minLevel: 10,
+            maxLevel: 0
+          }, {
+            text: "已经...离不开欧尼酱了呢。",
+            minLevel: 10,
+            maxLevel: 0
+          }, {
+            text: "我的心跳，只为了欧尼酱而存在。",
+            minLevel: 10,
+            maxLevel: 0
+          }, {
+            text: "不管未来变成什么样，我们的羁绊都永远不会断开。",
+            minLevel: 10,
+            maxLevel: 0
+          }, {
+            text: "这一生能遇到欧尼酱，是我最大的幸运。",
+            minLevel: 10,
+            maxLevel: 0
+          }, {
+            text: "我想把每一天都变成我们的纪念日。",
+            minLevel: 10,
+            maxLevel: 0
+          }, {
+            text: "以后也要一直、一直、一直在一起哦！拉钩！",
+            minLevel: 10,
+            maxLevel: 0
+          }, {
+            text: "我爱你，比昨天的我更爱你，但不如明天的我。",
+            minLevel: 10,
+            maxLevel: 0
+          }, {
+            text: "只要你需要，我随时都在...永远都在。",
+            minLevel: 10,
+            maxLevel: 0
+          }, {
+            text: "欧尼酱，我们回家吧。回我们的家。",
+            minLevel: 10,
+            maxLevel: 0
+          }, {
+            text: "在这漫长的时光里，有你在身边真好。",
+            minLevel: 10,
+            maxLevel: 0
+          }, {
+            text: "我想陪你看遍世间所有的风景。",
+            minLevel: 10,
+            maxLevel: 0
+          }, {
+            text: "你不仅是我的主人，更是我唯一的爱人。",
+            minLevel: 10,
+            maxLevel: 0
+          }, {
+            text: "如果这就是幸福的话，希望能永远持续下去。",
+            minLevel: 10,
+            maxLevel: 0
+          }],
+          Ca = {
+            class: "icon-wrapper"
+          },
+          ja = {
+            key: 0,
+            class: "notification-dot"
+          },
+          Sa = i({
+            __name: "DailyFortuneBadge",
+            props: {
+              showDot: {
+                type: Boolean
+              }
+            },
+            emits: ["click"],
+            setup: function(e, a) {
+              var t = a.emit;
+              return function(a, r) {
+                return m(), c("button", {
+                  class: "daily-fortune-badge glass-btn",
+                  onClick: r[0] || (r[0] = function(e) {
+                    return t("click")
+                  })
+                }, [f("div", Ca, [x(g(K), {
+                  size: 20
+                }), e.showDot ? (m(), c("span", ja)) : h("", !0)])])
+              }
+            }
+          }),
+          Pa = F(Sa, [
+            ["__scopeId", "data-v-1fab6b1a"]
+          ]);
+        /**
+         * @license lucide-vue-next v0.562.0 - ISC
+         *
+         * This source code is licensed under the ISC license.
+         * See the LICENSE file in the root directory of this source tree.
+         */
+        function qa(e) {
+          var a, t, r, n;
+          if (!e || "object" !== o(e)) return null;
+          var i = Number(e.id);
+          return !Number.isFinite(i) || i <= 0 ? null : {
+            id: i,
+            title: String(null !== (a = e.title) && void 0 !== a ? a : ""),
+            content: String(null !== (t = e.content) && void 0 !== t ? t : ""),
+            startsAt: String(null !== (r = e.starts_at) && void 0 !== r ? r : ""),
+            endsAt: String(null !== (n = e.ends_at) && void 0 !== n ? n : ""),
+            active: !0 === e.active,
+            read: !0 === e.read,
+            hasUnread: !0 === e.has_unread,
+            voted: !0 === e.voted,
+            selectedOptionId: null == e.selected_option_id ? null : Number(e.selected_option_id),
+            showResults: !0 === e.show_results,
+            totalVotes: null == e.total_votes ? null : Number(e.total_votes),
+            options: Array.isArray(e.options) ? e.options.map(function(e) {
+              var a;
+              return {
+                id: Number(e.id),
+                label: String(null !== (a = e.label) && void 0 !== a ? a : ""),
+                detail: null == e.detail ? null : String(e.detail),
+                votes: null == e.votes ? void 0 : Number(e.votes),
+                percentage: null == e.percentage ? void 0 : Number(e.percentage)
+              }
+            }).filter(function(e) {
+              return Number.isFinite(e.id) && e.id > 0 && e.label
+            }) : []
+          }
+        }
+
+        function Ma(e) {
+          return Oa.apply(this, arguments)
+        }
+
+        function Oa() {
+          return Oa = d(n().m(function e(a) {
+            var r, o, i, l, d, s, c, u = arguments;
+            return n().w(function(e) {
+              for (;;) switch (e.p = e.n) {
+                case 0:
+                  if (o = u.length > 1 && void 0 !== u[1] ? u[1] : {}, i = null === (r = O()) || void 0 === r ? void 0 : r.accessToken, "poll_get" === a || i) {
+                    e.n = 1;
+                    break
+                  }
+                  return e.a(2, {
+                    status: "error",
+                    code: "session_missing",
+                    message: "请先登录账号",
+                    data: null
+                  });
+                case 1:
+                  return e.p = 1, e.n = 2, fetch("".concat(I, "/account_auth.php"), {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(t({
+                      action: a,
+                      access_token: i || void 0
+                    }, o))
+                  });
+                case 2:
+                  return s = e.v, e.n = 3, s.json();
+                case 3:
+                  return c = e.v, e.a(2, {
+                    status: "success" === c.status ? "success" : "error",
+                    code: String(null !== (l = c.code) && void 0 !== l ? l : "unknown_error"),
+                    message: String(null !== (d = c.message) && void 0 !== d ? d : "投票请求失败"),
+                    data: qa(c.data)
+                  });
+                case 4:
+                  return e.p = 4, e.v, e.a(2, {
+                    status: "error",
+                    code: "network_error",
+                    message: "投票请求失败，请检查网络",
+                    data: null
+                  })
+              }
+            }, e, null, [
+              [1, 4]
+            ])
+          })), Oa.apply(this, arguments)
+        }
+        var Ia = function() {
+            return Ma("poll_get")
+          },
+          Na = function(e) {
+            return Ma("poll_mark_read", {
+              poll_id: e
+            })
+          },
+          Aa = function(e, a) {
+            return Ma("poll_vote", {
+              poll_id: e,
+              option_id: a
+            })
+          },
+          Ea = "piupiu_guest_read_poll_ids";
+
+        function Ua(e) {
+          try {
+            return JSON.parse(localStorage.getItem(Ea) || "[]").map(Number).includes(e)
+          } catch (a) {
+            return !1
+          }
+        }
+
+        function Ta(e) {
+          var a = [];
+          try {
+            a = JSON.parse(localStorage.getItem(Ea) || "[]").map(Number).filter(Number.isFinite)
+          } catch (t) {}
+          localStorage.setItem(Ea, JSON.stringify(Array.from(new Set([].concat(s(a), [e]))).slice(-30)))
+        }
+        var Da = X("accountPoll", {
+            state: function() {
+              return {
+                poll: null,
+                loading: !1,
+                voting: !1,
+                initialized: !1,
+                error: ""
+              }
+            },
+            getters: {
+              hasUnread: function(e) {
+                var a;
+                return Boolean(null === (a = e.poll) || void 0 === a ? void 0 : a.hasUnread)
+              }
+            },
+            actions: {
+              refresh: function() {
+                var e = this;
+                return d(n().m(function a() {
+                  var t, r, o;
+                  return n().w(function(a) {
+                    for (;;) switch (a.p = a.n) {
+                      case 0:
+                        return e.loading = !0, a.p = 1, a.n = 2, Ia();
+                      case 2:
+                        if ("success" === (r = a.v).status) {
+                          a.n = 3;
+                          break
+                        }
+                        throw new Error(r.message);
+                      case 3:
+                        e.poll = null !== (t = r.data) && void 0 !== t ? t : null, e.poll && !O() && Ua(e.poll.id) && (e.poll.read = !0, e.poll.hasUnread = !1), e.error = "", a.n = 5;
+                        break;
+                      case 4:
+                        a.p = 4, o = a.v, e.error = o instanceof Error ? o.message : "投票读取失败";
+                      case 5:
+                        return a.p = 5, e.loading = !1, e.initialized = !0, a.f(5);
+                      case 6:
+                        return a.a(2)
+                    }
+                  }, a, null, [
+                    [1, 4, 5, 6]
+                  ])
+                }))()
+              },
+              markRead: function() {
+                var e = this;
+                return d(n().m(function a() {
+                  var t;
+                  return n().w(function(a) {
+                    for (;;) switch (a.n) {
+                      case 0:
+                        if (e.poll && e.poll.hasUnread) {
+                          a.n = 1;
+                          break
+                        }
+                        return a.a(2);
+                      case 1:
+                        if (O()) {
+                          a.n = 2;
+                          break
+                        }
+                        return Ta(e.poll.id), e.poll.read = !0, e.poll.hasUnread = !1, a.a(2);
+                      case 2:
+                        return a.n = 3, Na(e.poll.id);
+                      case 3:
+                        if ("success" === (t = a.v).status && t.data) {
+                          a.n = 4;
+                          break
+                        }
+                        throw new Error(t.message);
+                      case 4:
+                        e.poll = t.data;
+                      case 5:
+                        return a.a(2)
+                    }
+                  }, a)
+                }))()
+              },
+              vote: function(e) {
+                var a = this;
+                return d(n().m(function t() {
+                  var r;
+                  return n().w(function(t) {
+                    for (;;) switch (t.p = t.n) {
+                      case 0:
+                        if (a.poll) {
+                          t.n = 1;
+                          break
+                        }
+                        throw new Error("暂无可参与的投票");
+                      case 1:
+                        if (O()) {
+                          t.n = 2;
+                          break
+                        }
+                        throw new Error("请先登录账号后参与投票");
+                      case 2:
+                        return a.voting = !0, t.p = 3, t.n = 4, Aa(a.poll.id, e);
+                      case 4:
+                        if ("success" === (r = t.v).status && r.data) {
+                          t.n = 5;
+                          break
+                        }
+                        throw new Error(r.message);
+                      case 5:
+                        a.poll = r.data;
+                      case 6:
+                        return t.p = 6, a.voting = !1, t.f(6);
+                      case 7:
+                        return t.a(2)
+                    }
+                  }, t, null, [
+                    [3, , 6, 7]
+                  ])
+                }))()
+              },
+              reset: function() {
+                this.poll = null, this.loading = !1, this.voting = !1, this.initialized = !1, this.error = ""
+              }
+            }
+          }),
+          Fa = [{
+            id: "radiant",
+            type: "🌟 大吉",
+            text: "今天的你自带主角光环，主动迈出一步，好消息会跑得更快。",
+            stars: 5,
+            mood: "闪耀"
+          }, {
+            id: "wish",
+            type: "🎋 愿望成真",
+            text: "一个惦记了很久的小愿望正在靠近，别忘了给它一个落脚点。",
+            stars: 5,
+            mood: "期待"
+          }, {
+            id: "serendipity",
+            type: "🪄 奇遇运",
+            text: "计划之外藏着彩蛋，临时起意的小绕路可能格外值得。",
+            stars: 5,
+            mood: "好奇"
+          }, {
+            id: "love",
+            type: "💖 桃花运",
+            text: "真诚比技巧更有魅力，今天适合说出一句平时不好意思说的话。",
+            stars: 5,
+            mood: "心动"
+          }, {
+            id: "wealth",
+            type: "💰 财运",
+            text: "你的判断力很在线，适合整理预算，也容易发现被忽略的小福利。",
+            stars: 5,
+            mood: "丰盛"
+          }, {
+            id: "study",
+            type: "🎓 学业运",
+            text: "脑内线路格外畅通，难题适合放在今天拆解。",
+            stars: 5,
+            mood: "专注"
+          }, {
+            id: "career",
+            type: "🚀 事业运",
+            text: "认真做过的事会被看见，先完成最有分量的那一件。",
+            stars: 5,
+            mood: "进取"
+          }, {
+            id: "gacha",
+            type: "🎮 欧皇运",
+            text: "概率之神偷偷偏心，但真正的好运是及时收手。",
+            stars: 5,
+            mood: "雀跃"
+          }, {
+            id: "creative",
+            type: "🎨 灵感运",
+            text: "零碎念头正在自动连线，随手记下的东西以后会派上用场。",
+            stars: 5,
+            mood: "灵动"
+          }, {
+            id: "social",
+            type: "🫶 人缘运",
+            text: "今天很容易遇到同频的人，先分享一个真实的小想法吧。",
+            stars: 4,
+            mood: "亲近"
+          }, {
+            id: "healing",
+            type: "🫧 治愈运",
+            text: "不用把每分钟都填满，留一点空白也算认真生活。",
+            stars: 4,
+            mood: "松弛"
+          }, {
+            id: "travel",
+            type: "🚲 出行运",
+            text: "换一条路会换一种心情，熟悉的城市也有未读章节。",
+            stars: 4,
+            mood: "轻快"
+          }, {
+            id: "food",
+            type: "🍰 美食运",
+            text: "味蕾会替你收藏今天，适合尝试一直想吃的小店。",
+            stars: 4,
+            mood: "满足"
+          }, {
+            id: "middle",
+            type: "🌸 中吉",
+            text: "节奏刚刚好，把手边的小事做好，惊喜会自然出现。",
+            stars: 4,
+            mood: "明朗"
+          }, {
+            id: "small",
+            type: "🍀 小吉",
+            text: "好运藏在不起眼的细节里，慢一点就能发现。",
+            stars: 3,
+            mood: "安稳"
+          }, {
+            id: "rainbow",
+            type: "🌈 吉",
+            text: "保持乐观，但也记得把好心情变成一个具体行动。",
+            stars: 3,
+            mood: "晴朗"
+          }, {
+            id: "quiet",
+            type: "🕯️ 静心运",
+            text: "今天更适合向内整理，安静完成一件事就很了不起。",
+            stars: 3,
+            mood: "沉静"
+          }, {
+            id: "tea",
+            type: "🍵 半吉",
+            text: "先喝口水再做决定，很多纠结会在休息后自己松开。",
+            stars: 2,
+            mood: "从容"
+          }, {
+            id: "late",
+            type: "🌙 末吉",
+            text: "起步可能慢一点，但耐心会把你送到不错的结尾。",
+            stars: 2,
+            mood: "耐心"
+          }, {
+            id: "cloud",
+            type: "☁️ 慢热运",
+            text: "今天不是冲刺日，稳稳推进比突然用力更可靠。",
+            stars: 2,
+            mood: "柔和"
+          }, {
+            id: "rain",
+            type: "🌧️ 小雨运",
+            text: "计划可能有一点偏航，给自己留余量，PiuPiu 会陪着你。",
+            stars: 1,
+            mood: "被陪伴"
+          }, {
+            id: "hibernate",
+            type: "🛌 充电运",
+            text: "电量提醒已经亮起，早点休息不是偷懒，是为了明天满格。",
+            stars: 1,
+            mood: "休憩"
+          }],
+          Ba = ["❤️ 珊瑚红", "🧡 日落橙", "💛 奶油黄", "💚 薄荷绿", "🩵 天空蓝", "💙 深海蓝", "💜 葡萄紫", "🩷 樱花粉", "🤍 月光白", "🖤 星夜黑", "🤎 可可棕"],
+          Ga = ["🎧 耳机", "📚 随身书", "☕ 温热饮品", "🍬 一颗糖", "🎮 游戏机", "☂️ 雨伞", "👓 眼镜", "🧢 帽子", "🐱 猫咪照片", "📝 便签纸", "🪙 硬币", "🌿 小植物", "🔑 钥匙扣"],
+          Ra = ["07:00—09:00", "09:30—11:00", "12:00—13:30", "14:00—16:00", "17:30—19:00", "20:00—22:00"],
+          Va = ["向东", "向南", "向西", "向北", "靠窗的位置", "有绿植的地方"],
+          Ya = ["整理桌面", "开始新计划", "联系老朋友", "散步十分钟", "记录灵感", "认真吃早餐", "尝试新歌单", "完成一件小事", "夸奖自己", "提前休息", "分享好消息", "清理待办"],
+          Ha = ["熬夜硬撑", "冲动消费", "反复内耗", "空腹做决定", "同时开太多任务", "和自己较劲", "忽略消息", "拖延休息", "过度比较", "忘记喝水"],
+          Ja = [{
+            id: "water",
+            icon: "💧",
+            title: "补充能量",
+            description: "认真喝完一杯水，让身体先收到你的照顾。",
+            reward: 2
+          }, {
+            id: "tidy",
+            icon: "🧹",
+            title: "清爽一角",
+            description: "整理手边一个小区域，只需要五分钟。",
+            reward: 3
+          }, {
+            id: "walk",
+            icon: "🚶",
+            title: "十分钟漫游",
+            description: "离开屏幕走一走，看看今天的天空。",
+            reward: 3
+          }, {
+            id: "message",
+            icon: "💌",
+            title: "传递好心情",
+            description: "给在意的人发一句真诚的问候。",
+            reward: 2
+          }, {
+            id: "finish",
+            icon: "✅",
+            title: "收尾专家",
+            description: "完成一件拖了很久、十分钟内能做完的小事。",
+            reward: 4
+          }, {
+            id: "music",
+            icon: "🎵",
+            title: "今日主题曲",
+            description: "挑一首符合今天心情的歌，完整听完它。",
+            reward: 2
+          }, {
+            id: "praise",
+            icon: "🌷",
+            title: "夸夸练习",
+            description: "写下一件今天值得肯定自己的事。",
+            reward: 3
+          }, {
+            id: "rest",
+            icon: "🌙",
+            title: "提前关机",
+            description: "今晚比平时早十五分钟放下手机。",
+            reward: 4
+          }, {
+            id: "photo",
+            icon: "📷",
+            title: "收藏此刻",
+            description: "拍下一件让你觉得可爱或漂亮的东西。",
+            reward: 2
+          }],
+          $a = [{
+            icon: "🌠",
+            title: "流星签",
+            message: "想做的事不必等到万事俱备。",
+            reward: 3
+          }, {
+            icon: "🌙",
+            title: "月光签",
+            message: "答案会在安静下来以后浮现。",
+            reward: 2
+          }, {
+            icon: "☀️",
+            title: "晴日签",
+            message: "你的坦率会照亮今天的一小段路。",
+            reward: 4
+          }, {
+            icon: "🪐",
+            title: "环星签",
+            message: "绕过的远路也在帮你认识自己。",
+            reward: 3
+          }, {
+            icon: "🌌",
+            title: "银河签",
+            message: "看似微小的坚持正在连成一片光。",
+            reward: 5
+          }, {
+            icon: "⭐",
+            title: "守护签",
+            message: "今天有人惦记你，也别忘了惦记自己。",
+            reward: 2
+          }];
+
+        function Ka(e, a, t) {
+          for (var r = s(e), o = []; r.length > 0 && o.length < a;) o.push(r.splice(Math.floor(t() * r.length), 1)[0]);
+          return o
+        }
+
+        function Xa(e, a) {
+          var t, r, o = (t = function(e) {
+              for (var a = 2166136261, t = 0; t < e.length; t += 1) a ^= e.charCodeAt(t), a = Math.imul(a, 16777619);
+              return a >>> 0
+            }("".concat(a, ":").concat(e, ":fortune-v2")), r = t || 2654435769, function() {
+              var e = r += 1831565813;
+              return e = Math.imul(e ^ e >>> 15, 1 | e), (((e ^= e + Math.imul(e ^ e >>> 7, 61 | e)) ^ e >>> 14) >>> 0) / 4294967296
+            }),
+            n = Fa[Math.floor(o() * Fa.length)],
+            i = function() {
+              return Math.max(1, Math.min(5, Math.round(.55 * n.stars + 2.7 * o())))
+            },
+            l = Ka(Ja, 3, o),
+            d = Ka($a, 3, o);
+          return {
+            version: 2,
+            date: e,
+            fortuneId: n.id,
+            fortune: n.type,
+            text: n.text,
+            mood: n.mood,
+            luckyColor: Ba[Math.floor(o() * Ba.length)],
+            luckyItem: Ga[Math.floor(o() * Ga.length)],
+            luckyNumber: Math.floor(9 * o()) + 1,
+            luckyTime: Ra[Math.floor(o() * Ra.length)],
+            luckyDirection: Va[Math.floor(o() * Va.length)],
+            scores: {
+              overall: n.stars,
+              social: i(),
+              inspiration: i(),
+              wealth: i(),
+              energy: i()
+            },
+            suitable: Ka(Ya, 3, o),
+            avoid: Ka(Ha, 2, o),
+            quests: l,
+            starSigns: d
+          }
+        }
+
+        function Wa(e, a, r) {
+          var o = Xa(a, r);
+          return e && e.date === a ? t(t({}, o), {}, {
+            fortune: e.fortune || o.fortune,
+            text: e.text || o.text,
+            luckyColor: e.luckyColor || o.luckyColor,
+            luckyItem: e.luckyItem || o.luckyItem,
+            imgUrl: e.imgUrl,
+            starPick: Number.isInteger(e.starPick) ? e.starPick : void 0,
+            questPick: "string" == typeof e.questPick ? e.questPick : void 0,
+            questCompleted: !0 === e.questCompleted
+          }) : o
+        }
+        var Za = "piupiu_daily_fortune";
+
+        function Qa(e) {
+          var a, t, r = null == (t = null === (a = O()) || void 0 === a ? void 0 : a.user.id) ? "" : String(t).trim();
+          return r ? "".concat(e, ":account:").concat(r) : e
+        }
+
+        function et() {
+          var e = localStorage.getItem(Qa(Za));
+          if (!e) return null;
+          try {
+            var a = JSON.parse(e);
+            return a && "object" === o(a) ? a : null
+          } catch (t) {
+            return null
+          }
+        }
+
+        function at() {
+          var e, a = Qa("piupiu_daily_fortune_profile_seed"),
+            t = localStorage.getItem(a);
+          if (t) return t;
+          var r = "function" == typeof(null === (e = crypto) || void 0 === e ? void 0 : e.randomUUID) ? crypto.randomUUID() : "".concat(Date.now(), "-").concat(Math.random().toString(36).slice(2));
+          return localStorage.setItem(a, r), r
+        }
+        var tt = {
+            key: 0,
+            class: "fortune-image",
+            "aria-hidden": "true"
+          },
+          rt = ["src"],
+          ot = {
+            class: "sheet-header"
+          },
+          nt = {
+            class: "header-copy"
+          },
+          it = {
+            key: 0,
+            class: "poll-dot"
+          },
+          lt = {
+            key: 1,
+            class: "loading-state"
+          },
+          dt = {
+            key: 0,
+            class: "overview-view"
+          },
+          st = {
+            class: "oracle-hero"
+          },
+          ct = {
+            class: "eyebrow"
+          },
+          ut = {
+            class: "oracle-message"
+          },
+          pt = {
+            class: "score-line",
+            "aria-label": "今日分项运势"
+          },
+          ft = {
+            class: "score-dots"
+          },
+          vt = {
+            class: "daily-details"
+          },
+          bt = {
+            class: "wide"
+          },
+          gt = {
+            class: "advice-block"
+          },
+          mt = {
+            class: "play-actions"
+          },
+          xt = {
+            key: 1,
+            class: "game-view stars-view"
+          },
+          ht = {
+            class: "game-heading"
+          },
+          yt = ["disabled", "onClick"],
+          wt = {
+            class: "star-symbol"
+          },
+          kt = {
+            key: 0,
+            class: "star-message"
+          },
+          Lt = {
+            key: 2,
+            class: "game-view wish-view"
+          },
+          zt = {
+            class: "quest-list"
+          },
+          _t = ["disabled", "onClick"],
+          Ct = {
+            class: "quest-icon"
+          },
+          jt = ["disabled"],
+          St = {
+            key: 3,
+            class: "game-view poll-view"
+          },
+          Pt = {
+            key: 0,
+            class: "poll-empty"
+          },
+          qt = {
+            key: 1,
+            class: "poll-empty"
+          },
+          Mt = {
+            class: "poll-heading"
+          },
+          Ot = {
+            class: "poll-status"
+          },
+          It = {
+            class: "poll-options"
+          },
+          Nt = ["onClick"],
+          At = {
+            class: "poll-option-copy"
+          },
+          Et = {
+            class: "poll-option-actions"
+          },
+          Ut = ["onClick"],
+          Tt = {
+            key: 1,
+            class: "poll-result"
+          },
+          Dt = ["disabled"],
+          Ft = {
+            key: 1,
+            class: "poll-note"
+          },
+          Bt = {
+            key: 2,
+            class: "poll-note"
+          },
+          Gt = {
+            class: "sheet-footer"
+          },
+          Rt = i({
+            __name: "DailyFortuneModal",
+            props: {
+              show: {
+                type: Boolean
+              }
+            },
+            emits: ["close", "updated"],
+            setup: function(a, r) {
+              var o = r.emit,
+                i = a,
+                l = o,
+                s = D(),
+                j = H().showToast,
+                S = Da(),
+                M = q(null),
+                I = q(W("")),
+                E = q("overview"),
+                U = q(!1),
+                T = q(!1),
+                F = q(null),
+                B = q(!1),
+                G = q(null),
+                R = q(null),
+                Y = p(function() {
+                  var e, a, t = null === (e = M.value) || void 0 === e ? void 0 : e.starPick;
+                  return void 0 === t ? null : (null === (a = M.value) || void 0 === a ? void 0 : a.starSigns[t]) || null
+                }),
+                J = p(function() {
+                  var e;
+                  return (null === (e = M.value) || void 0 === e ? void 0 : e.quests.find(function(e) {
+                    var a;
+                    return e.id === (null === (a = M.value) || void 0 === a ? void 0 : a.questPick)
+                  })) || null
+                }),
+                $ = p(function() {
+                  var e, a = null === (e = M.value) || void 0 === e ? void 0 : e.scores;
+                  return a ? [
+                    ["综合", a.overall],
+                    ["灵感", a.inspiration],
+                    ["人缘", a.social],
+                    ["活力", a.energy],
+                    ["财运", a.wealth]
+                  ] : []
+                }),
+                X = p(function() {
+                  var e;
+                  return (null === (e = S.poll) || void 0 === e ? void 0 : e.options.find(function(e) {
+                    return e.id === R.value
+                  })) || null
+                });
+
+              function Q() {
+                l("close")
+              }
+
+              function ee() {
+                return ae.apply(this, arguments)
+              }
+
+              function ae() {
+                return (ae = d(n().m(function e() {
+                  var a, t, r;
+                  return n().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (E.value = "poll", G.value = null !== (a = null === (t = S.poll) || void 0 === t ? void 0 : t.selectedOptionId) && void 0 !== a ? a : null, S.initialized) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.n = 1, S.refresh();
+                      case 1:
+                        return e.p = 1, e.n = 2, S.markRead();
+                      case 2:
+                        e.n = 4;
+                        break;
+                      case 3:
+                        e.p = 3, r = e.v, j(r instanceof Error ? r.message : "已读状态同步失败", "warning");
+                      case 4:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [1, 3]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function te() {
+                return re.apply(this, arguments)
+              }
+
+              function re() {
+                return (re = d(n().m(function e() {
+                  var a, t, r;
+                  return n().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (null !== G.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        return e.p = 1, e.n = 2, S.vote(G.value);
+                      case 2:
+                        G.value = null !== (a = null === (t = S.poll) || void 0 === t ? void 0 : t.selectedOptionId) && void 0 !== a ? a : null, j("投票成功，感谢你的参与", "success"), e.n = 4;
+                        break;
+                      case 3:
+                        e.p = 3, r = e.v, j(r instanceof Error ? r.message : "投票失败，请重试", "warning");
+                      case 4:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [1, 3]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function oe() {
+                var e;
+                M.value && (e = M.value, localStorage.setItem(Qa(Za), JSON.stringify(e)), l("updated"))
+              }
+
+              function ne(e) {
+                var a;
+                M.value && (F.value = e, M.value.starPick = null === e.star_pick ? void 0 : e.star_pick, M.value.questPick = e.quest_pick || void 0, M.value.questCompleted = e.quest_completed, M.value.quests = e.quest_options.flatMap(function(e) {
+                  var a = Ja.find(function(a) {
+                    return a.id === e.id
+                  });
+                  return a ? [t(t({}, a), {}, {
+                    reward: e.reward
+                  })] : []
+                }), M.value.starSigns = M.value.starSigns.map(function(a, r) {
+                  var o;
+                  return t(t({}, a), {}, {
+                    reward: Number(null !== (o = e.star_rewards[r]) && void 0 !== o ? o : a.reward)
+                  })
+                }), null !== (a = e.reward) && void 0 !== a && a.affection && s.applyCloudState(e.reward.affection), oe())
+              }
+
+              function ie() {
+                return le.apply(this, arguments)
+              }
+
+              function le() {
+                return (le = d(n().m(function e() {
+                  var a;
+                  return n().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        return e.p = 0, e.n = 1, xe();
+                      case 1:
+                        return e.a(2, e.v);
+                      case 2:
+                        return e.p = 2, a = e.v, console.warn("[DailyFortune] Failed to fetch image:", a), e.a(2, "")
+                    }
+                  }, e, null, [
+                    [0, 2]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function de(e) {
+                return "string" == typeof e && e.startsWith("https://nekos.best/")
+              }
+
+              function se() {
+                return (se = d(n().m(function e() {
+                  var a, t, r, o, i, l, d;
+                  return n().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        return U.value = !0, e.p = 1, e.n = 2, Z();
+                      case 2:
+                        if (t = e.v, I.value = W(t), r = et(), o = null, !O()) {
+                          e.n = 4;
+                          break
+                        }
+                        return e.n = 3, A();
+                      case 3:
+                        "success" === (i = e.v).status && i.data && (o = i.data);
+                      case 4:
+                        if (l = o && r ? {
+                            date: r.date,
+                            imgUrl: r.imgUrl
+                          } : r, d = Wa(l, t, (null === (a = o) || void 0 === a ? void 0 : a.seed) || at()), M.value = d, o && ne(o), oe(), d.imgUrl && !de(d.imgUrl)) {
+                          e.n = 6;
+                          break
+                        }
+                        return e.n = 5, ie();
+                      case 5:
+                        d.imgUrl = e.v, oe();
+                      case 6:
+                        return e.p = 6, U.value = !1, e.f(6);
+                      case 7:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [1, , 6, 7]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function ce() {
+                return (ce = d(n().m(function e(a) {
+                  var t, r, o, i, l, d;
+                  return n().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if ((t = M.value) && void 0 === t.starPick && !B.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        if (!O()) {
+                          e.n = 8;
+                          break
+                        }
+                        return t.starPick = a, oe(), B.value = !0, e.p = 2, e.n = 3, N("star_pick", a);
+                      case 3:
+                        if ("success" === (o = e.v).status && o.data) {
+                          e.n = 4;
+                          break
+                        }
+                        return t.starPick = void 0, oe(), j(o.message || "星签抽取失败，请稍后重试", "warning"), e.a(2);
+                      case 4:
+                        return ne(o.data), i = Number((null === (r = o.data.reward) || void 0 === r ? void 0 : r.amount) || 0), j(i > 0 ? "星签已揭晓，好感度 +".concat(i) : "今天的星签已经揭晓", "success"), e.a(2);
+                      case 5:
+                        e.p = 5, d = e.v, t.starPick = void 0, oe(), console.warn("[DailyFortune] Failed to pick star:", d), j("星签抽取失败，请检查网络后重试", "warning");
+                      case 6:
+                        return e.p = 6, B.value = !1, e.f(6);
+                      case 7:
+                        return e.a(2);
+                      case 8:
+                        t.starPick = a, (l = t.starSigns[a]) && (s.addXP(l.reward), j("星签已揭晓，好感度 +".concat(l.reward), "success")), oe();
+                      case 9:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [2, 5, 6, 7]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function ue() {
+                return (ue = d(n().m(function e(a) {
+                  var t, r, o;
+                  return n().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if ((t = M.value) && !t.questPick && !t.questCompleted && !B.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        if (!O()) {
+                          e.n = 8;
+                          break
+                        }
+                        return t.questPick = a, oe(), B.value = !0, e.p = 2, e.n = 3, N("quest_pick", a);
+                      case 3:
+                        if ("success" === (r = e.v).status && r.data) {
+                          e.n = 4;
+                          break
+                        }
+                        return t.questPick = void 0, oe(), j(r.message || "心愿认领失败，请稍后重试", "warning"), e.a(2);
+                      case 4:
+                        return ne(r.data), e.a(2);
+                      case 5:
+                        e.p = 5, o = e.v, t.questPick = void 0, oe(), console.warn("[DailyFortune] Failed to choose quest:", o), j("心愿认领失败，请检查网络后重试", "warning");
+                      case 6:
+                        return e.p = 6, B.value = !1, e.f(6);
+                      case 7:
+                        return e.a(2);
+                      case 8:
+                        t.questPick = a, oe();
+                      case 9:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [2, 5, 6, 7]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function pe() {
+                return fe.apply(this, arguments)
+              }
+
+              function fe() {
+                return (fe = d(n().m(function e() {
+                  var a, t, r, o, i, l;
+                  return n().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (a = M.value, t = J.value, a && t && !a.questCompleted && !T.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        if (T.value = !0, e.p = 2, !O()) {
+                          e.n = 5;
+                          break
+                        }
+                        return a.questCompleted = !0, oe(), e.n = 3, N("quest_complete");
+                      case 3:
+                        if ("success" === (o = e.v).status && o.data) {
+                          e.n = 4;
+                          break
+                        }
+                        return a.questCompleted = !1, oe(), j(o.message || "心愿打卡失败，请稍后重试", "warning"), e.a(2);
+                      case 4:
+                        return ne(o.data), i = Number((null === (r = o.data.reward) || void 0 === r ? void 0 : r.amount) || 0), j(i > 0 ? "今日心愿完成，好感度 +".concat(i) : "今日心愿已经完成", "success"), e.a(2);
+                      case 5:
+                        a.questCompleted = !0, s.addXP(t.reward), oe(), j("今日心愿完成，好感度 +".concat(t.reward), "success"), e.n = 7;
+                        break;
+                      case 6:
+                        e.p = 6, l = e.v, a.questCompleted = !1, oe(), console.warn("[DailyFortune] Failed to complete quest:", l), j("心愿打卡失败，请检查网络后重试", "warning");
+                      case 7:
+                        return e.p = 7, T.value = !1, e.f(7);
+                      case 8:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [2, 6, 7, 8]
+                  ])
+                }))).apply(this, arguments)
+              }
+              return V(function() {
+                  return i.show
+                }, Q), P(function() {
+                  return i.show
+                }, function(e) {
+                  e && (E.value = "overview", function() {
+                    se.apply(this, arguments)
+                  }())
+                }),
+                function(t, r) {
+                  return m(), y(w, {
+                    name: "fortune-modal"
+                  }, {
+                    default: k(function() {
+                      var t, o, n;
+                      return [a.show ? (m(), c("div", {
+                        key: 0,
+                        class: "fortune-overlay",
+                        onClick: Q
+                      }, [f("section", {
+                        class: "fortune-sheet",
+                        "aria-modal": "true",
+                        role: "dialog",
+                        onClick: r[6] || (r[6] = L(function() {}, ["stop"]))
+                      }, [null !== (t = M.value) && void 0 !== t && t.imgUrl ? (m(), c("div", tt, [f("img", {
+                        src: M.value.imgUrl,
+                        alt: ""
+                      }, null, 8, rt)])) : h("", !0), r[27] || (r[27] = f("div", {
+                        class: "fortune-wash"
+                      }, null, -1)), f("header", ot, [f("button", {
+                        class: u(["icon-button", {
+                          active: "poll" !== E.value
+                        }]),
+                        "aria-label": "今日运势",
+                        onClick: r[0] || (r[0] = function(e) {
+                          return E.value = "overview"
+                        })
+                      }, [x(g(K), {
+                        size: 18
+                      })], 2), f("div", nt, [r[7] || (r[7] = f("span", null, "PIUPIU DAILY ORACLE", -1)), f("strong", null, b(I.value), 1)]), f("button", {
+                        class: u(["icon-button poll-tab-button", {
+                          active: "poll" === E.value
+                        }]),
+                        "aria-label": "投票",
+                        onClick: ee
+                      }, [x(g(Le), {
+                        size: 18
+                      }), g(S).hasUnread ? (m(), c("span", it)) : h("", !0)], 2)]), U.value && !M.value ? (m(), c("div", lt, [x(g(K), {
+                        size: 30
+                      }), r[8] || (r[8] = f("span", null, "正在听星星说话…", -1))])) : M.value ? (m(), c(z, {
+                        key: 2
+                      }, ["overview" === E.value ? (m(), c("main", dt, [f("div", st, [f("p", ct, "今日关键词 · " + b(M.value.mood), 1), f("h2", null, b(M.value.fortune), 1), f("p", ut, b(M.value.text), 1)]), f("div", pt, [(m(!0), c(z, null, _($.value, function(a) {
+                        var t = e(a, 2),
+                          r = t[0],
+                          o = t[1];
+                        return m(), c("div", {
+                          key: r,
+                          class: "score-item"
+                        }, [f("span", null, b(r), 1), f("div", ft, [(m(), c(z, null, _(5, function(e) {
+                          return f("i", {
+                            key: e,
+                            class: u({
+                              active: e <= o
+                            })
+                          }, null, 2)
+                        }), 64))])])
+                      }), 128))]), f("div", vt, [f("div", null, [r[9] || (r[9] = f("span", null, "幸运时段", -1)), f("strong", null, b(M.value.luckyTime), 1)]), f("div", null, [r[10] || (r[10] = f("span", null, "幸运数字", -1)), f("strong", null, b(M.value.luckyNumber), 1)]), f("div", null, [r[11] || (r[11] = f("span", null, "幸运方位", -1)), f("strong", null, b(M.value.luckyDirection), 1)]), f("div", null, [r[12] || (r[12] = f("span", null, "幸运色", -1)), f("strong", null, b(M.value.luckyColor), 1)]), f("div", bt, [r[13] || (r[13] = f("span", null, "幸运物", -1)), f("strong", null, b(M.value.luckyItem), 1)])]), f("div", gt, [f("div", null, [r[14] || (r[14] = f("span", {
+                        class: "advice-label good"
+                      }, "宜", -1)), f("p", null, b(M.value.suitable.join(" · ")), 1)]), f("div", null, [r[15] || (r[15] = f("span", {
+                        class: "advice-label avoid"
+                      }, "忌", -1)), f("p", null, b(M.value.avoid.join(" · ")), 1)])]), f("div", mt, [f("button", {
+                        type: "button",
+                        onClick: r[1] || (r[1] = function(e) {
+                          return E.value = "stars"
+                        })
+                      }, [r[17] || (r[17] = f("span", null, "✦", -1)), f("div", null, [f("strong", null, b(Y.value ? "查看今日星签" : "抽取今日星签"), 1), r[16] || (r[16] = f("small", null, "三选一 · 每日一次", -1))])]), f("button", {
+                        type: "button",
+                        onClick: r[2] || (r[2] = function(e) {
+                          return E.value = "wish"
+                        })
+                      }, [f("span", null, b(M.value.questCompleted ? "✓" : "♡"), 1), f("div", null, [f("strong", null, b(M.value.questCompleted ? "心愿已完成" : "认领今日心愿"), 1), r[18] || (r[18] = f("small", null, "轻任务 · 好感奖励", -1))])])])])) : "stars" === E.value ? (m(), c("main", xt, [f("div", ht, [r[19] || (r[19] = f("p", {
+                        class: "eyebrow"
+                      }, "A MESSAGE FOR YOU", -1)), f("h2", null, b(Y.value ? "你的星签已经点亮" : "凭直觉选一颗星"), 1), f("p", null, b(Y.value ? "今天只需要记住这一句话。" : "三颗星各自藏着一条来自今日宇宙的留言。"), 1)]), f("div", {
+                        class: u(["star-stage", {
+                          revealed: Y.value
+                        }])
+                      }, [(m(!0), c(z, null, _(M.value.starSigns, function(e, a) {
+                        return m(), c("button", {
+                          key: e.title,
+                          class: u(["star-choice", {
+                            selected: M.value.starPick === a,
+                            dimmed: Y.value && M.value.starPick !== a
+                          }]),
+                          disabled: void 0 !== M.value.starPick,
+                          onClick: function(e) {
+                            return function(e) {
+                              return ce.apply(this, arguments)
+                            }(a)
+                          }
+                        }, [f("span", wt, b(M.value.starPick === a ? e.icon : "✦"), 1), f("strong", null, b(M.value.starPick === a ? e.title : "星签 ".concat(a + 1)), 1)], 10, yt)
+                      }), 128))], 2), x(w, {
+                        name: "reveal"
+                      }, {
+                        default: k(function() {
+                          return [Y.value ? (m(), c("blockquote", kt, "“" + b(Y.value.message) + "”", 1)) : h("", !0)]
+                        }),
+                        _: 1
+                      }), r[20] || (r[20] = f("p", {
+                        class: "game-note"
+                      }, "星签同一天不会重置，也无法反复领取奖励", -1))])) : "wish" === E.value ? (m(), c("main", Lt, [r[21] || (r[21] = f("div", {
+                        class: "game-heading"
+                      }, [f("p", {
+                        class: "eyebrow"
+                      }, "ONE SMALL THING"), f("h2", null, "让好运有一件具体的小事"), f("p", null, "选一件今天愿意完成的事。认领后不能更换，完成时记得回来打卡。")], -1)), f("div", zt, [(m(!0), c(z, null, _(M.value.quests, function(e) {
+                        return m(), c("button", {
+                          key: e.id,
+                          class: u({
+                            selected: M.value.questPick === e.id,
+                            muted: M.value.questPick && M.value.questPick !== e.id
+                          }),
+                          disabled: Boolean(M.value.questPick),
+                          onClick: function(a) {
+                            return function(e) {
+                              return ue.apply(this, arguments)
+                            }(e.id)
+                          }
+                        }, [f("span", Ct, b(e.icon), 1), f("div", null, [f("strong", null, b(e.title), 1), f("p", null, b(e.description), 1)]), f("small", null, "+" + b(e.reward), 1)], 10, _t)
+                      }), 128))]), J.value ? (m(), c("button", {
+                        key: 0,
+                        class: u(["complete-button", {
+                          completed: M.value.questCompleted
+                        }]),
+                        disabled: M.value.questCompleted || T.value,
+                        onClick: pe
+                      }, [M.value.questCompleted ? (m(), y(g(me), {
+                        key: 0,
+                        size: 18
+                      })) : h("", !0), C(" " + b(M.value.questCompleted ? "今天的心愿已完成" : "我完成了，回来打卡"), 1)], 10, jt)) : h("", !0)])) : (m(), c("main", St, [g(S).loading && !g(S).poll ? (m(), c("div", Pt, [x(g(K), {
+                        size: 26
+                      }), r[22] || (r[22] = f("p", null, "正在读取最新投票…", -1))])) : g(S).poll ? (m(), c(z, {
+                        key: 2
+                      }, [f("div", Mt, [r[25] || (r[25] = f("p", {
+                        class: "eyebrow"
+                      }, "COMMUNITY VOTE", -1)), f("span", Ot, b(g(S).poll.active ? "进行中" : "已结束"), 1), f("h2", null, b(g(S).poll.title), 1), f("p", null, b(g(S).poll.content), 1), f("small", null, b(g(S).poll.active ? "截止" : "结束于") + " " + b((o = g(S).poll.endsAt, n = new Date(o.replace(" ", "T")), Number.isNaN(n.getTime()) ? o : n.toLocaleString("zh-CN", {
+                        month: "numeric",
+                        day: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit"
+                      }))), 1)]), f("div", It, [(m(!0), c(z, null, _(g(S).poll.options, function(e) {
+                        return m(), c("div", {
+                          key: e.id,
+                          class: u(["poll-option-row", {
+                            selected: (g(S).poll.voted ? g(S).poll.selectedOptionId : G.value) === e.id,
+                            results: g(S).poll.showResults
+                          }]),
+                          onClick: function(a) {
+                            return g(S).poll.active && !g(S).poll.voted && !g(S).voting && (t = e.id, void(O() ? G.value = t : j("请先登录账号后参与投票", "warning")));
+                            var t
+                          }
+                        }, [g(S).poll.showResults ? (m(), c("span", {
+                          key: 0,
+                          class: "poll-fill",
+                          style: v({
+                            width: "".concat(e.percentage || 0, "%")
+                          })
+                        }, null, 4)) : h("", !0), f("span", At, [f("i", null, b(g(S).poll.selectedOptionId === e.id ? "✓" : G.value === e.id ? "●" : "○"), 1), f("strong", null, b(e.label), 1)]), f("span", Et, [e.detail && !g(S).poll.voted ? (m(), c("button", {
+                          key: 0,
+                          class: "poll-detail-button",
+                          type: "button",
+                          onClick: L(function(a) {
+                            return t = e.id, void(R.value = t);
+                            var t
+                          }, ["stop"])
+                        }, "详情", 8, Ut)) : h("", !0), g(S).poll.showResults ? (m(), c("span", Tt, [f("b", null, b(e.percentage || 0) + "%", 1), f("small", null, b(e.votes || 0) + " 票", 1)])) : h("", !0)])], 10, Nt)
+                      }), 128))]), g(S).poll.active && !g(S).poll.voted && null !== G.value ? (m(), c("button", {
+                        key: 0,
+                        class: "poll-submit",
+                        type: "button",
+                        disabled: g(S).voting,
+                        onClick: te
+                      }, b(g(S).voting ? "正在提交…" : "确认提交这一票"), 9, Dt)) : h("", !0), g(S).poll.showResults ? (m(), c("p", Bt, "共 " + b(g(S).poll.totalVotes || 0) + " 人参与" + b(g(S).poll.voted ? " · 你的选择已记录" : " · 最终结果"), 1)) : (m(), c("p", Ft, "选择前不会显示当前比例 · 每个账号仅可投一票"))], 64)) : (m(), c("div", qt, [x(g(Le), {
+                        size: 30
+                      }), r[23] || (r[23] = f("h2", null, "暂无投票", -1)), r[24] || (r[24] = f("p", null, "下一次想听听你的意见时，会在这里通知你。", -1))]))]))], 64)) : h("", !0), x(w, {
+                        name: "reveal"
+                      }, {
+                        default: k(function() {
+                          return [X.value ? (m(), c("div", {
+                            key: 0,
+                            class: "poll-detail-overlay",
+                            onClick: r[5] || (r[5] = function(e) {
+                              return R.value = null
+                            })
+                          }, [f("article", {
+                            class: "poll-detail-card",
+                            onClick: r[4] || (r[4] = L(function() {}, ["stop"]))
+                          }, [r[26] || (r[26] = f("span", {
+                            class: "eyebrow"
+                          }, "OPTION DETAILS", -1)), f("h3", null, b(X.value.label), 1), f("p", null, b(X.value.detail), 1), f("button", {
+                            type: "button",
+                            onClick: r[3] || (r[3] = function(e) {
+                              return R.value = null
+                            })
+                          }, "我知道了")])])) : h("", !0)]
+                        }),
+                        _: 1
+                      }), f("footer", Gt, b("poll" === E.value ? "投票状态以服务器时间为准" : "每日 0 点按服务器时间更新"), 1)])])) : h("", !0)]
+                    }),
+                    _: 1
+                  })
+                }
+            }
+          }),
+          Vt = F(Rt, [
+            ["__scopeId", "data-v-cf51fe43"]
+          ]),
+          Yt = {
+            class: "outfit-parts",
+            role: "group",
+            "aria-label": "选择换装部位"
+          },
+          Ht = ["aria-pressed", "onClick"],
+          Jt = ["aria-label"],
+          $t = {
+            class: "outfit-detail-heading"
+          },
+          Kt = {
+            class: "outfit-color-name"
+          },
+          Xt = {
+            class: "outfit-colors"
+          },
+          Wt = ["aria-label", "title", "aria-pressed", "onClick"],
+          Zt = {
+            class: "hud-container"
+          },
+          Qt = {
+            class: "hud-top-bar"
+          },
+          er = {
+            class: "hud-side-tools"
+          },
+          ar = {
+            class: "tool-row"
+          },
+          tr = {
+            class: "mail-icon-wrapper"
+          },
+          rr = {
+            key: 0,
+            class: "mail-notification-dot"
+          },
+          or = {
+            class: "mail-icon-wrapper"
+          },
+          nr = {
+            key: 0,
+            class: "mail-notification-dot",
+            "aria-label": "有未读聊天室消息"
+          },
+          ir = ["aria-expanded"],
+          lr = i({
+            __name: "HomeView",
+            setup: function(e) {
+              var a = q(!1),
+                t = ie,
+                r = q("skin"),
+                o = p(function() {
+                  return ne.find(function(e) {
+                    return e.id === r.value
+                  })
+                }),
+                i = p(function() {
+                  var e;
+                  return null === (e = de(r.value).find(function(e) {
+                    return e.id === t.value[r.value]
+                  })) || void 0 === e ? void 0 : e.name
+                }),
+                C = [].concat(s(ne.filter(function(e) {
+                  return "skin" === e.id
+                })), s(ne.filter(function(e) {
+                  return "skin" !== e.id
+                })));
+              var j = Q().hasUnread,
+                S = q(!1),
+                M = te(),
+                O = q(T()),
+                I = q(!1),
+                N = Da(),
+                A = null;
+
+              function T() {
+                return e = ee(), (null === (a = et()) || void 0 === a ? void 0 : a.date) === e;
+                var e, a
+              }
+
+              function F() {
+                O.value = T(), N.refresh()
+              }
+
+              function R() {
+                O.value = T(), N.reset(), N.refresh()
+              }
+
+              function V() {
+                S.value = !0, O.value = !0
+              }
+              l(function() {
+                O.value = T(), ce.refresh(), N.refresh(), window.addEventListener("piupiu-server-date-updated", F), window.addEventListener("piupiu:account-scoped-state-cleared", R), window.addEventListener("piupiu:account-session-changed", R), A = window.setInterval(function() {
+                  N.refresh()
+                }, 3e5)
+              }), E(function() {
+                O.value = T(), ce.refresh(), N.refresh()
+              }), U(function() {
+                window.removeEventListener("piupiu-server-date-updated", F), window.removeEventListener("piupiu:account-scoped-state-cleared", R), window.removeEventListener("piupiu:account-session-changed", R), null !== A && window.clearInterval(A)
+              });
+              var J = q(!1),
+                K = G(),
+                X = B(),
+                W = D(),
+                Z = ae(),
+                ce = Y(),
+                ue = H().showToast;
+
+              function pe() {
+                J.value = !0, K.clearNewStatus()
+              }
+
+              function fe() {
+                Z.toggle(), ue(Z.isMusicEnabled ? "背景音乐已开启" : "背景音乐已关闭", "info")
+              }
+
+              function ve() {
+                X.toggleDarkMode(), ue(X.isDarkMode ? "深色模式已开启" : "浅色模式已开启", "info")
+              }
+              var be = q(""),
+                ge = q(!1),
+                xe = null;
+
+              function Le(e) {
+                be.value = e, ge.value = !0, xe && clearTimeout(xe), xe = setTimeout(function() {
+                  ge.value = !1
+                }, 4e3)
+              }
+
+              function _e() {
+                return Ce.apply(this, arguments)
+              }
+
+              function Ce() {
+                return (Ce = d(n().m(function e() {
+                  var t, r, o, i, l, d;
+                  return n().w(function(e) {
+                    for (;;) switch (e.n) {
+                      case 0:
+                        if (!a.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return a.value = !1, e.a(2);
+                      case 1:
+                        return K.addProgress(3, 1), (t = oe()) >= 6 && t < 9 && K.unlock(4), e.n = 2, W.refreshDailyResetDate();
+                      case 2:
+                        if (0 === W.addTouchAffection() && ue("今天的互动次数已达上限，明天再来吧~", "info"), K.updateProgress(5, W.level), r = W.level, o = _a.filter(function(e) {
+                            var a = e.minLevel <= r,
+                              t = 0 === e.maxLevel || e.maxLevel >= r;
+                            return a && t
+                          }), r >= 4 && Math.random() < .2 && (i = _a.filter(function(e) {
+                            return 1 === e.minLevel && 3 === e.maxLevel
+                          }), o = [].concat(s(o), s(i))), 0 === o.length && (o = _a.filter(function(e) {
+                            return e.minLevel <= r
+                          })), 0 !== o.length) {
+                          e.n = 3;
+                          break
+                        }
+                        return e.a(2);
+                      case 3:
+                        if (l = Math.floor(Math.random() * o.length), o.length, d = o[l]) {
+                          e.n = 4;
+                          break
+                        }
+                        return e.a(2);
+                      case 4:
+                        Le(d.text);
+                      case 5:
+                        return e.a(2)
+                    }
+                  }, e)
+                }))).apply(this, arguments)
+              }
+              return P(function() {
+                  return X.pendingSpeech
+                }, function(e) {
+                  e && (Le(e), X.setPendingSpeech(""))
+                }),
+                function(e, n) {
+                  return m(), c("div", {
+                    class: "page-container home-view",
+                    onClick: n[9] || (n[9] = function(e) {
+                      return a.value = !1
+                    })
+                  }, [x(le, {
+                    outfit: g(t),
+                    onClick: _e
+                  }, null, 8, ["outfit"]), a.value ? (m(), c("div", {
+                    key: 0,
+                    class: "outfit-dismiss-layer",
+                    onClick: n[0] || (n[0] = L(function(e) {
+                      return a.value = !1
+                    }, ["stop"]))
+                  })) : h("", !0), x(oa, {
+                    text: be.value,
+                    show: ge.value
+                  }, {
+                    default: k(function() {
+                      return [x(w, {
+                        name: "outfit-pop"
+                      }, {
+                        default: k(function() {
+                          return [a.value ? (m(), c("div", {
+                            key: 0,
+                            class: u(["outfit-palette glass-card", {
+                              "below-bubble": ge.value
+                            }]),
+                            "aria-label": "换装颜色",
+                            onClick: n[1] || (n[1] = L(function() {}, ["stop"]))
+                          }, [f("div", Yt, [(m(), c(z, null, _(C, function(e) {
+                            return f("button", {
+                              key: e.id,
+                              type: "button",
+                              class: u(["outfit-part", {
+                                active: r.value === e.id
+                              }]),
+                              "aria-pressed": r.value === e.id,
+                              onClick: function(a) {
+                                return r.value = e.id
+                              }
+                            }, b(e.name), 11, Ht)
+                          }), 64))]), f("div", {
+                            class: "outfit-row",
+                            role: "group",
+                            "aria-label": o.value.name + "颜色"
+                          }, [f("div", $t, [f("span", null, b(o.value.name) + "颜色", 1), f("span", Kt, b(i.value), 1)]), f("div", Xt, [(m(!0), c(z, null, _(g(de)(o.value.id), function(e) {
+                            return m(), c("button", {
+                              key: e.id,
+                              type: "button",
+                              class: u(["outfit-swatch", {
+                                selected: g(t)[o.value.id] === e.id
+                              }]),
+                              style: v({
+                                backgroundColor: "original" === e.id ? o.value.original : e.color
+                              }),
+                              "aria-label": o.value.name + "：" + e.name,
+                              title: e.name,
+                              "aria-pressed": g(t)[o.value.id] === e.id,
+                              onClick: function(a) {
+                                return t = e.id, r = o.value.id, void se(t, r);
+                                var t, r
+                              }
+                            }, [g(t)[o.value.id] === e.id ? (m(), y(g(me), {
+                              key: 0,
+                              size: 16
+                            })) : h("", !0)], 14, Wt)
+                          }), 128))])], 8, Jt)], 2)) : h("", !0)]
+                        }),
+                        _: 1
+                      })]
+                    }),
+                    _: 1
+                  }, 8, ["text", "show"]), f("div", Zt, [f("div", Qt, [x(qe)]), f("div", er, [f("div", ar, [x(Ee, {
+                    onClick: pe
+                  }), x(Ie)]), f("button", {
+                    class: "side-tool-btn glass-btn mailbox-btn",
+                    type: "button",
+                    "aria-label": "站内邮箱",
+                    onClick: n[2] || (n[2] = function(e) {
+                      return I.value = !0
+                    })
+                  }, [f("span", tr, [x(g($), {
+                    size: 20
+                  }), g(ce).unreadCount > 0 ? (m(), c("span", rr)) : h("", !0)])]), x(Pa, {
+                    "show-dot": !O.value || g(N).hasUnread,
+                    onClick: V
+                  }, null, 8, ["show-dot"]), f("button", {
+                    class: "side-tool-btn glass-btn",
+                    type: "button",
+                    "aria-label": "聊天室",
+                    title: "聊天室",
+                    onClick: n[3] || (n[3] = function(e) {
+                      return g(M).push({
+                        name: "chatroom"
+                      })
+                    })
+                  }, [f("span", or, [x(g(re), {
+                    size: 20
+                  }), g(j) ? (m(), c("span", nr)) : h("", !0)])]), f("button", {
+                    class: "side-tool-btn glass-btn outfit-btn",
+                    type: "button",
+                    "aria-label": "换装",
+                    title: "换装",
+                    "aria-expanded": a.value,
+                    onClick: n[4] || (n[4] = L(function(e) {
+                      return a.value = !a.value
+                    }, ["stop"]))
+                  }, [x(g(ze), {
+                    size: 20
+                  })], 8, ir), f("button", {
+                    class: "side-tool-btn glass-btn music-btn",
+                    onClick: fe
+                  }, [g(Z).isMusicEnabled ? (m(), y(g(he), {
+                    key: 0,
+                    size: 20
+                  })) : (m(), y(g(ye), {
+                    key: 1,
+                    size: 20
+                  }))]), f("button", {
+                    class: "side-tool-btn glass-btn theme-btn",
+                    onClick: ve
+                  }, [g(X).isDarkMode ? (m(), y(g(we), {
+                    key: 0,
+                    size: 20
+                  })) : (m(), y(g(ke), {
+                    key: 1,
+                    size: 20
+                  }))])]), n[10] || (n[10] = f("div", {
+                    class: "hud-bottom-area"
+                  }, null, -1))]), x(Qe, {
+                    show: J.value,
+                    onClose: n[5] || (n[5] = function(e) {
+                      return J.value = !1
+                    })
+                  }, null, 8, ["show"]), x(Vt, {
+                    show: S.value,
+                    onClose: n[6] || (n[6] = function(e) {
+                      return S.value = !1
+                    }),
+                    onUpdated: n[7] || (n[7] = function(e) {
+                      return O.value = !0
+                    })
+                  }, null, 8, ["show"]), x(za, {
+                    show: I.value,
+                    "onUpdate:show": n[8] || (n[8] = function(e) {
+                      return I.value = e
+                    })
+                  }, null, 8, ["show"])])
+                }
+            }
+          });
+        a("default", F(lr, [
+          ["__scopeId", "data-v-535c5b6b"]
+        ]))
+      }
+    }
+  })
+}();

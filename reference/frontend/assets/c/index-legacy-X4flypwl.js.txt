@@ -1,0 +1,4407 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function e(e, n) {
+    return function(e) {
+      if (Array.isArray(e)) return e
+    }(e) || function(e, n) {
+      var r = null == e ? null : "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
+      if (null != r) {
+        var t, a, s, i, o = [],
+          u = !0,
+          c = !1;
+        try {
+          if (s = (r = r.call(e)).next, 0 === n) {
+            if (Object(r) !== r) return;
+            u = !1
+          } else
+            for (; !(u = (t = s.call(r)).done) && (o.push(t.value), o.length !== n); u = !0);
+        } catch (e) {
+          c = !0, a = e
+        } finally {
+          try {
+            if (!u && null != r.return && (i = r.return(), Object(i) !== i)) return
+          } finally {
+            if (c) throw a
+          }
+        }
+        return o
+      }
+    }(e, n) || s(e, n) || function() {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }()
+  }
+
+  function n(e, n) {
+    var r = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+      var t = Object.getOwnPropertySymbols(e);
+      n && (t = t.filter(function(n) {
+        return Object.getOwnPropertyDescriptor(e, n).enumerable
+      })), r.push.apply(r, t)
+    }
+    return r
+  }
+
+  function r(e) {
+    for (var r = 1; r < arguments.length; r++) {
+      var t = null != arguments[r] ? arguments[r] : {};
+      r % 2 ? n(Object(t), !0).forEach(function(n) {
+        f(e, n, t[n])
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : n(Object(t)).forEach(function(n) {
+        Object.defineProperty(e, n, Object.getOwnPropertyDescriptor(t, n))
+      })
+    }
+    return e
+  }
+
+  function t(e) {
+    if (null != e) {
+      var n = e["function" == typeof Symbol && Symbol.iterator || "@@iterator"],
+        r = 0;
+      if (n) return n.call(e);
+      if ("function" == typeof e.next) return e;
+      if (!isNaN(e.length)) return {
+        next: function() {
+          return e && r >= e.length && (e = void 0), {
+            value: e && e[r++],
+            done: !e
+          }
+        }
+      }
+    }
+    throw new TypeError(b(e) + " is not iterable")
+  }
+
+  function a(e, n) {
+    var r = "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
+    if (!r) {
+      if (Array.isArray(e) || (r = s(e)) || n && e && "number" == typeof e.length) {
+        r && (e = r);
+        var t = 0,
+          a = function() {};
+        return {
+          s: a,
+          n: function() {
+            return t >= e.length ? {
+              done: !0
+            } : {
+              done: !1,
+              value: e[t++]
+            }
+          },
+          e: function(e) {
+            throw e
+          },
+          f: a
+        }
+      }
+      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }
+    var i, o = !0,
+      u = !1;
+    return {
+      s: function() {
+        r = r.call(e)
+      },
+      n: function() {
+        var e = r.next();
+        return o = e.done, e
+      },
+      e: function(e) {
+        u = !0, i = e
+      },
+      f: function() {
+        try {
+          o || null == r.return || r.return()
+        } finally {
+          if (u) throw i
+        }
+      }
+    }
+  }
+
+  function s(e, n) {
+    if (e) {
+      if ("string" == typeof e) return i(e, n);
+      var r = {}.toString.call(e).slice(8, -1);
+      return "Object" === r && e.constructor && (r = e.constructor.name), "Map" === r || "Set" === r ? Array.from(e) : "Arguments" === r || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r) ? i(e, n) : void 0
+    }
+  }
+
+  function i(e, n) {
+    (null == n || n > e.length) && (n = e.length);
+    for (var r = 0, t = Array(n); r < n; r++) t[r] = e[r];
+    return t
+  }
+
+  function o() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var e, n, r = "function" == typeof Symbol ? Symbol : {},
+      t = r.iterator || "@@iterator",
+      a = r.toStringTag || "@@toStringTag";
+
+    function s(r, t, a, s) {
+      var o = t && t.prototype instanceof c ? t : c,
+        l = Object.create(o.prototype);
+      return u(l, "_invoke", function(r, t, a) {
+        var s, o, u, c = 0,
+          l = a || [],
+          d = !1,
+          f = {
+            p: 0,
+            n: 0,
+            v: e,
+            a: p,
+            f: p.bind(e, 4),
+            d: function(n, r) {
+              return s = n, o = 0, u = e, f.n = r, i
+            }
+          };
+
+        function p(r, t) {
+          for (o = r, u = t, n = 0; !d && c && !a && n < l.length; n++) {
+            var a, s = l[n],
+              p = f.p,
+              b = s[2];
+            r > 3 ? (a = b === t) && (u = s[(o = s[4]) ? 5 : (o = 3, 3)], s[4] = s[5] = e) : s[0] <= p && ((a = r < 2 && p < s[1]) ? (o = 0, f.v = t, f.n = s[1]) : p < b && (a = r < 3 || s[0] > t || t > b) && (s[4] = r, s[5] = t, f.n = b, o = 0))
+          }
+          if (a || r > 1) return i;
+          throw d = !0, t
+        }
+        return function(a, l, b) {
+          if (c > 1) throw TypeError("Generator is already running");
+          for (d && 1 === l && p(l, b), o = l, u = b;
+            (n = o < 2 ? e : u) || !d;) {
+            s || (o ? o < 3 ? (o > 1 && (f.n = -1), p(o, u)) : f.n = u : f.v = u);
+            try {
+              if (c = 2, s) {
+                if (o || (a = "next"), n = s[a]) {
+                  if (!(n = n.call(s, u))) throw TypeError("iterator result is not an object");
+                  if (!n.done) return n;
+                  u = n.value, o < 2 && (o = 0)
+                } else 1 === o && (n = s.return) && n.call(s), o < 2 && (u = TypeError("The iterator does not provide a '" + a + "' method"), o = 1);
+                s = e
+              } else if ((n = (d = f.n < 0) ? u : r.call(t, f)) !== i) break
+            } catch (n) {
+              s = e, o = 1, u = n
+            } finally {
+              c = 1
+            }
+          }
+          return {
+            value: n,
+            done: d
+          }
+        }
+      }(r, a, s), !0), l
+    }
+    var i = {};
+
+    function c() {}
+
+    function l() {}
+
+    function d() {}
+    n = Object.getPrototypeOf;
+    var f = [][t] ? n(n([][t]())) : (u(n = {}, t, function() {
+        return this
+      }), n),
+      p = d.prototype = c.prototype = Object.create(f);
+
+    function b(e) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(e, d) : (e.__proto__ = d, u(e, a, "GeneratorFunction")), e.prototype = Object.create(p), e
+    }
+    return l.prototype = d, u(p, "constructor", d), u(d, "constructor", l), l.displayName = "GeneratorFunction", u(d, a, "GeneratorFunction"), u(p), u(p, a, "Generator"), u(p, t, function() {
+      return this
+    }), u(p, "toString", function() {
+      return "[object Generator]"
+    }), (o = function() {
+      return {
+        w: s,
+        m: b
+      }
+    })()
+  }
+
+  function u(e, n, r, t) {
+    var a = Object.defineProperty;
+    try {
+      a({}, "", {})
+    } catch (e) {
+      a = 0
+    }
+    u = function(e, n, r, t) {
+      function s(n, r) {
+        u(e, n, function(e) {
+          return this._invoke(n, r, e)
+        })
+      }
+      n ? a ? a(e, n, {
+        value: r,
+        enumerable: !t,
+        configurable: !t,
+        writable: !t
+      }) : e[n] = r : (s("next", 0), s("throw", 1), s("return", 2))
+    }, u(e, n, r, t)
+  }
+
+  function c(e, n, r, t, a, s, i) {
+    try {
+      var o = e[s](i),
+        u = o.value
+    } catch (e) {
+      return void r(e)
+    }
+    o.done ? n(u) : Promise.resolve(u).then(t, a)
+  }
+
+  function l(e) {
+    return function() {
+      var n = this,
+        r = arguments;
+      return new Promise(function(t, a) {
+        var s = e.apply(n, r);
+
+        function i(e) {
+          c(s, t, a, i, o, "next", e)
+        }
+
+        function o(e) {
+          c(s, t, a, i, o, "throw", e)
+        }
+        i(void 0)
+      })
+    }
+  }
+
+  function d(e, n) {
+    for (var r = 0; r < n.length; r++) {
+      var t = n[r];
+      t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(e, p(t.key), t)
+    }
+  }
+
+  function f(e, n, r) {
+    return (n = p(n)) in e ? Object.defineProperty(e, n, {
+      value: r,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }) : e[n] = r, e
+  }
+
+  function p(e) {
+    var n = function(e, n) {
+      if ("object" != b(e) || !e) return e;
+      var r = e[Symbol.toPrimitive];
+      if (void 0 !== r) {
+        var t = r.call(e, n || "default");
+        if ("object" != b(t)) return t;
+        throw new TypeError("@@toPrimitive must return a primitive value.")
+      }
+      return ("string" === n ? String : Number)(e)
+    }(e, "string");
+    return "symbol" == b(n) ? n : n + ""
+  }
+
+  function b(e) {
+    return b = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+      return typeof e
+    } : function(e) {
+      return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
+    }, b(e)
+  }
+
+  function m(e) {
+    var n, r, t, a = 2;
+    for ("undefined" != typeof Symbol && (r = Symbol.asyncIterator, t = Symbol.iterator); a--;) {
+      if (r && null != (n = e[r])) return n.call(e);
+      if (t && null != (n = e[t])) return new g(n.call(e));
+      r = "@@asyncIterator", t = "@@iterator"
+    }
+    throw new TypeError("Object is not async iterable")
+  }
+
+  function g(e) {
+    function n(e) {
+      if (Object(e) !== e) return Promise.reject(new TypeError(e + " is not an object."));
+      var n = e.done;
+      return Promise.resolve(e.value).then(function(e) {
+        return {
+          value: e,
+          done: n
+        }
+      })
+    }
+    return g = function(e) {
+      this.s = e, this.n = e.next
+    }, g.prototype = {
+      s: null,
+      n: null,
+      next: function() {
+        return n(this.n.apply(this.s, arguments))
+      },
+      return: function(e) {
+        var r = this.s.return;
+        return void 0 === r ? Promise.resolve({
+          value: e,
+          done: !0
+        }) : n(r.apply(this.s, arguments))
+      },
+      throw: function(e) {
+        var r = this.s.return;
+        return void 0 === r ? Promise.reject(e) : n(r.apply(this.s, arguments))
+      }
+    }, new g(e)
+  }
+
+  function h(e) {
+    return new k(e, 0)
+  }
+
+  function v(e) {
+    return function() {
+      return new y(e.apply(this, arguments))
+    }
+  }
+
+  function y(e) {
+    var n, r;
+
+    function t(n, r) {
+      try {
+        var s = e[n](r),
+          i = s.value,
+          o = i instanceof k;
+        Promise.resolve(o ? i.v : i).then(function(r) {
+          if (o) {
+            var u = "return" === n ? "return" : "next";
+            if (!i.k || r.done) return t(u, r);
+            r = e[u](r).value
+          }
+          a(s.done ? "return" : "normal", r)
+        }, function(e) {
+          t("throw", e)
+        })
+      } catch (e) {
+        a("throw", e)
+      }
+    }
+
+    function a(e, a) {
+      switch (e) {
+        case "return":
+          n.resolve({
+            value: a,
+            done: !0
+          });
+          break;
+        case "throw":
+          n.reject(a);
+          break;
+        default:
+          n.resolve({
+            value: a,
+            done: !1
+          })
+      }(n = n.next) ? t(n.key, n.arg): r = null
+    }
+    this._invoke = function(e, a) {
+      return new Promise(function(s, i) {
+        var o = {
+          key: e,
+          arg: a,
+          resolve: s,
+          reject: i,
+          next: null
+        };
+        r ? r = r.next = o : (n = r = o, t(e, a))
+      })
+    }, "function" != typeof e.return && (this.return = void 0)
+  }
+
+  function k(e, n) {
+    this.v = e, this.k = n
+  }
+  y.prototype["function" == typeof Symbol && Symbol.asyncIterator || "@@asyncIterator"] = function() {
+    return this
+  }, y.prototype.next = function(e) {
+    return this._invoke("next", e)
+  }, y.prototype.throw = function(e) {
+    return this._invoke("throw", e)
+  }, y.prototype.return = function(e) {
+    return this._invoke("return", e)
+  }, System.register(["../e/index-legacy-B0tYRju5.js", "./settings-legacy-BSGzoDfU.js", "./app-security-legacy-BdXLf8ML.js"], function(n, s) {
+    "use strict";
+    var i, u, c, p, g, y, k, E, w, _, S, R, x, T, I, O, N, C, M, A, j, D, F, L, P, B, W, U, H, q, z, G, V, K;
+    return {
+      setters: [function(e) {
+        i = e.bt, u = e.bu, c = e.bv, p = e.bw, g = e.bx, y = e.by, k = e.bz, E = e.bA, w = e.bB, _ = e.bC, S = e.bD, R = e.bE, x = e.bF, T = e.bG, I = e.bH, O = e.a3, N = e.bI, C = e.bJ, M = e.bK, A = e.bL, j = e.bM, n({
+          addMessageToSession: e.bX,
+          clearAllSessions: e.cg,
+          clearEntryIndexesForRoles: e.cn,
+          compactSessionMvuSnapshots: e.c8,
+          createRole: e.P,
+          createSession: e.cb,
+          deleteMessageFromSession: e.bW,
+          deletePresetIndex: e.cm,
+          deleteRole: e.bQ,
+          deleteRoles: e.a3,
+          deleteSession: e.bZ,
+          duplicateSession: e.v,
+          extractRegexFromRoleData: e.cl,
+          extractWorldBookFromRoleData: e.ck,
+          getAllRoleIds: e.a4,
+          getAllSessionMessages: e.c3,
+          getAssociatedGroupRoleIds: e.a2,
+          getGroupCandidateRoleItems: e.bP,
+          getMemoryListPage: e.ca,
+          getOldestPinnedRoleTimestamp: e.bT,
+          getPresetPromptDetail: e.bb,
+          getPresetRegexDetail: e.b6,
+          getRawRoleBackupRowsPage: e.bS,
+          getRawSessionBackupRowsPage: e.ci,
+          getRawSessionMessageBackupRows: e.cj,
+          getRegexConfigHeader: e.G,
+          getRegexScriptDetail: e.K,
+          getRoleById: e.L,
+          getRoleCount: e.bR,
+          getRoleEditSnapshot: e.y,
+          getRoleFilterMetadata: e.bO,
+          getRolesPage: e.bN,
+          getSessionById: e.w,
+          getSessionCount: e.ch,
+          getSessionForVirtualLoad: e.c5,
+          getSessionMessageCount: e.b_,
+          getSessionMessageRecordById: e.c2,
+          getSessionMessageRecordsPage: e.c0,
+          getSessionMessagesPage: e.b$,
+          getSessionMessagesTail: e.c1,
+          getSessionOpeningMessages: e.c4,
+          getWorldBookEntryDetail: e.J,
+          getWorldBookHeader: e.B,
+          importRoleRecord: e.bH,
+          importSessionMessage: e.bY,
+          importSessionShell: e.bI,
+          listPresetPromptSummaries: e.bk,
+          listPresetRegexSummaries: e.b5,
+          listRegexScriptSummaries: e.H,
+          listWorldBookEntrySummaries: e.E,
+          loadFullPreset: e.b7,
+          loadFullRegexConfig: e.Y,
+          loadFullWorldBook: e.X,
+          rebuildEntryIndexesForRole: e.bE,
+          rebuildGlobalEntryIndexesFromStorage: e.bx,
+          replacePresetIndex: e.bi,
+          replaceRegexIndex: e.aw,
+          replaceSessionMessagesUpToMessage: e.bV,
+          replaceWorldBookIndex: e.b2,
+          scanSessionMessagesBefore: e.c7,
+          searchRegexEntryIndexes: e.av,
+          searchSessionMessages: e.c6,
+          sessionHasCompactableMvuSnapshots: e.c9,
+          updateMessageInSession: e.bU,
+          updateRole: e.O,
+          updateSessionDynamicWorldBooks: e.ce,
+          updateSessionMessageSnapshotsFrom: e.cc,
+          updateSessionMessages: e.t,
+          updateSessionVariables: e.cd,
+          updateSessionWorldInfoState: e.cf
+        })
+      }, function(e) {
+        n({
+          DEFAULT_SETTINGS: e.D,
+          getSetting: e.g,
+          setSetting: e.s
+        })
+      }, function(e) {
+        D = e.au, F = e.bz, L = e.bA, P = e._, B = e.aH, W = e.bB, U = e.aC, H = e.av, q = e.aD, z = e.bC, G = e.at, V = e.bD, K = e.bE
+      }],
+      execute: function() {
+        n("initializeDatabase", function() {
+          return ze.apply(this, arguments)
+        });
+        var J = /NotReadableError|Data lost due to missing file|requested file could not be read/i;
+
+        function Y(e) {
+          return new Promise(function(n, r) {
+            e.onsuccess = function() {
+              return n(e.result)
+            }, e.onerror = function() {
+              return r(e.error)
+            }
+          })
+        }
+
+        function X(e) {
+          return new Promise(function(n, r) {
+            e.oncomplete = function() {
+              return n()
+            }, e.onerror = function() {
+              return r(e.error)
+            }, e.onabort = function() {
+              return r(e.error || new Error("IndexedDB transaction aborted"))
+            }
+          })
+        }
+
+        function Q() {
+          return new Promise(function(e, n) {
+            var r = indexedDB.open("PiuPiuRoleDB");
+            r.onsuccess = function() {
+              return e(r.result)
+            }, r.onerror = function() {
+              return n(r.error)
+            }, r.onupgradeneeded = function() {
+              var e;
+              null === (e = r.transaction) || void 0 === e || e.abort(), n(new Error("Legacy IndexedDB does not exist"))
+            }
+          })
+        }
+
+        function $(e) {
+          if (!e || "object" !== b(e)) return !1;
+          var n = e;
+          return Number(n.id || n.sessionId) > 0 && !n.deleted && !n.isDeleted && !n.deletedAt
+        }
+
+        function Z(e) {
+          return new Promise(function(n) {
+            return setTimeout(n, e)
+          })
+        }
+        var ee = function() {
+            function e(n) {
+              ! function(e, n) {
+                if (!(e instanceof n)) throw new TypeError("Cannot call a class as a function")
+              }(this, e), f(this, "db", void 0), f(this, "unreadableRecords", []), this.db = n
+            }
+            return n = e, r = [{
+              key: "close",
+              value: function() {
+                this.db.close()
+              }
+            }, {
+              key: "takeUnreadableRecords",
+              value: function() {
+                return this.unreadableRecords.splice(0)
+              }
+            }, {
+              key: "reopen",
+              value: (g = l(o().m(function e() {
+                return o().w(function(e) {
+                  for (;;) switch (e.n) {
+                    case 0:
+                      return this.db.close(), e.n = 1, Q();
+                    case 1:
+                      this.db = e.v;
+                    case 2:
+                      return e.a(2)
+                  }
+                }, e, this)
+              })), function() {
+                return g.apply(this, arguments)
+              })
+            }, {
+              key: "retryRead",
+              value: (p = l(o().m(function e(n, r) {
+                var t, a, s, i;
+                return o().w(function(e) {
+                  for (;;) switch (e.p = e.n) {
+                    case 0:
+                      a = 0;
+                    case 1:
+                      if (!(a < 3)) {
+                        e.n = 9;
+                        break
+                      }
+                      if (e.p = 2, this.db.objectStoreNames.contains(n)) {
+                        e.n = 3;
+                        break
+                      }
+                      throw new Error("Legacy IndexedDB store not found: ".concat(n));
+                    case 3:
+                      return s = this.db.transaction(n, "readonly"), e.n = 4, r(s.objectStore(n), s);
+                    case 4:
+                      return e.a(2, e.v);
+                    case 5:
+                      if (e.p = 5, i = e.v, t = i, !(a + 1 >= 3)) {
+                        e.n = 6;
+                        break
+                      }
+                      return e.a(3, 9);
+                    case 6:
+                      return e.n = 7, Z(50 * (a + 1));
+                    case 7:
+                      return e.n = 8, this.reopen();
+                    case 8:
+                      a += 1, e.n = 1;
+                      break;
+                    case 9:
+                      throw t;
+                    case 10:
+                      return e.a(2)
+                  }
+                }, e, this, [
+                  [2, 5]
+                ])
+              })), function(e, n) {
+                return p.apply(this, arguments)
+              })
+            }, {
+              key: "info",
+              value: (c = l(o().m(function e() {
+                var n, r, t, a, s;
+                return o().w(function(e) {
+                  for (;;) switch (e.n) {
+                    case 0:
+                      n = Array.from(this.db.objectStoreNames), r = {}, t = 0, a = n;
+                    case 1:
+                      if (!(t < a.length)) {
+                        e.n = 4;
+                        break
+                      }
+                      return s = a[t], e.n = 2, this.retryRead(s, function() {
+                        var e = l(o().m(function e(n, r) {
+                          var t;
+                          return o().w(function(e) {
+                            for (;;) switch (e.n) {
+                              case 0:
+                                return e.n = 1, Y(n.count());
+                              case 1:
+                                return t = e.v, e.n = 2, X(r);
+                              case 2:
+                                return e.a(2, t)
+                            }
+                          }, e)
+                        }));
+                        return function(n, r) {
+                          return e.apply(this, arguments)
+                        }
+                      }());
+                    case 2:
+                      r[s] = e.v;
+                    case 3:
+                      t++, e.n = 1;
+                      break;
+                    case 4:
+                      return e.a(2, {
+                        databaseVersion: this.db.version,
+                        stores: n,
+                        rawCounts: r
+                      })
+                  }
+                }, e, this)
+              })), function() {
+                return c.apply(this, arguments)
+              })
+            }, {
+              key: "iterateStore",
+              value: function(e) {
+                var n = this;
+                return v(function(e) {
+                  var r = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 1;
+                  return o().m(function s() {
+                    var i, u, c, d, f, p;
+                    return o().w(function(s) {
+                      for (;;) switch (s.p = s.n) {
+                        case 0:
+                          if (n.db.objectStoreNames.contains(e)) {
+                            s.n = 1;
+                            break
+                          }
+                          return s.a(2);
+                        case 1:
+                          return s.n = 2, h(n.retryRead(e, function() {
+                            var e = l(o().m(function e(n, t) {
+                              var a;
+                              return o().w(function(e) {
+                                for (;;) switch (e.n) {
+                                  case 0:
+                                    return e.n = 1, new Promise(function(e, t) {
+                                      var a = [],
+                                        s = void 0 === i ? void 0 : IDBKeyRange.lowerBound(i, !0),
+                                        o = n.openKeyCursor(s);
+                                      o.onerror = function() {
+                                        return t(o.error)
+                                      }, o.onsuccess = function() {
+                                        var n = o.result;
+                                        !n || a.length >= r ? e(a) : (a.push(n.primaryKey), n.continue())
+                                      }
+                                    });
+                                  case 1:
+                                    return a = e.v, e.n = 2, X(t);
+                                  case 2:
+                                    return e.a(2, a)
+                                }
+                              }, e)
+                            }));
+                            return function(n, r) {
+                              return e.apply(this, arguments)
+                            }
+                          }()));
+                        case 2:
+                          if (0 !== (u = s.v).length) {
+                            s.n = 3;
+                            break
+                          }
+                          return s.a(2);
+                        case 3:
+                          i = u[u.length - 1], c = a(u), s.p = 4, f = o().m(function r() {
+                            var t, a, s, i;
+                            return o().w(function(r) {
+                              for (;;) switch (r.p = r.n) {
+                                case 0:
+                                  return t = d.value, r.p = 1, r.n = 2, h(n.retryRead(e, function() {
+                                    var e = l(o().m(function e(n, r) {
+                                      var a;
+                                      return o().w(function(e) {
+                                        for (;;) switch (e.n) {
+                                          case 0:
+                                            return e.n = 1, Y(n.get(t));
+                                          case 1:
+                                            return a = e.v, e.n = 2, X(r);
+                                          case 2:
+                                            return e.a(2, a)
+                                        }
+                                      }, e)
+                                    }));
+                                    return function(n, r) {
+                                      return e.apply(this, arguments)
+                                    }
+                                  }()));
+                                case 2:
+                                  if (null == (a = r.v)) {
+                                    r.n = 3;
+                                    break
+                                  }
+                                  return r.n = 3, a;
+                                case 3:
+                                  r.n = 6;
+                                  break;
+                                case 4:
+                                  if (r.p = 4, i = r.v, s = i instanceof Error ? "".concat(i.name, ": ").concat(i.message) : String(i), J.test(s)) {
+                                    r.n = 5;
+                                    break
+                                  }
+                                  throw i;
+                                case 5:
+                                  n.unreadableRecords.push({
+                                    store: e,
+                                    key: t,
+                                    error: s
+                                  }), console.warn("[database] Skipping irrecoverable IndexedDB record ".concat(e, ":").concat(String(t)));
+                                case 6:
+                                  return r.a(2)
+                              }
+                            }, r, null, [
+                              [1, 4]
+                            ])
+                          }), c.s();
+                        case 5:
+                          if ((d = c.n()).done) {
+                            s.n = 7;
+                            break
+                          }
+                          return s.d(t(f()), 6);
+                        case 6:
+                          s.n = 5;
+                          break;
+                        case 7:
+                          s.n = 9;
+                          break;
+                        case 8:
+                          s.p = 8, p = s.v, c.e(p);
+                        case 9:
+                          return s.p = 9, c.f(), s.f(9);
+                        case 10:
+                          if (!(u.length < r)) {
+                            s.n = 11;
+                            break
+                          }
+                          return s.a(2);
+                        case 11:
+                          s.n = 1;
+                          break;
+                        case 12:
+                          return s.a(2)
+                      }
+                    }, s, null, [
+                      [4, 8, 9, 10]
+                    ])
+                  })()
+                }).apply(this, arguments)
+              }
+            }, {
+              key: "roles",
+              value: function() {
+                var e = this;
+                return v(function() {
+                  var n = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 1;
+                  return o().m(function r() {
+                    var t, a, s, i, u, c, l, d;
+                    return o().w(function(r) {
+                      for (;;) switch (r.p = r.n) {
+                        case 0:
+                          t = !1, a = !1, r.p = 1, i = m(e.iterateStore("roles", n));
+                        case 2:
+                          return r.n = 3, h(i.next());
+                        case 3:
+                          if (!(t = !(u = r.v).done)) {
+                            r.n = 6;
+                            break
+                          }
+                          if ((c = u.value) && "object" === b(c)) {
+                            r.n = 4;
+                            break
+                          }
+                          return r.a(3, 5);
+                        case 4:
+                          if (l = Number(c.id), !(Number.isFinite(l) && l > 0 && c.roleData)) {
+                            r.n = 5;
+                            break
+                          }
+                          return r.n = 5, c;
+                        case 5:
+                          t = !1, r.n = 2;
+                          break;
+                        case 6:
+                          r.n = 8;
+                          break;
+                        case 7:
+                          r.p = 7, d = r.v, a = !0, s = d;
+                        case 8:
+                          if (r.p = 8, r.p = 9, !t || null == i.return) {
+                            r.n = 10;
+                            break
+                          }
+                          return r.n = 10, h(i.return());
+                        case 10:
+                          if (r.p = 10, !a) {
+                            r.n = 11;
+                            break
+                          }
+                          throw s;
+                        case 11:
+                          return r.f(10);
+                        case 12:
+                          return r.f(8);
+                        case 13:
+                          return r.a(2)
+                      }
+                    }, r, null, [
+                      [9, , 10, 12],
+                      [1, 7, 8, 13]
+                    ])
+                  })()
+                }).apply(this, arguments)
+              }
+            }, {
+              key: "sessions",
+              value: function() {
+                var e = this;
+                return v(function() {
+                  var n = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 1;
+                  return o().m(function r() {
+                    var t, a, s, i, u, c, l;
+                    return o().w(function(r) {
+                      for (;;) switch (r.p = r.n) {
+                        case 0:
+                          t = !1, a = !1, r.p = 1, i = m(e.iterateStore("chat_histories", n));
+                        case 2:
+                          return r.n = 3, h(i.next());
+                        case 3:
+                          if (!(t = !(u = r.v).done)) {
+                            r.n = 5;
+                            break
+                          }
+                          if (!$(c = u.value)) {
+                            r.n = 4;
+                            break
+                          }
+                          return r.n = 4, c;
+                        case 4:
+                          t = !1, r.n = 2;
+                          break;
+                        case 5:
+                          r.n = 7;
+                          break;
+                        case 6:
+                          r.p = 6, l = r.v, a = !0, s = l;
+                        case 7:
+                          if (r.p = 7, r.p = 8, !t || null == i.return) {
+                            r.n = 9;
+                            break
+                          }
+                          return r.n = 9, h(i.return());
+                        case 9:
+                          if (r.p = 9, !a) {
+                            r.n = 10;
+                            break
+                          }
+                          throw s;
+                        case 10:
+                          return r.f(9);
+                        case 11:
+                          return r.f(7);
+                        case 12:
+                          return r.a(2)
+                      }
+                    }, r, null, [
+                      [8, , 9, 11],
+                      [1, 6, 7, 12]
+                    ])
+                  })()
+                }).apply(this, arguments)
+              }
+            }, {
+              key: "settings",
+              value: function() {
+                var e = this;
+                return v(function() {
+                  var n = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : 1;
+                  return o().m(function r() {
+                    var t, a, s, i, u, c, l;
+                    return o().w(function(r) {
+                      for (;;) switch (r.p = r.n) {
+                        case 0:
+                          t = !1, a = !1, r.p = 1, i = m(e.iterateStore("settings", n));
+                        case 2:
+                          return r.n = 3, h(i.next());
+                        case 3:
+                          if (!(t = !(u = r.v).done)) {
+                            r.n = 5;
+                            break
+                          }
+                          if (!(c = u.value) || "string" != typeof c.key || !c.key) {
+                            r.n = 4;
+                            break
+                          }
+                          return r.n = 4, c;
+                        case 4:
+                          t = !1, r.n = 2;
+                          break;
+                        case 5:
+                          r.n = 7;
+                          break;
+                        case 6:
+                          r.p = 6, l = r.v, a = !0, s = l;
+                        case 7:
+                          if (r.p = 7, r.p = 8, !t || null == i.return) {
+                            r.n = 9;
+                            break
+                          }
+                          return r.n = 9, h(i.return());
+                        case 9:
+                          if (r.p = 9, !a) {
+                            r.n = 10;
+                            break
+                          }
+                          throw s;
+                        case 10:
+                          return r.f(9);
+                        case 11:
+                          return r.f(7);
+                        case 12:
+                          return r.a(2)
+                      }
+                    }, r, null, [
+                      [8, , 9, 11],
+                      [1, 6, 7, 12]
+                    ])
+                  })()
+                }).apply(this, arguments)
+              }
+            }, {
+              key: "messageSourceForSession",
+              value: (u = l(o().m(function e(n) {
+                var r, t, s, i, u, c, d, f, p, g, y, k, E, w, _, S, R, x, T, I, O, N, C, M, A, j, D, F;
+                return o().w(function(e) {
+                  for (;;) switch (e.p = e.n) {
+                    case 0:
+                      if ($(n)) {
+                        e.n = 1;
+                        break
+                      }
+                      return e.a(2, {
+                        count: 0,
+                        lastMessage: "",
+                        messages: v(o().m(function e() {
+                          return o().w(function(e) {
+                            for (;;)
+                              if (0 === e.n) return e.a(2)
+                          }, e)
+                        }))(),
+                        release: function() {}
+                      });
+                    case 1:
+                      if (r = Number(n.id || n.sessionId), t = Array.isArray(n.messages) ? n.messages : Array.isArray(n.history) ? n.history : [], s = function() {
+                          for (var e = 0; e < t.length; e += 1) t[e] = void 0;
+                          t.length = 0
+                        }, i = 0, !this.db.objectStoreNames.contains("chat_messages")) {
+                        e.n = 3;
+                        break
+                      }
+                      return e.n = 2, this.retryRead("chat_messages", function() {
+                        var e = l(o().m(function e(n, t) {
+                          var a, s;
+                          return o().w(function(e) {
+                            for (;;) switch (e.n) {
+                              case 0:
+                                return a = n.indexNames.contains("by_sessionId") ? n.index("by_sessionId") : n, e.n = 1, Y(a.count(IDBKeyRange.only(r)));
+                              case 1:
+                                return s = e.v, e.n = 2, X(t);
+                              case 2:
+                                return e.a(2, s)
+                            }
+                          }, e)
+                        }));
+                        return function(n, r) {
+                          return e.apply(this, arguments)
+                        }
+                      }());
+                    case 2:
+                      i = e.v;
+                    case 3:
+                      if (0 !== i) {
+                        e.n = 12;
+                        break
+                      }
+                      u = 0, c = "", d = a(t), e.p = 4, d.s();
+                    case 5:
+                      if ((f = d.n()).done) {
+                        e.n = 8;
+                        break
+                      }
+                      if ((p = f.value) && "object" === b(p)) {
+                        e.n = 6;
+                        break
+                      }
+                      return e.a(3, 7);
+                    case 6:
+                      u += 1, c = p.content || c;
+                    case 7:
+                      e.n = 5;
+                      break;
+                    case 8:
+                      e.n = 10;
+                      break;
+                    case 9:
+                      e.p = 9, D = e.v, d.e(D);
+                    case 10:
+                      return e.p = 10, d.f(), e.f(10);
+                    case 11:
+                      return g = function() {
+                        var e = v(o().m(function e() {
+                          var n, r, a;
+                          return o().w(function(e) {
+                            for (;;) switch (e.n) {
+                              case 0:
+                                n = 0, r = 0;
+                              case 1:
+                                if (!(r < t.length)) {
+                                  e.n = 5;
+                                  break
+                                }
+                                if ((a = t[r]) && "object" === b(a)) {
+                                  e.n = 2;
+                                  break
+                                }
+                                return t[r] = void 0, e.a(3, 4);
+                              case 2:
+                                return e.n = 3, {
+                                  index: n,
+                                  message: a
+                                };
+                              case 3:
+                                t[r] = void 0, n += 1;
+                              case 4:
+                                r += 1, e.n = 1;
+                                break;
+                              case 5:
+                                return e.a(2)
+                            }
+                          }, e)
+                        }));
+                        return function() {
+                          return e.apply(this, arguments)
+                        }
+                      }(), e.a(2, {
+                        count: u,
+                        lastMessage: c,
+                        messages: g(),
+                        release: s
+                      });
+                    case 12:
+                      if (y = this, k = function() {
+                          var e = v(o().m(function e() {
+                            var n, t;
+                            return o().w(function(e) {
+                              for (;;) switch (e.n) {
+                                case 0:
+                                  return e.n = 1, h(y.retryRead("chat_messages", function() {
+                                    var e = l(o().m(function e(t, a) {
+                                      var s, i;
+                                      return o().w(function(e) {
+                                        for (;;) switch (e.n) {
+                                          case 0:
+                                            return s = void 0 === n ? IDBKeyRange.bound([r, 0], [r, Number.MAX_SAFE_INTEGER]) : IDBKeyRange.bound(n, [r, Number.MAX_SAFE_INTEGER], !0, !1), e.n = 1, new Promise(function(e, n) {
+                                              var r = t.openCursor(s);
+                                              r.onerror = function() {
+                                                return n(r.error)
+                                              }, r.onsuccess = function() {
+                                                var n = r.result;
+                                                e(n ? {
+                                                  key: n.primaryKey,
+                                                  value: n.value
+                                                } : null)
+                                              }
+                                            });
+                                          case 1:
+                                            return i = e.v, e.n = 2, X(a);
+                                          case 2:
+                                            if (i) {
+                                              e.n = 3;
+                                              break
+                                            }
+                                            return e.a(2, null);
+                                          case 3:
+                                            return n = i.key, e.a(2, i.value)
+                                        }
+                                      }, e)
+                                    }));
+                                    return function(n, r) {
+                                      return e.apply(this, arguments)
+                                    }
+                                  }()));
+                                case 1:
+                                  if (t = e.v) {
+                                    e.n = 2;
+                                    break
+                                  }
+                                  return e.a(2);
+                                case 2:
+                                  if (t.message && "object" === b(t.message)) {
+                                    e.n = 3;
+                                    break
+                                  }
+                                  return e.a(3, 0);
+                                case 3:
+                                  return e.n = 4, t;
+                                case 4:
+                                  e.n = 0;
+                                  break;
+                                case 5:
+                                  return e.a(2)
+                              }
+                            }, e)
+                          }));
+                          return function() {
+                            return e.apply(this, arguments)
+                          }
+                        }(), E = t.some(function(e) {
+                          return Boolean(e && "object" === b(e))
+                        }), !E) {
+                        e.n = 14;
+                        break
+                      }
+                      return w = 0, _ = "", S = function() {
+                        var e = l(o().m(function e() {
+                          var n, r, a, s, i;
+                          return o().w(function(e) {
+                            for (;;) switch (e.n) {
+                              case 0:
+                                return n = k()[Symbol.asyncIterator](), e.n = 1, n.next();
+                              case 1:
+                                r = e.v, a = 0;
+                              case 2:
+                                if (!(a < t.length) && r.done) {
+                                  e.n = 8;
+                                  break
+                                }
+                              case 3:
+                                if (r.done || !(Number(r.value.index) < a)) {
+                                  e.n = 5;
+                                  break
+                                }
+                                return e.n = 4, n.next();
+                              case 4:
+                                r = e.v, e.n = 3;
+                                break;
+                              case 5:
+                                if (s = r.done || Number(r.value.index) !== a ? void 0 : r.value.message, (i = s || t[a]) && "object" === b(i) && (w += 1, _ = i.content || _), !s) {
+                                  e.n = 7;
+                                  break
+                                }
+                                return e.n = 6, n.next();
+                              case 6:
+                                r = e.v;
+                              case 7:
+                                a += 1, e.n = 2;
+                                break;
+                              case 8:
+                                return e.a(2)
+                            }
+                          }, e)
+                        }));
+                        return function() {
+                          return e.apply(this, arguments)
+                        }
+                      }(), e.n = 13, S();
+                    case 13:
+                      return R = function() {
+                        var e = v(o().m(function e() {
+                          var n, r, a, i, u, c;
+                          return o().w(function(e) {
+                            for (;;) switch (e.p = e.n) {
+                              case 0:
+                                return n = k()[Symbol.asyncIterator](), e.n = 1, h(n.next());
+                              case 1:
+                                r = e.v, a = 0, i = 0, e.p = 2;
+                              case 3:
+                                if (!(a < t.length) && r.done) {
+                                  e.n = 11;
+                                  break
+                                }
+                              case 4:
+                                if (r.done || !(Number(r.value.index) < a)) {
+                                  e.n = 6;
+                                  break
+                                }
+                                return e.n = 5, h(n.next());
+                              case 5:
+                                r = e.v, e.n = 4;
+                                break;
+                              case 6:
+                                if (u = r.done || Number(r.value.index) !== a ? void 0 : r.value.message, !(c = u || t[a]) || "object" !== b(c)) {
+                                  e.n = 8;
+                                  break
+                                }
+                                return e.n = 7, {
+                                  index: i,
+                                  message: c
+                                };
+                              case 7:
+                                i += 1;
+                              case 8:
+                                if (a < t.length && (t[a] = void 0), !u) {
+                                  e.n = 10;
+                                  break
+                                }
+                                return e.n = 9, h(n.next());
+                              case 9:
+                                r = e.v;
+                              case 10:
+                                a += 1, e.n = 3;
+                                break;
+                              case 11:
+                                return e.p = 11, s(), e.f(11);
+                              case 12:
+                                return e.a(2)
+                            }
+                          }, e, null, [
+                            [2, , 11, 12]
+                          ])
+                        }));
+                        return function() {
+                          return e.apply(this, arguments)
+                        }
+                      }(), e.a(2, {
+                        count: w,
+                        lastMessage: _,
+                        messages: R(),
+                        release: s
+                      });
+                    case 14:
+                      x = function() {
+                        var e = v(o().m(function e() {
+                          var n, r, t, a, s, i, u, c;
+                          return o().w(function(e) {
+                            for (;;) switch (e.p = e.n) {
+                              case 0:
+                                n = 0, r = !1, t = !1, e.p = 1, s = m(k());
+                              case 2:
+                                return e.n = 3, h(s.next());
+                              case 3:
+                                if (!(r = !(i = e.v).done)) {
+                                  e.n = 6;
+                                  break
+                                }
+                                return u = i.value, e.n = 4, {
+                                  index: n,
+                                  message: u.message
+                                };
+                              case 4:
+                                n += 1;
+                              case 5:
+                                r = !1, e.n = 2;
+                                break;
+                              case 6:
+                                e.n = 8;
+                                break;
+                              case 7:
+                                e.p = 7, c = e.v, t = !0, a = c;
+                              case 8:
+                                if (e.p = 8, e.p = 9, !r || null == s.return) {
+                                  e.n = 10;
+                                  break
+                                }
+                                return e.n = 10, h(s.return());
+                              case 10:
+                                if (e.p = 10, !t) {
+                                  e.n = 11;
+                                  break
+                                }
+                                throw a;
+                              case 11:
+                                return e.f(10);
+                              case 12:
+                                return e.f(8);
+                              case 13:
+                                return e.a(2)
+                            }
+                          }, e, null, [
+                            [9, , 10, 12],
+                            [1, 7, 8, 13]
+                          ])
+                        }));
+                        return function() {
+                          return e.apply(this, arguments)
+                        }
+                      }(), T = 0, I = String(n.lastMessage || ""), O = !1, N = !1, e.p = 15, M = m(k());
+                    case 16:
+                      return e.n = 17, M.next();
+                    case 17:
+                      if (!(O = !(A = e.v).done)) {
+                        e.n = 19;
+                        break
+                      }
+                      j = A.value, T += 1, I = j.message.content || I;
+                    case 18:
+                      O = !1, e.n = 16;
+                      break;
+                    case 19:
+                      e.n = 21;
+                      break;
+                    case 20:
+                      e.p = 20, F = e.v, N = !0, C = F;
+                    case 21:
+                      if (e.p = 21, e.p = 22, !O || null == M.return) {
+                        e.n = 23;
+                        break
+                      }
+                      return e.n = 23, M.return();
+                    case 23:
+                      if (e.p = 23, !N) {
+                        e.n = 24;
+                        break
+                      }
+                      throw C;
+                    case 24:
+                      return e.f(23);
+                    case 25:
+                      return e.f(21);
+                    case 26:
+                      return e.a(2, {
+                        count: T,
+                        lastMessage: I,
+                        messages: x(),
+                        release: s
+                      })
+                  }
+                }, e, this, [
+                  [22, , 23, 25],
+                  [15, 20, 21, 26],
+                  [4, 9, 10, 11]
+                ])
+              })), function(e) {
+                return u.apply(this, arguments)
+              })
+            }], s = [{
+              key: "open",
+              value: (i = l(o().m(function n() {
+                var r, t;
+                return o().w(function(n) {
+                  for (;;) switch (n.p = n.n) {
+                    case 0:
+                      return n.p = 0, r = e, n.n = 1, Q();
+                    case 1:
+                      return t = n.v, n.a(2, new r(t));
+                    case 2:
+                      return n.p = 2, n.v, n.a(2, null)
+                  }
+                }, n, null, [
+                  [0, 2]
+                ])
+              })), function() {
+                return i.apply(this, arguments)
+              })
+            }], r && d(n.prototype, r), s && d(n, s), Object.defineProperty(n, "prototype", {
+              writable: !1
+            }), n;
+            var n, r, s, i, u, c, p, g
+          }(),
+          ne = "optimized_indexes_v2";
+
+        function re() {
+          return te.apply(this, arguments)
+        }
+
+        function te() {
+          return (te = l(o().m(function e() {
+            var n;
+            return o().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  return e.n = 1, y();
+                case 1:
+                  if ((n = e.v) && "running" === n.status && "optimized-indexes" === n.job) {
+                    e.n = 2;
+                    break
+                  }
+                  return e.a(2);
+                case 2:
+                  return e.n = 3, E({
+                    job: n.job,
+                    phase: n.phase,
+                    unitType: n.unitType,
+                    unitId: n.unitId,
+                    reason: "index-crash",
+                    detail: n.detail
+                  });
+                case 3:
+                  return e.n = 4, w(_, "optimized-indexes");
+                case 4:
+                  return e.n = 5, k();
+                case 5:
+                  return e.a(2)
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function ae(e) {
+          var n, r, t, s = new Set;
+          null !== (n = e.image) && void 0 !== n && n.startsWith("piupiu/media/") && s.add(e.image), null !== (r = e.speakerAvatar) && void 0 !== r && r.startsWith("piupiu/media/") && s.add(e.speakerAvatar);
+          var i, o = a((null === (t = e.content) || void 0 === t ? void 0 : t.match(/piupiu\/media\/[^\s)]+/g)) || []);
+          try {
+            for (o.s(); !(i = o.n()).done;) {
+              var u = i.value;
+              s.add(u)
+            }
+          } catch (c) {
+            o.e(c)
+          } finally {
+            o.f()
+          }
+          return Array.from(s)
+        }
+
+        function se(e) {
+          var n = {};
+          try {
+            n = JSON.parse(e.message_json || "{}")
+          } catch (t) {
+            n = {}
+          }
+          return r(r({}, n), {}, {
+            image: e.image || n.image,
+            speakerAvatar: e.speakerAvatar || n.speakerAvatar,
+            content: e.content || String(n.content || "")
+          })
+        }
+
+        function ie(e) {
+          return oe.apply(this, arguments)
+        }
+
+        function oe() {
+          return (oe = l(o().m(function e(n) {
+            var r, t, s, i, u;
+            return o().w(function(e) {
+              for (;;) switch (e.p = e.n) {
+                case 0:
+                  return r = [], e.n = 1, D.transaction(l(o().m(function e() {
+                    var t, s, i, u, c, l, d, f, p, b, m;
+                    return o().w(function(e) {
+                      for (;;) switch (e.p = e.n) {
+                        case 0:
+                          t = a(n), e.p = 1, t.s();
+                        case 2:
+                          if ((s = t.n()).done) {
+                            e.n = 14;
+                            break
+                          }
+                          u = s.value, c = void 0;
+                          try {
+                            c = JSON.parse(u.role_json)
+                          } catch (o) {
+                            c = {
+                              name: "损坏的角色 ".concat(u.id)
+                            }
+                          }
+                          return r.push({
+                            id: u.id,
+                            roleData: c
+                          }), l = S(c), e.n = 3, D.run("UPDATE roles SET role_name = ?, description_text = ?, tags_json = ?, role_type = ?,\n                 member_count = ?, member_ids_json = ?, is_official = ?, is_market_locked = ?\n                 WHERE id = ?", [l.name, l.description, JSON.stringify(l.tags), l.roleType, l.memberCount, JSON.stringify(l.memberIds), l.isOfficial ? 1 : 0, l.isMarketLocked ? 1 : 0, u.id], !1);
+                        case 3:
+                          return e.n = 4, D.run("DELETE FROM role_tags WHERE role_id = ?", [u.id], !1);
+                        case 4:
+                          d = a(l.tags), e.p = 5, d.s();
+                        case 6:
+                          if ((f = d.n()).done) {
+                            e.n = 8;
+                            break
+                          }
+                          return p = f.value, e.n = 7, D.run("INSERT OR IGNORE INTO role_tags(role_id, tag) VALUES(?, ?)", [u.id, p], !1);
+                        case 7:
+                          e.n = 6;
+                          break;
+                        case 8:
+                          e.n = 10;
+                          break;
+                        case 9:
+                          e.p = 9, b = e.v, d.e(b);
+                        case 10:
+                          return e.p = 10, d.f(), e.f(10);
+                        case 11:
+                          return e.n = 12, D.run("DELETE FROM chat_media_refs WHERE owner_type = 'role' AND owner_id = ?", [u.id], !1);
+                        case 12:
+                          if (null === (i = u.image_path) || void 0 === i || !i.startsWith("piupiu/media/")) {
+                            e.n = 13;
+                            break
+                          }
+                          return e.n = 13, D.run("INSERT OR IGNORE INTO chat_media_refs(owner_type, owner_id, message_index, path)\n                     VALUES('role', ?, -1, ?)", [u.id, u.image_path], !1);
+                        case 13:
+                          e.n = 2;
+                          break;
+                        case 14:
+                          e.n = 16;
+                          break;
+                        case 15:
+                          e.p = 15, m = e.v, t.e(m);
+                        case 16:
+                          return e.p = 16, t.f(), e.f(16);
+                        case 17:
+                          return e.a(2)
+                      }
+                    }, e, null, [
+                      [5, 9, 10, 11],
+                      [1, 15, 16, 17]
+                    ])
+                  })));
+                case 1:
+                  t = 0, s = r;
+                case 2:
+                  if (!(t < s.length)) {
+                    e.n = 7;
+                    break
+                  }
+                  return i = s[t], e.p = 3, e.n = 4, R(i.id, i.roleData);
+                case 4:
+                  e.n = 6;
+                  break;
+                case 5:
+                  e.p = 5, u = e.v, console.warn("[indexMaintenance] Role entry index rebuild failed:", {
+                    roleId: i.id,
+                    error: u
+                  });
+                case 6:
+                  t++, e.n = 2;
+                  break;
+                case 7:
+                  return e.a(2)
+              }
+            }, e, null, [
+              [3, 5]
+            ])
+          }))).apply(this, arguments)
+        }
+
+        function ue(e) {
+          return ce.apply(this, arguments)
+        }
+
+        function ce() {
+          return (ce = l(o().m(function e(n) {
+            return o().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  return e.n = 1, D.transaction(l(o().m(function e() {
+                    var r, t, s, i, u, c, l, d, f;
+                    return o().w(function(e) {
+                      for (;;) switch (e.p = e.n) {
+                        case 0:
+                          r = a(n), e.p = 1, r.s();
+                        case 2:
+                          if ((t = r.n()).done) {
+                            e.n = 11;
+                            break
+                          }
+                          return s = t.value, e.n = 3, D.run("DELETE FROM chat_media_refs WHERE owner_type = 'message' AND owner_id = ? AND message_index = ?", [s.session_id, s.message_index], !1);
+                        case 3:
+                          i = se(s), u = a(ae(i)), e.p = 4, u.s();
+                        case 5:
+                          if ((c = u.n()).done) {
+                            e.n = 7;
+                            break
+                          }
+                          return l = c.value, e.n = 6, D.run("INSERT OR IGNORE INTO chat_media_refs(owner_type, owner_id, message_index, path)\n                     VALUES('message', ?, ?, ?)", [s.session_id, s.message_index, l], !1);
+                        case 6:
+                          e.n = 5;
+                          break;
+                        case 7:
+                          e.n = 9;
+                          break;
+                        case 8:
+                          e.p = 8, d = e.v, u.e(d);
+                        case 9:
+                          return e.p = 9, u.f(), e.f(9);
+                        case 10:
+                          e.n = 2;
+                          break;
+                        case 11:
+                          e.n = 13;
+                          break;
+                        case 12:
+                          e.p = 12, f = e.v, r.e(f);
+                        case 13:
+                          return e.p = 13, r.f(), e.f(13);
+                        case 14:
+                          return e.a(2)
+                      }
+                    }, e, null, [
+                      [4, 8, 9, 10],
+                      [1, 12, 13, 14]
+                    ])
+                  })));
+                case 1:
+                  return e.a(2)
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function le(e) {
+          return de.apply(this, arguments)
+        }
+
+        function de() {
+          return (de = l(o().m(function n(r) {
+            var t, s, l, d, f, b, m, h, v, E, w, _, S, R, x, T, I, O, N, C, M, A, j, F, L, P, B, W, U, H, q, z, G, V, K, J, Y, X;
+            return o().w(function(n) {
+              for (;;) switch (n.p = n.n) {
+                case 0:
+                  return n.n = 1, re();
+                case 1:
+                  return n.n = 2, D.getMeta(ne);
+                case 2:
+                  if (null == (d = n.v) || !d.completed || 4 !== d.version) {
+                    n.n = 3;
+                    break
+                  }
+                  return n.a(2);
+                case 3:
+                  return z = i, n.n = 4, u();
+                case 4:
+                  return f = z(n.v.filter(function(e) {
+                    return "optimized-indexes" === e.job
+                  })), n.n = 5, Promise.all([D.query("SELECT COUNT(*) AS total FROM roles"), D.query("SELECT COUNT(*) AS total FROM chat_messages")]);
+                case 5:
+                  b = n.v, m = e(b, 2), h = m[0], v = m[1], E = Number((null === (t = h[0]) || void 0 === t ? void 0 : t.total) || 0), w = Number((null === (s = v[0]) || void 0 === s ? void 0 : s.total) || 0), _ = 0, S = 0;
+                case 6:
+                  return n.n = 7, D.query("SELECT id, role_json, image_path FROM roles\n             WHERE id > ? ORDER BY id ASC LIMIT ?", [S, 1]);
+                case 7:
+                  if (0 !== (R = n.v).length) {
+                    n.n = 8;
+                    break
+                  }
+                  return n.a(3, 25);
+                case 8:
+                  if (S = Number(R[R.length - 1].id), x = "".concat(R[0].id, ":").concat(R[R.length - 1].id), T = R.filter(function(e) {
+                      return !f.has(c("optimized-indexes", "role", e.id))
+                    }), I = f.has(c("optimized-indexes", "role-batch", x)), 0 !== T.length) {
+                    n.n = 9;
+                    break
+                  }
+                  _ += R.length, n.n = 24;
+                  break;
+                case 9:
+                  if (I) {
+                    n.n = 13;
+                    break
+                  }
+                  return n.n = 10, p({
+                    job: "optimized-indexes",
+                    phase: "index-roles",
+                    unitType: "role-batch",
+                    unitId: x,
+                    detail: {
+                      firstRoleId: R[0].id,
+                      lastRoleId: R[R.length - 1].id,
+                      count: R.length
+                    }
+                  });
+                case 10:
+                  return n.n = 11, ie(T);
+                case 11:
+                  return n.n = 12, p({
+                    job: "optimized-indexes",
+                    phase: "index-roles",
+                    unitType: "role-batch",
+                    unitId: x,
+                    status: "done",
+                    detail: {
+                      firstRoleId: R[0].id,
+                      lastRoleId: R[R.length - 1].id,
+                      count: R.length
+                    }
+                  });
+                case 12:
+                  _ += R.length, n.n = 24;
+                  break;
+                case 13:
+                  O = a(R), n.p = 14, O.s();
+                case 15:
+                  if ((N = O.n()).done) {
+                    n.n = 21;
+                    break
+                  }
+                  if (C = N.value, _ += 1, !f.has(c("optimized-indexes", "role", C.id))) {
+                    n.n = 16;
+                    break
+                  }
+                  return null == r || r({
+                    phase: "roles",
+                    current: _,
+                    total: E,
+                    message: "正在重建角色索引 ".concat(_, "/").concat(E)
+                  }), n.a(3, 20);
+                case 16:
+                  return n.n = 17, p({
+                    job: "optimized-indexes",
+                    phase: "index-roles",
+                    unitType: "role",
+                    unitId: C.id,
+                    detail: {
+                      roleId: C.id
+                    }
+                  });
+                case 17:
+                  return n.n = 18, ie([C]);
+                case 18:
+                  return n.n = 19, p({
+                    job: "optimized-indexes",
+                    phase: "index-roles",
+                    unitType: "role",
+                    unitId: C.id,
+                    status: "done",
+                    detail: {
+                      roleId: C.id
+                    }
+                  });
+                case 19:
+                  null == r || r({
+                    phase: "roles",
+                    current: _,
+                    total: E,
+                    message: "正在重建角色索引 ".concat(_, "/").concat(E)
+                  });
+                case 20:
+                  n.n = 15;
+                  break;
+                case 21:
+                  n.n = 23;
+                  break;
+                case 22:
+                  n.p = 22, G = n.v, O.e(G);
+                case 23:
+                  return n.p = 23, O.f(), n.f(23);
+                case 24:
+                  null == r || r({
+                    phase: "roles",
+                    current: _,
+                    total: E,
+                    message: "正在重建角色索引 ".concat(_, "/").concat(E)
+                  }), n.n = 6;
+                  break;
+                case 25:
+                  M = 0, A = 0;
+                case 26:
+                  return n.n = 27, D.query("SELECT rowid AS row_id, session_id, message_index, message_json,\n                    json_extract(message_json, '$.image') AS image,\n                    json_extract(message_json, '$.speakerAvatar') AS speakerAvatar,\n                    content\n             FROM chat_messages\n             WHERE rowid > ?\n             ORDER BY rowid ASC LIMIT ?", [A, 1]);
+                case 27:
+                  if (0 !== (j = n.v).length) {
+                    n.n = 28;
+                    break
+                  }
+                  return n.a(3, 45);
+                case 28:
+                  if (A = Number(j[j.length - 1].row_id), F = "".concat(j[0].row_id, ":").concat(j[j.length - 1].row_id), L = j.filter(function(e) {
+                      return !f.has(c("optimized-indexes", "message", "".concat(e.session_id, ":").concat(e.message_index)))
+                    }), P = f.has(c("optimized-indexes", "message-batch", F)), 0 !== L.length) {
+                    n.n = 29;
+                    break
+                  }
+                  M += j.length, n.n = 44;
+                  break;
+                case 29:
+                  if (P) {
+                    n.n = 33;
+                    break
+                  }
+                  return n.n = 30, p({
+                    job: "optimized-indexes",
+                    phase: "index-messages",
+                    unitType: "message-batch",
+                    unitId: F,
+                    detail: {
+                      firstRowId: j[0].row_id,
+                      lastRowId: j[j.length - 1].row_id,
+                      count: j.length
+                    }
+                  });
+                case 30:
+                  return n.n = 31, ue(L);
+                case 31:
+                  return n.n = 32, p({
+                    job: "optimized-indexes",
+                    phase: "index-messages",
+                    unitType: "message-batch",
+                    unitId: F,
+                    status: "done",
+                    detail: {
+                      firstRowId: j[0].row_id,
+                      lastRowId: j[j.length - 1].row_id,
+                      count: j.length
+                    }
+                  });
+                case 32:
+                  M += j.length, n.n = 44;
+                  break;
+                case 33:
+                  B = a(j), n.p = 34, B.s();
+                case 35:
+                  if ((W = B.n()).done) {
+                    n.n = 41;
+                    break
+                  }
+                  if (U = W.value, M += 1, H = "".concat(U.session_id, ":").concat(U.message_index), !f.has(c("optimized-indexes", "message", H))) {
+                    n.n = 36;
+                    break
+                  }
+                  return null == r || r({
+                    phase: "messages",
+                    current: M,
+                    total: w,
+                    message: "正在重建聊天索引 ".concat(M, "/").concat(w)
+                  }), n.a(3, 40);
+                case 36:
+                  return n.n = 37, p({
+                    job: "optimized-indexes",
+                    phase: "index-messages",
+                    unitType: "message",
+                    unitId: H,
+                    detail: {
+                      sessionId: U.session_id,
+                      messageIndex: U.message_index,
+                      rowId: U.row_id
+                    }
+                  });
+                case 37:
+                  return n.n = 38, ue([U]);
+                case 38:
+                  return n.n = 39, p({
+                    job: "optimized-indexes",
+                    phase: "index-messages",
+                    unitType: "message",
+                    unitId: H,
+                    status: "done",
+                    detail: {
+                      sessionId: U.session_id,
+                      messageIndex: U.message_index,
+                      rowId: U.row_id
+                    }
+                  });
+                case 39:
+                  null == r || r({
+                    phase: "messages",
+                    current: M,
+                    total: w,
+                    message: "正在重建聊天索引 ".concat(M, "/").concat(w)
+                  });
+                case 40:
+                  n.n = 35;
+                  break;
+                case 41:
+                  n.n = 43;
+                  break;
+                case 42:
+                  n.p = 42, V = n.v, B.e(V);
+                case 43:
+                  return n.p = 43, B.f(), n.f(43);
+                case 44:
+                  null == r || r({
+                    phase: "messages",
+                    current: M,
+                    total: w,
+                    message: "正在重建聊天索引 ".concat(M, "/").concat(w)
+                  }), n.n = 26;
+                  break;
+                case 45:
+                  if (q = f.has(c("optimized-indexes", "fts", "chat_messages_fts")), !D.isFtsAvailable() || q) {
+                    n.n = 48;
+                    break
+                  }
+                  return null == r || r({
+                    phase: "fts",
+                    current: 0,
+                    total: 1,
+                    message: "正在重建聊天全文索引"
+                  }), n.n = 46, p({
+                    job: "optimized-indexes",
+                    phase: "index-fts",
+                    unitType: "fts",
+                    unitId: "chat_messages_fts"
+                  });
+                case 46:
+                  return n.n = 47, D.run("INSERT INTO chat_messages_fts(chat_messages_fts) VALUES('rebuild')");
+                case 47:
+                  return n.n = 48, p({
+                    job: "optimized-indexes",
+                    phase: "index-fts",
+                    unitType: "fts",
+                    unitId: "chat_messages_fts",
+                    status: "done"
+                  });
+                case 48:
+                  return n.n = 49, p({
+                    job: "optimized-indexes",
+                    phase: "index-roles",
+                    unitType: "global-entry-indexes",
+                    unitId: "global"
+                  });
+                case 49:
+                  return n.p = 49, n.n = 50, g();
+                case 50:
+                  n.n = 52;
+                  break;
+                case 51:
+                  n.p = 51, K = n.v, console.warn("[indexMaintenance] Global entry index rebuild failed:", K);
+                case 52:
+                  return n.n = 53, p({
+                    job: "optimized-indexes",
+                    phase: "index-roles",
+                    unitType: "global-entry-indexes",
+                    unitId: "global",
+                    status: "done"
+                  });
+                case 53:
+                  return n.n = 54, D.setMeta(ne, {
+                    completed: !0,
+                    version: 4,
+                    completedAt: Date.now(),
+                    roles: E,
+                    messages: w,
+                    ftsSkipped: q
+                  });
+                case 54:
+                  return n.n = 55, y();
+                case 55:
+                  if (Y = l = n.v, J = null === Y) {
+                    n.n = 56;
+                    break
+                  }
+                  J = void 0 === l;
+                case 56:
+                  if (!J) {
+                    n.n = 57;
+                    break
+                  }
+                  X = void 0, n.n = 58;
+                  break;
+                case 57:
+                  X = l.job;
+                case 58:
+                  if ("optimized-indexes" !== X) {
+                    n.n = 59;
+                    break
+                  }
+                  return n.n = 59, k();
+                case 59:
+                  null == r || r({
+                    phase: "complete",
+                    current: 1,
+                    total: 1,
+                    message: "本地索引已就绪"
+                  });
+                case 60:
+                  return n.a(2)
+              }
+            }, n, null, [
+              [49, 51],
+              [34, 42, 43, 44],
+              [14, 22, 23, 24]
+            ])
+          }))).apply(this, arguments)
+        }
+        var fe = "indexeddb_migration_v1",
+          pe = "session_timestamp_repair_v1",
+          be = "migration_skipped_records_v1";
+
+        function me() {
+          return ge.apply(this, arguments)
+        }
+
+        function ge() {
+          return (ge = l(o().m(function e() {
+            var n, r, t, a, s, i, u, c;
+            return o().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  return e.n = 1, y();
+                case 1:
+                  if ((n = e.v) && "running" === n.status && "indexeddb" === n.job) {
+                    e.n = 2;
+                    break
+                  }
+                  return e.a(2, 0);
+                case 2:
+                  return r = 0, t = n.unitId, a = n.detail || {}, e.n = 3, E({
+                    job: n.job,
+                    phase: n.phase,
+                    unitType: n.unitType,
+                    unitId: t,
+                    reason: "previous-crash",
+                    detail: a
+                  });
+                case 3:
+                  if (e.v && (r += 1), "role" !== n.unitType) {
+                    e.n = 6;
+                    break
+                  }
+                  if (s = Number(t), !(Number.isFinite(s) && s > 0)) {
+                    e.n = 5;
+                    break
+                  }
+                  return e.n = 4, O([s]).catch(function() {});
+                case 4:
+                  return e.n = 5, V("roles", ["migration-".concat(s)]).catch(function() {});
+                case 5:
+                case 8:
+                  e.n = 12;
+                  break;
+                case 6:
+                  if ("session" !== n.unitType) {
+                    e.n = 9;
+                    break
+                  }
+                  if (i = Number(t), !(Number.isFinite(i) && i > 0)) {
+                    e.n = 8;
+                    break
+                  }
+                  return e.n = 7, D.transaction(l(o().m(function e() {
+                    return o().w(function(e) {
+                      for (;;) switch (e.n) {
+                        case 0:
+                          return e.n = 1, D.run("DELETE FROM chat_messages WHERE session_id = ?", [i], !1);
+                        case 1:
+                          return e.n = 2, D.run("DELETE FROM chat_sessions WHERE id = ?", [i], !1);
+                        case 2:
+                          return e.n = 3, D.run("DELETE FROM chat_media_refs WHERE owner_type = 'message' AND owner_id = ?", [i], !1);
+                        case 3:
+                          return e.a(2)
+                      }
+                    }, e)
+                  }))).catch(function() {});
+                case 7:
+                  return e.n = 8, q([i]).catch(function() {});
+                case 9:
+                  if ("setting" !== n.unitType) {
+                    e.n = 12;
+                    break
+                  }
+                  return u = String(t), c = [a.mediaPath, a.path].map(function(e) {
+                    return "string" == typeof e ? e : ""
+                  }).filter(Boolean), e.n = 10, D.transaction(l(o().m(function e() {
+                    return o().w(function(e) {
+                      for (;;) switch (e.n) {
+                        case 0:
+                          return e.n = 1, D.run("DELETE FROM settings WHERE key = ?", [u], !1);
+                        case 1:
+                          return e.n = 2, D.run("DELETE FROM settings WHERE key = ?", [z(u)], !1);
+                        case 2:
+                          return e.a(2)
+                      }
+                    }, e)
+                  }))).catch(function() {});
+                case 10:
+                  return e.n = 11, Promise.all(c.map(function(e) {
+                    return H(e).catch(function() {})
+                  }));
+                case 11:
+                  return e.n = 12, V("settings", ["".concat(K(u), "-")]).catch(function() {});
+                case 12:
+                  return e.n = 13, k();
+                case 13:
+                  return e.n = 14, w(j, "indexeddb");
+                case 14:
+                  return e.a(2, r)
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function he(e) {
+          var n = e instanceof Error ? "".concat(e.name, ": ").concat(e.message) : String(e);
+          return /NotReadableError|requested file could not be read|invalid base64 data url|invalid character/i.test(n)
+        }
+
+        function ve(e) {
+          var n = e instanceof Error ? "".concat(e.name, ": ").concat(e.message) : String(e);
+          return /NotReadableError|Data lost due to missing file|requested file could not be read|Invalid string length|DataCloneError|cyclic object value|circular structure|serialize a BigInt/i.test(n)
+        }
+
+        function ye(e) {
+          var n;
+          return null !== (n = null == e ? void 0 : e.data) && void 0 !== n ? n : e
+        }
+
+        function ke(e) {
+          if (e instanceof Date) return e.getTime();
+          if ("number" == typeof e) return Number.isFinite(e) ? e : 0;
+          if ("string" == typeof e) {
+            var n = Number(e);
+            if (Number.isFinite(n) && n > 0) return n;
+            var r = Date.parse(e);
+            return Number.isFinite(r) ? r : 0
+          }
+          return 0
+        }
+
+        function Ee(e) {
+          var n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 0,
+            r = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : 0,
+            t = ke(e.createdAt) || ke(e.created_at) || ke(e.createTime) || n || 0;
+          return {
+            createdAt: t,
+            updatedAt: ke(e.updatedAt) || ke(e.lastUpdateTime) || ke(e.updated_at) || ke(e.updateTime) || r || t
+          }
+        }
+
+        function we(e) {
+          return _e.apply(this, arguments)
+        }
+
+        function _e() {
+          return (_e = l(o().m(function e(n) {
+            var r, t, a, s, i, u, c, l, d, f, p, b, g, h, v, y, k, E, w, _, S, R, x, T, I;
+            return o().w(function(e) {
+              for (;;) switch (e.p = e.n) {
+                case 0:
+                  return e.n = 1, D.getMeta(pe);
+                case 1:
+                  if (!e.v) {
+                    e.n = 2;
+                    break
+                  }
+                  return e.a(2);
+                case 2:
+                  return e.n = 3, ee.open();
+                case 3:
+                  if (r = e.v) {
+                    e.n = 4;
+                    break
+                  }
+                  return e.a(2);
+                case 4:
+                  t = 0, e.p = 5, a = !1, s = !1, e.p = 6, u = m(r.sessions());
+                case 7:
+                  return e.n = 8, u.next();
+                case 8:
+                  if (!(a = !(c = e.v).done)) {
+                    e.n = 32;
+                    break
+                  }
+                  if (l = c.value, d = Number(l.id || l.sessionId)) {
+                    e.n = 9;
+                    break
+                  }
+                  return e.a(3, 31);
+                case 9:
+                  return e.n = 10, r.messageSourceForSession(l);
+                case 10:
+                  f = e.v, p = 0, b = 0, e.p = 11, g = !1, h = !1, e.p = 12, y = m(f.messages);
+                case 13:
+                  return e.n = 14, y.next();
+                case 14:
+                  if (!(g = !(k = e.v).done)) {
+                    e.n = 17;
+                    break
+                  }
+                  if (E = k.value.message, w = ke(null == E ? void 0 : E.timestamp)) {
+                    e.n = 15;
+                    break
+                  }
+                  return e.a(3, 16);
+                case 15:
+                  p || (p = w), b = w;
+                case 16:
+                  g = !1, e.n = 13;
+                  break;
+                case 17:
+                  e.n = 19;
+                  break;
+                case 18:
+                  e.p = 18, T = e.v, h = !0, v = T;
+                case 19:
+                  if (e.p = 19, e.p = 20, !g || null == y.return) {
+                    e.n = 21;
+                    break
+                  }
+                  return e.n = 21, y.return();
+                case 21:
+                  if (e.p = 21, !h) {
+                    e.n = 22;
+                    break
+                  }
+                  throw v;
+                case 22:
+                  return e.f(21);
+                case 23:
+                  return e.f(19);
+                case 24:
+                  return e.p = 24, f.release(), e.f(24);
+                case 25:
+                  if ((_ = Ee(l, p, b)).updatedAt) {
+                    e.n = 26;
+                    break
+                  }
+                  return e.a(3, 31);
+                case 26:
+                  return e.n = 27, D.query("SELECT created_at, updated_at FROM chat_sessions WHERE id = ? LIMIT 1", [d]);
+                case 27:
+                  if (S = e.v, R = S[0]) {
+                    e.n = 28;
+                    break
+                  }
+                  return e.a(3, 31);
+                case 28:
+                  if (x = Number(n || 0), x > 0 && Number(R.updated_at) >= x - 864e5 && Number(R.updated_at) <= x + 3e5 || !(Number(R.updated_at) > 0)) {
+                    e.n = 29;
+                    break
+                  }
+                  return e.a(3, 31);
+                case 29:
+                  return e.n = 30, D.run("UPDATE chat_sessions SET created_at = ?, updated_at = ? WHERE id = ?", [_.createdAt || _.updatedAt, _.updatedAt, d]);
+                case 30:
+                  return t += 1, e.n = 31, He();
+                case 31:
+                  a = !1, e.n = 7;
+                  break;
+                case 32:
+                  e.n = 34;
+                  break;
+                case 33:
+                  e.p = 33, I = e.v, s = !0, i = I;
+                case 34:
+                  if (e.p = 34, e.p = 35, !a || null == u.return) {
+                    e.n = 36;
+                    break
+                  }
+                  return e.n = 36, u.return();
+                case 36:
+                  if (e.p = 36, !s) {
+                    e.n = 37;
+                    break
+                  }
+                  throw i;
+                case 37:
+                  return e.f(36);
+                case 38:
+                  return e.f(34);
+                case 39:
+                  return e.p = 39, r.close(), e.f(39);
+                case 40:
+                  return e.n = 41, D.setMeta(pe, {
+                    completedAt: Date.now(),
+                    repaired: t
+                  });
+                case 41:
+                  return e.a(2)
+              }
+            }, e, null, [
+              [35, , 36, 38],
+              [20, , 21, 23],
+              [12, 18, 19, 24],
+              [11, , 24, 25],
+              [6, 33, 34, 39],
+              [5, , 39, 40]
+            ])
+          }))).apply(this, arguments)
+        }
+
+        function Se(e) {
+          return {
+            contentChars: "string" == typeof(null == e ? void 0 : e.content) ? e.content.length : 0,
+            imageChars: "string" == typeof(null == e ? void 0 : e.image) ? e.image.length : 0,
+            speakerAvatarChars: "string" == typeof(null == e ? void 0 : e.speakerAvatar) ? e.speakerAvatar.length : 0,
+            swipeChars: Array.isArray(null == e ? void 0 : e.swipes) ? e.swipes.reduce(function(e, n) {
+              return e + ("string" == typeof n ? n.length : 0)
+            }, 0) : 0,
+            embeddingValues: Array.isArray(null == e ? void 0 : e.embedding) ? e.embedding.length : 0
+          }
+        }
+
+        function Re(e) {
+          return Array.from(e).map(Number).filter(Number.isFinite).sort(function(e, n) {
+            return e - n
+          })
+        }
+
+        function xe() {
+          return Te.apply(this, arguments)
+        }
+
+        function Te() {
+          return (Te = l(o().m(function e() {
+            var n, r, t, s, i, u, c, l, d;
+            return o().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  n = new Set, r = 0;
+                case 1:
+                  return e.n = 2, D.query("SELECT rowid AS row_id, message_json\n             FROM chat_messages\n             WHERE rowid > ? AND message_json LIKE '%piupiu/media/%'\n             ORDER BY rowid LIMIT 20", [r]);
+                case 2:
+                  if (0 !== (t = e.v).length) {
+                    e.n = 3;
+                    break
+                  }
+                  return e.a(2, n);
+                case 3:
+                  s = a(t);
+                  try {
+                    for (s.s(); !(i = s.n()).done;) {
+                      u = i.value, r = Math.max(r, Number(u.row_id)), c = a(u.message_json.match(/piupiu\/media\/[^"\\\s)]+/g) || []);
+                      try {
+                        for (c.s(); !(l = c.n()).done;) d = l.value, n.add(d)
+                      } catch (o) {
+                        c.e(o)
+                      } finally {
+                        c.f()
+                      }
+                    }
+                  } catch (o) {
+                    s.e(o)
+                  } finally {
+                    s.f()
+                  }
+                  return e.n = 4, He();
+                case 4:
+                  e.n = 1;
+                  break;
+                case 5:
+                  return e.a(2)
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function Ie(e, n) {
+          return e.length === n.length && e.every(function(e, r) {
+            return e === n[r]
+          })
+        }
+
+        function Oe() {
+          try {
+            var e = localStorage.getItem(A);
+            return e ? JSON.parse(e) : null
+          } catch (n) {
+            return null
+          }
+        }
+
+        function Ne(e) {
+          try {
+            localStorage.setItem(A, JSON.stringify(e))
+          } catch (n) {}
+        }
+
+        function Ce() {
+          try {
+            localStorage.removeItem(A)
+          } catch (e) {}
+        }
+
+        function Me() {
+          return Ae.apply(this, arguments)
+        }
+
+        function Ae() {
+          return (Ae = l(o().m(function e() {
+            var n, r, t, a, i;
+            return o().w(function(e) {
+              for (;;) switch (e.p = e.n) {
+                case 0:
+                  if ((n = Oe()) && "running" === n.status) {
+                    e.n = 1;
+                    break
+                  }
+                  return e.a(2);
+                case 1:
+                  return Ce(), r = "Previous migration process ended unexpectedly at ".concat(n.phase, " (").concat(n.current, "/").concat(n.total, ")"), x({
+                    migrationError: r,
+                    migrationErrorStack: JSON.stringify(n)
+                  }), e.p = 2, e.n = 3, P(l(o().m(function e() {
+                    var n, r;
+                    return o().w(function(e) {
+                      for (;;) switch (e.n) {
+                        case 0:
+                          return e.n = 1, s.import("../e/index-legacy-B0tYRju5.js").then(function(e) {
+                            return e.cU
+                          });
+                        case 1:
+                          return n = e.v, r = n.uploadDatabaseDiagnostics, e.a(2, {
+                            uploadDatabaseDiagnostics: r
+                          })
+                      }
+                    }, e)
+                  })), void 0);
+                case 3:
+                  return t = e.v, a = t.uploadDatabaseDiagnostics, e.n = 4, a();
+                case 4:
+                  e.n = 6;
+                  break;
+                case 5:
+                  e.p = 5, i = e.v, console.warn("[database] Failed to upload interrupted migration diagnostics:", i);
+                case 6:
+                  return e.p = 6, x({
+                    migrationError: null,
+                    migrationErrorStack: null
+                  }), e.f(6);
+                case 7:
+                  return e.a(2)
+              }
+            }, e, null, [
+              [2, 5, 6, 7]
+            ])
+          }))).apply(this, arguments)
+        }
+
+        function je() {
+          return De.apply(this, arguments)
+        }
+
+        function De() {
+          return (De = l(o().m(function e() {
+            return o().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  return x({
+                    migrationPhase: "messages",
+                    migrationCurrent: 0,
+                    migrationTotal: 1,
+                    migrationMessage: "正在优化本地数据库索引..."
+                  }), e.n = 1, le(function(e) {
+                    x({
+                      migrationPhase: "roles" === e.phase ? "roles" : "messages",
+                      migrationCurrent: e.current,
+                      migrationTotal: Math.max(1, e.total),
+                      migrationMessage: e.message
+                    })
+                  });
+                case 1:
+                  return e.a(2)
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function Fe() {
+          return Le.apply(this, arguments)
+        }
+
+        function Le() {
+          return (Le = l(o().m(function e() {
+            return o().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  if ("undefined" != typeof document && "hidden" === document.visibilityState) {
+                    e.n = 1;
+                    break
+                  }
+                  return e.a(2);
+                case 1:
+                  return e.n = 2, new Promise(function(e) {
+                    var n = function() {
+                      "hidden" !== document.visibilityState && (document.removeEventListener("visibilitychange", n), e())
+                    };
+                    document.addEventListener("visibilitychange", n)
+                  });
+                case 2:
+                  return e.a(2)
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function Pe() {
+          return Be.apply(this, arguments)
+        }
+
+        function Be() {
+          return (Be = l(o().m(function e() {
+            var n;
+            return o().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  return e.n = 1, Promise.all([D.query("SELECT COUNT(*) AS total FROM roles"), D.query("SELECT COUNT(*) AS total FROM chat_sessions"), D.query("SELECT COUNT(*) AS total FROM chat_messages")]);
+                case 1:
+                  return n = e.v, e.a(2, n.reduce(function(e, n) {
+                    var r;
+                    return e + Number((null === (r = n[0]) || void 0 === r ? void 0 : r.total) || 0)
+                  }, 0))
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function We() {
+          return Ue.apply(this, arguments)
+        }
+
+        function Ue() {
+          return (Ue = l(o().m(function e() {
+            var n, r;
+            return o().w(function(e) {
+              for (;;) switch (e.p = e.n) {
+                case 0:
+                  return e.n = 1, ee.open();
+                case 1:
+                  if (n = e.v) {
+                    e.n = 2;
+                    break
+                  }
+                  return e.a(2, 0);
+                case 2:
+                  return e.p = 2, e.n = 3, n.info();
+                case 3:
+                  return r = e.v, e.a(2, Object.values(r.rawCounts).reduce(function(e, n) {
+                    return e + Number(n || 0)
+                  }, 0));
+                case 4:
+                  return e.p = 4, n.close(), e.f(4);
+                case 5:
+                  return e.a(2)
+              }
+            }, e, null, [
+              [2, , 4, 5]
+            ])
+          }))).apply(this, arguments)
+        }
+
+        function He() {
+          return qe.apply(this, arguments)
+        }
+
+        function qe() {
+          return (qe = l(o().m(function e() {
+            return o().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  return e.n = 1, new Promise(function(e) {
+                    return window.setTimeout(e, 0)
+                  });
+                case 1:
+                  return e.a(2)
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function ze() {
+          return ze = l(o().m(function n() {
+            var d, f, b, g, h, v, E, w, _, S, R, A, j, V, K, J, Y, X, Q, $, Z, ne, re, te, ae, se, ie, oe, ue, ce, le, de, pe, ge, ke, Ee, _e, Te, Ae, De, Le, Be, Ue, qe, ze, Ge, Ve, Ke, Je, Ye, Xe, Qe, $e, Ze, en, nn, rn, tn, an, sn, on, un, cn, ln, dn, fn, pn, bn, mn, gn, hn, vn, yn, kn, En, wn, _n, Sn, Rn, xn, Tn, In, On, Nn, Cn, Mn, An, jn, Dn, Fn, Ln, Pn, Bn, Wn, Un, Hn, qn, zn, Gn, Vn, Kn, Jn, Yn, Xn, Qn, $n, Zn, er, nr, rr, tr, ar, sr, ir, or, ur, cr, lr, dr, fr, pr, br, mr, gr, hr, vr, yr, kr, Er, wr, _r, Sr, Rr, xr, Tr, Ir, Or, Nr, Cr, Mr, Ar, jr, Dr, Fr, Lr, Pr, Br, Wr, Ur, Hr, qr, zr, Gr, Vr, Kr, Jr, Yr, Xr, Qr, $r, Zr, et, nt, rt, tt, at, st, it, ot, ut, ct, lt, dt, ft, pt, bt, mt, gt, ht, vt, yt, kt, Et, wt, _t, St, Rt, xt, Tt, It, Ot, Nt, Ct, Mt, At, jt, Dt, Ft, Lt, Pt, Bt, Wt, Ut, Ht;
+            return o().w(function(n) {
+              for (;;) switch (n.p = n.n) {
+                case 0:
+                  return x({
+                    operation: "migration"
+                  }), d = !1, f = null, b = {
+                    completed: !1
+                  }, g = function() {
+                    var e = l(o().m(function e(n, t, a, s) {
+                      var i, u, c, l = arguments;
+                      return o().w(function(e) {
+                        for (;;) switch (e.n) {
+                          case 0:
+                            if (i = l.length > 4 && void 0 !== l[4] && l[4], u = l.length > 5 ? l[5] : void 0, x({
+                                backend: "sqlite",
+                                migrationPhase: n,
+                                migrationCurrent: t,
+                                migrationTotal: a,
+                                migrationMessage: s
+                              }), c = Date.now(), Ne({
+                                status: "running",
+                                startedAt: b.startedAt || c,
+                                updatedAt: c,
+                                phase: n,
+                                current: t,
+                                total: a,
+                                detail: u
+                              }), !i && t % 20 != 0 && t !== a) {
+                              e.n = 1;
+                              break
+                            }
+                            return b = r(r({}, b), {}, {
+                              phase: n,
+                              current: t,
+                              total: a,
+                              updatedAt: c
+                            }), e.n = 1, D.setMeta(fe, b);
+                          case 1:
+                            return e.a(2)
+                        }
+                      }, e)
+                    }));
+                    return function(n, r, t, a) {
+                      return e.apply(this, arguments)
+                    }
+                  }(), n.p = 1, n.n = 2, F();
+                case 2:
+                  return n.n = 3, L();
+                case 3:
+                  return n.n = 4, D.open();
+                case 4:
+                  return n.n = 5, P(l(o().m(function e() {
+                    var n, r;
+                    return o().w(function(e) {
+                      for (;;) switch (e.n) {
+                        case 0:
+                          return e.n = 1, s.import("./overwriteRecovery-legacy-2YP7Wk_W.js");
+                        case 1:
+                          return n = e.v, r = n.recoverProtectedOverwrite, e.a(2, {
+                            recoverProtectedOverwrite: r
+                          })
+                      }
+                    }, e)
+                  })), void 0);
+                case 5:
+                  return R = n.v, A = R.recoverProtectedOverwrite, n.n = 6, A();
+                case 6:
+                  return n.n = 7, me();
+                case 7:
+                  return j = n.v, n.n = 8, D.getMeta(fe);
+                case 8:
+                  if (null == (V = n.v) || !V.completed) {
+                    n.n = 18;
+                    break
+                  }
+                  if (!B()) {
+                    n.n = 15;
+                    break
+                  }
+                  return n.n = 9, Promise.all([Pe(), We()]);
+                case 9:
+                  if (K = n.v, J = e(K, 2), Y = J[0], X = J[1], !(0 === Y && X > 0)) {
+                    n.n = 11;
+                    break
+                  }
+                  return n.n = 10, D.deleteMeta(fe);
+                case 10:
+                  n.n = 14;
+                  break;
+                case 11:
+                  return Ce(), n.n = 12, we(V.completedAt).catch(function(e) {
+                    console.warn("[database] Failed to repair migrated session timestamps:", e)
+                  });
+                case 12:
+                  return n.n = 13, je();
+                case 13:
+                  return x({
+                    backend: "sqlite",
+                    migrationPhase: "complete"
+                  }), n.a(2);
+                case 14:
+                  n.n = 18;
+                  break;
+                case 15:
+                  return Ce(), n.n = 16, we(V.completedAt).catch(function(e) {
+                    console.warn("[database] Failed to repair migrated session timestamps:", e)
+                  });
+                case 16:
+                  return n.n = 17, je();
+                case 17:
+                  return x({
+                    backend: "sqlite",
+                    migrationPhase: "complete"
+                  }), n.a(2);
+                case 18:
+                  return n.n = 19, Me();
+                case 19:
+                  return n.n = 20, Promise.all([D.query("SELECT COUNT(*) AS total FROM roles"), D.query("SELECT COUNT(*) AS total FROM chat_sessions"), D.query("SELECT COUNT(*) AS total FROM chat_messages")]);
+                case 20:
+                  return Q = n.v, $ = Q.some(function(e) {
+                    var n;
+                    return Number((null === (n = e[0]) || void 0 === n ? void 0 : n.total) || 0) > 0
+                  }), Z = Boolean(null == V ? void 0 : V.startedAt) || $, b = {
+                    completed: !1,
+                    startedAt: (null == V ? void 0 : V.startedAt) || Date.now(),
+                    sourceCounts: null == V ? void 0 : V.sourceCounts
+                  }, n.n = 21, D.setMeta(fe, b);
+                case 21:
+                  return d = !0, n.n = 22, ee.open();
+                case 22:
+                  if (!(f = n.v)) {
+                    n.n = 24;
+                    break
+                  }
+                  return n.n = 23, f.info();
+                case 23:
+                  st = n.v, n.n = 25;
+                  break;
+                case 24:
+                  st = {
+                    databaseVersion: 0,
+                    stores: [],
+                    rawCounts: {}
+                  };
+                case 25:
+                  if (ne = st, 0 !== Object.values(ne.rawCounts).reduce(function(e, n) {
+                      return e + Number(n || 0)
+                    }, 0)) {
+                    n.n = 30;
+                    break
+                  }
+                  return n.n = 26, D.run("UPDATE chat_sessions\n                 SET message_count = (\n                     SELECT COUNT(*) FROM chat_messages\n                     WHERE chat_messages.session_id = chat_sessions.id\n                 ),\n                 last_message = COALESCE((\n                     SELECT content FROM chat_messages\n                     WHERE chat_messages.session_id = chat_sessions.id\n                     ORDER BY message_index DESC LIMIT 1\n                 ), last_message)");
+                case 26:
+                  return n.n = 27, Promise.all([D.query("SELECT COUNT(*) AS total FROM roles"), D.query("SELECT COUNT(*) AS total FROM chat_sessions"), D.query("SELECT COUNT(*) AS total FROM chat_messages")]);
+                case 27:
+                  return ie = n.v, oe = Date.now(), b = {
+                    completed: !0,
+                    completedAt: oe,
+                    sourceVersion: ne.databaseVersion,
+                    roles: Number((null === (re = ie[0][0]) || void 0 === re ? void 0 : re.total) || 0),
+                    sessions: Number((null === (te = ie[1][0]) || void 0 === te ? void 0 : te.total) || 0),
+                    messages: Number((null === (ae = ie[2][0]) || void 0 === ae ? void 0 : ae.total) || 0),
+                    sourceCounts: r({}, ne.rawCounts)
+                  }, n.n = 28, D.setMeta(fe, b);
+                case 28:
+                  return n.n = 29, je();
+                case 29:
+                  return null === (se = f) || void 0 === se || se.close(), f = null, Ce(), x({
+                    backend: "sqlite",
+                    migrationPhase: "complete",
+                    migrationCurrent: 1,
+                    migrationTotal: 1,
+                    migrationMessage: "本地数据库已就绪",
+                    migrationError: null,
+                    migrationErrorStack: null
+                  }), n.a(2);
+                case 30:
+                  if (b.sourceVersion = ne.databaseVersion, b.sourceCounts) {
+                    n.n = 31;
+                    break
+                  }
+                  return b.sourceCounts = r({}, ne.rawCounts), "roles" === (null == V ? void 0 : V.phase) && Number(V.total) > Number(b.sourceCounts.roles || 0) && (b.sourceCounts.roles = Number(V.total)), n.n = 31, D.setMeta(fe, b);
+                case 31:
+                  if (Z) {
+                    n.n = 32;
+                    break
+                  }
+                  return n.n = 32, D.transaction(l(o().m(function e() {
+                    return o().w(function(e) {
+                      for (;;) switch (e.n) {
+                        case 0:
+                          return e.n = 1, D.run("DELETE FROM chat_messages", [], !1);
+                        case 1:
+                          return e.n = 2, D.run("DELETE FROM chat_sessions", [], !1);
+                        case 2:
+                          return e.n = 3, D.run("DELETE FROM roles", [], !1);
+                        case 3:
+                          return e.n = 4, D.run("DELETE FROM settings", [], !1);
+                        case 4:
+                          return e.a(2)
+                      }
+                    }, e)
+                  })));
+                case 32:
+                  return ue = new Set, ce = new Set, le = [], de = 0, pe = 0, ge = 0, ke = 0, Ee = [], n.n = 33, D.getMeta(be);
+                case 33:
+                  _e = n.v, Te = new Map, Ae = a((null == _e ? void 0 : _e.records) || []);
+                  try {
+                    for (Ae.s(); !(De = Ae.n()).done;) Le = De.value, Te.set("".concat(Le.type, ":").concat(Le.id), Le)
+                  } catch (qt) {
+                    Ae.e(qt)
+                  } finally {
+                    Ae.f()
+                  }
+                  return n.n = 34, u();
+                case 34:
+                  Be = n.v, Ue = i(Be.filter(function(e) {
+                    return "indexeddb" === e.job
+                  })), qe = a(Be), n.p = 35, qe.s();
+                case 36:
+                  if ((ze = qe.n()).done) {
+                    n.n = 39;
+                    break
+                  }
+                  if ("indexeddb" === (Ge = ze.value).job) {
+                    n.n = 37;
+                    break
+                  }
+                  return n.a(3, 38);
+                case 37:
+                  "role" === Ge.unitType ? Te.set("role:".concat(Ge.unitId), {
+                    type: "role",
+                    id: Number(Ge.unitId),
+                    reason: "上次迁移角色卡时应用异常退出，已跳过该角色",
+                    skippedAt: Ge.skippedAt
+                  }) : "session" === Ge.unitType ? Te.set("session:".concat(Ge.unitId), {
+                    type: "session",
+                    id: Number(Ge.unitId),
+                    reason: "上次迁移聊天记录时应用异常退出，已跳过该会话",
+                    skippedAt: Ge.skippedAt
+                  }) : "setting" === Ge.unitType && Te.set("setting:".concat(Ge.unitId), {
+                    type: "setting",
+                    id: String(Ge.unitId),
+                    reason: "上次迁移设置时应用异常退出，已跳过该设置",
+                    skippedAt: Ge.skippedAt
+                  });
+                case 38:
+                  n.n = 36;
+                  break;
+                case 39:
+                  n.n = 41;
+                  break;
+                case 40:
+                  n.p = 40, it = n.v, qe.e(it);
+                case 41:
+                  return n.p = 41, qe.f(), n.f(41);
+                case 42:
+                  if (Ve = new Set(Array.from(Te.values()).filter(function(e) {
+                      return "role" === e.type
+                    }).map(function(e) {
+                      return Number(e.id)
+                    }).filter(function(e) {
+                      return Number.isFinite(e) && e > 0
+                    })), Ke = new Set(Array.from(Te.values()).filter(function(e) {
+                      return "session" === e.type
+                    }).map(function(e) {
+                      return Number(e.id)
+                    }).filter(function(e) {
+                      return Number.isFinite(e) && e > 0
+                    })), Je = new Set(Array.from(Te.values()).filter(function(e) {
+                      return "setting" === e.type
+                    }).map(function(e) {
+                      return String(e.id)
+                    })), Ye = new Map, Xe = function() {
+                      var e = l(o().m(function e(n) {
+                        return o().w(function(e) {
+                          for (;;) switch (e.n) {
+                            case 0:
+                              return Te.set("".concat(n.type, ":").concat(n.id), n), e.n = 1, D.setMeta(be, {
+                                updatedAt: Date.now(),
+                                records: Array.from(Te.values()).slice(-1e3)
+                              });
+                            case 1:
+                              return e.a(2)
+                          }
+                        }, e)
+                      }));
+                      return function(n) {
+                        return e.apply(this, arguments)
+                      }
+                    }(), Qe = Number(ne.rawCounts.roles || 0), $e = Number(ne.rawCounts.chat_histories || 0), Ze = Number(ne.rawCounts.settings || 0), !Z) {
+                    n.n = 44;
+                    break
+                  }
+                  return n.n = 43, D.query("SELECT id, image_path FROM roles");
+                case 43:
+                  ot = n.v, n.n = 45;
+                  break;
+                case 44:
+                  ot = [];
+                case 45:
+                  if (en = ot, nn = new Map(en.map(function(e) {
+                      return [Number(e.id), e.image_path]
+                    })), !Z) {
+                    n.n = 47;
+                    break
+                  }
+                  return n.n = 46, D.query("SELECT s.id, s.message_count, COUNT(m.session_id) AS stored_count,\n                        MIN(m.message_index) AS min_index, MAX(m.message_index) AS max_index\n                 FROM chat_sessions s\n                 LEFT JOIN chat_messages m ON m.session_id = s.id\n                 GROUP BY s.id, s.message_count");
+                case 46:
+                  ut = n.v, n.n = 48;
+                  break;
+                case 47:
+                  ut = [];
+                case 48:
+                  if (rn = ut, tn = new Map(rn.map(function(e) {
+                      return [Number(e.id), {
+                        expectedCount: Number(e.message_count),
+                        storedCount: Number(e.stored_count),
+                        contiguous: 0 === Number(e.stored_count) || 0 === Number(e.min_index) && Number(e.max_index) === Number(e.stored_count) - 1
+                      }]
+                    })), !Z) {
+                    n.n = 50;
+                    break
+                  }
+                  return n.n = 49, D.query("SELECT key FROM settings");
+                case 49:
+                  ct = n.v, n.n = 51;
+                  break;
+                case 50:
+                  ct = [];
+                case 51:
+                  if (an = ct, sn = new Set(an.map(function(e) {
+                      return e.key
+                    })), en.forEach(function(e) {
+                      return ue.add(Number(e.id))
+                    }), rn.forEach(function(e) {
+                      var n = Number(e.stored_count);
+                      ce.add(Number(e.id)), de += n
+                    }), an.forEach(function(e) {
+                      return le.push(e.key)
+                    }), on = [], un = function() {
+                      var e = l(o().m(function e() {
+                        var n, r, t, s, i, u, c, d, f, b, m, g;
+                        return o().w(function(e) {
+                          for (;;) switch (e.p = e.n) {
+                            case 0:
+                              if (0 !== on.length) {
+                                e.n = 1;
+                                break
+                              }
+                              return e.a(2);
+                            case 1:
+                              return n = on.splice(0), r = function() {
+                                var e = l(o().m(function e(n) {
+                                  var r, t;
+                                  return o().w(function(e) {
+                                    for (;;) switch (e.n) {
+                                      case 0:
+                                        return ue.add(n), e.n = 1, D.query("SELECT image_path FROM roles WHERE id = ? LIMIT 1", [n]);
+                                      case 1:
+                                        return t = e.v, nn.set(n, (null === (r = t[0]) || void 0 === r ? void 0 : r.image_path) || null), e.n = 2, p({
+                                          job: "indexeddb",
+                                          phase: "roles",
+                                          unitType: "role",
+                                          unitId: n,
+                                          status: "done",
+                                          detail: {
+                                            roleId: n,
+                                            batched: !0
+                                          }
+                                        });
+                                      case 2:
+                                        return e.a(2)
+                                    }
+                                  }, e)
+                                }));
+                                return function(n) {
+                                  return e.apply(this, arguments)
+                                }
+                              }(), e.p = 2, e.n = 3, T(n);
+                            case 3:
+                              t = a(n), e.p = 4, t.s();
+                            case 5:
+                              if ((s = t.n()).done) {
+                                e.n = 7;
+                                break
+                              }
+                              return i = s.value, e.n = 6, r(Number(i.id));
+                            case 6:
+                              e.n = 5;
+                              break;
+                            case 7:
+                              e.n = 9;
+                              break;
+                            case 8:
+                              e.p = 8, b = e.v, t.e(b);
+                            case 9:
+                              return e.p = 9, t.f(), e.f(9);
+                            case 10:
+                              e.n = 24;
+                              break;
+                            case 11:
+                              e.p = 11, e.v, u = a(n), e.p = 12, u.s();
+                            case 13:
+                              if ((c = u.n()).done) {
+                                e.n = 21;
+                                break
+                              }
+                              return d = c.value, f = Number(d.id), e.p = 14, e.n = 15, I(d);
+                            case 15:
+                              return e.n = 16, r(f);
+                            case 16:
+                              e.n = 20;
+                              break;
+                            case 17:
+                              if (e.p = 17, ve(m = e.v)) {
+                                e.n = 18;
+                                break
+                              }
+                              throw m;
+                            case 18:
+                              return Ve.add(f), ue.delete(f), nn.delete(f), e.n = 19, Xe({
+                                type: "role",
+                                id: f,
+                                reason: m instanceof Error ? "".concat(m.name, ": ").concat(m.message) : String(m),
+                                skippedAt: Date.now()
+                              });
+                            case 19:
+                              return e.n = 20, p({
+                                job: "indexeddb",
+                                phase: "roles",
+                                unitType: "role",
+                                unitId: f,
+                                status: "done",
+                                detail: {
+                                  roleId: f,
+                                  skipped: !0
+                                }
+                              });
+                            case 20:
+                              e.n = 13;
+                              break;
+                            case 21:
+                              e.n = 23;
+                              break;
+                            case 22:
+                              e.p = 22, g = e.v, u.e(g);
+                            case 23:
+                              return e.p = 23, u.f(), e.f(23);
+                            case 24:
+                              return e.a(2)
+                          }
+                        }, e, null, [
+                          [14, 17],
+                          [12, 22, 23, 24],
+                          [4, 8, 9, 10],
+                          [2, 11]
+                        ])
+                      }));
+                      return function() {
+                        return e.apply(this, arguments)
+                      }
+                    }(), !f) {
+                    n.n = 109;
+                    break
+                  }
+                  cn = !1, ln = !1, n.p = 52, fn = m(f.roles(1));
+                case 53:
+                  return n.n = 54, fn.next();
+                case 54:
+                  if (!(cn = !(pn = n.v).done)) {
+                    n.n = 92;
+                    break
+                  }
+                  if ((bn = pn.value) && Number.isFinite(Number(bn.id))) {
+                    n.n = 55;
+                    break
+                  }
+                  return n.a(3, 91);
+                case 55:
+                  if (mn = Number(bn.id), !Ve.has(mn)) {
+                    n.n = 56;
+                    break
+                  }
+                  return n.a(3, 91);
+                case 56:
+                  if (!Ue.has(c("indexeddb", "role", mn))) {
+                    n.n = 57;
+                    break
+                  }
+                  return Ve.add(mn), ue.delete(mn), n.a(3, 91);
+                case 57:
+                  return gn = !1, n.n = 58, Fe();
+                case 58:
+                  return pe += 1, n.n = 59, p({
+                    job: "indexeddb",
+                    phase: "roles",
+                    unitType: "role",
+                    unitId: mn,
+                    detail: {
+                      roleId: mn
+                    }
+                  });
+                case 59:
+                  return n.n = 60, g("roles", pe, Qe, "正在迁移角色卡...", !1, {
+                    roleId: Number(bn.id),
+                    imageBlobBytes: bn.imageBlob instanceof Blob ? bn.imageBlob.size : 0,
+                    imageBase64Chars: "string" == typeof bn.imageBase64 ? bn.imageBase64.length : 0
+                  });
+                case 60:
+                  if ("group" === (null == (hn = ye(bn.roleData)) ? void 0 : hn.type) && Array.isArray(hn.memberIds) && Ye.set(mn, hn.memberIds.map(Number).filter(function(e) {
+                      return Number.isFinite(e) && e > 0
+                    })), n.p = 61, vn = nn.get(mn), !(lt = nn.has(mn))) {
+                    n.n = 65;
+                    break
+                  }
+                  if (dt = !(bn.imageBlob instanceof Blob)) {
+                    n.n = 64;
+                    break
+                  }
+                  if (ft = Boolean, !(pt = vn)) {
+                    n.n = 63;
+                    break
+                  }
+                  return n.n = 62, W(vn);
+                case 62:
+                  pt = n.v;
+                case 63:
+                  dt = ft(pt);
+                case 64:
+                  lt = dt;
+                case 65:
+                  if ((yn = lt) || !(bn.imageBlob instanceof Blob)) {
+                    n.n = 76;
+                    break
+                  }
+                  return kn = null, n.p = 66, n.n = 67, U("roles", "migration-".concat(bn.id), bn.imageBlob);
+                case 67:
+                  return kn = n.v, n.n = 68, p({
+                    job: "indexeddb",
+                    phase: "roles",
+                    unitType: "role",
+                    unitId: mn,
+                    detail: {
+                      roleId: mn,
+                      imagePath: kn
+                    }
+                  });
+                case 68:
+                  n.n = 71;
+                  break;
+                case 69:
+                  if (n.p = 69, he(bt = n.v)) {
+                    n.n = 70;
+                    break
+                  }
+                  throw bt;
+                case 70:
+                  Ee.push({
+                    ownerType: "role",
+                    ownerId: mn,
+                    error: bt instanceof Error ? "".concat(bt.name, ": ").concat(bt.message) : String(bt)
+                  });
+                case 71:
+                  if (n.p = 71, on.push(r(r({}, bn), {}, {
+                      imageBlob: null,
+                      imageBase64: void 0,
+                      imagePath: kn
+                    })), gn = !0, !(on.length >= 1)) {
+                    n.n = 72;
+                    break
+                  }
+                  return n.n = 72, un();
+                case 72:
+                  n.n = 75;
+                  break;
+                case 73:
+                  return n.p = 73, mt = n.v, n.n = 74, H(kn);
+                case 74:
+                  throw mt;
+                case 75:
+                  n.n = 86;
+                  break;
+                case 76:
+                  if (yn || !bn.imageBase64) {
+                    n.n = 85;
+                    break
+                  }
+                  return n.n = 77, un();
+                case 77:
+                  return wn = !1, n.p = 78, n.n = 79, I(bn);
+                case 79:
+                  wn = !0, n.n = 82;
+                  break;
+                case 80:
+                  if (n.p = 80, he(gt = n.v)) {
+                    n.n = 81;
+                    break
+                  }
+                  throw gt;
+                case 81:
+                  Ee.push({
+                    ownerType: "role",
+                    ownerId: mn,
+                    error: gt instanceof Error ? "".concat(gt.name, ": ").concat(gt.message) : String(gt)
+                  });
+                case 82:
+                  if (wn) {
+                    n.n = 83;
+                    break
+                  }
+                  return n.n = 83, I(r(r({}, bn), {}, {
+                    imageBlob: null,
+                    imageBase64: void 0,
+                    imagePath: null
+                  }));
+                case 83:
+                  return n.n = 84, D.query("SELECT image_path FROM roles WHERE id = ? LIMIT 1", [mn]);
+                case 84:
+                  _n = n.v, nn.set(mn, (null === (En = _n[0]) || void 0 === En ? void 0 : En.image_path) || null), n.n = 86;
+                  break;
+                case 85:
+                  if (yn) {
+                    n.n = 86;
+                    break
+                  }
+                  if (on.push(r(r({}, bn), {}, {
+                      imagePath: bn.imagePath || null
+                    })), gn = !0, !(on.length >= 1)) {
+                    n.n = 86;
+                    break
+                  }
+                  return n.n = 86, un();
+                case 86:
+                  gn || ue.add(mn), n.n = 89;
+                  break;
+                case 87:
+                  if (n.p = 87, ve(ht = n.v)) {
+                    n.n = 88;
+                    break
+                  }
+                  throw ht;
+                case 88:
+                  return Ve.add(mn), ue.delete(mn), nn.delete(mn), n.n = 89, Xe({
+                    type: "role",
+                    id: mn,
+                    reason: ht instanceof Error ? "".concat(ht.name, ": ").concat(ht.message) : String(ht),
+                    skippedAt: Date.now()
+                  });
+                case 89:
+                  if (gn) {
+                    n.n = 90;
+                    break
+                  }
+                  return n.n = 90, p({
+                    job: "indexeddb",
+                    phase: "roles",
+                    unitType: "role",
+                    unitId: mn,
+                    status: "done",
+                    detail: {
+                      roleId: mn
+                    }
+                  });
+                case 90:
+                  return n.n = 91, He();
+                case 91:
+                  cn = !1, n.n = 53;
+                  break;
+                case 92:
+                  n.n = 94;
+                  break;
+                case 93:
+                  n.p = 93, vt = n.v, ln = !0, dn = vt;
+                case 94:
+                  if (n.p = 94, n.p = 95, !cn || null == fn.return) {
+                    n.n = 96;
+                    break
+                  }
+                  return n.n = 96, fn.return();
+                case 96:
+                  if (n.p = 96, !ln) {
+                    n.n = 97;
+                    break
+                  }
+                  throw dn;
+                case 97:
+                  return n.f(96);
+                case 98:
+                  return n.f(94);
+                case 99:
+                  return n.n = 100, un();
+                case 100:
+                  Sn = a(f.takeUnreadableRecords()), n.p = 101, Sn.s();
+                case 102:
+                  if ((Rn = Sn.n()).done) {
+                    n.n = 106;
+                    break
+                  }
+                  if ("roles" === (xn = Rn.value).store) {
+                    n.n = 103;
+                    break
+                  }
+                  return n.a(3, 105);
+                case 103:
+                  if (Tn = Number(xn.key), Number.isFinite(Tn) && !(Tn <= 0)) {
+                    n.n = 104;
+                    break
+                  }
+                  return n.a(3, 105);
+                case 104:
+                  return Ve.add(Tn), n.n = 105, Xe({
+                    type: "role",
+                    id: Tn,
+                    reason: xn.error,
+                    skippedAt: Date.now()
+                  });
+                case 105:
+                  n.n = 102;
+                  break;
+                case 106:
+                  n.n = 108;
+                  break;
+                case 107:
+                  n.p = 107, yt = n.v, Sn.e(yt);
+                case 108:
+                  return n.p = 108, Sn.f(), n.f(108);
+                case 109:
+                  In = !0;
+                case 110:
+                  if (!In) {
+                    n.n = 120;
+                    break
+                  }
+                  In = !1, On = a(Ye), n.p = 111, On.s();
+                case 112:
+                  if ((Nn = On.n()).done) {
+                    n.n = 116;
+                    break
+                  }
+                  if (Cn = e(Nn.value, 2), Mn = Cn[0], An = Cn[1], !Ve.has(Mn)) {
+                    n.n = 113;
+                    break
+                  }
+                  return n.a(3, 115);
+                case 113:
+                  if (An.some(function(e) {
+                      return Ve.has(e)
+                    })) {
+                    n.n = 114;
+                    break
+                  }
+                  return n.a(3, 115);
+                case 114:
+                  return Ve.add(Mn), In = !0, n.n = 115, Xe({
+                    type: "role",
+                    id: Mn,
+                    relatedRoleId: An.find(function(e) {
+                      return Ve.has(e)
+                    }),
+                    reason: "关联成员角色迁移失败，已级联跳过群聊角色",
+                    skippedAt: Date.now()
+                  });
+                case 115:
+                  n.n = 112;
+                  break;
+                case 116:
+                  n.n = 118;
+                  break;
+                case 117:
+                  n.p = 117, kt = n.v, On.e(kt);
+                case 118:
+                  return n.p = 118, On.f(), n.f(118);
+                case 119:
+                  n.n = 110;
+                  break;
+                case 120:
+                  if (!(Ve.size > 0)) {
+                    n.n = 130;
+                    break
+                  }
+                  jn = a(Ve), n.p = 121, jn.s();
+                case 122:
+                  if ((Dn = jn.n()).done) {
+                    n.n = 125;
+                    break
+                  }
+                  return Fn = Dn.value, n.n = 123, D.query("SELECT s.id, COUNT(m.session_id) AS stored_count\n                     FROM chat_sessions s\n                     LEFT JOIN chat_messages m ON m.session_id = s.id\n                     WHERE s.role_id = ?\n                     GROUP BY s.id", [Fn]);
+                case 123:
+                  Ln = n.v, Pn = a(Ln);
+                  try {
+                    for (Pn.s(); !(Bn = Pn.n()).done;) Wn = Bn.value, ce.delete(Number(Wn.id)) && (de = Math.max(0, de - Number(Wn.stored_count || 0))), Ke.add(Number(Wn.id))
+                  } catch (qt) {
+                    Pn.e(qt)
+                  } finally {
+                    Pn.f()
+                  }
+                case 124:
+                  n.n = 122;
+                  break;
+                case 125:
+                  n.n = 127;
+                  break;
+                case 126:
+                  n.p = 126, Et = n.v, jn.e(Et);
+                case 127:
+                  return n.p = 127, jn.f(), n.f(127);
+                case 128:
+                  return n.n = 129, O(Array.from(Ve));
+                case 129:
+                  Ve.forEach(function(e) {
+                    ue.delete(e), nn.delete(e)
+                  });
+                case 130:
+                  if (!(Ke.size > 0)) {
+                    n.n = 137;
+                    break
+                  }
+                  Un = a(Ke), n.p = 131, qn = o().m(function e() {
+                    var n, r, t;
+                    return o().w(function(e) {
+                      for (;;) switch (e.n) {
+                        case 0:
+                          return r = Hn.value, t = Number((null === (n = tn.get(r)) || void 0 === n ? void 0 : n.storedCount) || 0), ce.delete(r) && (de = Math.max(0, de - t)), e.n = 1, D.transaction(l(o().m(function e() {
+                            return o().w(function(e) {
+                              for (;;) switch (e.n) {
+                                case 0:
+                                  return e.n = 1, D.run("DELETE FROM chat_messages WHERE session_id = ?", [r], !1);
+                                case 1:
+                                  return e.n = 2, D.run("DELETE FROM chat_sessions WHERE id = ?", [r], !1);
+                                case 2:
+                                  return e.a(2)
+                              }
+                            }, e)
+                          })));
+                        case 1:
+                          return e.n = 2, q([r]);
+                        case 2:
+                          tn.delete(r);
+                        case 3:
+                          return e.a(2)
+                      }
+                    }, e)
+                  }), Un.s();
+                case 132:
+                  if ((Hn = Un.n()).done) {
+                    n.n = 134;
+                    break
+                  }
+                  return n.d(t(qn()), 133);
+                case 133:
+                  n.n = 132;
+                  break;
+                case 134:
+                  n.n = 136;
+                  break;
+                case 135:
+                  n.p = 135, wt = n.v, Un.e(wt);
+                case 136:
+                  return n.p = 136, Un.f(), n.f(136);
+                case 137:
+                  if (!(Je.size > 0)) {
+                    n.n = 147;
+                    break
+                  }
+                  zn = a(Je), n.p = 138, zn.s();
+                case 139:
+                  if ((Gn = zn.n()).done) {
+                    n.n = 144;
+                    break
+                  }
+                  Vn = Gn.value, Kn = 0, Jn = [Vn, z(Vn)];
+                case 140:
+                  if (!(Kn < Jn.length)) {
+                    n.n = 143;
+                    break
+                  }
+                  return Yn = Jn[Kn], n.n = 141, D.run("DELETE FROM settings WHERE key = ?", [Yn]);
+                case 141:
+                  sn.delete(Yn), (Xn = le.indexOf(Yn)) >= 0 && le.splice(Xn, 1);
+                case 142:
+                  Kn++, n.n = 140;
+                  break;
+                case 143:
+                  n.n = 139;
+                  break;
+                case 144:
+                  n.n = 146;
+                  break;
+                case 145:
+                  n.p = 145, _t = n.v, zn.e(_t);
+                case 146:
+                  return n.p = 146, zn.f(), n.f(146);
+                case 147:
+                  if (!f) {
+                    n.n = 168;
+                    break
+                  }
+                  Qn = !1, $n = !1, n.p = 148, er = o().m(function e() {
+                    var n, t, s, i, u, d, b, h, v, y, k, E, w, _, S, R, x, T, O, A, j;
+                    return o().w(function(e) {
+                      for (;;) switch (e.p = e.n) {
+                        case 0:
+                          if (n = or.value) {
+                            e.n = 1;
+                            break
+                          }
+                          return e.a(2, 0);
+                        case 1:
+                          return e.n = 2, Fe();
+                        case 2:
+                          if (t = Number(n.id || n.sessionId), s = Number(n.roleId), Number.isFinite(t) && !(t <= 0)) {
+                            e.n = 3;
+                            break
+                          }
+                          return e.a(2, 0);
+                        case 3:
+                          if (!Ke.has(t) && !Ve.has(s)) {
+                            e.n = 4;
+                            break
+                          }
+                          return e.a(2, 0);
+                        case 4:
+                          if (!Ue.has(c("indexeddb", "session", t))) {
+                            e.n = 5;
+                            break
+                          }
+                          return Ke.add(t), ce.delete(t), e.a(2, 0);
+                        case 5:
+                          return e.n = 6, p({
+                            job: "indexeddb",
+                            phase: "sessions",
+                            unitType: "session",
+                            unitId: t,
+                            detail: {
+                              sessionId: t,
+                              roleId: s
+                            }
+                          });
+                        case 6:
+                          if (i = null, e.p = 7, ue.has(s)) {
+                            e.n = 9;
+                            break
+                          }
+                          return e.n = 8, I({
+                            id: s,
+                            roleData: {
+                              name: "已恢复角色 ".concat(s),
+                              description: "",
+                              first_mes: "",
+                              mes_example: "",
+                              alternate_greetings: [],
+                              personality: "",
+                              scenario: "",
+                              creator_notes: "该角色卡记录缺失，已根据聊天记录恢复占位角色。",
+                              system_prompt: "",
+                              post_history_instructions: "",
+                              tags: [],
+                              creator: "",
+                              character_version: ""
+                            }
+                          });
+                        case 8:
+                          ue.add(s);
+                        case 9:
+                          return e.n = 10, f.messageSourceForSession(n);
+                        case 10:
+                          return i = e.v, n.messages = [], n.history = void 0, ge += 1, e.n = 11, g("sessions", ge, $e, "正在迁移聊天记录...", !0, {
+                            sessionId: t,
+                            messageCount: i.count
+                          });
+                        case 11:
+                          if (null == (u = tn.get(t)) || !u.contiguous || u.storedCount !== i.count) {
+                            e.n = 14;
+                            break
+                          }
+                          return ce.add(t), i.release(), i = null, e.n = 12, p({
+                            job: "indexeddb",
+                            phase: "sessions",
+                            unitType: "session",
+                            unitId: t,
+                            status: "done",
+                            detail: {
+                              sessionId: t,
+                              roleId: s,
+                              reused: !0
+                            }
+                          });
+                        case 12:
+                          return e.n = 13, He();
+                        case 13:
+                          return e.a(2, 0);
+                        case 14:
+                          if (d = 0, !(null != u && u.contiguous && u.storedCount > 0 && u.storedCount < i.count)) {
+                            e.n = 15;
+                            break
+                          }
+                          d = u.storedCount, e.n = 17;
+                          break;
+                        case 15:
+                          if (void 0 === u) {
+                            e.n = 17;
+                            break
+                          }
+                          return de = Math.max(0, de - u.storedCount), ce.delete(t), e.n = 16, D.transaction(l(o().m(function e() {
+                            return o().w(function(e) {
+                              for (;;) switch (e.n) {
+                                case 0:
+                                  return e.n = 1, D.run("DELETE FROM chat_messages WHERE session_id = ?", [t], !1);
+                                case 1:
+                                  return e.n = 2, D.run("DELETE FROM chat_sessions WHERE id = ?", [t], !1);
+                                case 2:
+                                  return e.a(2)
+                              }
+                            }, e)
+                          })));
+                        case 16:
+                          return e.n = 17, q([t]);
+                        case 17:
+                          if (0 !== d) {
+                            e.n = 18;
+                            break
+                          }
+                          return e.n = 18, N(n, i.count, i.lastMessage);
+                        case 18:
+                          b = 0, h = d, v = [], y = function() {
+                            var e = l(o().m(function e() {
+                              var n, r, s, i, u;
+                              return o().w(function(e) {
+                                for (;;) switch (e.p = e.n) {
+                                  case 0:
+                                    if (0 !== v.length) {
+                                      e.n = 1;
+                                      break
+                                    }
+                                    return e.a(2);
+                                  case 1:
+                                    return n = v.splice(0), e.p = 2, e.n = 3, C(t, n);
+                                  case 3:
+                                    e.n = 11;
+                                    break;
+                                  case 4:
+                                    e.p = 4, e.v, r = a(n), e.p = 5, r.s();
+                                  case 6:
+                                    if ((s = r.n()).done) {
+                                      e.n = 8;
+                                      break
+                                    }
+                                    return i = s.value, e.n = 7, M(t, i.index, i.message);
+                                  case 7:
+                                    e.n = 6;
+                                    break;
+                                  case 8:
+                                    e.n = 10;
+                                    break;
+                                  case 9:
+                                    e.p = 9, u = e.v, r.e(u);
+                                  case 10:
+                                    return e.p = 10, r.f(), e.f(10);
+                                  case 11:
+                                    b += n.length, h = n[n.length - 1].index + 1;
+                                  case 12:
+                                    return e.a(2)
+                                }
+                              }, e, null, [
+                                [5, 9, 10, 11],
+                                [2, 4]
+                              ])
+                            }));
+                            return function() {
+                              return e.apply(this, arguments)
+                            }
+                          }(), e.p = 19, nr = !1, rr = !1, e.p = 20, ar = m(i.messages);
+                        case 21:
+                          return e.n = 22, ar.next();
+                        case 22:
+                          if (!(nr = !(sr = e.v).done)) {
+                            e.n = 30;
+                            break
+                          }
+                          if (k = sr.value, E = k.index, w = k.message, !(E < d)) {
+                            e.n = 23;
+                            break
+                          }
+                          return e.a(3, 29);
+                        case 23:
+                          return e.n = 24, Fe();
+                        case 24:
+                          return e.n = 25, g("messages", E, i.count, "正在迁移第 ".concat(ge, " 个会话的消息..."), E % 20 == 0, r({
+                            sessionId: t,
+                            sessionNumber: ge,
+                            sessionTotal: $e,
+                            messageIndex: E
+                          }, Se(w)));
+                        case 25:
+                          if (E % 20 != 0) {
+                            e.n = 26;
+                            break
+                          }
+                          return e.n = 26, p({
+                            job: "indexeddb",
+                            phase: "messages",
+                            unitType: "session",
+                            unitId: t,
+                            detail: {
+                              sessionId: t,
+                              roleId: s,
+                              sessionNumber: ge,
+                              messageIndex: E
+                            }
+                          });
+                        case 26:
+                          if (v.push({
+                              index: E,
+                              message: w
+                            }), !(v.length >= 1)) {
+                            e.n = 27;
+                            break
+                          }
+                          return e.n = 27, y();
+                        case 27:
+                          return e.n = 28, g("messages", E + 1, i.count, "正在迁移第 ".concat(ge, " 个会话的消息..."), !1, {
+                            sessionId: t,
+                            sessionNumber: ge,
+                            sessionTotal: $e
+                          });
+                        case 28:
+                          return e.n = 29, He();
+                        case 29:
+                          nr = !1, e.n = 21;
+                          break;
+                        case 30:
+                          e.n = 32;
+                          break;
+                        case 31:
+                          e.p = 31, A = e.v, rr = !0, tr = A;
+                        case 32:
+                          if (e.p = 32, e.p = 33, !nr || null == ar.return) {
+                            e.n = 34;
+                            break
+                          }
+                          return e.n = 34, ar.return();
+                        case 34:
+                          if (e.p = 34, !rr) {
+                            e.n = 35;
+                            break
+                          }
+                          throw tr;
+                        case 35:
+                          return e.f(34);
+                        case 36:
+                          return e.f(32);
+                        case 37:
+                          return e.n = 38, y();
+                        case 38:
+                          return e.p = 38, i.release(), i = null, e.f(38);
+                        case 39:
+                          tn.set(t, {
+                            expectedCount: h,
+                            storedCount: h,
+                            contiguous: !0
+                          }), ce.add(t), de += b, e.n = 45;
+                          break;
+                        case 40:
+                          if (e.p = 40, j = e.v, null === (_ = i) || void 0 === _ || _.release(), ve(j)) {
+                            e.n = 41;
+                            break
+                          }
+                          throw j;
+                        case 41:
+                          return e.n = 42, D.query("SELECT COUNT(*) AS total FROM chat_messages WHERE session_id = ?", [t]);
+                        case 42:
+                          return S = e.v, ce.delete(t) && (de = Math.max(0, de - Number(null !== (R = null !== (x = null === (T = tn.get(t)) || void 0 === T ? void 0 : T.storedCount) && void 0 !== x ? x : null === (O = S[0]) || void 0 === O ? void 0 : O.total) && void 0 !== R ? R : 0))), e.n = 43, D.transaction(l(o().m(function e() {
+                            return o().w(function(e) {
+                              for (;;) switch (e.n) {
+                                case 0:
+                                  return e.n = 1, D.run("DELETE FROM chat_messages WHERE session_id = ?", [t], !1);
+                                case 1:
+                                  return e.n = 2, D.run("DELETE FROM chat_sessions WHERE id = ?", [t], !1);
+                                case 2:
+                                  return e.a(2)
+                              }
+                            }, e)
+                          })));
+                        case 43:
+                          return e.n = 44, q([t]);
+                        case 44:
+                          return tn.delete(t), Ke.add(t), e.n = 45, Xe({
+                            type: "session",
+                            id: t,
+                            relatedRoleId: s,
+                            reason: j instanceof Error ? "".concat(j.name, ": ").concat(j.message) : String(j),
+                            skippedAt: Date.now()
+                          });
+                        case 45:
+                          return e.n = 46, p({
+                            job: "indexeddb",
+                            phase: "sessions",
+                            unitType: "session",
+                            unitId: t,
+                            status: "done",
+                            detail: {
+                              sessionId: t,
+                              roleId: s
+                            }
+                          });
+                        case 46:
+                          return e.n = 47, He();
+                        case 47:
+                          return e.a(2)
+                      }
+                    }, e, null, [
+                      [33, , 34, 36],
+                      [20, 31, 32, 37],
+                      [19, , 38, 39],
+                      [7, 40]
+                    ])
+                  }), ir = m(f.sessions(1));
+                case 149:
+                  return n.n = 150, ir.next();
+                case 150:
+                  if (!(Qn = !(or = n.v).done)) {
+                    n.n = 153;
+                    break
+                  }
+                  return n.d(t(er()), 151);
+                case 151:
+                  if (0 !== n.v) {
+                    n.n = 152;
+                    break
+                  }
+                  return n.a(3, 152);
+                case 152:
+                  Qn = !1, n.n = 149;
+                  break;
+                case 153:
+                  n.n = 155;
+                  break;
+                case 154:
+                  n.p = 154, St = n.v, $n = !0, Zn = St;
+                case 155:
+                  if (n.p = 155, n.p = 156, !Qn || null == ir.return) {
+                    n.n = 157;
+                    break
+                  }
+                  return n.n = 157, ir.return();
+                case 157:
+                  if (n.p = 157, !$n) {
+                    n.n = 158;
+                    break
+                  }
+                  throw Zn;
+                case 158:
+                  return n.f(157);
+                case 159:
+                  return n.f(155);
+                case 160:
+                  ur = a(f.takeUnreadableRecords()), n.p = 161, lr = o().m(function e() {
+                    var n, r, t, a, s, i, u;
+                    return o().w(function(e) {
+                      for (;;) switch (e.n) {
+                        case 0:
+                          if ("chat_histories" === (n = cr.value).store) {
+                            e.n = 1;
+                            break
+                          }
+                          return e.a(2, 0);
+                        case 1:
+                          if (r = Number(n.key), Number.isFinite(r) && !(r <= 0)) {
+                            e.n = 2;
+                            break
+                          }
+                          return e.a(2, 0);
+                        case 2:
+                          return e.n = 3, D.query("SELECT COUNT(*) AS total FROM chat_messages WHERE session_id = ?", [r]);
+                        case 3:
+                          return t = e.v, ce.delete(r) && (de = Math.max(0, de - Number(null !== (a = null !== (s = null === (i = tn.get(r)) || void 0 === i ? void 0 : i.storedCount) && void 0 !== s ? s : null === (u = t[0]) || void 0 === u ? void 0 : u.total) && void 0 !== a ? a : 0))), e.n = 4, D.transaction(l(o().m(function e() {
+                            return o().w(function(e) {
+                              for (;;) switch (e.n) {
+                                case 0:
+                                  return e.n = 1, D.run("DELETE FROM chat_messages WHERE session_id = ?", [r], !1);
+                                case 1:
+                                  return e.n = 2, D.run("DELETE FROM chat_sessions WHERE id = ?", [r], !1);
+                                case 2:
+                                  return e.a(2)
+                              }
+                            }, e)
+                          })));
+                        case 4:
+                          return e.n = 5, q([r]);
+                        case 5:
+                          return tn.delete(r), Ke.add(r), e.n = 6, Xe({
+                            type: "session",
+                            id: r,
+                            reason: n.error,
+                            skippedAt: Date.now()
+                          });
+                        case 6:
+                          return e.a(2)
+                      }
+                    }, e)
+                  }), ur.s();
+                case 162:
+                  if ((cr = ur.n()).done) {
+                    n.n = 165;
+                    break
+                  }
+                  return n.d(t(lr()), 163);
+                case 163:
+                  if (0 !== n.v) {
+                    n.n = 164;
+                    break
+                  }
+                  return n.a(3, 164);
+                case 164:
+                  n.n = 162;
+                  break;
+                case 165:
+                  n.n = 167;
+                  break;
+                case 166:
+                  n.p = 166, Rt = n.v, ur.e(Rt);
+                case 167:
+                  return n.p = 167, ur.f(), n.f(167);
+                case 168:
+                  if (!f) {
+                    n.n = 200;
+                    break
+                  }
+                  dr = !1, fr = !1, n.p = 169, br = m(f.settings());
+                case 170:
+                  return n.n = 171, br.next();
+                case 171:
+                  if (!(dr = !(mr = n.v).done)) {
+                    n.n = 193;
+                    break
+                  }
+                  if ((gr = mr.value) && "string" == typeof gr.key && gr.key) {
+                    n.n = 172;
+                    break
+                  }
+                  return n.a(3, 192);
+                case 172:
+                  if (!Je.has(gr.key)) {
+                    n.n = 173;
+                    break
+                  }
+                  return n.a(3, 192);
+                case 173:
+                  if (!Ue.has(c("indexeddb", "setting", gr.key))) {
+                    n.n = 174;
+                    break
+                  }
+                  return Je.add(gr.key), n.a(3, 192);
+                case 174:
+                  return n.n = 175, Fe();
+                case 175:
+                  return ke += 1, n.n = 176, p({
+                    job: "indexeddb",
+                    phase: "media",
+                    unitType: "setting",
+                    unitId: gr.key,
+                    detail: {
+                      key: gr.key,
+                      isBinary: gr.value instanceof Blob
+                    }
+                  });
+                case 176:
+                  return n.n = 177, g("media", ke, Ze, "正在迁移设置和媒体...");
+                case 177:
+                  if (n.p = 177, !(gr.value instanceof Blob)) {
+                    n.n = 183;
+                    break
+                  }
+                  if (hr = z(gr.key), !sn.has(hr)) {
+                    n.n = 180;
+                    break
+                  }
+                  return n.n = 178, p({
+                    job: "indexeddb",
+                    phase: "media",
+                    unitType: "setting",
+                    unitId: gr.key,
+                    status: "done",
+                    detail: {
+                      key: gr.key,
+                      reused: !0
+                    }
+                  });
+                case 178:
+                  return n.n = 179, He();
+                case 179:
+                  return n.a(3, 192);
+                case 180:
+                  return n.n = 181, G(gr.key, gr.value);
+                case 181:
+                  return vr = n.v, le.includes(hr) || le.push(hr), sn.add(hr), n.n = 182, p({
+                    job: "indexeddb",
+                    phase: "media",
+                    unitType: "setting",
+                    unitId: gr.key,
+                    detail: {
+                      key: gr.key,
+                      isBinary: !0,
+                      mediaPath: vr
+                    }
+                  });
+                case 182:
+                  n.n = 186;
+                  break;
+                case 183:
+                  if (sn.has(gr.key)) {
+                    n.n = 185;
+                    break
+                  }
+                  return n.n = 184, D.run("INSERT INTO settings(key, value_json) VALUES(?, ?)\n                                 ON CONFLICT(key) DO UPDATE SET value_json=excluded.value_json", [gr.key, JSON.stringify(gr.value)]);
+                case 184:
+                  sn.add(gr.key);
+                case 185:
+                  le.includes(gr.key) || le.push(gr.key);
+                case 186:
+                  n.n = 190;
+                  break;
+                case 187:
+                  if (n.p = 187, xt = n.v, !(gr.value instanceof Blob && he(xt))) {
+                    n.n = 188;
+                    break
+                  }
+                  Ee.push({
+                    ownerType: "setting",
+                    ownerId: gr.key,
+                    error: xt instanceof Error ? "".concat(xt.name, ": ").concat(xt.message) : String(xt)
+                  }), n.n = 189;
+                  break;
+                case 188:
+                  if (ve(xt)) {
+                    n.n = 189;
+                    break
+                  }
+                  throw xt;
+                case 189:
+                  return Je.add(gr.key), n.n = 190, Xe({
+                    type: "setting",
+                    id: gr.key,
+                    reason: xt instanceof Error ? "".concat(xt.name, ": ").concat(xt.message) : String(xt),
+                    skippedAt: Date.now()
+                  });
+                case 190:
+                  return n.n = 191, p({
+                    job: "indexeddb",
+                    phase: "media",
+                    unitType: "setting",
+                    unitId: gr.key,
+                    status: "done",
+                    detail: {
+                      key: gr.key
+                    }
+                  });
+                case 191:
+                  return n.n = 192, He();
+                case 192:
+                  dr = !1, n.n = 170;
+                  break;
+                case 193:
+                  n.n = 195;
+                  break;
+                case 194:
+                  n.p = 194, Tt = n.v, fr = !0, pr = Tt;
+                case 195:
+                  if (n.p = 195, n.p = 196, !dr || null == br.return) {
+                    n.n = 197;
+                    break
+                  }
+                  return n.n = 197, br.return();
+                case 197:
+                  if (n.p = 197, !fr) {
+                    n.n = 198;
+                    break
+                  }
+                  throw pr;
+                case 198:
+                  return n.f(197);
+                case 199:
+                  return n.f(195);
+                case 200:
+                  if (null === (h = f) || void 0 === h || h.close(), f = null, !(Ee.length > 0)) {
+                    n.n = 201;
+                    break
+                  }
+                  return n.n = 201, D.setMeta("migration_skipped_unreadable_media_v1", {
+                    recordedAt: Date.now(),
+                    count: Ee.length,
+                    items: Ee.slice(0, 100)
+                  });
+                case 201:
+                  return n.n = 202, D.run("UPDATE chat_sessions\n             SET message_count = (\n                 SELECT COUNT(*) FROM chat_messages WHERE chat_messages.session_id = chat_sessions.id\n             ),\n             last_message = COALESCE((\n                 SELECT content FROM chat_messages\n                 WHERE chat_messages.session_id = chat_sessions.id\n                 ORDER BY message_index DESC LIMIT 1\n             ), last_message)");
+                case 202:
+                  if (yr = Number((null === (v = b.sourceCounts) || void 0 === v ? void 0 : v.roles) || 0), kr = ue.size + Ve.size, !(yr > 0 && kr < yr)) {
+                    n.n = 203;
+                    break
+                  }
+                  return n.n = 203, D.setMeta("migration_incomplete_source_v1", {
+                    detectedAt: Date.now(),
+                    originalRoleCount: yr,
+                    currentIndexedDbRoleCount: Qe,
+                    recoveredRoleCount: ue.size,
+                    skippedRoleCount: Ve.size,
+                    missingRoleCount: yr - kr
+                  });
+                case 203:
+                  return n.n = 204, g("verify", 0, 1, "正在校验迁移结果...", !0);
+                case 204:
+                  return n.n = 205, Promise.all([D.query("SELECT COUNT(*) AS total FROM roles"), D.query("SELECT COUNT(*) AS total FROM chat_sessions"), D.query("SELECT COUNT(*) AS total FROM chat_messages"), D.query("SELECT id FROM roles ORDER BY id"), D.query("SELECT id FROM chat_sessions ORDER BY id"), D.query("SELECT session_id FROM chat_messages GROUP BY session_id\n                 HAVING MIN(message_index) <> 0 OR MAX(message_index) <> COUNT(*) - 1"), D.query("SELECT key FROM settings ORDER BY key"), D.query("SELECT id, image_path FROM roles WHERE image_path IS NOT NULL"), D.query("SELECT key, value_json FROM settings WHERE key LIKE '__binary_path__:%'")]);
+                case 205:
+                  return Er = n.v, wr = e(Er, 9), _r = wr[0], Sr = wr[1], Rr = wr[2], xr = wr[3], Tr = wr[4], Ir = wr[5], Or = wr[6], Nr = wr[7], Cr = wr[8], Mr = Re(ue), Ar = Re(ce), jr = Or.map(function(e) {
+                    return e.key
+                  }), le.sort(), Dr = new Set, n.n = 206, xe();
+                case 206:
+                  Fr = n.v, Lr = new Map, Pr = new Map, Nr.forEach(function(e) {
+                    if (e.image_path) {
+                      Dr.add(e.image_path);
+                      var n = Lr.get(e.image_path) || [];
+                      n.push(Number(e.id)), Lr.set(e.image_path, n)
+                    }
+                  }), Fr.forEach(function(e) {
+                    return Dr.add(e)
+                  }), Cr.forEach(function(e) {
+                    try {
+                      var n = JSON.parse(e.value_json);
+                      if ("string" == typeof n) {
+                        Dr.add(n);
+                        var r = Pr.get(n) || [];
+                        r.push(e.key), Pr.set(n, r)
+                      }
+                    } catch (t) {
+                      Dr.add("__invalid_binary_path__")
+                    }
+                  }), Br = [], Wr = a(Dr), n.p = 207, Wr.s();
+                case 208:
+                  if ((Ur = Wr.n()).done) {
+                    n.n = 226;
+                    break
+                  }
+                  return Hr = Ur.value, n.n = 209, W(Hr);
+                case 209:
+                  if (!n.v) {
+                    n.n = 210;
+                    break
+                  }
+                  return n.a(3, 225);
+                case 210:
+                  Br.push(Hr), qr = a(Lr.get(Hr) || []), n.p = 211, qr.s();
+                case 212:
+                  if ((zr = qr.n()).done) {
+                    n.n = 214;
+                    break
+                  }
+                  return Gr = zr.value, n.n = 213, D.run("UPDATE roles SET image_path = NULL WHERE id = ?", [Gr]);
+                case 213:
+                  n.n = 212;
+                  break;
+                case 214:
+                  n.n = 216;
+                  break;
+                case 215:
+                  n.p = 215, It = n.v, qr.e(It);
+                case 216:
+                  return n.p = 216, qr.f(), n.f(216);
+                case 217:
+                  Vr = a(Pr.get(Hr) || []), n.p = 218, Vr.s();
+                case 219:
+                  if ((Kr = Vr.n()).done) {
+                    n.n = 222;
+                    break
+                  }
+                  return Jr = Kr.value, n.n = 220, D.run("DELETE FROM settings WHERE key = ?", [Jr]);
+                case 220:
+                  (Yr = le.indexOf(Jr)) >= 0 && le.splice(Yr, 1), (Xr = jr.indexOf(Jr)) >= 0 && jr.splice(Xr, 1);
+                case 221:
+                  n.n = 219;
+                  break;
+                case 222:
+                  n.n = 224;
+                  break;
+                case 223:
+                  n.p = 223, Ot = n.v, Vr.e(Ot);
+                case 224:
+                  return n.p = 224, Vr.f(), n.f(224);
+                case 225:
+                  n.n = 208;
+                  break;
+                case 226:
+                  n.n = 228;
+                  break;
+                case 227:
+                  n.p = 227, Nt = n.v, Wr.e(Nt);
+                case 228:
+                  return n.p = 228, Wr.f(), n.f(228);
+                case 229:
+                  if (!(Br.length > 0)) {
+                    n.n = 230;
+                    break
+                  }
+                  return n.n = 230, D.setMeta("migration_missing_media_v1", {
+                    repairedAt: Date.now(),
+                    count: Br.length,
+                    paths: Br.slice(0, 50)
+                  });
+                case 230:
+                  if (Qr = Re(xr.map(function(e) {
+                      return e.id
+                    })), $r = Re(Tr.map(function(e) {
+                      return e.id
+                    })), Zr = {
+                      roles: {
+                        expectedCount: Mr.length,
+                        actualCount: Number((null === (E = _r[0]) || void 0 === E ? void 0 : E.total) || 0),
+                        idsMatch: Ie(Qr, Mr),
+                        missingIds: Mr.filter(function(e) {
+                          return !Qr.includes(e)
+                        }).slice(0, 20),
+                        unexpectedIds: Qr.filter(function(e) {
+                          return !Mr.includes(e)
+                        }).slice(0, 20)
+                      },
+                      sessions: {
+                        expectedCount: Ar.length,
+                        actualCount: Number((null === (w = Sr[0]) || void 0 === w ? void 0 : w.total) || 0),
+                        idsMatch: Ie($r, Ar),
+                        missingIds: Ar.filter(function(e) {
+                          return !$r.includes(e)
+                        }).slice(0, 20),
+                        unexpectedIds: $r.filter(function(e) {
+                          return !Ar.includes(e)
+                        }).slice(0, 20)
+                      },
+                      messages: {
+                        expectedCount: de,
+                        actualCount: Number((null === (_ = Rr[0]) || void 0 === _ ? void 0 : _.total) || 0),
+                        nonContiguousSessionIds: Ir.map(function(e) {
+                          return e.session_id
+                        }).slice(0, 20)
+                      },
+                      settings: {
+                        expectedCount: le.length,
+                        actualCount: jr.length,
+                        missingKeys: le.filter(function(e) {
+                          return !jr.includes(e)
+                        }).slice(0, 20),
+                        unexpectedKeys: jr.filter(function(e) {
+                          return !le.includes(e)
+                        }).slice(0, 20)
+                      }
+                    }, !(Zr.roles.expectedCount !== Zr.roles.actualCount || !Zr.roles.idsMatch || Zr.sessions.expectedCount !== Zr.sessions.actualCount || !Zr.sessions.idsMatch || Zr.messages.expectedCount !== Zr.messages.actualCount || Zr.messages.nonContiguousSessionIds.length > 0 || Zr.settings.expectedCount !== Zr.settings.actualCount || Zr.settings.missingKeys.length > 0 || Zr.settings.unexpectedKeys.length > 0)) {
+                    n.n = 231;
+                    break
+                  }
+                  throw new Error("SQLite migration verification mismatch: ".concat(JSON.stringify(Zr)));
+                case 231:
+                  return et = Date.now(), b = {
+                    completed: !0,
+                    completedAt: et,
+                    sourceVersion: ne.databaseVersion,
+                    roles: Mr.length,
+                    sessions: Ar.length,
+                    messages: de
+                  }, n.n = 232, D.setMeta(fe, b);
+                case 232:
+                  return Ct = D, Mt = et, At = Ve.size, jt = Ke.size, Dt = Je.size, Ft = j, n.n = 233, u();
+                case 233:
+                  return Lt = n.v.filter(function(e) {
+                    return "indexeddb" === e.job
+                  }).length, Pt = Array.from(Te.values()).slice(-100), n.n = 234, Ct.setMeta.call(Ct, "migration_skipped_summary_v1", {
+                    completedAt: Mt,
+                    roles: At,
+                    sessions: jt,
+                    settings: Dt,
+                    recoveredCrashSkips: Ft,
+                    crashSkipped: Lt,
+                    records: Pt
+                  });
+                case 234:
+                  return n.n = 235, je();
+                case 235:
+                  return n.n = 236, L();
+                case 236:
+                  return n.n = 237, y();
+                case 237:
+                  if (Wt = S = n.v, Bt = null === Wt) {
+                    n.n = 238;
+                    break
+                  }
+                  Bt = void 0 === S;
+                case 238:
+                  if (!Bt) {
+                    n.n = 239;
+                    break
+                  }
+                  Ut = void 0, n.n = 240;
+                  break;
+                case 239:
+                  Ut = S.job;
+                case 240:
+                  if ("indexeddb" !== Ut) {
+                    n.n = 241;
+                    break
+                  }
+                  return n.n = 241, k();
+                case 241:
+                  return Ce(), n.n = 242, u();
+                case 242:
+                  nt = n.v.length, x({
+                    backend: "sqlite",
+                    migrationPhase: "complete",
+                    migrationCurrent: 1,
+                    migrationTotal: 1,
+                    migrationMessage: nt > 0 ? "本地数据迁移完成，已跳过 ".concat(nt, " 个异常数据项") : Te.size > 0 ? "本地数据迁移完成，已跳过 ".concat(Te.size, " 条损坏记录") : "本地数据迁移完成",
+                    migrationError: null,
+                    migrationErrorStack: null
+                  }), n.n = 245;
+                  break;
+                case 243:
+                  if (n.p = 243, Ht = n.v, null === (rt = f) || void 0 === rt || rt.close(), tt = Ht instanceof Error ? "".concat(Ht.name, ": ").concat(Ht.message) : String(Ht), console.error("[DatabaseMigration] SQLite migration failed:", Ht), Ne({
+                      status: "failed",
+                      startedAt: (null == (at = Oe()) ? void 0 : at.startedAt) || b.startedAt || Date.now(),
+                      updatedAt: Date.now(),
+                      phase: (null == at ? void 0 : at.phase) || "failed",
+                      current: (null == at ? void 0 : at.current) || 0,
+                      total: (null == at ? void 0 : at.total) || 0,
+                      detail: null == at ? void 0 : at.detail,
+                      error: tt
+                    }), !d) {
+                    n.n = 244;
+                    break
+                  }
+                  return n.n = 244, L();
+                case 244:
+                  x({
+                    backend: "sqlite",
+                    migrationPhase: "failed",
+                    migrationMessage: "SQLite 迁移失败，本地数据暂时无法读取",
+                    migrationError: tt,
+                    migrationErrorStack: Ht instanceof Error && Ht.stack || null
+                  });
+                case 245:
+                  return n.a(2)
+              }
+            }, n, null, [
+              [218, 223, 224, 225],
+              [211, 215, 216, 217],
+              [207, 227, 228, 229],
+              [196, , 197, 199],
+              [177, 187],
+              [169, 194, 195, 200],
+              [161, 166, 167, 168],
+              [156, , 157, 159],
+              [148, 154, 155, 160],
+              [138, 145, 146, 147],
+              [131, 135, 136, 137],
+              [121, 126, 127, 128],
+              [111, 117, 118, 119],
+              [101, 107, 108, 109],
+              [95, , 96, 98],
+              [78, 80],
+              [71, 73],
+              [66, 69],
+              [61, 87],
+              [52, 93, 94, 99],
+              [35, 40, 41, 42],
+              [1, 243]
+            ])
+          })), ze.apply(this, arguments)
+        }
+      }
+    }
+  })
+}();

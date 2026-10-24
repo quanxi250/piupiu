@@ -1,0 +1,3234 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function e(e, t) {
+    var a = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+      var n = Object.getOwnPropertySymbols(e);
+      t && (n = n.filter(function(t) {
+        return Object.getOwnPropertyDescriptor(e, t).enumerable
+      })), a.push.apply(a, n)
+    }
+    return a
+  }
+
+  function t(t) {
+    for (var n = 1; n < arguments.length; n++) {
+      var r = null != arguments[n] ? arguments[n] : {};
+      n % 2 ? e(Object(r), !0).forEach(function(e) {
+        a(t, e, r[e])
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(t, Object.getOwnPropertyDescriptors(r)) : e(Object(r)).forEach(function(e) {
+        Object.defineProperty(t, e, Object.getOwnPropertyDescriptor(r, e))
+      })
+    }
+    return t
+  }
+
+  function a(e, t, a) {
+    return (t = function(e) {
+      var t = function(e, t) {
+        if ("object" != o(e) || !e) return e;
+        var a = e[Symbol.toPrimitive];
+        if (void 0 !== a) {
+          var n = a.call(e, t || "default");
+          if ("object" != o(n)) return n;
+          throw new TypeError("@@toPrimitive must return a primitive value.")
+        }
+        return ("string" === t ? String : Number)(e)
+      }(e, "string");
+      return "symbol" == o(t) ? t : t + ""
+    }(t)) in e ? Object.defineProperty(e, t, {
+      value: a,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }) : e[t] = a, e
+  }
+
+  function n(e, t) {
+    var a = "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
+    if (!a) {
+      if (Array.isArray(e) || (a = c(e)) || t && e && "number" == typeof e.length) {
+        a && (e = a);
+        var n = 0,
+          r = function() {};
+        return {
+          s: r,
+          n: function() {
+            return n >= e.length ? {
+              done: !0
+            } : {
+              done: !1,
+              value: e[n++]
+            }
+          },
+          e: function(e) {
+            throw e
+          },
+          f: r
+        }
+      }
+      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }
+    var o, i = !0,
+      l = !1;
+    return {
+      s: function() {
+        a = a.call(e)
+      },
+      n: function() {
+        var e = a.next();
+        return i = e.done, e
+      },
+      e: function(e) {
+        l = !0, o = e
+      },
+      f: function() {
+        try {
+          i || null == a.return || a.return()
+        } finally {
+          if (l) throw o
+        }
+      }
+    }
+  }
+
+  function r(e, t) {
+    return function(e) {
+      if (Array.isArray(e)) return e
+    }(e) || function(e, t) {
+      var a = null == e ? null : "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
+      if (null != a) {
+        var n, r, o, i, l = [],
+          s = !0,
+          c = !1;
+        try {
+          if (o = (a = a.call(e)).next, 0 === t) {
+            if (Object(a) !== a) return;
+            s = !1
+          } else
+            for (; !(s = (n = o.call(a)).done) && (l.push(n.value), l.length !== t); s = !0);
+        } catch (e) {
+          c = !0, r = e
+        } finally {
+          try {
+            if (!s && null != a.return && (i = a.return(), Object(i) !== i)) return
+          } finally {
+            if (c) throw r
+          }
+        }
+        return l
+      }
+    }(e, t) || c(e, t) || function() {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }()
+  }
+
+  function o(e) {
+    return o = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+      return typeof e
+    } : function(e) {
+      return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
+    }, o(e)
+  }
+
+  function i() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var e, t, a = "function" == typeof Symbol ? Symbol : {},
+      n = a.iterator || "@@iterator",
+      r = a.toStringTag || "@@toStringTag";
+
+    function o(a, n, r, o) {
+      var i = n && n.prototype instanceof c ? n : c,
+        d = Object.create(i.prototype);
+      return l(d, "_invoke", function(a, n, r) {
+        var o, i, l, c = 0,
+          d = r || [],
+          u = !1,
+          p = {
+            p: 0,
+            n: 0,
+            v: e,
+            a: f,
+            f: f.bind(e, 4),
+            d: function(t, a) {
+              return o = t, i = 0, l = e, p.n = a, s
+            }
+          };
+
+        function f(a, n) {
+          for (i = a, l = n, t = 0; !u && c && !r && t < d.length; t++) {
+            var r, o = d[t],
+              f = p.p,
+              v = o[2];
+            a > 3 ? (r = v === n) && (l = o[(i = o[4]) ? 5 : (i = 3, 3)], o[4] = o[5] = e) : o[0] <= f && ((r = a < 2 && f < o[1]) ? (i = 0, p.v = n, p.n = o[1]) : f < v && (r = a < 3 || o[0] > n || n > v) && (o[4] = a, o[5] = n, p.n = v, i = 0))
+          }
+          if (r || a > 1) return s;
+          throw u = !0, n
+        }
+        return function(r, d, v) {
+          if (c > 1) throw TypeError("Generator is already running");
+          for (u && 1 === d && f(d, v), i = d, l = v;
+            (t = i < 2 ? e : l) || !u;) {
+            o || (i ? i < 3 ? (i > 1 && (p.n = -1), f(i, l)) : p.n = l : p.v = l);
+            try {
+              if (c = 2, o) {
+                if (i || (r = "next"), t = o[r]) {
+                  if (!(t = t.call(o, l))) throw TypeError("iterator result is not an object");
+                  if (!t.done) return t;
+                  l = t.value, i < 2 && (i = 0)
+                } else 1 === i && (t = o.return) && t.call(o), i < 2 && (l = TypeError("The iterator does not provide a '" + r + "' method"), i = 1);
+                o = e
+              } else if ((t = (u = p.n < 0) ? l : a.call(n, p)) !== s) break
+            } catch (t) {
+              o = e, i = 1, l = t
+            } finally {
+              c = 1
+            }
+          }
+          return {
+            value: t,
+            done: u
+          }
+        }
+      }(a, r, o), !0), d
+    }
+    var s = {};
+
+    function c() {}
+
+    function d() {}
+
+    function u() {}
+    t = Object.getPrototypeOf;
+    var p = [][n] ? t(t([][n]())) : (l(t = {}, n, function() {
+        return this
+      }), t),
+      f = u.prototype = c.prototype = Object.create(p);
+
+    function v(e) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(e, u) : (e.__proto__ = u, l(e, r, "GeneratorFunction")), e.prototype = Object.create(f), e
+    }
+    return d.prototype = u, l(f, "constructor", u), l(u, "constructor", d), d.displayName = "GeneratorFunction", l(u, r, "GeneratorFunction"), l(f), l(f, r, "Generator"), l(f, n, function() {
+      return this
+    }), l(f, "toString", function() {
+      return "[object Generator]"
+    }), (i = function() {
+      return {
+        w: o,
+        m: v
+      }
+    })()
+  }
+
+  function l(e, t, a, n) {
+    var r = Object.defineProperty;
+    try {
+      r({}, "", {})
+    } catch (e) {
+      r = 0
+    }
+    l = function(e, t, a, n) {
+      function o(t, a) {
+        l(e, t, function(e) {
+          return this._invoke(t, a, e)
+        })
+      }
+      t ? r ? r(e, t, {
+        value: a,
+        enumerable: !n,
+        configurable: !n,
+        writable: !n
+      }) : e[t] = a : (o("next", 0), o("throw", 1), o("return", 2))
+    }, l(e, t, a, n)
+  }
+
+  function s(e) {
+    return function(e) {
+      if (Array.isArray(e)) return d(e)
+    }(e) || function(e) {
+      if ("undefined" != typeof Symbol && null != e[Symbol.iterator] || null != e["@@iterator"]) return Array.from(e)
+    }(e) || c(e) || function() {
+      throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }()
+  }
+
+  function c(e, t) {
+    if (e) {
+      if ("string" == typeof e) return d(e, t);
+      var a = {}.toString.call(e).slice(8, -1);
+      return "Object" === a && e.constructor && (a = e.constructor.name), "Map" === a || "Set" === a ? Array.from(e) : "Arguments" === a || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a) ? d(e, t) : void 0
+    }
+  }
+
+  function d(e, t) {
+    (null == t || t > e.length) && (t = e.length);
+    for (var a = 0, n = Array(t); a < t; a++) n[a] = e[a];
+    return n
+  }
+
+  function u(e, t, a, n, r, o, i) {
+    try {
+      var l = e[o](i),
+        s = l.value
+    } catch (e) {
+      return void a(e)
+    }
+    l.done ? t(s) : Promise.resolve(s).then(n, r)
+  }
+
+  function p(e) {
+    return function() {
+      var t = this,
+        a = arguments;
+      return new Promise(function(n, r) {
+        var o = e.apply(t, a);
+
+        function i(e) {
+          u(o, n, r, i, l, "next", e)
+        }
+
+        function l(e) {
+          u(o, n, r, i, l, "throw", e)
+        }
+        i(void 0)
+      })
+    }
+  }
+  System.register(["./app-security-legacy-BdXLf8ML.js", "../e/index-legacy-B0tYRju5.js", "./ImageViewer-legacy-DD5gJaNv.js", "./BackgroundSettingsModal-legacy-B5m4oeJe.js", "./useSwipePagination-legacy-BiiTkTjC.js", "./trash-2-legacy-D4qdzvtP.js", "./usePermission-legacy-C3joXLwu.js", "./InviteSystemModal-legacy-BrJeYdi2.js", "./OfficialWebModal-legacy-DGd73aKM.js", "./ConfirmModal-legacy-NP3AE2aY.js", "./randomNekoService-legacy-CyYdQN96.js", "./dataBackupService-legacy-DP8RNBWM.js", "./refresh-cw-legacy-8ZRhP8a6.js", "./GlobalResourceMarketModal-legacy-BvchFYLb.js", "./sun-legacy-xJ81SYqA.js", "./message-square-plus-legacy-BvW3kF1p.js", "./volume-2-legacy-CkUYK7Ir.js", "./ellipsis-vertical-legacy-BVt4j4Y5.js", "./lock-legacy-DIp3fFDa.js", "./gem-legacy-Cu1O8F28.js", "./useMarketUploadAgreement-legacy-CIq0LfZF.js", "./x-legacy-CUolZt7f.js", "./copy-legacy-wdtkFLud.js", "./browser-legacy-BbIUDyyy.js", "./overwriteRecovery-legacy-2YP7Wk_W.js"], function(e, a) {
+    "use strict";
+    var l, c, d, u, f, v, g, b, h, m, y, x, w, k, C, z, j, S, _, U, M, I, P, B, O, R, E, A, G, N, F, L, D, T, W, q, V, J, H, $, Y, K, Q, Z, X, ee, te, ae, ne, re, oe, ie, le, se, ce, de, ue, pe, fe, ve, ge, be, he, me, ye, xe, we, ke, Ce, ze, je, Se, _e, Ue, Me, Ie, Pe, Be, Oe, Re, Ee, Ae, Ge, Ne, Fe, Le, De, Te, We, qe, Ve, Je, He, $e, Ye, Ke, Qe, Ze, Xe, et, tt, at, nt, rt, ot, it, lt, st, ct, dt, ut, pt;
+    return {
+      setters: [function(e) {
+        l = e.k, c = e.M, d = e.O, u = e.J, f = e.R, v = e.Z, g = e.$, b = e.N, h = e.a2, m = e.L, y = e.W, x = e.u, w = e.r, k = e.Y, C = e.c, z = e.V, j = e.T, S = e.K, _ = e.v, U = e.x, M = e.y, I = e.A, P = e.F, B = e.ba, O = e.bb, R = e.a3, E = e.bc, A = e.G, G = e.bd, N = e.a4, F = e.P, L = e.S, D = e.Q, T = e.X, W = e.be, q = e.a5, V = e.a8, J = e.a9, H = e.a7, $ = e.bf, Y = e.a6, K = e.at
+      }, function(e) {
+        Q = e.c, Z = e.m, X = e.g, ee = e.e, te = e.a7, ae = e._, ne = e.D, re = e.af, oe = e.ag, ie = e.I, le = e.ah, se = e.ai, ce = e.b, de = e.q, ue = e.C, pe = e.aj, fe = e.S, ve = e.ak, ge = e.U, be = e.al, he = e.F, me = e.am, ye = e.x, xe = e.r, we = e.an, ke = e.u, Ce = e.ao, ze = e.ap, je = e.Z, Se = e.aq
+      }, function(e) {
+        _e = e.I, Ue = e.P, Me = e.M, Ie = e.R, Pe = e.a, Be = e.S, Oe = e.G, Re = e.b, Ee = e.c
+      }, function(e) {
+        Ae = e.S, Ge = e.M, Ne = e.a, Fe = e.B, Le = e.T, De = e.b
+      }, function(e) {
+        Te = e.C, We = e.U
+      }, function(e) {
+        qe = e.a, Ve = e.T, Je = e.C
+      }, function(e) {
+        He = e.P, $e = e.u
+      }, function(e) {
+        Ye = e.G, Ke = e.a, Qe = e.I
+      }, function(e) {
+        Ze = e.O
+      }, function(e) {
+        Xe = e.C
+      }, function(e) {
+        et = e.a
+      }, function(e) {
+        tt = e.inspectBackupFile, at = e.importRoleChatBackup, nt = e.exportRoleChatBackup
+      }, function(e) {
+        rt = e.R
+      }, function(e) {
+        ot = e.F, it = e.B, lt = e.U
+      }, function(e) {
+        st = e.M, ct = e.S
+      }, function(e) {
+        dt = e.I, ut = e.B
+      }, function(e) {
+        pt = e.V
+      }, null, null, null, null, null, null, null, null],
+      execute: function() {
+        var a = document.createElement("style");
+        a.textContent = ".modal-overlay[data-v-de4c5133]{position:fixed;top:0;right:0;bottom:0;left:0;background:radial-gradient(circle at top,rgba(255,143,171,.16),transparent 34%),rgba(16,18,24,.68);z-index:3000;display:flex;align-items:center;justify-content:center;padding:20px}.modal-content[data-v-de4c5133]{width:100%;max-width:360px;max-height:min(var(--app-viewport-height) * .88,var(--app-viewport-height) - 40px - var(--safe-area-inset-top) - var(--safe-area-inset-bottom));background:linear-gradient(180deg,rgba(255,247,250,.98),rgba(255,255,255,.98) 30%),#fff;border:1px solid rgba(255,143,171,.16);border-radius:24px;padding:24px;box-shadow:0 28px 70px rgba(15,23,42,.22),0 1px rgba(255,255,255,.55) inset;display:flex;flex-direction:column;gap:24px;position:relative;overflow:hidden}.dark-mode .modal-content[data-v-de4c5133]{background:linear-gradient(180deg,rgba(60,40,52,.96),rgba(27,28,34,.98) 28%),#1a1b21;border-color:rgba(255,143,171,.2)}.modal-title[data-v-de4c5133]{margin:0;font-size:24px;font-weight:700;color:var(--text-color);text-align:center}.settings-controls[data-v-de4c5133]{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;gap:20px;scrollbar-width:none;-ms-overflow-style:none}.settings-controls[data-v-de4c5133]::-webkit-scrollbar{width:0;height:0;display:none}.control-group[data-v-de4c5133]{display:flex;flex-direction:column;gap:8px;padding:14px 15px;border-radius:18px;border:1px solid rgba(255,143,171,.12);background:rgba(255,255,255,.68)}.dark-mode .control-group[data-v-de4c5133]{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}.control-group label[data-v-de4c5133]{font-size:14px;color:var(--text-color);font-weight:600}.control-group.row-group[data-v-de4c5133]{flex-direction:row;justify-content:space-between;align-items:center}.control-group.row-group .setting-label[data-v-de4c5133]{font-size:16px;color:var(--text-color);font-weight:500}.toggle-switch[data-v-de4c5133]{width:44px;height:24px;background:rgba(255,143,171,.18);border-radius:12px;padding:2px;cursor:pointer;transition:all .3s}.dark-mode .toggle-switch[data-v-de4c5133]{background:rgba(255,255,255,.1)}.toggle-switch .toggle-thumb[data-v-de4c5133]{width:20px;height:20px;background:#fff;border-radius:50%;box-shadow:0 2px 4px rgba(0,0,0,.1);transition:transform .3s cubic-bezier(.4,0,.2,1)}.toggle-switch.active[data-v-de4c5133]{background:#f78cab}.toggle-switch.active .toggle-thumb[data-v-de4c5133]{transform:translate(20px)}.slider-container[data-v-de4c5133]{width:100%}.slider[data-v-de4c5133]{appearance:none;-webkit-appearance:none;width:100%;height:6px;background:rgba(255,143,171,.2);border-radius:3px;outline:none}.slider[data-v-de4c5133]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;background:linear-gradient(180deg,#ff98b8,#f47ea4);border-radius:50%;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.2);border:2px solid white}.dark-mode .slider[data-v-de4c5133]{background:rgba(255,255,255,.1)}.modal-actions[data-v-de4c5133]{display:flex;justify-content:center}.btn-confirm[data-v-de4c5133]{width:100%;padding:12px;border:1px solid #f78cab;border-radius:16px;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;background:#f78cab;color:#fff}.btn-confirm[data-v-de4c5133]:active{transform:scale(.98)}.selector-btn[data-v-de4c5133]{background:rgba(255,248,251,.9);padding:10px 12px;border-radius:14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;color:var(--text-color);border:1px solid rgba(255,143,171,.12)}.dark-mode .selector-btn[data-v-de4c5133]{background:rgba(255,255,255,.05)}.selector-btn[data-v-de4c5133]:active{transform:scale(.985)}.selector-text[data-v-de4c5133]{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500}.selector-text .icon-small[data-v-de4c5133]{opacity:.7}.dropdown-arrow[data-v-de4c5133]{opacity:.5}.selector-overlay[data-v-de4c5133]{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.16);display:flex;align-items:center;justify-content:center;z-index:10;border-radius:20px}.selector-card[data-v-de4c5133]{background:linear-gradient(180deg,rgba(255,247,250,.98),rgba(255,255,255,.98) 30%),#fff;width:85%;max-height:80%;border-radius:20px;padding:16px;display:flex;flex-direction:column;border:1px solid rgba(255,143,171,.12);box-shadow:0 18px 40px rgba(15,23,42,.18)}.dark-mode .selector-card[data-v-de4c5133]{background:linear-gradient(180deg,rgba(60,40,52,.96),rgba(27,28,34,.98) 28%),#1a1b21;border-color:rgba(255,143,171,.16)}.selector-card h4[data-v-de4c5133]{margin:0 0 12px;text-align:center;font-size:16px;color:var(--text-color)}.list-container[data-v-de4c5133]{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:6px;margin-bottom:12px;padding-right:4px}.list-item[data-v-de4c5133]{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-radius:14px;cursor:pointer;border:1px solid rgba(255,143,171,.1);background:rgba(255,255,255,.68)}.list-item.active[data-v-de4c5133]{background:rgba(255,143,171,.12);color:#d4688d}.dark-mode .list-item.active[data-v-de4c5133]{background:rgba(255,143,171,.12);color:#ffb5c9}.dark-mode .list-item[data-v-de4c5133]{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}.item-info[data-v-de4c5133]{display:flex;align-items:center;gap:8px;flex:1;overflow:hidden}.item-name[data-v-de4c5133]{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tag-custom[data-v-de4c5133]{font-size:10px;padding:1px 4px;border-radius:4px;background:rgba(0,0,0,.1);opacity:.7}.dark-mode .tag-custom[data-v-de4c5133]{background:rgba(255,255,255,.1)}.item-actions[data-v-de4c5133]{display:flex;align-items:center;gap:8px}.check-icon[data-v-de4c5133]{color:var(--primary-color)}.btn-icon[data-v-de4c5133]{display:flex;align-items:center;justify-content:center;padding:6px;border:none;background:transparent;color:var(--text-secondary-color);border-radius:10px;cursor:pointer}.btn-icon[data-v-de4c5133]:active{transform:scale(.96)}.btn-upload[data-v-de4c5133]{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border:2px dashed rgba(156,39,176,.4);border-radius:16px;background:rgba(156,39,176,.05);color:#9c27b0;font-size:14px;font-weight:600;cursor:pointer;width:100%;font-family:inherit}.btn-upload[data-v-de4c5133]:active{transform:scale(.98)}.dark-mode .btn-upload[data-v-de4c5133]{background:rgba(156,39,176,.05);border-color:rgba(156,39,176,.4);color:#9c27b0}.hidden-input[data-v-de4c5133]{display:none}.list-container[data-v-de4c5133]::-webkit-scrollbar{width:4px}.list-container[data-v-de4c5133]::-webkit-scrollbar-thumb{background:rgba(0,0,0,.1);border-radius:2px}.modal-overlay[data-v-d8516212]{position:fixed;top:0;right:0;bottom:0;left:0;background:radial-gradient(circle at top,rgba(255,143,171,.16),transparent 34%),rgba(16,18,24,.68);display:flex;align-items:center;justify-content:center;z-index:3200;padding:20px}.modal-content[data-v-d8516212]{width:100%;max-width:440px;background:linear-gradient(180deg,rgba(255,247,250,.98),rgba(255,255,255,.98) 30%),#fff;border:1px solid rgba(255,143,171,.16);border-radius:24px;padding:0;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 28px 70px rgba(15,23,42,.22),0 1px rgba(255,255,255,.55) inset}.dark-mode .modal-content[data-v-d8516212]{background:linear-gradient(180deg,rgba(60,40,52,.96),rgba(27,28,34,.98) 28%),#1a1b21;border-color:rgba(255,143,171,.2)}.modal-hero[data-v-d8516212]{padding:22px 22px 14px;display:flex;flex-direction:column;gap:10px}.modal-title[data-v-d8516212]{margin:0;font-size:24px;line-height:1.15;font-weight:700;color:var(--text-color);width:100%;padding:0 44px;box-sizing:border-box;text-align:center}.modal-desc[data-v-d8516212]{margin:0;font-size:14px;line-height:1.6;color:var(--text-secondary-color);max-width:30ch;align-self:center;text-align:center}.action-list[data-v-d8516212]{padding:6px 16px 0;display:flex;flex-direction:column;gap:10px}.action-btn[data-v-d8516212]{border:1px solid rgba(255,143,171,.12);border-radius:18px;padding:15px 16px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease;font-family:inherit;text-align:left;background:rgba(255,255,255,.68)}.action-btn[data-v-d8516212]:active{transform:scale(.98)}.dark-mode .action-btn[data-v-d8516212]{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}.action-icon[data-v-d8516212]{width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}.action-icon--soft[data-v-d8516212]{background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,243,247,.92));color:#cf6d90;border:1px solid rgba(255,143,171,.14)}.dark-mode .action-icon--soft[data-v-d8516212]{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,143,171,.08));color:#ffb7cc;border-color:rgba(255,143,171,.18)}.action-copy[data-v-d8516212]{min-width:0;flex:1;display:flex;flex-direction:column;gap:3px}.action-title[data-v-d8516212]{font-size:15px;font-weight:600;color:var(--text-color)}.action-hint[data-v-d8516212]{font-size:12px;line-height:1.45;color:var(--text-secondary-color)}.modal-actions[data-v-d8516212]{padding:16px;display:flex;justify-content:center}.btn[data-v-d8516212]{width:100%;padding:12px;border:none;border-radius:16px;font-size:15px;font-weight:600;cursor:pointer;transition:transform .2s ease;font-family:inherit}.btn[data-v-d8516212]:active{transform:scale(.97)}.btn-cancel[data-v-d8516212]{background:rgba(255,255,255,.72);color:var(--text-secondary-color);border:1px solid rgba(255,143,171,.12)}.dark-mode .btn-cancel[data-v-d8516212]{background:rgba(255,255,255,.06);color:rgba(255,255,255,.82);border-color:rgba(255,255,255,.08)}.feedback-overlay[data-v-d622b7f4]{position:fixed;top:0;right:0;bottom:0;left:0;z-index:3300;display:grid;place-items:center;padding:max(18px,var(--safe-area-inset-top, 0px)) 18px max(18px,var(--safe-area-inset-bottom, 0px));background:rgba(17,18,24,.7);backdrop-filter:blur(10px)}.feedback-panel[data-v-d622b7f4]{width:min(100%,440px);max-height:min(88vh,var(--app-viewport-height, 100vh) - 36px);display:flex;flex-direction:column;overflow:hidden;border:1px solid rgba(255,143,171,.18);border-radius:26px;background:rgba(255,252,253,.98);box-shadow:0 28px 80px rgba(30,20,29,.28)}.dark-mode .feedback-panel[data-v-d622b7f4]{background:rgba(31,28,34,.98);border-color:rgba(255,181,205,.16)}.feedback-header[data-v-d622b7f4]{padding:24px 24px 18px;border-bottom:1px solid rgba(255,143,171,.12);text-align:center}.feedback-header .eyebrow[data-v-d622b7f4]{margin:0 0 8px;color:#d56f93;font-size:11px;font-weight:800;letter-spacing:.16em}.feedback-header h3[data-v-d622b7f4]{margin:0;color:var(--text-color);font-size:24px;line-height:1.15}.feedback-header>p[data-v-d622b7f4]:last-child{margin:9px auto 0;max-width:30ch;color:var(--text-secondary-color);font-size:13px;line-height:1.55}.feedback-body[data-v-d622b7f4]{min-height:0;padding:18px;overflow-y:auto;overscroll-behavior:contain}.content-field[data-v-d622b7f4],.attachment-section[data-v-d622b7f4]{display:block}.attachment-section[data-v-d622b7f4]{margin-top:18px}.field-heading[data-v-d622b7f4]{min-height:22px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:9px;color:var(--text-color);font-size:13px}.field-heading>div[data-v-d622b7f4]{display:flex;align-items:baseline;gap:8px}.field-heading .heading-label[data-v-d622b7f4]{display:inline-flex;align-items:center;gap:6px;color:var(--text-color);font-size:13px}.field-heading b[data-v-d622b7f4]{font-weight:750}.field-heading>div>span[data-v-d622b7f4]{color:var(--text-secondary-color);font-size:12px}.field-heading small[data-v-d622b7f4]{color:var(--text-secondary-color);font-size:12px}.field-heading small.limit[data-v-d622b7f4]{color:#e24f7f;font-weight:750}.content-preview[data-v-d622b7f4]{width:100%;min-height:74px;max-height:calc(4.95em + 28px);overflow-y:auto;padding:14px 15px;border:1px solid rgba(255,143,171,.16);border-radius:17px;background:rgba(255,255,255,.78);color:var(--text-color);font:inherit;font-size:14px;line-height:1.65;text-align:left;white-space:pre-wrap;word-break:break-word;box-sizing:border-box;transition:border-color .18s ease,box-shadow .18s ease}.content-preview[data-v-d622b7f4]:active:not(:disabled){border-color:rgba(238,102,148,.5);box-shadow:0 0 0 4px rgba(238,102,148,.09)}.content-preview>span[data-v-d622b7f4]{display:block}.content-preview .empty[data-v-d622b7f4]{min-height:44px;display:flex;align-items:center;justify-content:center;color:rgba(125,106,118,.58);text-align:center}.content-preview[data-v-d622b7f4]:disabled{opacity:.6}.dark-mode .content-preview[data-v-d622b7f4]{background:rgba(255,255,255,.04);border-color:rgba(255,181,205,.13)}.hidden-input[data-v-d622b7f4]{display:none}.attachment-grid[data-v-d622b7f4]{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.attachment-item[data-v-d622b7f4],.add-file-btn[data-v-d622b7f4]{aspect-ratio:1;border-radius:16px}.attachment-item[data-v-d622b7f4]{position:relative;overflow:visible;animation:attachment-in-d622b7f4 .22s ease both}.preview-btn[data-v-d622b7f4]{width:100%;height:100%;padding:0;overflow:hidden;border:1px solid rgba(255,143,171,.18);border-radius:inherit;background:rgba(246,235,240,.7)}.preview-btn img[data-v-d622b7f4]{width:100%;height:100%;display:block;object-fit:cover}.preview-btn.file-preview[data-v-d622b7f4]{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:10px;color:var(--text-secondary-color)}.preview-btn.file-preview span[data-v-d622b7f4]{width:100%;overflow:hidden;font-size:11px;line-height:1.3;text-overflow:ellipsis;white-space:nowrap}.remove-btn[data-v-d622b7f4]{position:absolute;top:-7px;right:-7px;width:28px;height:28px;display:grid;place-items:center;padding:0;border:2px solid rgba(255,255,255,.9);border-radius:50%;background:#ef668f;color:#fff;box-shadow:0 5px 13px rgba(194,64,107,.26)}.add-file-btn[data-v-d622b7f4]{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;border:1px dashed rgba(221,102,143,.34);background:rgba(255,240,246,.5);color:#cc6a8e;font:inherit;font-size:12px;font-weight:700}.add-file-btn[data-v-d622b7f4]:active:not(:disabled){transform:scale(.97)}.add-file-btn[data-v-d622b7f4]:disabled{opacity:.55}.dark-mode .add-file-btn[data-v-d622b7f4]{background:rgba(255,143,171,.06)}.feedback-actions[data-v-d622b7f4]{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:15px 18px max(15px,var(--safe-area-inset-bottom, 0px));border-top:1px solid rgba(255,143,171,.12)}.feedback-actions button[data-v-d622b7f4]{min-height:46px;border-radius:15px;font:inherit;font-size:14px;font-weight:750;transition:transform .18s ease,opacity .18s ease}.feedback-actions button[data-v-d622b7f4]:active:not(:disabled){transform:scale(.98)}.feedback-actions button[data-v-d622b7f4]:disabled{opacity:.48}.cancel-btn[data-v-d622b7f4]{border:1px solid rgba(128,107,119,.12);background:transparent;color:var(--text-secondary-color)}.submit-btn[data-v-d622b7f4]{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;background:linear-gradient(135deg,#ef6f9b,#f893b5);color:#fff;box-shadow:0 10px 25px rgba(224,93,140,.24)}.spin[data-v-d622b7f4]{animation:spin-d622b7f4 .8s linear infinite}.feedback-modal-enter-active[data-v-d622b7f4],.feedback-modal-leave-active[data-v-d622b7f4]{transition:opacity .2s ease}.feedback-modal-enter-active .feedback-panel[data-v-d622b7f4],.feedback-modal-leave-active .feedback-panel[data-v-d622b7f4]{transition:transform .24s ease,opacity .2s ease}.feedback-modal-enter-from[data-v-d622b7f4],.feedback-modal-leave-to[data-v-d622b7f4]{opacity:0}.feedback-modal-enter-from .feedback-panel[data-v-d622b7f4],.feedback-modal-leave-to .feedback-panel[data-v-d622b7f4]{opacity:0;transform:translateY(14px) scale(.97)}@keyframes attachment-in-d622b7f4{0%{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}@keyframes spin-d622b7f4{to{transform:rotate(360deg)}}@media(max-width:390px){.feedback-overlay[data-v-d622b7f4]{padding-inline:10px}.feedback-body[data-v-d622b7f4]{padding:16px 14px}.feedback-header[data-v-d622b7f4]{padding-inline:18px}.feedback-actions[data-v-d622b7f4]{padding-inline:14px}}.settings-view[data-v-98f0133c]{display:flex;flex-direction:column;min-height:100%;padding:20px 16px}.settings-content[data-v-98f0133c]{flex:1;display:flex;flex-direction:column}.cards-container[data-v-98f0133c]{display:flex;flex-direction:column;gap:16px}.role-chat-import-overlay[data-v-98f0133c]{position:fixed;top:0;right:0;bottom:0;left:0;z-index:3400;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at top,rgba(247,140,171,.2),transparent 38%),rgba(16,18,27,.62)}.role-chat-import-modal[data-v-98f0133c]{width:100%;max-width:440px;background:linear-gradient(180deg,rgba(255,252,254,.98),rgba(255,246,249,.98));border:1px solid rgba(247,140,171,.18);border-radius:26px;box-shadow:0 26px 60px rgba(233,136,168,.22),0 12px 28px rgba(0,0,0,.14);display:flex;flex-direction:column;overflow:hidden;animation:modal-pop-98f0133c .3s cubic-bezier(.34,1.56,.64,1)}.dark-mode .role-chat-import-modal[data-v-98f0133c]{background:linear-gradient(180deg,rgba(45,34,42,.98),rgba(31,26,33,.98));border-color:rgba(255,192,214,.16)}.role-chat-import-header[data-v-98f0133c]{padding:22px 32px 16px;display:flex;flex-direction:column;gap:8px;text-align:center;border-bottom:1px solid rgba(247,140,171,.12)}.role-chat-import-header h3[data-v-98f0133c]{margin:0;font-size:18px;line-height:1.2;font-weight:800;color:var(--text-color)}.role-chat-import-header p[data-v-98f0133c]{margin:0;font-size:14px;line-height:1.5;color:var(--text-secondary-color)}.role-chat-import-actions[data-v-98f0133c]{padding:18px 20px 22px;display:flex;gap:10px}.mode-btn[data-v-98f0133c]{flex:1;min-height:44px;padding:11px 0;border:1px solid rgba(247,140,171,.16);border-radius:16px;background:rgba(255,255,255,.82);color:var(--text-color);font-family:inherit;font-size:14px;font-weight:800;text-align:center;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,.65);transition:transform .18s ease,border-color .18s ease,background .18s ease}.mode-btn[data-v-98f0133c]:active{transform:scale(.97)}.dark-mode .mode-btn[data-v-98f0133c]{background:rgba(255,255,255,.05);border-color:rgba(255,192,214,.12)}.mode-btn-primary[data-v-98f0133c]{border-color:rgba(255,172,56,.38);background:linear-gradient(180deg,rgba(255,248,235,.96),rgba(255,241,214,.96))}.dark-mode .mode-btn-primary[data-v-98f0133c]{background:rgba(255,185,80,.12);border-color:rgba(255,185,80,.26)}.mode-btn-danger[data-v-98f0133c]{border-color:rgba(255,119,119,.28)}.dark-mode .mode-btn-danger[data-v-98f0133c]{background:rgba(255,92,92,.08);border-color:rgba(255,119,119,.2)}@keyframes modal-pop-98f0133c{0%{transform:scale(.94);opacity:0}to{transform:scale(1);opacity:1}}.mode-btn-secondary[data-v-98f0133c]{color:var(--text-secondary-color);background:rgba(148,163,184,.14)}.glass-card[data-v-98f0133c]{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:20px;box-shadow:0 4px 24px rgba(0,0,0,.06);overflow:hidden}.card-header[data-v-98f0133c]{display:flex;align-items:center;padding:20px;gap:16px}.card-icon[data-v-98f0133c]{width:52px;height:52px;color:var(--primary-color);display:flex;align-items:center;justify-content:center;flex-shrink:0}.card-info[data-v-98f0133c]{flex:1;min-width:0}.card-title[data-v-98f0133c]{margin:0 0 4px;font-size:17px;font-weight:600;color:var(--text-color)}.card-description[data-v-98f0133c]{margin:0;font-size:13px;color:var(--text-secondary-color);opacity:.8}.card-body[data-v-98f0133c]{padding:0 20px 20px;display:flex;flex-direction:column;gap:12px}.card-body.empty[data-v-98f0133c]{display:none}.avatar-section[data-v-98f0133c]{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 0 16px}.avatar-wrapper[data-v-98f0133c]{position:relative;width:80px;height:80px;cursor:pointer}.avatar-image[data-v-98f0133c]{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid var(--primary-color);box-shadow:0 4px 12px rgba(0,0,0,.1)}.account-id-badge[data-v-98f0133c]{margin-top:10px;padding:4px 10px;border-radius:999px;background:rgba(255,143,171,.12);border:1px solid rgba(255,143,171,.16);color:var(--text-secondary-color);font-size:12px;font-weight:600;line-height:1.3;letter-spacing:.02em}.dark-mode .account-id-badge[data-v-98f0133c]{background:rgba(255,143,171,.16);border-color:rgba(255,143,171,.22)}.avatar-edit-btn[data-v-98f0133c]{position:absolute;bottom:0;right:0;width:28px;height:28px;background:var(--primary-color);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.2);transition:transform .2s ease}.avatar-edit-btn[data-v-98f0133c]:active{transform:scale(.9)}.avatar-random-btn[data-v-98f0133c]{position:absolute;bottom:0;left:0;width:28px;height:28px;background:var(--glass-bg);backdrop-filter:blur(4px);border:1px solid var(--glass-border);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary-color);box-shadow:0 2px 8px rgba(0,0,0,.1);transition:transform .2s ease}.avatar-random-btn[data-v-98f0133c]:active{transform:scale(.9)}.dark-mode .avatar-random-btn[data-v-98f0133c]{background:rgba(40,40,40,.8)}.hidden-input[data-v-98f0133c]{display:none}.setting-item[data-v-98f0133c]{display:flex;align-items:center;padding:14px 16px;gap:14px;background:rgba(0,0,0,.03);border-radius:14px;cursor:pointer;transition:background .2s ease}.setting-item[data-v-98f0133c]:active{background:rgba(0,0,0,.08)}.setting-icon[data-v-98f0133c]{color:var(--primary-color);display:flex;align-items:center;justify-content:center}.setting-info[data-v-98f0133c]{flex:1;display:flex;flex-direction:column;gap:2px}.setting-label[data-v-98f0133c]{font-size:15px;font-weight:500;color:var(--text-color)}.setting-hint[data-v-98f0133c]{font-size:12px;color:var(--text-secondary-color);opacity:.7}.text-truncate[data-v-98f0133c]{display:inline-block;max-width:120px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:bottom}.setting-action[data-v-98f0133c]{color:var(--text-secondary-color);font-size:14px}.action-arrow[data-v-98f0133c]{color:var(--text-secondary-color);opacity:.5;display:flex;align-items:center}.value-text[data-v-98f0133c]{color:var(--primary-color);font-weight:600}.logout-item[data-v-98f0133c]{background:rgba(255,59,48,.06);border:1px solid rgba(255,59,48,.08)}.logout-item[data-v-98f0133c]:active{background:rgba(255,59,48,.12)}.logout-icon[data-v-98f0133c],.logout-label[data-v-98f0133c]{color:#ff3b30}.toggle-switch[data-v-98f0133c]{width:52px;height:32px;background:rgba(0,0,0,.1);border-radius:16px;padding:3px;cursor:pointer;transition:background .3s ease}.toggle-switch.active[data-v-98f0133c]{background:var(--primary-color)}.toggle-switch.active .toggle-thumb[data-v-98f0133c]{transform:translate(20px)}.toggle-thumb[data-v-98f0133c]{width:26px;height:26px;background:#fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.15);transition:transform .3s cubic-bezier(.34,1.56,.64,1)}.card-stagger-enter-active[data-v-98f0133c]{transition:all .5s cubic-bezier(.34,1.56,.64,1);transition-delay:var(--delay, 0s)}.card-stagger-enter-from[data-v-98f0133c]{opacity:0;transform:translateY(30px) scale(.95)}.card-stagger-enter-to[data-v-98f0133c]{opacity:1;transform:translateY(0) scale(1)}.spin-animation[data-v-98f0133c]{animation:spin-98f0133c 1s linear infinite}@keyframes spin-98f0133c{0%{transform:rotate(0)}to{transform:rotate(360deg)}}\n/*$vite$:1*/", document.head.appendChild(a);
+        /**
+         * @license lucide-vue-next v0.562.0 - ISC
+         *
+         * This source code is licensed under the ISC license.
+         * See the LICENSE file in the root directory of this source tree.
+         */
+        var ft = Q("archive", [
+            ["rect", {
+              width: "20",
+              height: "5",
+              x: "2",
+              y: "3",
+              rx: "1",
+              key: "1wp1u1"
+            }],
+            ["path", {
+              d: "M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8",
+              key: "1s80jp"
+            }],
+            ["path", {
+              d: "M10 12h4",
+              key: "a56b0p"
+            }]
+          ]),
+          vt = Q("circle-question-mark", [
+            ["circle", {
+              cx: "12",
+              cy: "12",
+              r: "10",
+              key: "1mglay"
+            }],
+            ["path", {
+              d: "M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3",
+              key: "1u773s"
+            }],
+            ["path", {
+              d: "M12 17h.01",
+              key: "p32p05"
+            }]
+          ]),
+          gt = Q("file-plus-corner", [
+            ["path", {
+              d: "M11.35 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v5.35",
+              key: "17jvcc"
+            }],
+            ["path", {
+              d: "M14 2v5a1 1 0 0 0 1 1h5",
+              key: "wfsgrz"
+            }],
+            ["path", {
+              d: "M14 19h6",
+              key: "bvotb8"
+            }],
+            ["path", {
+              d: "M17 16v6",
+              key: "18yu1i"
+            }]
+          ]),
+          bt = Q("file", [
+            ["path", {
+              d: "M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z",
+              key: "1oefj6"
+            }],
+            ["path", {
+              d: "M14 2v5a1 1 0 0 0 1 1h5",
+              key: "wfsgrz"
+            }]
+          ]),
+          ht = Q("log-out", [
+            ["path", {
+              d: "m16 17 5-5-5-5",
+              key: "1bji2h"
+            }],
+            ["path", {
+              d: "M21 12H9",
+              key: "dn1m92"
+            }],
+            ["path", {
+              d: "M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4",
+              key: "1uf3rs"
+            }]
+          ]),
+          mt = Q("music", [
+            ["path", {
+              d: "M9 18V5l12-2v13",
+              key: "1jmyc2"
+            }],
+            ["circle", {
+              cx: "6",
+              cy: "18",
+              r: "3",
+              key: "fqmcym"
+            }],
+            ["circle", {
+              cx: "18",
+              cy: "16",
+              r: "3",
+              key: "1hluhg"
+            }]
+          ]),
+          yt = Q("palette", [
+            ["path", {
+              d: "M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z",
+              key: "e79jfc"
+            }],
+            ["circle", {
+              cx: "13.5",
+              cy: "6.5",
+              r: ".5",
+              fill: "currentColor",
+              key: "1okk4w"
+            }],
+            ["circle", {
+              cx: "17.5",
+              cy: "10.5",
+              r: ".5",
+              fill: "currentColor",
+              key: "f64h9f"
+            }],
+            ["circle", {
+              cx: "6.5",
+              cy: "12.5",
+              r: ".5",
+              fill: "currentColor",
+              key: "qy21gx"
+            }],
+            ["circle", {
+              cx: "8.5",
+              cy: "7.5",
+              r: ".5",
+              fill: "currentColor",
+              key: "fotxhn"
+            }]
+          ]),
+          xt = Q("sliders-horizontal", [
+            ["path", {
+              d: "M10 5H3",
+              key: "1qgfaw"
+            }],
+            ["path", {
+              d: "M12 19H3",
+              key: "yhmn1j"
+            }],
+            ["path", {
+              d: "M14 3v4",
+              key: "1sua03"
+            }],
+            ["path", {
+              d: "M16 17v4",
+              key: "1q0r14"
+            }],
+            ["path", {
+              d: "M21 12h-9",
+              key: "1o4lsq"
+            }],
+            ["path", {
+              d: "M21 19h-5",
+              key: "1rlt1p"
+            }],
+            ["path", {
+              d: "M21 5h-7",
+              key: "1oszz2"
+            }],
+            ["path", {
+              d: "M8 10v4",
+              key: "tgpxqk"
+            }],
+            ["path", {
+              d: "M8 12H3",
+              key: "a7s4jb"
+            }]
+          ]),
+          wt = Q("type", [
+            ["path", {
+              d: "M12 4v16",
+              key: "1654pz"
+            }],
+            ["path", {
+              d: "M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2",
+              key: "e0r10z"
+            }],
+            ["path", {
+              d: "M9 20h6",
+              key: "s66wpe"
+            }]
+          ]),
+          kt = {
+            class: "modal-content glass-card"
+          },
+          Ct = {
+            class: "settings-controls"
+          },
+          zt = {
+            class: "control-group row-group"
+          },
+          jt = {
+            class: "control-group"
+          },
+          St = {
+            class: "selector-text"
+          },
+          _t = {
+            class: "control-group"
+          },
+          Ut = {
+            class: "slider-container"
+          },
+          Mt = ["value"],
+          It = {
+            class: "selector-card glass-card"
+          },
+          Pt = {
+            class: "list-container"
+          },
+          Bt = ["onClick"],
+          Ot = {
+            class: "item-info"
+          },
+          Rt = {
+            class: "item-name"
+          },
+          Et = {
+            key: 0,
+            class: "tag-custom"
+          },
+          At = {
+            class: "item-actions"
+          },
+          Gt = ["onClick"],
+          Nt = l({
+            __name: "BgmSettingsModal",
+            props: {
+              show: {
+                type: Boolean
+              }
+            },
+            emits: ["update:show"],
+            setup: function(e, t) {
+              var a = t.emit,
+                n = e,
+                r = a,
+                o = Z(),
+                l = X().showToast;
+
+              function _() {
+                r("update:show", !1)
+              }
+              ee(function() {
+                return n.show
+              }, _);
+              var U = C(function() {
+                return Math.round(100 * o.volume)
+              });
+
+              function M(e) {
+                var t = e.target;
+                o.setVolume(parseFloat(t.value))
+              }
+
+              function I() {
+                o.toggle()
+              }
+              var P = w(!1),
+                B = w(null),
+                O = /\.(mp3|m4a|mp4|aac|ogg|oga|wav|flac|webm)$/i;
+              ee(function() {
+                return P.value
+              }, function() {
+                P.value = !1
+              });
+              var R = C(function() {
+                var e = o.bgmList.find(function(e) {
+                  return e.id === o.currentBgmId
+                });
+                return e ? e.name : "未知音频"
+              });
+
+              function E() {
+                return (E = p(i().m(function e(t) {
+                  var a;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        return e.p = 0, e.n = 1, o.selectBgm(t);
+                      case 1:
+                        P.value = !1, e.n = 3;
+                        break;
+                      case 2:
+                        e.p = 2, a = e.v, console.error(a), l("切换失败", "error");
+                      case 3:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [0, 2]
+                  ])
+                }))).apply(this, arguments)
+              }
+              var A = w(!1),
+                G = w(""),
+                N = w("");
+
+              function F() {
+                return L.apply(this, arguments)
+              }
+
+              function L() {
+                return (L = p(i().m(function e() {
+                  var t;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (!G.value) {
+                          e.n = 4;
+                          break
+                        }
+                        return e.p = 1, e.n = 2, o.deleteCustomBgm(G.value);
+                      case 2:
+                        l("删除成功", "success"), e.n = 4;
+                        break;
+                      case 3:
+                        e.p = 3, t = e.v, console.error(t), l("删除失败", "error");
+                      case 4:
+                        A.value = !1;
+                      case 5:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [1, 3]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function D() {
+                var e;
+                null === (e = B.value) || void 0 === e || e.click()
+              }
+
+              function T(e) {
+                return W.apply(this, arguments)
+              }
+
+              function W() {
+                return (W = p(i().m(function e(t) {
+                  var a, n, r, s;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (!(a = t.target).files || !a.files[0]) {
+                          e.n = 4;
+                          break
+                        }
+                        if ((n = a.files[0]).type.startsWith("audio/") || O.test(n.name)) {
+                          e.n = 1;
+                          break
+                        }
+                        return l("请上传音频文件", "error"), e.a(2);
+                      case 1:
+                        return e.p = 1, r = n.name.replace(/\.[^/.]+$/, ""), e.n = 2, o.addCustomBgm(r, n);
+                      case 2:
+                        l("上传成功", "success"), P.value = !1, e.n = 4;
+                        break;
+                      case 3:
+                        e.p = 3, s = e.v, console.error(s), l("上传失败", "error");
+                      case 4:
+                        a.value = "";
+                      case 5:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [1, 3]
+                  ])
+                }))).apply(this, arguments)
+              }
+              return function(t, a) {
+                return S(), c(d, null, [(S(), u(j, {
+                  to: "body"
+                }, [f(v, {
+                  name: "modal-fade"
+                }, {
+                  default: g(function() {
+                    return [e.show ? (S(), c("div", {
+                      key: 0,
+                      class: "modal-overlay",
+                      onClick: h(_, ["self"])
+                    }, [m("div", kt, [a[8] || (a[8] = m("h3", {
+                      class: "modal-title"
+                    }, "背景音乐设置", -1)), m("div", Ct, [m("div", zt, [a[4] || (a[4] = m("div", {
+                      class: "setting-info"
+                    }, [m("span", {
+                      class: "setting-label"
+                    }, "背景音乐开关")], -1)), m("div", {
+                      class: y(["toggle-switch", {
+                        active: x(o).isMusicEnabled
+                      }]),
+                      onClick: I
+                    }, s(a[3] || (a[3] = [m("div", {
+                      class: "toggle-thumb"
+                    }, null, -1)])), 2)]), m("div", jt, [a[5] || (a[5] = m("label", null, "选择背景音乐", -1)), m("div", {
+                      class: "selector-btn",
+                      onClick: a[0] || (a[0] = function(e) {
+                        return P.value = !0
+                      })
+                    }, [m("div", St, [f(x(mt), {
+                      size: 14,
+                      class: "icon-small"
+                    }), m("span", null, k(R.value), 1)]), f(x(Te), {
+                      size: 14,
+                      class: "dropdown-arrow"
+                    })])]), m("div", _t, [m("label", null, "音量 (" + k(U.value) + "%)", 1), m("div", Ut, [m("input", {
+                      type: "range",
+                      min: "0",
+                      max: "1",
+                      step: "0.01",
+                      value: x(o).volume,
+                      onInput: M,
+                      class: "slider"
+                    }, null, 40, Mt)])])]), m("div", {
+                      class: "modal-actions"
+                    }, [m("button", {
+                      class: "btn btn-confirm",
+                      onClick: _
+                    }, "确定")]), f(v, {
+                      name: "fade"
+                    }, {
+                      default: g(function() {
+                        return [P.value ? (S(), c("div", {
+                          key: 0,
+                          class: "selector-overlay",
+                          onClick: a[1] || (a[1] = h(function(e) {
+                            return P.value = !1
+                          }, ["self"]))
+                        }, [m("div", It, [a[7] || (a[7] = m("h4", null, "歌单列表", -1)), m("div", Pt, [(S(!0), c(d, null, z(x(o).bgmList, function(e) {
+                          return S(), c("div", {
+                            key: e.id,
+                            class: y(["list-item", {
+                              active: x(o).currentBgmId === e.id
+                            }]),
+                            onClick: function(t) {
+                              return function(e) {
+                                return E.apply(this, arguments)
+                              }(e.id)
+                            }
+                          }, [m("div", Ot, [m("span", Rt, k(e.name), 1), e.isCustom ? (S(), c("span", Et, "自定义")) : b("", !0)]), m("div", At, [x(o).currentBgmId === e.id ? (S(), u(x(qe), {
+                            key: 0,
+                            size: 16,
+                            class: "check-icon"
+                          })) : b("", !0), e.isCustom ? (S(), c("button", {
+                            key: 1,
+                            class: "btn-icon delete",
+                            onClick: h(function(t) {
+                              return a = e.id, n = e.name, G.value = a, N.value = n, void(A.value = !0);
+                              var a, n
+                            }, ["stop"])
+                          }, [f(x(Ve), {
+                            size: 14
+                          })], 8, Gt)) : b("", !0)])], 10, Bt)
+                        }), 128))]), m("button", {
+                          class: "btn-upload",
+                          onClick: D
+                        }, [f(x(We), {
+                          size: 16
+                        }), a[6] || (a[6] = m("span", null, "上传音乐", -1))])])])) : b("", !0)]
+                      }),
+                      _: 1
+                    }), m("input", {
+                      ref_key: "fileInputRef",
+                      ref: B,
+                      type: "file",
+                      accept: "audio/*",
+                      class: "hidden-input",
+                      onChange: T
+                    }, null, 544)])])) : b("", !0)]
+                  }),
+                  _: 1
+                })])), f(te, {
+                  show: A.value,
+                  title: "删除音乐",
+                  message: "确定要删除音乐“".concat(N.value, "”吗？"),
+                  "confirm-text": "删除",
+                  "cancel-text": "取消",
+                  "show-cancel": !0,
+                  danger: !0,
+                  onConfirm: F,
+                  onCancel: a[2] || (a[2] = function(e) {
+                    return A.value = !1
+                  })
+                }, null, 8, ["show", "message"])], 64)
+              }
+            }
+          }),
+          Ft = ae(Nt, [
+            ["__scopeId", "data-v-de4c5133"]
+          ]),
+          Lt = {
+            class: "modal-content"
+          },
+          Dt = {
+            class: "action-list"
+          },
+          Tt = {
+            class: "action-icon action-icon--soft"
+          },
+          Wt = {
+            class: "action-icon action-icon--soft"
+          },
+          qt = {
+            class: "action-icon action-icon--soft"
+          },
+          Vt = l({
+            __name: "SettingsBackupModal",
+            props: {
+              show: {
+                type: Boolean
+              }
+            },
+            emits: ["update:show", "export-settings", "export-data", "import"],
+            setup: function(e, t) {
+              var a = t.emit,
+                n = e,
+                r = a;
+
+              function o() {
+                r("update:show", !1)
+              }
+
+              function i() {
+                r("export-settings")
+              }
+
+              function l() {
+                r("export-data")
+              }
+
+              function s() {
+                r("import")
+              }
+              return ee(function() {
+                  return n.show
+                }, o),
+                function(t, a) {
+                  return S(), u(j, {
+                    to: "body"
+                  }, [f(v, {
+                    name: "modal-fade"
+                  }, {
+                    default: g(function() {
+                      return [e.show ? (S(), c("div", {
+                        key: 0,
+                        class: "modal-overlay",
+                        onClick: h(o, ["self"])
+                      }, [m("div", Lt, [a[3] || (a[3] = m("div", {
+                        class: "modal-hero"
+                      }, [m("h3", {
+                        class: "modal-title"
+                      }, "备份与恢复"), m("p", {
+                        class: "modal-desc"
+                      }, " 导出设置，或备份角色卡与聊天记录。 ")], -1)), m("div", Dt, [m("button", {
+                        class: "action-btn",
+                        type: "button",
+                        onClick: i
+                      }, [m("div", Tt, [f(x(We), {
+                        size: 18
+                      })]), a[0] || (a[0] = m("div", {
+                        class: "action-copy"
+                      }, [m("span", {
+                        class: "action-title"
+                      }, "导出设置"), m("span", {
+                        class: "action-hint"
+                      }, "生成一份设置备份文件")], -1))]), m("button", {
+                        class: "action-btn",
+                        type: "button",
+                        onClick: l
+                      }, [m("div", Wt, [f(x(ft), {
+                        size: 18
+                      })]), a[1] || (a[1] = m("div", {
+                        class: "action-copy"
+                      }, [m("span", {
+                        class: "action-title"
+                      }, "导出角色卡和聊天记录"), m("span", {
+                        class: "action-hint"
+                      }, "生成包含角色、会话和媒体的数据备份")], -1))]), m("button", {
+                        class: "action-btn",
+                        type: "button",
+                        onClick: s
+                      }, [m("div", qt, [f(x(ne), {
+                        size: 18
+                      })]), a[2] || (a[2] = m("div", {
+                        class: "action-copy"
+                      }, [m("span", {
+                        class: "action-title"
+                      }, "导入备份文件"), m("span", {
+                        class: "action-hint"
+                      }, "自动识别设置备份或数据备份")], -1))])]), m("div", {
+                        class: "modal-actions"
+                      }, [m("button", {
+                        class: "btn btn-cancel",
+                        type: "button",
+                        onClick: o
+                      }, "关闭")])])])) : b("", !0)]
+                    }),
+                    _: 1
+                  })])
+                }
+            }
+          }),
+          Jt = ae(Vt, [
+            ["__scopeId", "data-v-d8516212"]
+          ]),
+          Ht = "".concat(I, "/feedback.php"),
+          $t = 1024,
+          Yt = 10485760;
+        /**
+         * @license lucide-vue-next v0.562.0 - ISC
+         *
+         * This source code is licensed under the ISC license.
+         * See the LICENSE file in the root directory of this source tree.
+         */
+        function Kt(e) {
+          var t, a, n, r = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "反馈提交失败",
+            i = e && "object" === o(e) ? e : {};
+          return {
+            status: "success" === i.status ? "success" : "error",
+            code: String(null !== (t = i.code) && void 0 !== t ? t : "unknown_error"),
+            message: String(null !== (a = i.message) && void 0 !== a ? a : r),
+            data: null !== (n = i.data) && void 0 !== n ? n : null
+          }
+        }
+
+        function Qt(e) {
+          return Array.from(e).length
+        }
+
+        function Zt(e) {
+          return Xt.apply(this, arguments)
+        }
+
+        function Xt() {
+          return (Xt = p(i().m(function e(t) {
+            return i().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  if (!(t.size <= 0)) {
+                    e.n = 1;
+                    break
+                  }
+                  throw new Error("不能添加空文件");
+                case 1:
+                  if (!(t.size > Yt)) {
+                    e.n = 2;
+                    break
+                  }
+                  throw new Error("单个文件不能超过 10MB");
+                case 2:
+                  return e.a(2, {
+                    blob: t,
+                    name: t.name || "attachment",
+                    mime: t.type || "application/octet-stream"
+                  })
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function ea(e) {
+          return ta.apply(this, arguments)
+        }
+
+        function ta() {
+          return (ta = p(i().m(function e(a) {
+            var r, o, l, c, d, u, p, f, v, g, b, h, m, y, x, w, k, C, z, j, S, I, P, B;
+            return i().w(function(e) {
+              for (;;) switch (e.p = e.n) {
+                case 0:
+                  if (null != (r = _()) && r.accessToken) {
+                    e.n = 1;
+                    break
+                  }
+                  return e.a(2, {
+                    status: "error",
+                    code: "not_logged_in",
+                    message: "请先登录账号",
+                    data: null
+                  });
+                case 1:
+                  if ((o = a.content.trim()) && !(Qt(o) > $t)) {
+                    e.n = 2;
+                    break
+                  }
+                  return e.a(2, {
+                    status: "error",
+                    code: "invalid_content",
+                    message: "反馈内容需为 1–1024 个字",
+                    data: null
+                  });
+                case 2:
+                  if (!(a.files.length > 5)) {
+                    e.n = 3;
+                    break
+                  }
+                  return e.a(2, {
+                    status: "error",
+                    code: "too_many_files",
+                    message: "最多只能上传 5 个文件",
+                    data: null
+                  });
+                case 3:
+                  if (!a.files.some(function(e) {
+                      return e.blob.size <= 0 || e.blob.size > Yt
+                    })) {
+                    e.n = 4;
+                    break
+                  }
+                  return e.a(2, {
+                    status: "error",
+                    code: "file_too_large",
+                    message: "单个文件不能超过 10MB",
+                    data: null
+                  });
+                case 4:
+                  if (j = r.deviceId) {
+                    e.n = 6;
+                    break
+                  }
+                  return e.n = 5, U();
+                case 5:
+                  j = e.v;
+                case 6:
+                  return l = j.trim(), e.n = 7, M({
+                    access_token: r.accessToken,
+                    device_id: l,
+                    app_version: re(),
+                    content: o
+                  });
+                case 7:
+                  c = e.v, d = new AbortController, u = window.setTimeout(function() {
+                    return d.abort()
+                  }, 12e4), e.p = 8, v = [], g = n(a.files), e.p = 9, g.s();
+                case 10:
+                  if ((b = g.n()).done) {
+                    e.n = 13;
+                    break
+                  }
+                  return h = b.value, S = Uint8Array, e.n = 11, h.blob.arrayBuffer();
+                case 11:
+                  for (I = e.v, m = new S(I), y = "", x = 0; x < m.length; x += 8192) y += String.fromCharCode.apply(String, s(m.subarray(x, x + 8192)));
+                  v.push({
+                    name: h.name,
+                    mime: h.mime,
+                    data: btoa(y)
+                  });
+                case 12:
+                  e.n = 10;
+                  break;
+                case 13:
+                  e.n = 15;
+                  break;
+                case 14:
+                  e.p = 14, P = e.v, g.e(P);
+                case 15:
+                  return e.p = 15, g.f(), e.f(15);
+                case 16:
+                  return e.n = 17, fetch(Ht, {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(t(t({}, c), {}, {
+                      files: v
+                    })),
+                    signal: d.signal
+                  });
+                case 17:
+                  return w = e.v, e.n = 18, w.json().catch(function() {
+                    return {
+                      status: "error",
+                      code: "invalid_response",
+                      message: "服务器返回了无效响应 (".concat(w.status, ")"),
+                      data: null
+                    }
+                  });
+                case 18:
+                  return k = e.v, C = Kt(k), e.a(2, t(t({}, C), {}, {
+                    data: "success" === C.status ? {
+                      feedbackId: Number((null === (p = C.data) || void 0 === p ? void 0 : p.feedback_id) || 0),
+                      createdAt: String((null === (f = C.data) || void 0 === f ? void 0 : f.created_at) || "")
+                    } : null
+                  }));
+                case 19:
+                  return e.p = 19, B = e.v, z = B instanceof DOMException && "AbortError" === B.name, e.a(2, {
+                    status: "error",
+                    code: z ? "request_timeout" : "network_error",
+                    message: z ? "提交超时，请稍后重试" : "网络异常，请稍后重试",
+                    data: null
+                  });
+                case 20:
+                  return e.p = 20, window.clearTimeout(u), e.f(20);
+                case 21:
+                  return e.a(2)
+              }
+            }, e, null, [
+              [9, 14, 15, 16],
+              [8, 19, 20, 21]
+            ])
+          }))).apply(this, arguments)
+        }
+        var aa = {
+            class: "feedback-panel",
+            role: "dialog",
+            "aria-modal": "true",
+            "aria-labelledby": "feedback-title"
+          },
+          na = {
+            class: "feedback-body"
+          },
+          ra = {
+            class: "content-field"
+          },
+          oa = {
+            class: "field-heading"
+          },
+          ia = {
+            class: "heading-label"
+          },
+          la = ["disabled"],
+          sa = {
+            class: "attachment-section"
+          },
+          ca = {
+            class: "field-heading"
+          },
+          da = {
+            class: "attachment-grid"
+          },
+          ua = ["disabled", "onClick"],
+          pa = ["src", "alt"],
+          fa = ["disabled", "onClick"],
+          va = ["disabled"],
+          ga = {
+            class: "feedback-actions"
+          },
+          ba = ["disabled"],
+          ha = ["disabled"],
+          ma = l({
+            __name: "FeedbackModal",
+            props: {
+              show: {
+                type: Boolean
+              }
+            },
+            emits: ["update:show"],
+            setup: function(e, a) {
+              var o = a.emit,
+                l = e,
+                s = o,
+                _ = X().showToast,
+                U = w(""),
+                M = w([]),
+                I = w(null),
+                B = w(!1),
+                O = w(!1),
+                R = w(""),
+                E = w(!1),
+                A = w(!1),
+                G = C(function() {
+                  return Qt(U.value)
+                }),
+                N = C(function() {
+                  return B.value || O.value
+                }),
+                F = C(function() {
+                  return U.value.trim().length > 0 && !N.value
+                }),
+                L = C(function() {
+                  return 5 - M.value.length
+                });
+
+              function D() {
+                N.value || s("update:show", !1)
+              }
+
+              function T(e) {
+                U.value = function(e) {
+                  var t = Array.from(e);
+                  return t.length > $t ? t.slice(0, $t).join("") : e
+                }(e.trim())
+              }
+
+              function W() {
+                var e;
+                N.value || L.value <= 0 || null === (e = I.value) || void 0 === e || e.click()
+              }
+
+              function q() {
+                return "function" == typeof crypto.randomUUID ? crypto.randomUUID() : "".concat(Date.now(), "-").concat(Math.random().toString(16).slice(2))
+              }
+
+              function V(e) {
+                return J.apply(this, arguments)
+              }
+
+              function J() {
+                return (J = p(i().m(function e(a) {
+                  var r, o, l, s, c, d, u, p, f;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (r = a.target, o = Array.from(r.files || []), r.value = "", o.length && !N.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        l = o.slice(0, L.value), o.length > l.length && _("最多只能添加 5 个文件", "warning"), B.value = !0, e.p = 2, s = n(l), e.p = 3, s.s();
+                      case 4:
+                        if ((c = s.n()).done) {
+                          e.n = 9;
+                          break
+                        }
+                        return d = c.value, e.p = 5, e.n = 6, Zt(d);
+                      case 6:
+                        u = e.v, M.value.push(t(t({}, u), {}, {
+                          id: q(),
+                          previewUrl: u.mime.startsWith("image/") ? URL.createObjectURL(u.blob) : ""
+                        })), e.n = 8;
+                        break;
+                      case 7:
+                        e.p = 7, p = e.v, _(p instanceof Error ? p.message : "文件处理失败", "error");
+                      case 8:
+                        e.n = 4;
+                        break;
+                      case 9:
+                        e.n = 11;
+                        break;
+                      case 10:
+                        e.p = 10, f = e.v, s.e(f);
+                      case 11:
+                        return e.p = 11, s.f(), e.f(11);
+                      case 12:
+                        return e.p = 12, B.value = !1, e.f(12);
+                      case 13:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [5, 7],
+                    [3, 10, 11, 12],
+                    [2, , 12, 13]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function H() {
+                var e, t = n(M.value);
+                try {
+                  for (t.s(); !(e = t.n()).done;) {
+                    var a = e.value;
+                    URL.revokeObjectURL(a.previewUrl)
+                  }
+                } catch (r) {
+                  t.e(r)
+                } finally {
+                  t.f()
+                }
+                M.value = [], U.value = "", R.value = "", E.value = !1, A.value = !1
+              }
+
+              function $() {
+                return Y.apply(this, arguments)
+              }
+
+              function Y() {
+                return (Y = p(i().m(function e() {
+                  var t, a;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (F.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        return O.value = !0, e.p = 2, e.n = 3, ea({
+                          content: U.value,
+                          files: M.value
+                        });
+                      case 3:
+                        if ("success" === (t = e.v).status) {
+                          e.n = 4;
+                          break
+                        }
+                        return _(t.message || "反馈提交失败", "error"), e.a(2);
+                      case 4:
+                        _("反馈已提交", "success"), H(), s("update:show", !1), e.n = 6;
+                        break;
+                      case 5:
+                        e.p = 5, a = e.v, console.error("[Feedback] 提交失败:", a), _("反馈提交失败，请稍后重试", "error");
+                      case 6:
+                        return e.p = 6, O.value = !1, e.f(6);
+                      case 7:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [2, 5, 6, 7]
+                  ])
+                }))).apply(this, arguments)
+              }
+              return ee(function() {
+                  return l.show
+                }, D, {
+                  owner: "settings-feedback-modal"
+                }), P(H),
+                function(t, a) {
+                  return S(), c(d, null, [(S(), u(j, {
+                    to: "body"
+                  }, [f(v, {
+                    name: "feedback-modal"
+                  }, {
+                    default: g(function() {
+                      return [e.show ? (S(), c("div", {
+                        key: 0,
+                        class: "feedback-overlay",
+                        onClick: h(D, ["self"])
+                      }, [m("section", aa, [a[5] || (a[5] = m("header", {
+                        class: "feedback-header"
+                      }, [m("p", {
+                        class: "eyebrow"
+                      }, "PIUPIU · FEEDBACK"), m("h3", {
+                        id: "feedback-title"
+                      }, "意见反馈"), m("p", null, "告诉我们遇到的问题，或你希望加入的新功能。")], -1)), m("div", na, [m("section", ra, [m("span", oa, [m("span", ia, [f(x(He), {
+                        size: 15
+                      }), a[3] || (a[3] = m("b", null, "反馈内容", -1))]), m("small", {
+                        class: y({
+                          limit: G.value >= x($t)
+                        })
+                      }, k(G.value) + "/" + k(x($t)), 3)]), m("button", {
+                        class: "content-preview",
+                        type: "button",
+                        disabled: N.value,
+                        onClick: a[0] || (a[0] = function(e) {
+                          return A.value = !0
+                        })
+                      }, [m("span", {
+                        class: y({
+                          empty: !U.value.trim()
+                        })
+                      }, k(U.value.trim() || "点击填写反馈内容"), 3)], 8, la)]), m("div", sa, [m("div", ca, [a[4] || (a[4] = m("div", null, [m("b", null, "相关文件"), m("span", null, "可选，最多 5 个，单个不超过 10MB")], -1)), m("small", null, k(M.value.length) + "/" + k(x(5)), 1)]), m("input", {
+                        ref_key: "fileInput",
+                        ref: I,
+                        class: "hidden-input",
+                        type: "file",
+                        multiple: "",
+                        onChange: V
+                      }, null, 544), m("div", da, [(S(!0), c(d, null, z(M.value, function(e) {
+                        return S(), c("div", {
+                          key: e.id,
+                          class: "attachment-item"
+                        }, [m("button", {
+                          type: "button",
+                          class: y(["preview-btn", {
+                            "file-preview": !e.previewUrl
+                          }]),
+                          disabled: N.value || !e.previewUrl,
+                          onClick: function(t) {
+                            return e.previewUrl && (a = e.previewUrl, R.value = a, void(E.value = !0));
+                            var a
+                          }
+                        }, [e.previewUrl ? (S(), c("img", {
+                          key: 0,
+                          src: e.previewUrl,
+                          alt: "".concat(e.name, " 预览")
+                        }, null, 8, pa)) : (S(), c(d, {
+                          key: 1
+                        }, [f(x(bt), {
+                          size: 25
+                        }), m("span", null, k(e.name), 1)], 64))], 10, ua), m("button", {
+                          type: "button",
+                          class: "remove-btn",
+                          "aria-label": "删除文件",
+                          disabled: N.value,
+                          onClick: function(t) {
+                            return function(e) {
+                              if (!N.value) {
+                                var t = M.value.findIndex(function(t) {
+                                  return t.id === e
+                                });
+                                if (!(t < 0)) {
+                                  var a = r(M.value.splice(t, 1), 1)[0];
+                                  null != a && a.previewUrl && URL.revokeObjectURL(a.previewUrl)
+                                }
+                              }
+                            }(e.id)
+                          }
+                        }, [f(x(Ve), {
+                          size: 15
+                        })], 8, fa)])
+                      }), 128)), L.value > 0 ? (S(), c("button", {
+                        key: 0,
+                        type: "button",
+                        class: "add-file-btn",
+                        disabled: N.value,
+                        onClick: W
+                      }, [B.value ? (S(), u(x(oe), {
+                        key: 0,
+                        class: "spin",
+                        size: 22
+                      })) : (S(), u(x(gt), {
+                        key: 1,
+                        size: 24
+                      })), m("span", null, k(B.value ? "正在添加" : "添加文件"), 1)], 8, va)) : b("", !0)])])]), m("footer", ga, [m("button", {
+                        type: "button",
+                        class: "cancel-btn",
+                        disabled: N.value,
+                        onClick: D
+                      }, "取消", 8, ba), m("button", {
+                        type: "button",
+                        class: "submit-btn",
+                        disabled: !F.value,
+                        onClick: $
+                      }, [O.value ? (S(), u(x(oe), {
+                        key: 0,
+                        class: "spin",
+                        size: 18
+                      })) : (S(), u(x(Ae), {
+                        key: 1,
+                        size: 18
+                      })), m("span", null, k(O.value ? "正在提交" : "提交反馈"), 1)], 8, ha)])])])) : b("", !0)]
+                    }),
+                    _: 1
+                  })])), f(ie, {
+                    show: A.value,
+                    "onUpdate:show": a[1] || (a[1] = function(e) {
+                      return A.value = e
+                    }),
+                    title: "编辑反馈内容",
+                    placeholder: "请尽量描述发生了什么、你原本期望什么……",
+                    "initial-value": U.value,
+                    "confirm-text": "保存",
+                    "cancel-text": "取消",
+                    multiline: "",
+                    "unicode-length": "",
+                    "max-length": x($t),
+                    "error-message": "还没有填写反馈内容",
+                    "z-index": 3600,
+                    onConfirm: T
+                  }, null, 8, ["show", "initial-value", "max-length"]), f(_e, {
+                    show: E.value,
+                    "onUpdate:show": a[2] || (a[2] = function(e) {
+                      return E.value = e
+                    }),
+                    src: R.value
+                  }, null, 8, ["show", "src"])], 64)
+                }
+            }
+          }),
+          ya = ae(ma, [
+            ["__scopeId", "data-v-d622b7f4"]
+          ]),
+          xa = "piupiu_settings_backup",
+          wa = "piupiu_app_user_persona_list",
+          ka = "piupiu_user_persona",
+          Ca = "piupiu_active_persona_id";
+
+        function za(e) {
+          return Boolean(e) && "object" === o(e) && !Array.isArray(e)
+        }
+
+        function ja(e) {
+          return "role" === e || "custom" === e ? e : "default"
+        }
+
+        function Sa(e) {
+          return JSON.parse(JSON.stringify(e))
+        }
+
+        function _a(e) {
+          var t = "local" === e.mode ? "local" : "cloud";
+          return {
+            enabled: !1 !== e.enabled,
+            mode: t,
+            localEnabled: !1 !== e.localEnabled,
+            localStreaming: !1 !== e.localStreaming,
+            style: "string" == typeof e.style ? e.style : void 0,
+            size: "string" == typeof e.size ? e.size : void 0,
+            localSteps: "number" == typeof e.localSteps || "string" == typeof e.localSteps ? Number(e.localSteps) : void 0,
+            localCfg: "number" == typeof e.localCfg || "string" == typeof e.localCfg ? Number(e.localCfg) : void 0,
+            localPositivePrompt: "string" == typeof e.localPositivePrompt ? e.localPositivePrompt : void 0,
+            localNegativePrompt: "string" == typeof e.localNegativePrompt ? e.localNegativePrompt : void 0,
+            localScheduler: "string" == typeof e.localScheduler ? e.localScheduler : void 0,
+            customPrompt: "string" == typeof e.customPrompt ? e.customPrompt : void 0
+          }
+        }
+
+        function Ua() {
+          return R()
+        }
+
+        function Ma() {
+          try {
+            var e = JSON.parse(localStorage.getItem(wa) || "[]");
+            return Array.isArray(e) ? e.filter(function(e) {
+              return za(e) && "string" == typeof e.text
+            }).map(function(e) {
+              return {
+                id: Number(e.id) || Date.now() + Math.floor(1e3 * Math.random()),
+                text: String(e.text).trim()
+              }
+            }).filter(function(e) {
+              return e.text
+            }) : []
+          } catch (t) {
+            return []
+          }
+        }
+
+        function Ia() {
+          var e = localStorage.getItem(Ca);
+          if (!e) return null;
+          var t = Number(e);
+          return Number.isFinite(t) ? t : null
+        }
+
+        function Pa(e, t) {
+          return Ba.apply(this, arguments)
+        }
+
+        function Ba() {
+          return (Ba = p(i().m(function e(t, a) {
+            var n;
+            return i().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  return e.n = 1, t.exportGlobalPresetItems();
+                case 1:
+                  return n = e.v, e.a(2, {
+                    app: xa,
+                    schemaVersion: 1,
+                    exportedAt: (new Date).toISOString(),
+                    settings: {
+                      appearance: {
+                        darkMode: t.isDarkMode,
+                        cuteFontEnabled: t.isCuteFontEnabled,
+                        backgroundMode: a
+                      },
+                      profile: {
+                        username: Ua(),
+                        personaList: Ma(),
+                        activePersonaId: Ia()
+                      },
+                      bubble: Sa(t.bubbleConfig),
+                      tts: Sa(t.ttsConfig),
+                      memory: Sa(t.memoryConfig),
+                      reply: {
+                        length: Sa(t.replyLengthConfig),
+                        style: Sa(t.replyStyleConfig),
+                        suggestion: Sa(t.replySuggestionConfig)
+                      },
+                      imageGen: Sa(t.imageGenConfig),
+                      statusBar: {
+                        character: Sa(t.statusBarConfig),
+                        user: Sa(t.userStatusBarConfig)
+                      },
+                      globalRegex: Sa(t.globalRegexConfig),
+                      globalRegexConfigs: Sa(t.globalRegexConfigs),
+                      activeGlobalRegexId: t.activeGlobalRegexId,
+                      globalWorldBook: Sa(t.globalWorldBook),
+                      globalWorldBooks: Sa(t.globalWorldBooks),
+                      activeGlobalWorldBookId: t.activeGlobalWorldBookId,
+                      globalPresets: Sa(n),
+                      activeGlobalPresetId: t.activeGlobalPresetId
+                    }
+                  })
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function Oa(e, t) {
+          return Ra.apply(this, arguments)
+        }
+
+        function Ra() {
+          return (Ra = p(i().m(function e(t, a) {
+            var n, r;
+            return i().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  return e.n = 1, Pa(t, a);
+                case 1:
+                  return n = e.v, r = "PiuPiu_SettingsBackup_".concat(le(), ".json"), e.a(2, se(n, r))
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function Ea(e) {
+          var t;
+          try {
+            t = JSON.parse(e)
+          } catch (a) {
+            throw new Error("不是有效的 JSON 文件")
+          }
+          if (!za(t)) throw new Error("不是有效的设置备份文件");
+          if (t.app !== xa) throw new Error("不是 PiuPiu 的设置备份文件");
+          if (1 !== t.schemaVersion) throw new Error("备份版本不支持");
+          if (!za(t.settings)) throw new Error("备份文件缺少 settings 内容");
+          return t
+        }
+
+        function Aa(e, t) {
+          return Ga.apply(this, arguments)
+        }
+
+        function Ga() {
+          return (Ga = p(i().m(function e(t, a) {
+            var n, r, o, l, s, c, d, u, p, f, v, g, b, h;
+            return i().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  if (n = a.appStore, r = a.currentCustomBackgroundUrl, o = void 0 === r ? "" : r, za(l = t.settings)) {
+                    e.n = 1;
+                    break
+                  }
+                  throw new Error("备份文件缺少 settings 内容");
+                case 1:
+                  if (s = za(l.appearance) ? l.appearance : {}, c = ja(s.backgroundMode), d = "custom" !== c || o ? c : "default", "boolean" == typeof s.darkMode && n.setDarkModeEnabled(s.darkMode), "boolean" == typeof s.cuteFontEnabled && n.setCuteFontEnabled(s.cuteFontEnabled), localStorage.setItem("chat_bg_mode", d), u = null, "string" == typeof(p = za(l.profile) ? l.profile : {}).username && (u = B(p.username)) && localStorage.setItem(O, u), Array.isArray(p.personaList) && (f = p.personaList.filter(function(e) {
+                      return za(e) && "string" == typeof e.text
+                    }).map(function(e) {
+                      return {
+                        id: Number(e.id) || Date.now() + Math.floor(1e3 * Math.random()),
+                        text: String(e.text).trim()
+                      }
+                    }).filter(function(e) {
+                      return e.text
+                    }), localStorage.setItem(wa, JSON.stringify(f)), v = Number(p.activePersonaId), (g = f.find(function(e) {
+                      return e.id === v
+                    }) || null) ? (localStorage.setItem(Ca, String(g.id)), localStorage.setItem(ka, g.text)) : (localStorage.removeItem(Ca), localStorage.removeItem(ka))), za(l.bubble) && n.updateBubbleConfig(l.bubble), za(l.tts) && n.updateTTSConfig(l.tts), za(l.memory) && n.updateMemoryConfig(l.memory), za(l.reply) && (za((b = l.reply).length) && n.updateReplyLengthConfig(b.length), za(b.style) && n.updateReplyStyleConfig(b.style), za(b.suggestion) && n.updateReplySuggestionConfig(b.suggestion)), za(l.imageGen) && n.updateImageGenConfig(_a(l.imageGen)), za(l.statusBar) && (za((h = l.statusBar).character) && n.updateStatusBarConfig(h.character), za(h.user) && n.updateUserStatusBarConfig(h.user)), Array.isArray(l.globalRegexConfigs) ? n.replaceGlobalRegexConfigs(l.globalRegexConfigs, Number.isFinite(Number(l.activeGlobalRegexId)) ? Number(l.activeGlobalRegexId) : null) : za(l.globalRegex) && n.updateGlobalRegexConfig(l.globalRegex), Array.isArray(l.globalWorldBooks) ? n.replaceGlobalWorldBooks(l.globalWorldBooks, Number.isFinite(Number(l.activeGlobalWorldBookId)) ? Number(l.activeGlobalWorldBookId) : null) : (null === l.globalWorldBook || za(l.globalWorldBook)) && n.updateGlobalWorldBook(l.globalWorldBook), !Array.isArray(l.globalPresets)) {
+                    e.n = 2;
+                    break
+                  }
+                  return e.n = 2, n.replaceGlobalPresets(l.globalPresets, Number.isFinite(Number(l.activeGlobalPresetId)) ? Number(l.activeGlobalPresetId) : null);
+                case 2:
+                  return e.a(2, {
+                    appliedBackgroundMode: d,
+                    restoredUsername: u
+                  })
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+        var Na = {
+            class: "settings-view"
+          },
+          Fa = {
+            class: "settings-content"
+          },
+          La = {
+            class: "card-header"
+          },
+          Da = {
+            class: "card-icon"
+          },
+          Ta = {
+            class: "card-info"
+          },
+          Wa = {
+            class: "card-title"
+          },
+          qa = {
+            class: "card-description"
+          },
+          Va = {
+            key: 0,
+            class: "card-body"
+          },
+          Ja = {
+            class: "avatar-section"
+          },
+          Ha = ["src"],
+          $a = {
+            key: 0,
+            class: "account-id-badge"
+          },
+          Ya = {
+            class: "setting-icon",
+            style: {
+              color: "#29b6f6"
+            }
+          },
+          Ka = {
+            class: "setting-action"
+          },
+          Qa = {
+            class: "value-text text-truncate"
+          },
+          Za = {
+            class: "setting-icon",
+            style: {
+              color: "#ab47bc"
+            }
+          },
+          Xa = {
+            class: "action-arrow"
+          },
+          en = {
+            class: "setting-icon",
+            style: {
+              color: "#ff7a9e"
+            }
+          },
+          tn = {
+            class: "action-arrow"
+          },
+          an = {
+            class: "setting-icon logout-icon"
+          },
+          nn = {
+            class: "action-arrow"
+          },
+          rn = {
+            key: 1,
+            class: "card-body"
+          },
+          on = {
+            class: "setting-icon",
+            style: {
+              color: "#ec407a"
+            }
+          },
+          ln = {
+            class: "setting-icon",
+            style: {
+              color: "#26a69a"
+            }
+          },
+          sn = {
+            class: "setting-info"
+          },
+          cn = {
+            class: "setting-hint"
+          },
+          dn = {
+            class: "action-arrow"
+          },
+          un = {
+            key: 2,
+            class: "card-body"
+          },
+          pn = {
+            class: "setting-icon",
+            style: {
+              color: "#9b59b6"
+            }
+          },
+          fn = {
+            class: "setting-info"
+          },
+          vn = {
+            class: "setting-hint"
+          },
+          gn = {
+            class: "action-arrow"
+          },
+          bn = {
+            class: "setting-icon",
+            style: {
+              color: "#e67e22"
+            }
+          },
+          hn = {
+            class: "action-arrow"
+          },
+          mn = {
+            class: "setting-icon",
+            style: {
+              color: "#34495e"
+            }
+          },
+          yn = {
+            class: "setting-info"
+          },
+          xn = {
+            class: "setting-hint"
+          },
+          wn = {
+            class: "action-arrow"
+          },
+          kn = {
+            key: 3,
+            class: "card-body"
+          },
+          Cn = {
+            class: "setting-icon",
+            style: {
+              color: "#1abc9c"
+            }
+          },
+          zn = {
+            class: "setting-info"
+          },
+          jn = {
+            class: "setting-hint"
+          },
+          Sn = {
+            class: "action-arrow"
+          },
+          _n = {
+            class: "setting-icon",
+            style: {
+              color: "#e91e63"
+            }
+          },
+          Un = {
+            class: "setting-info"
+          },
+          Mn = {
+            class: "setting-hint"
+          },
+          In = {
+            class: "action-arrow"
+          },
+          Pn = {
+            class: "setting-icon",
+            style: {
+              color: "#8e44ad"
+            }
+          },
+          Bn = {
+            class: "setting-info"
+          },
+          On = {
+            class: "setting-hint"
+          },
+          Rn = {
+            class: "action-arrow"
+          },
+          En = {
+            class: "setting-icon",
+            style: {
+              color: "#ff4757"
+            }
+          },
+          An = {
+            class: "setting-info"
+          },
+          Gn = {
+            class: "setting-hint"
+          },
+          Nn = {
+            class: "action-arrow"
+          },
+          Fn = {
+            key: 4,
+            class: "card-body"
+          },
+          Ln = {
+            class: "setting-icon",
+            style: {
+              color: "#795548"
+            }
+          },
+          Dn = {
+            class: "setting-info"
+          },
+          Tn = {
+            class: "setting-hint"
+          },
+          Wn = {
+            class: "action-arrow"
+          },
+          qn = {
+            class: "setting-icon",
+            style: {
+              color: "#ef6c57"
+            }
+          },
+          Vn = {
+            class: "setting-info"
+          },
+          Jn = {
+            class: "setting-hint"
+          },
+          Hn = {
+            class: "action-arrow"
+          },
+          $n = {
+            class: "setting-icon",
+            style: {
+              color: "#d58a18"
+            }
+          },
+          Yn = {
+            class: "setting-info"
+          },
+          Kn = {
+            class: "setting-hint"
+          },
+          Qn = {
+            class: "action-arrow"
+          },
+          Zn = {
+            key: 5,
+            class: "card-body"
+          },
+          Xn = {
+            class: "setting-icon",
+            style: {
+              color: "#7e57c2"
+            }
+          },
+          er = {
+            class: "action-arrow"
+          },
+          tr = {
+            class: "setting-icon",
+            style: {
+              color: "#26c6da"
+            }
+          },
+          ar = {
+            class: "setting-info"
+          },
+          nr = {
+            class: "setting-hint"
+          },
+          rr = {
+            class: "action-arrow"
+          },
+          or = {
+            class: "setting-icon",
+            style: {
+              color: "#ec6f9b"
+            }
+          },
+          ir = {
+            class: "action-arrow"
+          },
+          lr = {
+            class: "setting-icon",
+            style: {
+              color: "#42a5f5"
+            }
+          },
+          sr = {
+            class: "action-arrow"
+          },
+          cr = {
+            class: "role-chat-import-modal"
+          },
+          dr = {
+            class: "role-chat-import-actions"
+          },
+          ur = l({
+            __name: "SettingsView",
+            setup: function(e) {
+              var t, a, n = X().showToast,
+                r = ke(),
+                o = w(!1),
+                l = w(!1),
+                U = ce(),
+                M = w("欧尼酱"),
+                I = w(!1),
+                B = w(!1),
+                O = w(!1),
+                Q = w(!1),
+                te = w(!1),
+                ae = w(E()),
+                ne = w(null !== (t = null === (a = _()) || void 0 === a ? void 0 : a.user.id) && void 0 !== t ? t : null),
+                oe = w(!1),
+                le = w(!1),
+                se = w(!1),
+                _e = w(!1),
+                Ae = w(null),
+                Te = w(null),
+                We = w(null);
+              ee(function() {
+                return _e.value
+              }, mr);
+              var qe = w(!1),
+                Ve = w("default"),
+                He = w(""),
+                ft = w(!1),
+                gt = "",
+                bt = w(!1),
+                kt = C(function() {
+                  return U.bubbleConfig
+                }),
+                Ct = w(!1),
+                zt = w("官方网站"),
+                jt = w("https://www.piupiuchan.top"),
+                St = w(de),
+                _t = w(null),
+                Ut = Z(),
+                Mt = $e().checkExclusiveFeaturePermission;
+
+              function It() {
+                te.value = !0
+              }
+
+              function Pt() {
+                return Bt.apply(this, arguments)
+              }
+
+              function Bt() {
+                return (Bt = p(i().m(function e() {
+                  var t, a;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        return e.p = 0, e.n = 1, $();
+                      case 1:
+                        if ("success" === (t = e.v).status) {
+                          e.n = 2;
+                          break
+                        }
+                        return n(t.message || "退出登录失败，请稍后重试", "error"), e.a(2);
+                      case 2:
+                        if (te.value = !1, ne.value = null, n("已退出登录", "success"), "home" === r.currentRoute.value.name) {
+                          e.n = 3;
+                          break
+                        }
+                        return e.n = 3, r.push({
+                          name: "home"
+                        }).catch(function() {});
+                      case 3:
+                        window.dispatchEvent(new CustomEvent("piupiu:account-logout")), e.n = 5;
+                        break;
+                      case 4:
+                        e.p = 4, a = e.v, console.error("退出登录失败:", a), n("退出登录失败，请检查网络后重试", "error");
+                      case 5:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [0, 4]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function Ot() {
+                gt && (URL.revokeObjectURL(gt), gt = "")
+              }
+
+              function Rt(e) {
+                Ot(), gt = URL.createObjectURL(e), He.value = gt
+              }
+
+              function Et() {
+                return At.apply(this, arguments)
+              }
+
+              function At() {
+                return (At = p(i().m(function e() {
+                  var t;
+                  return i().w(function(e) {
+                    for (;;) switch (e.n) {
+                      case 0:
+                        return e.n = 1, N(de);
+                      case 1:
+                        t = e.v, St.value && St.value.startsWith("blob:") && St.value !== t && URL.revokeObjectURL(St.value), St.value = t;
+                      case 2:
+                        return e.a(2)
+                    }
+                  }, e)
+                }))).apply(this, arguments)
+              }
+
+              function Gt() {
+                var e = R();
+                M.value = e || "欧尼酱", Et()
+              }
+
+              function Nt(e) {
+                return Lt.apply(this, arguments)
+              }
+
+              function Lt() {
+                return (Lt = p(i().m(function e(t) {
+                  var a, r;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        return e.p = 0, e.n = 1, V(t);
+                      case 1:
+                        return a = e.v, e.n = 2, J(a.blob);
+                      case 2:
+                        St.value && St.value.startsWith("blob:") && URL.revokeObjectURL(St.value), St.value = URL.createObjectURL(a.blob), H({
+                          includeUsername: !1,
+                          includeAvatar: !0
+                        }), n("头像已更新"), e.n = 4;
+                        break;
+                      case 3:
+                        e.p = 3, r = e.v, console.error("[Avatar] Failed to save avatar:", r), n("头像保存失败");
+                      case 4:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [0, 3]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function Dt() {
+                return Tt.apply(this, arguments)
+              }
+
+              function Tt() {
+                return (Tt = p(i().m(function e() {
+                  var t, a;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (Mt("随机头像")) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        return l.value = !0, e.p = 2, e.n = 3, et();
+                      case 3:
+                        return t = e.v, e.n = 4, Nt(t);
+                      case 4:
+                        e.n = 6;
+                        break;
+                      case 5:
+                        e.p = 5, a = e.v, console.error("Random avatar fetch failed", a), n("获取随机头像失败", "error");
+                      case 6:
+                        return e.p = 6, l.value = !1, e.f(6);
+                      case 7:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [2, 5, 6, 7]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function Wt() {
+                B.value = !0
+              }
+
+              function qt() {
+                var e;
+                null === (e = _t.value) || void 0 === e || e.click()
+              }
+
+              function Vt(e) {
+                var t = e.target;
+                if (t.files && t.files[0]) {
+                  var a = t.files[0];
+                  if (!a.type.startsWith("image/")) return void console.warn("[Avatar] Selected file is not an image");
+                  Nt(a)
+                }
+                t.value = ""
+              }
+              A(p(i().m(function e() {
+                var t, a, n, r, l, s;
+                return i().w(function(e) {
+                  for (;;) switch (e.p = e.n) {
+                    case 0:
+                      return U.initDarkMode(), (n = R()) && (M.value = n), e.n = 1, Et();
+                    case 1:
+                      return window.addEventListener("piupiu:account-profile-changed", Gt), requestAnimationFrame(function() {
+                        o.value = !0
+                      }), (r = localStorage.getItem("chat_bg_mode")) && (Ve.value = r), ae.value = E(), ne.value = null !== (t = null === (a = _()) || void 0 === a ? void 0 : a.user.id) && void 0 !== t ? t : null, e.p = 2, e.n = 3, G("custom_bg_blob");
+                    case 3:
+                      if (l = e.v) {
+                        e.n = 4;
+                        break
+                      }
+                      l = "";
+                    case 4:
+                      He.value = l, e.n = 6;
+                      break;
+                    case 5:
+                      e.p = 5, s = e.v, console.warn("Failed to load custom bg", s);
+                    case 6:
+                      return e.a(2)
+                  }
+                }, e, null, [
+                  [2, 5]
+                ])
+              }))), P(function() {
+                window.removeEventListener("piupiu:account-profile-changed", Gt), Ot()
+              });
+              var Ht = function(e) {
+                var t = Y(e);
+                t && (M.value = t, H({
+                  includeUsername: !0,
+                  includeAvatar: !1
+                }), n("用户名已更新"))
+              };
+
+              function $t() {
+                U.toggleDarkMode(), n(U.isDarkMode ? "已开启暗黑模式" : "已关闭暗黑模式")
+              }
+              var Yt = w(!1);
+
+              function Kt() {
+                Yt.value = !0
+              }
+
+              function Qt() {
+                var e, t;
+                e = "官方网站", t = "https://www.piupiuchan.top", zt.value = e, jt.value = t, Ct.value = !0
+              }
+
+              function Zt() {
+                oe.value = !0
+              }
+
+              function Xt() {
+                var e = _();
+                null != e && e.accessToken ? le.value = !0 : n("请先登录账号后提交反馈", "warning")
+              }
+              var ea = [{
+                id: "personal",
+                title: "个人设置",
+                icon: lt,
+                description: "资料、设定和邀请信息都在这里"
+              }, {
+                id: "general",
+                title: "通用设置",
+                icon: ve,
+                description: "主题、字体和音乐随手调"
+              }, {
+                id: "chat_appearance",
+                title: "聊天外观",
+                icon: yt,
+                description: "调整背景、气泡和状态栏显示"
+              }, {
+                id: "chat_experience",
+                title: "聊天体验",
+                icon: xt,
+                description: "管理语音、记忆、回复和配图功能"
+              }, {
+                id: "global_config",
+                title: "全局配置",
+                icon: Ke,
+                description: "统一管理世界书、正则和预设"
+              }, {
+                id: "about",
+                title: "关于与帮助",
+                icon: vt,
+                description: "版本、官网和反馈入口都在这里"
+              }];
+
+              function ta() {
+                U.toggleCuteFont(), n(U.isCuteFontEnabled ? "已开启可爱字体" : "已关闭可爱字体")
+              }
+
+              function aa(e, t) {
+                return na.apply(this, arguments)
+              }
+
+              function na() {
+                return (na = p(i().m(function e(t, a) {
+                  var r, o, l, s;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (!ft.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        if (!("custom" === t && Boolean(a) && a !== He.value) || !a) {
+                          e.n = 10;
+                          break
+                        }
+                        return ft.value = !0, e.p = 2, e.n = 3, fetch(a);
+                      case 3:
+                        return r = e.v, e.n = 4, r.blob();
+                      case 4:
+                        return o = e.v, e.n = 5, Se(o);
+                      case 5:
+                        return l = e.v, e.n = 6, K("custom_bg_blob", l);
+                      case 6:
+                        Rt(l), e.n = 8;
+                        break;
+                      case 7:
+                        return e.p = 7, s = e.v, console.error("Failed to save custom bg", s), n("背景保存失败", "error"), e.a(2);
+                      case 8:
+                        return e.p = 8, ft.value = !1, e.f(8);
+                      case 9:
+                        e.n = 11;
+                        break;
+                      case 10:
+                        if ("custom" !== t || He.value) {
+                          e.n = 11;
+                          break
+                        }
+                        return n("请先上传自定义背景", "warning"), e.a(2);
+                      case 11:
+                        Ve.value = t, localStorage.setItem("chat_bg_mode", t), qe.value = !1, n("背景设置已更新", "success");
+                      case 12:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [2, 7, 8, 9]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function ra(e) {
+                U.updateBubbleConfig(e), bt.value = !1, n("气泡设置已保存", "success")
+              }
+              var oa = w(!1),
+                ia = C(function() {
+                  return U.ttsConfig
+                });
+
+              function la(e) {
+                U.updateTTSConfig(e), oa.value = !1, n("语音设置已保存", "success")
+              }
+              var sa = w(!1),
+                ca = C(function() {
+                  return U.memoryConfig
+                }),
+                da = w(!1),
+                ua = C(function() {
+                  return U.replyLengthConfig
+                }),
+                pa = C(function() {
+                  return U.replyStyleConfig
+                }),
+                fa = C(function() {
+                  return U.replySuggestionConfig
+                }),
+                va = C(function() {
+                  var e = [];
+                  if (ua.value.enabled)
+                    if (ua.value.minUnlimited && ua.value.maxUnlimited) e.push("字数控制已开启");
+                    else {
+                      var t = ua.value.minUnlimited ? "下限不限" : "至少 ".concat(ua.value.minChars, " 字"),
+                        a = ua.value.maxUnlimited ? "上限不限" : "至多 ".concat(ua.value.maxChars, " 字");
+                      e.push("字数 · ".concat(t, " · ").concat(a))
+                    } var n = Ce(pa.value.customStyles, pa.value.selectedStyleId);
+                  return n && !ze(n.id) && e.push("文风：".concat(n.title)), fa.value.enabled && e.push("心动接话：".concat(fa.value.count, "条")), e.length > 0 ? e.join(" · ") : "已关闭"
+                });
+
+              function ga(e) {
+                U.updateMemoryConfig(e), sa.value = !1, n("记忆已更新")
+              }
+
+              function ba(e) {
+                U.updateReplyLengthConfig(e.length), U.updateReplyStyleConfig(e.style), U.updateReplySuggestionConfig(e.suggestion), da.value = !1, n("回复设置已保存", "success")
+              }
+              var ha = w(!1),
+                ma = C(function() {
+                  return U.imageGenConfig
+                }),
+                xa = C(function() {
+                  var e = ma.value;
+                  return "local" === e.mode ? "".concat(e.localEnabled ? "本地自动配图已开启" : "本地配图已关闭", " · ").concat(e.localStreaming ? "流式开启" : "流式关闭", " · ").concat(e.localSteps, "步") : "".concat(e.enabled ? "云端自动配图已开启" : "云端配图已关闭", " · ").concat(e.size)
+                });
+
+              function wa(e) {
+                U.updateImageGenConfig(e), ha.value = !1, n("配图设置已更新", "success")
+              }
+              var ka = w(!1),
+                Ca = C(function() {
+                  return U.statusBarConfig
+                }),
+                za = w(!1),
+                ja = C(function() {
+                  return U.globalWorldBook
+                }),
+                Sa = w(!1),
+                _a = w(!1),
+                Ua = C(function() {
+                  var e = U.globalWorldBooks.length;
+                  if (0 === e) return "未设置";
+                  var t = ja.value;
+                  if (!t) return "".concat(e, " 本 · 未使用");
+                  var a = Array.isArray(t.entries) ? t.entries.length : 0;
+                  if (!1 === t.enabled) return "".concat(e, " 本 · 当前已关闭");
+                  if (0 === a) return "".concat(e, " 本 · 当前 0 条");
+                  var n = t.entries.filter(function(e) {
+                    return !1 !== (null == e ? void 0 : e.enabled)
+                  }).length;
+                  return "".concat(e, " 本 · 当前启用 ").concat(n, "/").concat(a, " 条")
+                }),
+                Ma = C(function() {
+                  var e = U.globalRegexConfigs.length;
+                  if (0 === e) return "未设置";
+                  var t = U.globalRegexConfig;
+                  if (!U.activeGlobalRegexId) return "".concat(e, " 套 · 未使用");
+                  if (!t.enabled) return "".concat(e, " 套 · 当前总开关已关闭");
+                  var a = t.scripts.length;
+                  if (0 === a) return "".concat(e, " 套 · 当前 0 条规则");
+                  var n = je(t);
+                  return "".concat(e, " 套 · 当前启用 ").concat(n, "/").concat(a, " 条")
+                }),
+                Ia = C(function() {
+                  var e = U.globalPresets.length;
+                  if (0 === e) return "未设置";
+                  var t = U.globalPresets.find(function(e) {
+                    return e.id === U.activeGlobalPresetId
+                  });
+                  return t ? "".concat(e, " 套 · 已选择 ").concat(t.name) : "".concat(e, " 套 · 未选择")
+                });
+
+              function Pa(e, t) {
+                U.updateStatusBarConfig(e), U.updateUserStatusBarConfig(t), ka.value = !1, n("状态栏设置已更新")
+              }
+
+              function Ba() {
+                return Ra.apply(this, arguments)
+              }
+
+              function Ra() {
+                return (Ra = p(i().m(function e() {
+                  var t, a;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        return e.p = 0, e.n = 1, Oa(U, Ve.value);
+                      case 1:
+                        t = e.v, oe.value = !1, n("downloads" === t ? "设置备份已保存到下载文件夹" : "设置备份已开始下载", "success"), e.n = 3;
+                        break;
+                      case 2:
+                        e.p = 2, a = e.v, console.error("导出设置备份失败:", a), n("导出设置失败，请稍后重试", "error");
+                      case 3:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [0, 2]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function Ga() {
+                return ur.apply(this, arguments)
+              }
+
+              function ur() {
+                return (ur = p(i().m(function e() {
+                  var t, a;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        return oe.value = !1, e.p = 1, e.n = 2, nt();
+                      case 2:
+                        t = e.v, n("downloads" === t ? "角色卡和聊天记录备份已保存到下载文件夹" : "角色卡和聊天记录备份已开始下载", "success"), e.n = 4;
+                        break;
+                      case 3:
+                        e.p = 3, a = e.v, console.error("导出角色卡和聊天记录备份失败:", a), n(a instanceof Error ? a.message : "导出角色卡和聊天记录失败", "error");
+                      case 4:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [1, 3]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function pr() {
+                var e;
+                oe.value = !1, null === (e = Ae.value) || void 0 === e || e.click()
+              }
+
+              function fr(e) {
+                return vr.apply(this, arguments)
+              }
+
+              function vr() {
+                return (vr = p(i().m(function e(t) {
+                  var a, r, o, l, s;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (r = t.target, o = null === (a = r.files) || void 0 === a ? void 0 : a[0], r.value = "", o) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        return e.p = 1, e.n = 2, tt(o);
+                      case 2:
+                        if ("settings" !== e.v.kind) {
+                          e.n = 4;
+                          break
+                        }
+                        return e.n = 3, o.text();
+                      case 3:
+                        return l = e.v, Te.value = Ea(l), se.value = !0, e.a(2);
+                      case 4:
+                        We.value = o, _e.value = !0, e.n = 6;
+                        break;
+                      case 5:
+                        e.p = 5, s = e.v, console.error("读取备份文件失败:", s), n(s instanceof Error ? s.message : "不是有效的备份文件", "error");
+                      case 6:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [1, 5]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function gr() {
+                Te.value = null, se.value = !1
+              }
+
+              function br() {
+                return hr.apply(this, arguments)
+              }
+
+              function hr() {
+                return (hr = p(i().m(function e() {
+                  var t, a, r;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (t = Te.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return se.value = !1, e.a(2);
+                      case 1:
+                        return e.p = 1, e.n = 2, Aa(t, {
+                          appStore: U,
+                          currentCustomBackgroundUrl: He.value
+                        });
+                      case 2:
+                        a = e.v, Ve.value = a.appliedBackgroundMode, null !== a.restoredUsername && (M.value = a.restoredUsername), se.value = !1, Te.value = null, n("设置已恢复", "success"), e.n = 4;
+                        break;
+                      case 3:
+                        e.p = 3, r = e.v, console.error("恢复设置备份失败:", r), n(r instanceof Error ? r.message : "恢复设置失败", "error");
+                      case 4:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [1, 3]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function mr() {
+                We.value = null, _e.value = !1
+              }
+
+              function yr(e) {
+                return xr.apply(this, arguments)
+              }
+
+              function xr() {
+                return (xr = p(i().m(function e(t) {
+                  var a, r, o, l, s;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (a = We.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return _e.value = !1, e.a(2);
+                      case 1:
+                        return _e.value = !1, We.value = null, e.p = 2, e.n = 3, at(a, t);
+                      case 3:
+                        return r = me().migrationMessage, o = ye(), l = xe(), e.n = 4, Promise.all([o.loadPage(1, !0), l.loadPage(1, !0)]);
+                      case 4:
+                        n(r || "导入完成", r.includes("跳过") ? "warning" : "success"), e.n = 6;
+                        break;
+                      case 5:
+                        e.p = 5, s = e.v, console.error("导入角色卡和聊天记录备份失败:", s), n(s instanceof Error ? s.message : "导入角色卡和聊天记录失败", "error");
+                      case 6:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [2, 5]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function wr(e) {
+                ae.value = e
+              }
+              var kr = w(!1),
+                Cr = w(null),
+                zr = w(!1),
+                jr = w(re());
+
+              function Sr() {
+                return _r.apply(this, arguments)
+              }
+
+              function _r() {
+                return (_r = p(i().m(function e() {
+                  var t, a;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (!zr.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        return zr.value = !0, n("正在检查更新..."), e.p = 2, e.n = 3, we(!0);
+                      case 3:
+                        (t = e.v).hasUpdate && t.versionInfo ? (Cr.value = t.versionInfo, kr.value = !0) : n("已是最新版本 v" + re(), "success"), e.n = 5;
+                        break;
+                      case 4:
+                        e.p = 4, a = e.v, console.error("Check update error:", a), n("检查更新失败，请稍后重试", "error");
+                      case 5:
+                        return e.p = 5, zr.value = !1, e.f(5);
+                      case 6:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [2, 4, 5, 6]
+                  ])
+                }))).apply(this, arguments)
+              }
+              return function(e, t) {
+                return S(), c("div", Na, [m("div", Fa, [f(W, {
+                  name: "card-stagger",
+                  tag: "div",
+                  class: "cards-container"
+                }, {
+                  default: g(function() {
+                    return [(S(), c(d, null, z(ea, function(e, a) {
+                      var n;
+                      return F(m("div", {
+                        key: e.id,
+                        class: "glass-card",
+                        style: D({
+                          "--delay": "".concat(.1 * a, "s")
+                        })
+                      }, [m("div", La, [m("div", Da, [(S(), u(T(e.icon), {
+                        size: 28,
+                        "stroke-width": 1.8
+                      }))]), m("div", Ta, [m("h3", Wa, k(e.title), 1), m("p", qa, k(e.description), 1)])]), "personal" === e.id ? (S(), c("div", Va, [m("div", Ja, [m("div", {
+                        class: "avatar-wrapper",
+                        onClick: Wt
+                      }, [m("img", {
+                        src: St.value,
+                        alt: "用户头像",
+                        class: "avatar-image"
+                      }, null, 8, Ha), m("div", {
+                        class: "avatar-edit-btn",
+                        onClick: h(qt, ["stop"])
+                      }, [f(x(ue), {
+                        size: 14,
+                        "stroke-width": 2
+                      })]), m("button", {
+                        type: "button",
+                        class: "avatar-random-btn",
+                        "aria-label": "随机头像",
+                        onClick: h(Dt, ["stop"])
+                      }, [f(x(rt), {
+                        size: 14,
+                        "stroke-width": 2
+                      })])]), null !== ne.value ? (S(), c("div", $a, " ID: " + k(ne.value), 1)) : b("", !0)]), m("div", {
+                        class: "setting-item",
+                        onClick: t[0] || (t[0] = function(e) {
+                          return I.value = !0
+                        })
+                      }, [m("div", Ya, [f(x(pe), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), t[37] || (t[37] = m("div", {
+                        class: "setting-info"
+                      }, [m("span", {
+                        class: "setting-label"
+                      }, "用户名"), m("span", {
+                        class: "setting-hint"
+                      }, "改成你喜欢的称呼")], -1)), m("div", Ka, [m("span", Qa, k(M.value), 1)])]), m("div", {
+                        class: "setting-item",
+                        onClick: t[1] || (t[1] = function(e) {
+                          return O.value = !0
+                        })
+                      }, [m("div", Za, [f(x(ot), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), t[38] || (t[38] = m("div", {
+                        class: "setting-info"
+                      }, [m("span", {
+                        class: "setting-label"
+                      }, "用户人设"), m("span", {
+                        class: "setting-hint"
+                      }, "补充你的身份和设定")], -1)), m("div", Xa, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])]), m("div", {
+                        class: "setting-item",
+                        onClick: t[2] || (t[2] = function(e) {
+                          return Q.value = !0
+                        })
+                      }, [m("div", en, [f(x(Ye), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), t[39] || (t[39] = m("div", {
+                        class: "setting-info"
+                      }, [m("span", {
+                        class: "setting-label"
+                      }, "邀请系统"), m("span", {
+                        class: "setting-hint"
+                      }, "查看邀请码、绑定和奖励进度")], -1)), m("div", tn, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])]), m("div", {
+                        class: "setting-item logout-item",
+                        onClick: It
+                      }, [m("div", an, [f(x(ht), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), t[40] || (t[40] = m("div", {
+                        class: "setting-info"
+                      }, [m("span", {
+                        class: "setting-label logout-label"
+                      }, "退出登录"), m("span", {
+                        class: "setting-hint"
+                      }, "退出当前账号并返回登录")], -1)), m("div", nn, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])])])) : b("", !0), "general" === e.id ? (S(), c("div", rn, [m("div", {
+                        class: "setting-item",
+                        onClick: $t
+                      }, [m("div", {
+                        class: "setting-icon",
+                        style: D({
+                          color: x(U).isDarkMode ? "#ffb74d" : "#5c6bc0"
+                        })
+                      }, [x(U).isDarkMode ? (S(), u(x(ct), {
+                        key: 1,
+                        size: 22,
+                        "stroke-width": 1.8
+                      })) : (S(), u(x(st), {
+                        key: 0,
+                        size: 22,
+                        "stroke-width": 1.8
+                      }))], 4), t[42] || (t[42] = m("div", {
+                        class: "setting-info"
+                      }, [m("span", {
+                        class: "setting-label"
+                      }, "黑夜模式"), m("span", {
+                        class: "setting-hint"
+                      }, "开启后界面将切换为深色主题")], -1)), m("div", {
+                        class: y(["toggle-switch", {
+                          active: x(U).isDarkMode
+                        }])
+                      }, s(t[41] || (t[41] = [m("div", {
+                        class: "toggle-thumb"
+                      }, null, -1)])), 2)]), m("div", {
+                        class: "setting-item",
+                        onClick: ta
+                      }, [m("div", on, [f(x(wt), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), t[44] || (t[44] = m("div", {
+                        class: "setting-info"
+                      }, [m("span", {
+                        class: "setting-label"
+                      }, "可爱字体"), m("span", {
+                        class: "setting-hint"
+                      }, "全局使用圆润可爱的字体风格")], -1)), m("div", {
+                        class: y(["toggle-switch", {
+                          active: x(U).isCuteFontEnabled
+                        }])
+                      }, s(t[43] || (t[43] = [m("div", {
+                        class: "toggle-thumb"
+                      }, null, -1)])), 2)]), m("div", {
+                        class: "setting-item",
+                        onClick: Kt
+                      }, [m("div", ln, [f(x(mt), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), m("div", sn, [t[45] || (t[45] = m("span", {
+                        class: "setting-label"
+                      }, "背景音乐", -1)), m("span", cn, k(x(Ut).isMusicEnabled ? "已开启" : "已关闭") + " · 开关、音量和曲目 ", 1)]), m("div", dn, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])])])) : b("", !0), "chat_appearance" === e.id ? (S(), c("div", un, [m("div", {
+                        class: "setting-item",
+                        onClick: t[3] || (t[3] = function(e) {
+                          return qe.value = !0
+                        })
+                      }, [m("div", pn, [f(x(dt), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), m("div", fn, [t[46] || (t[46] = m("span", {
+                        class: "setting-label"
+                      }, "背景设置", -1)), m("span", vn, k("default" === Ve.value ? "PiuPiu酱 (Live2D)" : "role" === Ve.value ? "跟随角色封面" : "自定义图片"), 1)]), m("div", gn, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])]), m("div", {
+                        class: "setting-item",
+                        onClick: t[4] || (t[4] = function(e) {
+                          return bt.value = !0
+                        })
+                      }, [m("div", bn, [f(x(Ge), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), t[47] || (t[47] = m("div", {
+                        class: "setting-info"
+                      }, [m("span", {
+                        class: "setting-label"
+                      }, "气泡设置"), m("span", {
+                        class: "setting-hint"
+                      }, " 透明度、字号和高亮颜色 ")], -1)), m("div", hn, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])]), m("div", {
+                        class: "setting-item",
+                        onClick: t[5] || (t[5] = function(e) {
+                          return ka.value = !0
+                        })
+                      }, [m("div", mn, [f(x(Ne), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), m("div", yn, [t[48] || (t[48] = m("span", {
+                        class: "setting-label"
+                      }, "状态栏设置", -1)), m("span", xn, k(Ca.value.enabled ? "已开启" : "已关闭") + " · 自定义显示内容 ", 1)]), m("div", wn, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])])])) : b("", !0), "chat_experience" === e.id ? (S(), c("div", kn, [m("div", {
+                        class: "setting-item",
+                        onClick: t[6] || (t[6] = function(e) {
+                          return oa.value = !0
+                        })
+                      }, [m("div", Cn, [f(x(pt), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), m("div", zn, [t[49] || (t[49] = m("span", {
+                        class: "setting-label"
+                      }, "语音设置", -1)), m("span", jn, k(ia.value.autoPlay ? "自动播放已开启" : "自动播放已关闭") + " · " + k((null === (n = ia.value.voice.split("-")[2]) || void 0 === n ? void 0 : n.replace("Neural", "")) || "晓伊"), 1)]), m("div", Sn, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])]), m("div", {
+                        class: "setting-item",
+                        onClick: t[7] || (t[7] = function(e) {
+                          return sa.value = !0
+                        })
+                      }, [m("div", _n, [f(x(ut), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), m("div", Un, [t[50] || (t[50] = m("span", {
+                        class: "setting-label"
+                      }, "记忆设置", -1)), m("span", Mn, k(ca.value.enabled ? "已开启 (强度 ".concat(ca.value.strength, ")") : "已关闭"), 1)]), m("div", In, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])]), m("div", {
+                        class: "setting-item",
+                        onClick: t[8] || (t[8] = function(e) {
+                          return da.value = !0
+                        })
+                      }, [m("div", Pn, [f(x(ot), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), m("div", Bn, [t[51] || (t[51] = m("span", {
+                        class: "setting-label"
+                      }, "回复设置", -1)), m("span", On, k(va.value), 1)]), m("div", Rn, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])]), m("div", {
+                        class: "setting-item",
+                        onClick: t[9] || (t[9] = function(e) {
+                          return ha.value = !0
+                        })
+                      }, [m("div", En, [f(x(dt), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), m("div", An, [t[52] || (t[52] = m("span", {
+                        class: "setting-label"
+                      }, "配图设置", -1)), m("span", Gn, k(xa.value), 1)]), m("div", Nn, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])])])) : b("", !0), "global_config" === e.id ? (S(), c("div", Fn, [m("div", {
+                        class: "setting-item",
+                        onClick: t[10] || (t[10] = function(e) {
+                          return za.value = !0
+                        })
+                      }, [m("div", Ln, [f(x(it), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), m("div", Dn, [t[53] || (t[53] = m("span", {
+                        class: "setting-label"
+                      }, "全局世界书", -1)), m("span", Tn, k(Ua.value), 1)]), m("div", Wn, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])]), m("div", {
+                        class: "setting-item",
+                        onClick: t[11] || (t[11] = function(e) {
+                          return Sa.value = !0
+                        })
+                      }, [m("div", qn, [f(x(ot), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), m("div", Vn, [t[54] || (t[54] = m("span", {
+                        class: "setting-label"
+                      }, "全局正则", -1)), m("span", Jn, k(Ma.value), 1)]), m("div", Hn, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])]), m("div", {
+                        class: "setting-item",
+                        onClick: t[12] || (t[12] = function(e) {
+                          return _a.value = !0
+                        })
+                      }, [m("div", $n, [f(x(fe), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), m("div", Yn, [t[55] || (t[55] = m("span", {
+                        class: "setting-label"
+                      }, "全局预设", -1)), m("span", Kn, k(Ia.value), 1)]), m("div", Qn, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])])])) : b("", !0), "about" === e.id ? (S(), c("div", Zn, [m("div", {
+                        class: "setting-item highlight-hover",
+                        onClick: Zt
+                      }, [m("div", Xn, [f(x(ot), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), t[56] || (t[56] = m("div", {
+                        class: "setting-info"
+                      }, [m("span", {
+                        class: "setting-label"
+                      }, "备份与恢复"), m("span", {
+                        class: "setting-hint"
+                      }, "导出当前设置，或从备份恢复")], -1)), m("div", er, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])]), m("div", {
+                        class: "setting-item highlight-hover",
+                        onClick: Sr
+                      }, [m("div", tr, [f(x(rt), {
+                        size: 22,
+                        "stroke-width": 1.8,
+                        class: y({
+                          "spin-animation": zr.value
+                        })
+                      }, null, 8, ["class"])]), m("div", ar, [t[57] || (t[57] = m("span", {
+                        class: "setting-label"
+                      }, "检查更新", -1)), m("span", nr, "当前版本: v" + k(jr.value), 1)]), m("div", rr, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])]), m("div", {
+                        class: "setting-item highlight-hover",
+                        onClick: Xt
+                      }, [m("div", or, [f(x(Ge), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), t[58] || (t[58] = m("div", {
+                        class: "setting-info"
+                      }, [m("span", {
+                        class: "setting-label"
+                      }, "意见反馈"), m("span", {
+                        class: "setting-hint"
+                      }, "反馈问题或提出功能建议")], -1)), m("div", ir, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])]), m("div", {
+                        class: "setting-item highlight-hover",
+                        onClick: Qt
+                      }, [m("div", lr, [f(x(Ke), {
+                        size: 22,
+                        "stroke-width": 1.8
+                      })]), t[59] || (t[59] = m("div", {
+                        class: "setting-info"
+                      }, [m("span", {
+                        class: "setting-label"
+                      }, "官方网站"), m("span", {
+                        class: "setting-hint"
+                      }, "查看公告、下载和最新消息")], -1)), m("div", sr, [f(x(Je), {
+                        size: 18,
+                        "stroke-width": 2
+                      })])])])) : b("", !0)], 4), [
+                        [L, o.value]
+                      ])
+                    }), 64))]
+                  }),
+                  _: 1
+                })]), m("input", {
+                  ref_key: "fileInputRef",
+                  ref: _t,
+                  type: "file",
+                  accept: "image/*",
+                  class: "hidden-input",
+                  onChange: Vt
+                }, null, 544), m("input", {
+                  ref_key: "settingsBackupFileInputRef",
+                  ref: Ae,
+                  type: "file",
+                  accept: ".json,.zip,.piupiu-data-backup.zip,application/json,application/zip",
+                  class: "hidden-input",
+                  onChange: fr
+                }, null, 544), f(ie, {
+                  show: I.value,
+                  "onUpdate:show": t[13] || (t[13] = function(e) {
+                    return I.value = e
+                  }),
+                  title: "修改用户名",
+                  placeholder: "请输入新的称呼...",
+                  "initial-value": M.value,
+                  "max-length": x(q),
+                  onConfirm: Ht
+                }, null, 8, ["show", "initial-value", "max-length"]), f(ge, {
+                  show: B.value,
+                  "onUpdate:show": t[14] || (t[14] = function(e) {
+                    return B.value = e
+                  }),
+                  username: M.value,
+                  avatar: St.value
+                }, null, 8, ["show", "username", "avatar"]), f(Ue, {
+                  show: O.value,
+                  "onUpdate:show": t[15] || (t[15] = function(e) {
+                    return O.value = e
+                  })
+                }, null, 8, ["show"]), f(Qe, {
+                  show: Q.value,
+                  "onUpdate:show": t[16] || (t[16] = function(e) {
+                    return Q.value = e
+                  }),
+                  onUpdated: wr
+                }, null, 8, ["show"]), f(Fe, {
+                  show: qe.value,
+                  "onUpdate:show": t[17] || (t[17] = function(e) {
+                    return qe.value = e
+                  }),
+                  "current-mode": Ve.value,
+                  "custom-image": He.value,
+                  saving: ft.value,
+                  onConfirm: aa
+                }, null, 8, ["show", "current-mode", "custom-image", "saving"]), f(Ft, {
+                  show: Yt.value,
+                  "onUpdate:show": t[18] || (t[18] = function(e) {
+                    return Yt.value = e
+                  })
+                }, null, 8, ["show"]), f(Le, {
+                  show: oa.value,
+                  "onUpdate:show": t[19] || (t[19] = function(e) {
+                    return oa.value = e
+                  }),
+                  "initial-config": {
+                    autoPlay: ia.value.autoPlay,
+                    readDialogueOnly: ia.value.readDialogueOnly,
+                    voice: ia.value.voice,
+                    volume: ia.value.volume,
+                    rate: ia.value.rate
+                  },
+                  onConfirm: la
+                }, null, 8, ["show", "initial-config"]), f(De, {
+                  show: bt.value,
+                  "onUpdate:show": t[20] || (t[20] = function(e) {
+                    return bt.value = e
+                  }),
+                  "initial-config": kt.value,
+                  onConfirm: ra
+                }, null, 8, ["show", "initial-config"]), f(Me, {
+                  show: sa.value,
+                  "onUpdate:show": t[21] || (t[21] = function(e) {
+                    return sa.value = e
+                  }),
+                  "initial-config": ca.value,
+                  onConfirm: ga
+                }, null, 8, ["show", "initial-config"]), f(Ie, {
+                  show: da.value,
+                  "onUpdate:show": t[22] || (t[22] = function(e) {
+                    return da.value = e
+                  }),
+                  "initial-config": {
+                    length: ua.value,
+                    style: pa.value,
+                    suggestion: fa.value
+                  },
+                  onConfirm: ba
+                }, null, 8, ["show", "initial-config"]), f(Pe, {
+                  show: ha.value,
+                  "onUpdate:show": t[23] || (t[23] = function(e) {
+                    return ha.value = e
+                  }),
+                  "initial-config": ma.value,
+                  onConfirm: wa
+                }, null, 8, ["show", "initial-config"]), f(Be, {
+                  show: ka.value,
+                  "onUpdate:show": t[24] || (t[24] = function(e) {
+                    return ka.value = e
+                  }),
+                  "initial-config": Ca.value,
+                  "initial-user-config": x(U).userStatusBarConfig,
+                  onConfirm: Pa
+                }, null, 8, ["show", "initial-config", "initial-user-config"]), f(Oe, {
+                  show: za.value,
+                  "onUpdate:show": t[25] || (t[25] = function(e) {
+                    return za.value = e
+                  })
+                }, null, 8, ["show"]), f(Re, {
+                  show: Sa.value,
+                  "onUpdate:show": t[26] || (t[26] = function(e) {
+                    return Sa.value = e
+                  })
+                }, null, 8, ["show"]), f(Ee, {
+                  show: _a.value,
+                  "onUpdate:show": t[27] || (t[27] = function(e) {
+                    return _a.value = e
+                  })
+                }, null, 8, ["show"]), f(Jt, {
+                  show: oe.value,
+                  "onUpdate:show": t[28] || (t[28] = function(e) {
+                    return oe.value = e
+                  }),
+                  onExportSettings: Ba,
+                  onExportData: Ga,
+                  onImport: pr
+                }, null, 8, ["show"]), f(Xe, {
+                  show: se.value,
+                  "onUpdate:show": t[29] || (t[29] = function(e) {
+                    return se.value = e
+                  }),
+                  title: "恢复设置",
+                  message: "导入后将覆盖当前已支持的设置项，但不会影响聊天记录、角色、回忆、头像、背景图和 BGM 文件。",
+                  "confirm-text": "继续导入",
+                  "cancel-text": "取消",
+                  onConfirm: br,
+                  onCancel: gr
+                }, null, 8, ["show"]), (S(), u(j, {
+                  to: "body"
+                }, [f(v, {
+                  name: "modal-fade"
+                }, {
+                  default: g(function() {
+                    return [_e.value ? (S(), c("div", {
+                      key: 0,
+                      class: "role-chat-import-overlay",
+                      onClick: h(mr, ["self"])
+                    }, [m("div", cr, [t[60] || (t[60] = m("div", {
+                      class: "role-chat-import-header"
+                    }, [m("h3", null, "导入角色卡和聊天记录"), m("p", null, "请选择导入方式")], -1)), m("div", dr, [m("button", {
+                      type: "button",
+                      class: "mode-btn mode-btn-primary",
+                      onClick: t[30] || (t[30] = function(e) {
+                        return yr("merge")
+                      })
+                    }, "合并"), m("button", {
+                      type: "button",
+                      class: "mode-btn mode-btn-danger",
+                      onClick: t[31] || (t[31] = function(e) {
+                        return yr("overwrite")
+                      })
+                    }, "覆盖")])])])) : b("", !0)]
+                  }),
+                  _: 1
+                })])), f(Xe, {
+                  show: te.value,
+                  "onUpdate:show": t[32] || (t[32] = function(e) {
+                    return te.value = e
+                  }),
+                  title: "退出登录",
+                  message: "确定要退出当前账号吗？退出后需要重新登录才能继续使用。",
+                  "confirm-text": "退出登录",
+                  "cancel-text": "取消",
+                  danger: "",
+                  onConfirm: Pt,
+                  onCancel: t[33] || (t[33] = function(e) {
+                    return te.value = !1
+                  })
+                }, null, 8, ["show"]), f(be, {
+                  show: kr.value,
+                  "onUpdate:show": t[34] || (t[34] = function(e) {
+                    return kr.value = e
+                  }),
+                  "version-info": Cr.value,
+                  "current-version": jr.value
+                }, null, 8, ["show", "version-info", "current-version"]), f(Ze, {
+                  show: Ct.value,
+                  "onUpdate:show": t[35] || (t[35] = function(e) {
+                    return Ct.value = e
+                  }),
+                  title: zt.value,
+                  url: jt.value
+                }, null, 8, ["show", "title", "url"]), f(ya, {
+                  show: le.value,
+                  "onUpdate:show": t[36] || (t[36] = function(e) {
+                    return le.value = e
+                  })
+                }, null, 8, ["show"]), f(he, {
+                  show: l.value || ft.value,
+                  text: ft.value ? "正在保存自定义背景..." : "正在寻找有缘的头像..."
+                }, null, 8, ["show", "text"])])
+              }
+            }
+          });
+        e("default", ae(ur, [
+          ["__scopeId", "data-v-98f0133c"]
+        ]))
+      }
+    }
+  })
+}();

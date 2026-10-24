@@ -1,0 +1,1270 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function e(t) {
+    return e = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+      return typeof e
+    } : function(e) {
+      return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
+    }, e(t)
+  }
+
+  function t() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var e, r, i = "function" == typeof Symbol ? Symbol : {},
+      s = i.iterator || "@@iterator",
+      o = i.toStringTag || "@@toStringTag";
+
+    function a(t, i, s, o) {
+      var a = i && i.prototype instanceof u ? i : u,
+        l = Object.create(a.prototype);
+      return n(l, "_invoke", function(t, n, i) {
+        var s, o, a, u = 0,
+          l = i || [],
+          p = !1,
+          h = {
+            p: 0,
+            n: 0,
+            v: e,
+            a: f,
+            f: f.bind(e, 4),
+            d: function(t, n) {
+              return s = t, o = 0, a = e, h.n = n, c
+            }
+          };
+
+        function f(t, n) {
+          for (o = t, a = n, r = 0; !p && u && !i && r < l.length; r++) {
+            var i, s = l[r],
+              f = h.p,
+              v = s[2];
+            t > 3 ? (i = v === n) && (a = s[(o = s[4]) ? 5 : (o = 3, 3)], s[4] = s[5] = e) : s[0] <= f && ((i = t < 2 && f < s[1]) ? (o = 0, h.v = n, h.n = s[1]) : f < v && (i = t < 3 || s[0] > n || n > v) && (s[4] = t, s[5] = n, h.n = v, o = 0))
+          }
+          if (i || t > 1) return c;
+          throw p = !0, n
+        }
+        return function(i, l, v) {
+          if (u > 1) throw TypeError("Generator is already running");
+          for (p && 1 === l && f(l, v), o = l, a = v;
+            (r = o < 2 ? e : a) || !p;) {
+            s || (o ? o < 3 ? (o > 1 && (h.n = -1), f(o, a)) : h.n = a : h.v = a);
+            try {
+              if (u = 2, s) {
+                if (o || (i = "next"), r = s[i]) {
+                  if (!(r = r.call(s, a))) throw TypeError("iterator result is not an object");
+                  if (!r.done) return r;
+                  a = r.value, o < 2 && (o = 0)
+                } else 1 === o && (r = s.return) && r.call(s), o < 2 && (a = TypeError("The iterator does not provide a '" + i + "' method"), o = 1);
+                s = e
+              } else if ((r = (p = h.n < 0) ? a : t.call(n, h)) !== c) break
+            } catch (r) {
+              s = e, o = 1, a = r
+            } finally {
+              u = 1
+            }
+          }
+          return {
+            value: r,
+            done: p
+          }
+        }
+      }(t, s, o), !0), l
+    }
+    var c = {};
+
+    function u() {}
+
+    function l() {}
+
+    function p() {}
+    r = Object.getPrototypeOf;
+    var h = [][s] ? r(r([][s]())) : (n(r = {}, s, function() {
+        return this
+      }), r),
+      f = p.prototype = u.prototype = Object.create(h);
+
+    function v(e) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(e, p) : (e.__proto__ = p, n(e, o, "GeneratorFunction")), e.prototype = Object.create(f), e
+    }
+    return l.prototype = p, n(f, "constructor", p), n(p, "constructor", l), l.displayName = "GeneratorFunction", n(p, o, "GeneratorFunction"), n(f), n(f, o, "Generator"), n(f, s, function() {
+      return this
+    }), n(f, "toString", function() {
+      return "[object Generator]"
+    }), (t = function() {
+      return {
+        w: a,
+        m: v
+      }
+    })()
+  }
+
+  function n(e, t, r, i) {
+    var s = Object.defineProperty;
+    try {
+      s({}, "", {})
+    } catch (e) {
+      s = 0
+    }
+    n = function(e, t, r, i) {
+      function o(t, r) {
+        n(e, t, function(e) {
+          return this._invoke(t, r, e)
+        })
+      }
+      t ? s ? s(e, t, {
+        value: r,
+        enumerable: !i,
+        configurable: !i,
+        writable: !i
+      }) : e[t] = r : (o("next", 0), o("throw", 1), o("return", 2))
+    }, n(e, t, r, i)
+  }
+
+  function r(e, t, n, r, i, s, o) {
+    try {
+      var a = e[s](o),
+        c = a.value
+    } catch (e) {
+      return void n(e)
+    }
+    a.done ? t(c) : Promise.resolve(c).then(r, i)
+  }
+
+  function i(e) {
+    return function() {
+      var t = this,
+        n = arguments;
+      return new Promise(function(i, s) {
+        var o = e.apply(t, n);
+
+        function a(e) {
+          r(o, i, s, a, c, "next", e)
+        }
+
+        function c(e) {
+          r(o, i, s, a, c, "throw", e)
+        }
+        a(void 0)
+      })
+    }
+  }
+
+  function s(e, t) {
+    for (var n = 0; n < t.length; n++) {
+      var r = t[n];
+      r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), Object.defineProperty(e, o(r.key), r)
+    }
+  }
+
+  function o(t) {
+    var n = function(t, n) {
+      if ("object" != e(t) || !t) return t;
+      var r = t[Symbol.toPrimitive];
+      if (void 0 !== r) {
+        var i = r.call(t, n || "default");
+        if ("object" != e(i)) return i;
+        throw new TypeError("@@toPrimitive must return a primitive value.")
+      }
+      return ("string" === n ? String : Number)(t)
+    }(t, "string");
+    return "symbol" == e(n) ? n : n + ""
+  }
+
+  function a(t, n, r) {
+    return n = u(n),
+      function(t, n) {
+        if (n && ("object" == e(n) || "function" == typeof n)) return n;
+        if (void 0 !== n) throw new TypeError("Derived constructors may only return object or undefined");
+        return function(e) {
+          if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+          return e
+        }(t)
+      }(t, c() ? Reflect.construct(n, r || [], u(t).constructor) : n.apply(t, r))
+  }
+
+  function c() {
+    try {
+      var e = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {}))
+    } catch (e) {}
+    return (c = function() {
+      return !!e
+    })()
+  }
+
+  function u(e) {
+    return u = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(e) {
+      return e.__proto__ || Object.getPrototypeOf(e)
+    }, u(e)
+  }
+
+  function l(e, t) {
+    return l = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(e, t) {
+      return e.__proto__ = t, e
+    }, l(e, t)
+  }
+  System.register(["./app-security-legacy-BdXLf8ML.js"], function(e, n) {
+    "use strict";
+    var r;
+    return {
+      setters: [function(e) {
+        r = e.bI
+      }],
+      execute: function() {
+        var n = function(e) {
+          function n() {
+            var e;
+            return function(e, t) {
+              if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function")
+            }(this, n), (e = a(this, n, arguments)).jeepSqliteElement = null, e.isWebStoreOpen = !1, e
+          }
+          return function(e, t) {
+            if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function");
+            e.prototype = Object.create(t && t.prototype, {
+              constructor: {
+                value: e,
+                writable: !0,
+                configurable: !0
+              }
+            }), Object.defineProperty(e, "prototype", {
+              writable: !1
+            }), t && l(e, t)
+          }(n, e), r = n, o = [{
+            key: "initWebStore",
+            value: (le = i(t().m(function e() {
+              var n = this;
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    return e.n = 1, customElements.whenDefined("jeep-sqlite");
+                  case 1:
+                    if (this.jeepSqliteElement = document.querySelector("jeep-sqlite"), this.ensureJeepSqliteIsAvailable(), this.jeepSqliteElement.addEventListener("jeepSqliteImportProgress", function(e) {
+                        n.notifyListeners("sqliteImportProgressEvent", e.detail)
+                      }), this.jeepSqliteElement.addEventListener("jeepSqliteExportProgress", function(e) {
+                        n.notifyListeners("sqliteExportProgressEvent", e.detail)
+                      }), this.jeepSqliteElement.addEventListener("jeepSqliteHTTPRequestEnded", function(e) {
+                        n.notifyListeners("sqliteHTTPRequestEndedEvent", e.detail)
+                      }), this.jeepSqliteElement.addEventListener("jeepSqlitePickDatabaseEnded", function(e) {
+                        n.notifyListeners("sqlitePickDatabaseEndedEvent", e.detail)
+                      }), this.jeepSqliteElement.addEventListener("jeepSqliteSaveDatabaseToDisk", function(e) {
+                        n.notifyListeners("sqliteSaveDatabaseToDiskEvent", e.detail)
+                      }), this.isWebStoreOpen) {
+                      e.n = 3;
+                      break
+                    }
+                    return e.n = 2, this.jeepSqliteElement.isStoreOpen();
+                  case 2:
+                    this.isWebStoreOpen = e.v;
+                  case 3:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function() {
+              return le.apply(this, arguments)
+            })
+          }, {
+            key: "saveToStore",
+            value: (ue = i(t().m(function e(n) {
+              var r;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.saveToStore(n);
+                  case 2:
+                  case 4:
+                    return e.a(2);
+                  case 3:
+                    throw e.p = 3, r = e.v, new Error("".concat(r))
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return ue.apply(this, arguments)
+            })
+          }, {
+            key: "getFromLocalDiskToStore",
+            value: (ce = i(t().m(function e(n) {
+              var r;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.getFromLocalDiskToStore(n);
+                  case 2:
+                  case 4:
+                    return e.a(2);
+                  case 3:
+                    throw e.p = 3, r = e.v, new Error("".concat(r))
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return ce.apply(this, arguments)
+            })
+          }, {
+            key: "saveToLocalDisk",
+            value: (ae = i(t().m(function e(n) {
+              var r;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.saveToLocalDisk(n);
+                  case 2:
+                  case 4:
+                    return e.a(2);
+                  case 3:
+                    throw e.p = 3, r = e.v, new Error("".concat(r))
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return ae.apply(this, arguments)
+            })
+          }, {
+            key: "echo",
+            value: (oe = i(t().m(function e(n) {
+              var r;
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), e.n = 1, this.jeepSqliteElement.echo(n);
+                  case 1:
+                    return r = e.v, e.a(2, r)
+                }
+              }, e, this)
+            })), function(e) {
+              return oe.apply(this, arguments)
+            })
+          }, {
+            key: "createConnection",
+            value: (se = i(t().m(function e(n) {
+              var r;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.createConnection(n);
+                  case 2:
+                  case 4:
+                    return e.a(2);
+                  case 3:
+                    throw e.p = 3, r = e.v, new Error("".concat(r))
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return se.apply(this, arguments)
+            })
+          }, {
+            key: "open",
+            value: (ie = i(t().m(function e(n) {
+              var r;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.open(n);
+                  case 2:
+                  case 4:
+                    return e.a(2);
+                  case 3:
+                    throw e.p = 3, r = e.v, new Error("".concat(r))
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return ie.apply(this, arguments)
+            })
+          }, {
+            key: "closeConnection",
+            value: (re = i(t().m(function e(n) {
+              var r;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.closeConnection(n);
+                  case 2:
+                  case 4:
+                    return e.a(2);
+                  case 3:
+                    throw e.p = 3, r = e.v, new Error("".concat(r))
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return re.apply(this, arguments)
+            })
+          }, {
+            key: "getVersion",
+            value: (ne = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.getVersion(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return ne.apply(this, arguments)
+            })
+          }, {
+            key: "checkConnectionsConsistency",
+            value: (te = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), e.p = 1, e.n = 2, this.jeepSqliteElement.checkConnectionsConsistency(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return te.apply(this, arguments)
+            })
+          }, {
+            key: "close",
+            value: (ee = i(t().m(function e(n) {
+              var r;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.close(n);
+                  case 2:
+                  case 4:
+                    return e.a(2);
+                  case 3:
+                    throw e.p = 3, r = e.v, new Error("".concat(r))
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return ee.apply(this, arguments)
+            })
+          }, {
+            key: "beginTransaction",
+            value: ($ = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.beginTransaction(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return $.apply(this, arguments)
+            })
+          }, {
+            key: "commitTransaction",
+            value: (Z = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.commitTransaction(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return Z.apply(this, arguments)
+            })
+          }, {
+            key: "rollbackTransaction",
+            value: (X = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.rollbackTransaction(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return X.apply(this, arguments)
+            })
+          }, {
+            key: "isTransactionActive",
+            value: (K = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.isTransactionActive(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return K.apply(this, arguments)
+            })
+          }, {
+            key: "getTableList",
+            value: (z = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.getTableList(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return z.apply(this, arguments)
+            })
+          }, {
+            key: "execute",
+            value: (Y = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.execute(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return Y.apply(this, arguments)
+            })
+          }, {
+            key: "executeSet",
+            value: (U = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.executeSet(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return U.apply(this, arguments)
+            })
+          }, {
+            key: "run",
+            value: (Q = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.run(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return Q.apply(this, arguments)
+            })
+          }, {
+            key: "query",
+            value: (M = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.query(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return M.apply(this, arguments)
+            })
+          }, {
+            key: "isDBExists",
+            value: (V = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.isDBExists(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return V.apply(this, arguments)
+            })
+          }, {
+            key: "isDBOpen",
+            value: (H = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.isDBOpen(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return H.apply(this, arguments)
+            })
+          }, {
+            key: "isDatabase",
+            value: (G = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.isDatabase(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return G.apply(this, arguments)
+            })
+          }, {
+            key: "isTableExists",
+            value: (B = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.isTableExists(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return B.apply(this, arguments)
+            })
+          }, {
+            key: "deleteDatabase",
+            value: (R = i(t().m(function e(n) {
+              var r;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.deleteDatabase(n);
+                  case 2:
+                  case 4:
+                    return e.a(2);
+                  case 3:
+                    throw e.p = 3, r = e.v, new Error("".concat(r))
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return R.apply(this, arguments)
+            })
+          }, {
+            key: "isJsonValid",
+            value: (F = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.isJsonValid(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return F.apply(this, arguments)
+            })
+          }, {
+            key: "importFromJson",
+            value: (_ = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.importFromJson(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return _.apply(this, arguments)
+            })
+          }, {
+            key: "exportToJson",
+            value: (C = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.exportToJson(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return C.apply(this, arguments)
+            })
+          }, {
+            key: "createSyncTable",
+            value: (L = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.createSyncTable(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return L.apply(this, arguments)
+            })
+          }, {
+            key: "setSyncDate",
+            value: (x = i(t().m(function e(n) {
+              var r;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.setSyncDate(n);
+                  case 2:
+                  case 4:
+                    return e.a(2);
+                  case 3:
+                    throw e.p = 3, r = e.v, new Error("".concat(r))
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return x.apply(this, arguments)
+            })
+          }, {
+            key: "getSyncDate",
+            value: (N = i(t().m(function e(n) {
+              var r, i;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.getSyncDate(n);
+                  case 2:
+                    return r = e.v, e.a(2, r);
+                  case 3:
+                    throw e.p = 3, i = e.v, new Error("".concat(i));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return N.apply(this, arguments)
+            })
+          }, {
+            key: "deleteExportedRows",
+            value: (P = i(t().m(function e(n) {
+              var r;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.deleteExportedRows(n);
+                  case 2:
+                  case 4:
+                    return e.a(2);
+                  case 3:
+                    throw e.p = 3, r = e.v, new Error("".concat(r))
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return P.apply(this, arguments)
+            })
+          }, {
+            key: "addUpgradeStatement",
+            value: (D = i(t().m(function e(n) {
+              var r;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.addUpgradeStatement(n);
+                  case 2:
+                  case 4:
+                    return e.a(2);
+                  case 3:
+                    throw e.p = 3, r = e.v, new Error("".concat(r))
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return D.apply(this, arguments)
+            })
+          }, {
+            key: "copyFromAssets",
+            value: (W = i(t().m(function e(n) {
+              var r;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.copyFromAssets(n);
+                  case 2:
+                  case 4:
+                    return e.a(2);
+                  case 3:
+                    throw e.p = 3, r = e.v, new Error("".concat(r))
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return W.apply(this, arguments)
+            })
+          }, {
+            key: "getFromHTTPRequest",
+            value: (T = i(t().m(function e(n) {
+              var r;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.getFromHTTPRequest(n);
+                  case 2:
+                  case 4:
+                    return e.a(2);
+                  case 3:
+                    throw e.p = 3, r = e.v, new Error("".concat(r))
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function(e) {
+              return T.apply(this, arguments)
+            })
+          }, {
+            key: "getDatabaseList",
+            value: (J = i(t().m(function e() {
+              var n, r;
+              return t().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    return this.ensureJeepSqliteIsAvailable(), this.ensureWebstoreIsOpen(), e.p = 1, e.n = 2, this.jeepSqliteElement.getDatabaseList();
+                  case 2:
+                    return n = e.v, e.a(2, n);
+                  case 3:
+                    throw e.p = 3, r = e.v, new Error("".concat(r));
+                  case 4:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [1, 3]
+              ])
+            })), function() {
+              return J.apply(this, arguments)
+            })
+          }, {
+            key: "ensureJeepSqliteIsAvailable",
+            value: function() {
+              if (null === this.jeepSqliteElement) throw new Error("The jeep-sqlite element is not present in the DOM! Please check the @capacitor-community/sqlite documentation for instructions regarding the web platform.")
+            }
+          }, {
+            key: "ensureWebstoreIsOpen",
+            value: function() {
+              if (!this.isWebStoreOpen) throw new Error('WebStore is not open yet. You have to call "initWebStore()" first.')
+            }
+          }, {
+            key: "getUrl",
+            value: (A = i(t().m(function e() {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function() {
+              return A.apply(this, arguments)
+            })
+          }, {
+            key: "getMigratableDbList",
+            value: (g = i(t().m(function e(n) {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw console.log("getMigratableDbList", n), this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function(e) {
+              return g.apply(this, arguments)
+            })
+          }, {
+            key: "addSQLiteSuffix",
+            value: (O = i(t().m(function e(n) {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw console.log("addSQLiteSuffix", n), this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function(e) {
+              return O.apply(this, arguments)
+            })
+          }, {
+            key: "deleteOldDatabases",
+            value: (j = i(t().m(function e(n) {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw console.log("deleteOldDatabases", n), this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function(e) {
+              return j.apply(this, arguments)
+            })
+          }, {
+            key: "moveDatabasesAndAddSuffix",
+            value: (I = i(t().m(function e(n) {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw console.log("moveDatabasesAndAddSuffix", n), this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function(e) {
+              return I.apply(this, arguments)
+            })
+          }, {
+            key: "isSecretStored",
+            value: (k = i(t().m(function e() {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function() {
+              return k.apply(this, arguments)
+            })
+          }, {
+            key: "setEncryptionSecret",
+            value: (q = i(t().m(function e(n) {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw console.log("setEncryptionSecret", n), this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function(e) {
+              return q.apply(this, arguments)
+            })
+          }, {
+            key: "changeEncryptionSecret",
+            value: (E = i(t().m(function e(n) {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw console.log("changeEncryptionSecret", n), this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function(e) {
+              return E.apply(this, arguments)
+            })
+          }, {
+            key: "clearEncryptionSecret",
+            value: (d = i(t().m(function e() {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw console.log("clearEncryptionSecret"), this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function() {
+              return d.apply(this, arguments)
+            })
+          }, {
+            key: "checkEncryptionSecret",
+            value: (S = i(t().m(function e(n) {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw console.log("checkEncryptionPassPhrase", n), this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function(e) {
+              return S.apply(this, arguments)
+            })
+          }, {
+            key: "getNCDatabasePath",
+            value: (b = i(t().m(function e(n) {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw console.log("getNCDatabasePath", n), this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function(e) {
+              return b.apply(this, arguments)
+            })
+          }, {
+            key: "createNCConnection",
+            value: (y = i(t().m(function e(n) {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw console.log("createNCConnection", n), this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function(e) {
+              return y.apply(this, arguments)
+            })
+          }, {
+            key: "closeNCConnection",
+            value: (m = i(t().m(function e(n) {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw console.log("closeNCConnection", n), this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function(e) {
+              return m.apply(this, arguments)
+            })
+          }, {
+            key: "isNCDatabase",
+            value: (w = i(t().m(function e(n) {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw console.log("isNCDatabase", n), this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function(e) {
+              return w.apply(this, arguments)
+            })
+          }, {
+            key: "isDatabaseEncrypted",
+            value: (v = i(t().m(function e(n) {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw console.log("isDatabaseEncrypted", n), this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function(e) {
+              return v.apply(this, arguments)
+            })
+          }, {
+            key: "isInConfigEncryption",
+            value: (f = i(t().m(function e() {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function() {
+              return f.apply(this, arguments)
+            })
+          }, {
+            key: "isInConfigBiometricAuth",
+            value: (h = i(t().m(function e() {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function() {
+              return h.apply(this, arguments)
+            })
+          }, {
+            key: "loadExtension",
+            value: (p = i(t().m(function e(n) {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw console.log("loadExtension", n), this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function(e) {
+              return p.apply(this, arguments)
+            })
+          }, {
+            key: "enableLoadExtension",
+            value: (u = i(t().m(function e(n) {
+              return t().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    throw console.log("enableLoadExtension", n), this.unimplemented("Not implemented on web.");
+                  case 1:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function(e) {
+              return u.apply(this, arguments)
+            })
+          }], o && s(r.prototype, o), c && s(r, c), Object.defineProperty(r, "prototype", {
+            writable: !1
+          }), r;
+          var r, o, c, u, p, h, f, v, w, m, y, b, S, d, E, q, k, I, j, O, g, A, J, T, W, D, P, N, x, L, C, _, F, R, B, G, H, V, M, Q, U, Y, z, K, X, Z, $, ee, te, ne, re, ie, se, oe, ae, ce, ue, le
+        }(r);
+        e("CapacitorSQLiteWeb", n)
+      }
+    }
+  })
+}();

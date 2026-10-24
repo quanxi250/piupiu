@@ -1,0 +1,1504 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function e(t) {
+    return e = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+      return typeof e
+    } : function(e) {
+      return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
+    }, e(t)
+  }
+
+  function t(e) {
+    return function(e) {
+      if (Array.isArray(e)) return a(e)
+    }(e) || function(e) {
+      if ("undefined" != typeof Symbol && null != e[Symbol.iterator] || null != e["@@iterator"]) return Array.from(e)
+    }(e) || function(e, t) {
+      if (e) {
+        if ("string" == typeof e) return a(e, t);
+        var r = {}.toString.call(e).slice(8, -1);
+        return "Object" === r && e.constructor && (r = e.constructor.name), "Map" === r || "Set" === r ? Array.from(e) : "Arguments" === r || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r) ? a(e, t) : void 0
+      }
+    }(e) || function() {
+      throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }()
+  }
+
+  function a(e, t) {
+    (null == t || t > e.length) && (t = e.length);
+    for (var a = 0, r = Array(t); a < t; a++) r[a] = e[a];
+    return r
+  }
+
+  function r() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var e, t, a = "function" == typeof Symbol ? Symbol : {},
+      n = a.iterator || "@@iterator",
+      i = a.toStringTag || "@@toStringTag";
+
+    function l(a, r, n, i) {
+      var l = r && r.prototype instanceof d ? r : d,
+        s = Object.create(l.prototype);
+      return o(s, "_invoke", function(a, r, o) {
+        var n, i, l, d = 0,
+          s = o || [],
+          u = !1,
+          p = {
+            p: 0,
+            n: 0,
+            v: e,
+            a: v,
+            f: v.bind(e, 4),
+            d: function(t, a) {
+              return n = t, i = 0, l = e, p.n = a, c
+            }
+          };
+
+        function v(a, r) {
+          for (i = a, l = r, t = 0; !u && d && !o && t < s.length; t++) {
+            var o, n = s[t],
+              v = p.p,
+              f = n[2];
+            a > 3 ? (o = f === r) && (l = n[(i = n[4]) ? 5 : (i = 3, 3)], n[4] = n[5] = e) : n[0] <= v && ((o = a < 2 && v < n[1]) ? (i = 0, p.v = r, p.n = n[1]) : v < f && (o = a < 3 || n[0] > r || r > f) && (n[4] = a, n[5] = r, p.n = f, i = 0))
+          }
+          if (o || a > 1) return c;
+          throw u = !0, r
+        }
+        return function(o, s, f) {
+          if (d > 1) throw TypeError("Generator is already running");
+          for (u && 1 === s && v(s, f), i = s, l = f;
+            (t = i < 2 ? e : l) || !u;) {
+            n || (i ? i < 3 ? (i > 1 && (p.n = -1), v(i, l)) : p.n = l : p.v = l);
+            try {
+              if (d = 2, n) {
+                if (i || (o = "next"), t = n[o]) {
+                  if (!(t = t.call(n, l))) throw TypeError("iterator result is not an object");
+                  if (!t.done) return t;
+                  l = t.value, i < 2 && (i = 0)
+                } else 1 === i && (t = n.return) && t.call(n), i < 2 && (l = TypeError("The iterator does not provide a '" + o + "' method"), i = 1);
+                n = e
+              } else if ((t = (u = p.n < 0) ? l : a.call(r, p)) !== c) break
+            } catch (t) {
+              n = e, i = 1, l = t
+            } finally {
+              d = 1
+            }
+          }
+          return {
+            value: t,
+            done: u
+          }
+        }
+      }(a, n, i), !0), s
+    }
+    var c = {};
+
+    function d() {}
+
+    function s() {}
+
+    function u() {}
+    t = Object.getPrototypeOf;
+    var p = [][n] ? t(t([][n]())) : (o(t = {}, n, function() {
+        return this
+      }), t),
+      v = u.prototype = d.prototype = Object.create(p);
+
+    function f(e) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(e, u) : (e.__proto__ = u, o(e, i, "GeneratorFunction")), e.prototype = Object.create(v), e
+    }
+    return s.prototype = u, o(v, "constructor", u), o(u, "constructor", s), s.displayName = "GeneratorFunction", o(u, i, "GeneratorFunction"), o(v), o(v, i, "Generator"), o(v, n, function() {
+      return this
+    }), o(v, "toString", function() {
+      return "[object Generator]"
+    }), (r = function() {
+      return {
+        w: l,
+        m: f
+      }
+    })()
+  }
+
+  function o(e, t, a, r) {
+    var n = Object.defineProperty;
+    try {
+      n({}, "", {})
+    } catch (e) {
+      n = 0
+    }
+    o = function(e, t, a, r) {
+      function i(t, a) {
+        o(e, t, function(e) {
+          return this._invoke(t, a, e)
+        })
+      }
+      t ? n ? n(e, t, {
+        value: a,
+        enumerable: !r,
+        configurable: !r,
+        writable: !r
+      }) : e[t] = a : (i("next", 0), i("throw", 1), i("return", 2))
+    }, o(e, t, a, r)
+  }
+
+  function n(e, t) {
+    var a = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+      var r = Object.getOwnPropertySymbols(e);
+      t && (r = r.filter(function(t) {
+        return Object.getOwnPropertyDescriptor(e, t).enumerable
+      })), a.push.apply(a, r)
+    }
+    return a
+  }
+
+  function i(e) {
+    for (var t = 1; t < arguments.length; t++) {
+      var a = null != arguments[t] ? arguments[t] : {};
+      t % 2 ? n(Object(a), !0).forEach(function(t) {
+        s(e, t, a[t])
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(a)) : n(Object(a)).forEach(function(t) {
+        Object.defineProperty(e, t, Object.getOwnPropertyDescriptor(a, t))
+      })
+    }
+    return e
+  }
+
+  function l(e, t, a, r, o, n, i) {
+    try {
+      var l = e[n](i),
+        c = l.value
+    } catch (e) {
+      return void a(e)
+    }
+    l.done ? t(c) : Promise.resolve(c).then(r, o)
+  }
+
+  function c(e) {
+    return function() {
+      var t = this,
+        a = arguments;
+      return new Promise(function(r, o) {
+        var n = e.apply(t, a);
+
+        function i(e) {
+          l(n, r, o, i, c, "next", e)
+        }
+
+        function c(e) {
+          l(n, r, o, i, c, "throw", e)
+        }
+        i(void 0)
+      })
+    }
+  }
+
+  function d(e, t) {
+    for (var a = 0; a < t.length; a++) {
+      var r = t[a];
+      r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), Object.defineProperty(e, u(r.key), r)
+    }
+  }
+
+  function s(e, t, a) {
+    return (t = u(t)) in e ? Object.defineProperty(e, t, {
+      value: a,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }) : e[t] = a, e
+  }
+
+  function u(t) {
+    var a = function(t, a) {
+      if ("object" != e(t) || !t) return t;
+      var r = t[Symbol.toPrimitive];
+      if (void 0 !== r) {
+        var o = r.call(t, a || "default");
+        if ("object" != e(o)) return o;
+        throw new TypeError("@@toPrimitive must return a primitive value.")
+      }
+      return ("string" === a ? String : Number)(t)
+    }(t, "string");
+    return "symbol" == e(a) ? a : a + ""
+  }
+  System.register(["../e/index-legacy-B0tYRju5.js", "./app-security-legacy-BdXLf8ML.js", "./lock-legacy-DIp3fFDa.js", "./trash-2-legacy-D4qdzvtP.js", "./GlobalResourceMarketModal-legacy-BvchFYLb.js", "./useSwipePagination-legacy-BiiTkTjC.js"], function(e, a) {
+    "use strict";
+    var o, n, l, u, p, v, f, b, g, m, h, x, y, k, w, C, S, z, j, E, O, P, T, A, _, M, I, L, V, B, D, H, U, R, N, q, G, $, F, W, J, X;
+    return {
+      setters: [function(e) {
+        o = e.c, n = e.cN, l = e.cO, u = e.cz, p = e.b, v = e.g, f = e.e, b = e.cP, g = e.a7, m = e._, h = e.q
+      }, function(e) {
+        x = e.r, y = e.v, k = e.x, w = e.y, C = e.A, S = e.k, z = e.w, j = e.M, E = e.O, O = e.J, P = e.R, T = e.T, A = e.Z, _ = e.$, M = e.N, I = e.a2, L = e.L, V = e.u, B = e.W, D = e.c, H = e.Y, U = e.P, R = e.a0, N = e.aa, q = e.V, G = e.K, $ = e.Q
+      }, function(e) {
+        F = e.L
+      }, function(e) {
+        W = e.a
+      }, function(e) {
+        J = e.U
+      }, function(e) {
+        X = e.U
+      }],
+      execute: function() {
+        var a = document.createElement("style");
+        a.textContent = '.selector-btn[data-v-112a07c9]{background:rgba(255,248,251,.9);padding:10px 12px;border-radius:14px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(255,143,171,.12);cursor:pointer;font-size:14px;color:var(--text-color)}.selector-btn[data-v-112a07c9]:active{transform:scale(.985)}.dark-mode .selector-btn[data-v-112a07c9]{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)}.dropdown-arrow[data-v-112a07c9]{font-size:10px;opacity:.6}.modal-overlay[data-v-112a07c9]{position:fixed;top:0;right:0;bottom:0;left:0;background:radial-gradient(circle at top,rgba(255,143,171,.16),transparent 34%),rgba(16,18,24,.68);z-index:3000;display:flex;align-items:center;justify-content:center;padding:20px}.modal-content[data-v-112a07c9]{width:100%;max-width:360px;max-height:min(var(--app-viewport-height) * .88,var(--app-viewport-height) - 40px - var(--safe-area-inset-top) - var(--safe-area-inset-bottom));background:linear-gradient(180deg,rgba(255,247,250,.98),rgba(255,255,255,.98) 30%),#fff;border:1px solid rgba(255,143,171,.16);border-radius:24px;padding:24px;box-shadow:0 28px 70px rgba(15,23,42,.22),0 1px rgba(255,255,255,.55) inset;display:flex;flex-direction:column;gap:20px;position:relative;overflow:hidden}.dark-mode .modal-content[data-v-112a07c9]{background:linear-gradient(180deg,rgba(60,40,52,.96),rgba(27,28,34,.98) 28%),#1a1b21;border-color:rgba(255,143,171,.2)}.modal-title[data-v-112a07c9]{margin:0;font-size:24px;line-height:1.15;font-weight:700;color:var(--text-color);width:100%;padding:0 44px;box-sizing:border-box;text-align:center}.reset-btn[data-v-112a07c9]{position:absolute;top:16px;right:16px;width:38px;height:38px;background:rgba(255,255,255,.72);border:1px solid rgba(255,143,171,.12);color:var(--text-secondary-color);cursor:pointer;padding:0;border-radius:12px;display:flex;align-items:center;justify-content:center}.reset-btn[data-v-112a07c9]:active{transform:scale(.96)}.dark-mode .reset-btn[data-v-112a07c9]{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.82)}.settings-controls[data-v-112a07c9]{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;gap:16px;padding-right:2px;scrollbar-width:none;-ms-overflow-style:none}.settings-controls[data-v-112a07c9]::-webkit-scrollbar{width:0;height:0;display:none}.control-group[data-v-112a07c9]{display:flex;flex-direction:column;gap:8px;padding:14px 15px;border-radius:18px;border:1px solid rgba(255,143,171,.12);background:rgba(255,255,255,.68)}.dark-mode .control-group[data-v-112a07c9]{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}.control-group label[data-v-112a07c9]{font-size:14px;color:var(--text-color);font-weight:600}.control-group.row-group[data-v-112a07c9]{flex-direction:row;justify-content:space-between;align-items:center}.control-group .setting-info[data-v-112a07c9]{display:flex;flex-direction:column}.control-group .setting-label[data-v-112a07c9]{font-size:15px;font-weight:500;color:var(--text-color);display:flex;align-items:center;gap:6px}.control-group .setting-hint[data-v-112a07c9]{font-size:12px;color:var(--text-hint-color)}.gold-text[data-v-112a07c9]{color:#d35400;background:linear-gradient(135deg,#d35400,#f39c12);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:600!important}.dark-mode .gold-text[data-v-112a07c9]{color:#f1c40f;background:none!important;background-clip:initial;-webkit-background-clip:border-box;-webkit-text-fill-color:initial;text-shadow:0 0 8px rgba(241,196,15,.08)}@media(max-width:768px){.gold-text[data-v-112a07c9]{background:none!important;-webkit-text-fill-color:initial;color:#d35400}.dark-mode .gold-text[data-v-112a07c9]{color:#f1c40f}}.gold-icon[data-v-112a07c9]{color:#e67e22}.dark-mode .gold-icon[data-v-112a07c9]{color:#f1c40f}.opacity-50[data-v-112a07c9]{opacity:.6;cursor:not-allowed}.vip-tag[data-v-112a07c9]{font-size:10px;background:linear-gradient(45deg,#f1c40f,#e67e22);color:#fff;padding:1px 4px;border-radius:4px;font-weight:700;margin-left:4px}.vip-switch.active[data-v-112a07c9]{background:#f39c12!important;box-shadow:0 0 10px rgba(243,156,18,.4)}.lock-icon[data-v-112a07c9]{color:var(--text-hint-color);padding:4px}.test-btn[data-v-112a07c9]{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;background:#f78cab;color:#fff;border:1px solid #f78cab;border-radius:14px;font-weight:600;cursor:pointer;margin-top:8px;font-family:inherit}.test-btn[data-v-112a07c9]:active{transform:scale(.98)}.test-btn[data-v-112a07c9]:disabled{opacity:.6;cursor:not-allowed}.dark-mode .test-btn[data-v-112a07c9]{background:#f78cab;color:#fff;border-color:#f78cab}.slider[data-v-112a07c9]{-webkit-appearance:none;appearance:none;width:100%;height:6px;background:rgba(255,143,171,.2);border-radius:3px;outline:none}.slider[data-v-112a07c9]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;background:linear-gradient(180deg,#ff98b8,#f47ea4);border-radius:50%;cursor:pointer;border:2px solid white;box-shadow:0 2px 4px rgba(0,0,0,.1)}.toggle-switch[data-v-112a07c9]{width:44px;height:24px;background:rgba(255,143,171,.18);border-radius:12px;padding:2px;cursor:pointer;transition:all .3s}.dark-mode .toggle-switch[data-v-112a07c9]{background:rgba(255,255,255,.1)}.toggle-switch .toggle-thumb[data-v-112a07c9]{width:20px;height:20px;background:#fff;border-radius:50%;transition:transform .3s cubic-bezier(.4,0,.2,1);box-shadow:0 2px 4px rgba(0,0,0,.1)}.toggle-switch.active[data-v-112a07c9]{background:#f78cab}.toggle-switch.active .toggle-thumb[data-v-112a07c9]{transform:translate(20px)}.dark-mode .toggle-switch.active[data-v-112a07c9]{background:#f78cab}.modal-actions[data-v-112a07c9]{display:flex;gap:12px;margin-top:8px}.btn[data-v-112a07c9]{flex:1;padding:12px;border:1px solid rgba(255,143,171,.12);border-radius:16px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}.btn-cancel[data-v-112a07c9]{background:rgba(255,255,255,.72);color:var(--text-secondary-color)}.dark-mode .btn-cancel[data-v-112a07c9]{background:rgba(255,255,255,.06);color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.08)}.btn-confirm[data-v-112a07c9],.dark-mode .btn-confirm[data-v-112a07c9]{background:#f78cab;border-color:#f78cab;color:#fff}.voice-selector-overlay[data-v-112a07c9]{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;z-index:10;border-radius:20px}.voice-selector-card[data-v-112a07c9]{background:linear-gradient(180deg,rgba(255,247,250,.98),rgba(255,255,255,.98) 30%),#fff;width:80%;border-radius:20px;padding:16px;border:1px solid rgba(255,143,171,.12);box-shadow:0 18px 40px rgba(15,23,42,.18);max-height:80%;display:flex;flex-direction:column}.dark-mode .voice-selector-card[data-v-112a07c9]{background:linear-gradient(180deg,rgba(60,40,52,.96),rgba(27,28,34,.98) 28%),#1a1b21;border-color:rgba(255,143,171,.16)}.voice-selector-card h4[data-v-112a07c9]{margin:0 0 12px;text-align:center;color:var(--text-color)}.voice-list[data-v-112a07c9]{overflow-y:auto;display:flex;flex-direction:column;gap:4px}.voice-item[data-v-112a07c9]{padding:10px 12px;border-radius:14px;display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;font-size:14px;color:var(--text-color);border:1px solid rgba(255,143,171,.1);background:rgba(255,255,255,.68)}.voice-item[data-v-112a07c9]:active{transform:scale(.985)}.voice-item.active[data-v-112a07c9]{background:rgba(255,143,171,.12);color:#d4688d;font-weight:500}.dark-mode .voice-item[data-v-112a07c9]{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}.voice-item small[data-v-112a07c9]{margin-left:4px;color:var(--text-hint-color);font-size:11px}.modal-overlay[data-v-8231335f]{position:fixed;top:0;right:0;bottom:0;left:0;background:radial-gradient(circle at top,rgba(255,143,171,.16),transparent 34%),rgba(16,18,24,.68);z-index:3000;display:flex;align-items:center;justify-content:center;padding:20px}.modal-content[data-v-8231335f]{width:100%;max-width:380px;max-height:min(var(--app-viewport-height) * .88,var(--app-viewport-height) - 40px - var(--safe-area-inset-top) - var(--safe-area-inset-bottom));background:linear-gradient(180deg,rgba(255,247,250,.98),rgba(255,255,255,.98) 30%),#fff;border:1px solid rgba(255,143,171,.16);border-radius:24px;padding:24px;box-shadow:0 28px 70px rgba(15,23,42,.22),0 1px rgba(255,255,255,.55) inset;display:flex;flex-direction:column;gap:20px;position:relative;overflow:hidden}.dark-mode .modal-content[data-v-8231335f]{background:linear-gradient(180deg,rgba(60,40,52,.96),rgba(27,28,34,.98) 28%),#1a1b21;border-color:rgba(255,143,171,.2)}.modal-title[data-v-8231335f]{margin:0;font-size:24px;line-height:1.15;font-weight:700;color:var(--text-color);width:100%;padding:0 44px;box-sizing:border-box;text-align:center;flex:0 0 auto}.reset-btn[data-v-8231335f]{position:absolute;top:16px;right:16px;width:38px;height:38px;background:rgba(255,255,255,.72);border:1px solid rgba(255,143,171,.12);color:var(--text-secondary-color);cursor:pointer;padding:0;border-radius:12px;display:flex;align-items:center;justify-content:center}.reset-btn[data-v-8231335f]:active{transform:scale(.96)}.dark-mode .reset-btn[data-v-8231335f]{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.82)}.preview-section[data-v-8231335f]{background:linear-gradient(180deg,rgba(255,255,255,.38),rgba(255,255,255,.12)),url(/assets/r/BfU06LO8.png) no-repeat center center;background-size:cover;padding:18px 16px 22px;border-radius:20px;overflow:hidden;position:relative;border:1px solid rgba(255,143,171,.14);box-sizing:border-box;flex:0 0 auto}.preview-section[data-v-8231335f]:before{content:"";position:absolute;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.18);border-radius:20px}.preview-chat[data-v-8231335f]{position:relative;z-index:1;display:flex;flex-direction:column;width:100%;align-items:center;gap:16px;min-height:0}.preview-message[data-v-8231335f]{display:flex;flex-direction:column;align-items:flex-start;width:fit-content;max-width:100%;flex:0 0 auto;margin:0 auto}.preview-message-body[data-v-8231335f]{width:fit-content;max-width:100%;min-width:0;box-sizing:border-box}.preview-message-body[data-v-8231335f]:not(.is-style-two){padding-bottom:0}.preview-message-body.is-style-two[data-v-8231335f]{display:flex;align-items:flex-start;gap:10px;padding-bottom:0;max-width:100%}.preview-meta[data-v-8231335f]{display:flex;align-items:center;gap:8px;margin-bottom:6px}.preview-name[data-v-8231335f]{font-size:12px;color:rgba(255,255,255,.9);text-shadow:0 1px 2px rgba(0,0,0,.18)}.preview-avatar[data-v-8231335f]{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:700;color:#fff;overflow:hidden;box-shadow:0 4px 10px rgba(0,0,0,.18)}.preview-avatar-image[data-v-8231335f]{width:100%;height:100%;display:block;object-fit:cover}.preview-avatar--assistant[data-v-8231335f]{background:linear-gradient(135deg,#ff92b2,#ffb8cf)}.preview-bubble-stack[data-v-8231335f]{width:fit-content;max-width:min(100%,232px);min-width:0;overflow:visible}.preview-message-body.is-style-two .preview-bubble-stack[data-v-8231335f]{max-width:min(100% - 44px,232px)}.preview-bubble[data-v-8231335f]{padding:12px 16px;border-radius:18px;line-height:1.6;word-break:break-word;box-shadow:0 10px 22px rgba(15,23,42,.16);border:1px solid rgba(255,255,255,.54);box-sizing:border-box}.settings-controls[data-v-8231335f]{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;gap:16px;padding-right:2px;scrollbar-width:none;-ms-overflow-style:none}.settings-controls[data-v-8231335f]::-webkit-scrollbar{width:0;height:0;display:none}.control-group[data-v-8231335f]{display:flex;flex-direction:column;gap:8px;padding:14px 15px;border-radius:18px;border:1px solid rgba(255,143,171,.12);background:rgba(255,255,255,.68)}.dark-mode .control-group[data-v-8231335f]{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}.control-group label[data-v-8231335f]{font-size:14px;color:var(--text-color);font-weight:600}.selector-btn[data-v-8231335f]{background:rgba(255,248,251,.9);padding:10px 12px;border-radius:14px;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(255,143,171,.12);cursor:pointer;font-size:14px;color:var(--text-color)}.selector-btn[data-v-8231335f]:active{transform:scale(.985)}.dark-mode .selector-btn[data-v-8231335f]{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)}.dropdown-arrow[data-v-8231335f]{font-size:10px;opacity:.45}.slider[data-v-8231335f]{appearance:none;-webkit-appearance:none;width:100%;height:6px;background:rgba(255,143,171,.2);border-radius:3px;outline:none}.slider[data-v-8231335f]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;background:linear-gradient(180deg,#ff98b8,#f47ea4);border-radius:50%;cursor:pointer;box-shadow:0 6px 14px rgba(244,126,164,.32);border:2px solid white}.dark-mode .slider[data-v-8231335f]{background:rgba(255,143,171,.18)}.color-picker-container[data-v-8231335f]{display:flex;align-items:center;gap:12px;padding:10px 12px;background:rgba(255,248,251,.9);border-radius:14px;cursor:pointer;border:1px solid rgba(255,143,171,.12)}.color-picker-container[data-v-8231335f]:active{transform:scale(.98)}.dark-mode .color-picker-container[data-v-8231335f]{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)}.color-preview[data-v-8231335f]{width:32px;height:32px;border-radius:50%;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,.1)}.dark-mode .color-preview[data-v-8231335f]{border-color:rgba(255,255,255,.1)}.color-label[data-v-8231335f]{font-size:14px;color:var(--text-color);font-weight:500}.hidden-color-input[data-v-8231335f]{position:absolute;opacity:0;pointer-events:none;width:0;height:0}.modal-actions[data-v-8231335f]{display:flex;gap:12px;flex:0 0 auto}.btn[data-v-8231335f]{flex:1;padding:12px;border:1px solid rgba(255,143,171,.12);border-radius:16px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}.btn[data-v-8231335f]:active{transform:scale(.98)}.btn-cancel[data-v-8231335f]{background:rgba(255,255,255,.72);color:var(--text-secondary-color)}.dark-mode .btn-cancel[data-v-8231335f]{background:rgba(255,255,255,.06);color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.08)}.btn-confirm[data-v-8231335f],.dark-mode .btn-confirm[data-v-8231335f]{background:#f78cab;border-color:#f78cab;color:#fff}.style-selector-overlay[data-v-8231335f]{position:absolute;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;z-index:10;border-radius:24px}.style-selector-card[data-v-8231335f]{background:linear-gradient(180deg,rgba(255,247,250,.98),rgba(255,255,255,.98) 30%),#fff;width:82%;border-radius:20px;padding:16px;border:1px solid rgba(255,143,171,.12);box-shadow:0 18px 40px rgba(15,23,42,.18);max-height:80%;display:flex;flex-direction:column}.dark-mode .style-selector-card[data-v-8231335f]{background:linear-gradient(180deg,rgba(60,40,52,.96),rgba(27,28,34,.98) 28%),#1a1b21;border-color:rgba(255,143,171,.16)}.style-selector-card h4[data-v-8231335f]{margin:0 0 14px;font-size:16px;color:var(--text-color);text-align:center}.style-list[data-v-8231335f]{display:flex;flex-direction:column;gap:8px;overflow-y:auto}.style-item[data-v-8231335f]{padding:12px;border-radius:14px;display:flex;justify-content:space-between;align-items:center;gap:10px;cursor:pointer;font-size:14px;color:var(--text-color);border:1px solid rgba(255,143,171,.1);background:rgba(255,255,255,.68)}.style-item[data-v-8231335f]:active{transform:scale(.985)}.style-item.active[data-v-8231335f]{background:rgba(255,143,171,.12);color:#d4688d;font-weight:600}.dark-mode .style-item[data-v-8231335f]{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}.dark-mode .style-item.active[data-v-8231335f]{background:rgba(255,143,171,.12);color:#ffb5c9}.style-item-copy[data-v-8231335f]{display:flex;align-items:center;min-width:0}.style-item-title[data-v-8231335f]{font-weight:600}.options-grid.without-cover[data-v-08518ccf]{grid-template-columns:repeat(2,1fr)}.modal-overlay[data-v-08518ccf]{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);z-index:3100;display:flex;align-items:center;justify-content:center;padding:20px}.modal-content[data-v-08518ccf]{background:linear-gradient(180deg,rgba(255,247,250,.98),rgba(255,255,255,.98) 28%),#fff;border-radius:24px;border:1px solid rgba(255,143,171,.16);width:100%;max-width:420px;padding:24px;display:flex;flex-direction:column;gap:20px;box-shadow:0 24px 64px rgba(15,23,42,.2)}.dark-mode .modal-content[data-v-08518ccf]{background:linear-gradient(180deg,rgba(60,40,52,.96),rgba(27,28,34,.98) 28%),#1a1b21;border-color:rgba(255,143,171,.2)}.modal-header[data-v-08518ccf]{text-align:center}.modal-header h3[data-v-08518ccf]{margin:0 0 4px;font-size:22px;font-weight:700;color:var(--text-color)}.modal-header p[data-v-08518ccf]{margin:0;font-size:13px;color:var(--text-secondary-color)}.options-grid[data-v-08518ccf]{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.option-card[data-v-08518ccf]{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;padding:8px;border-radius:12px;transition:all .2s;border:1px solid rgba(255,143,171,.12)}.option-card.active[data-v-08518ccf]{background:rgba(255,143,171,.08);border-color:var(--primary-color)}.option-card.active .option-label[data-v-08518ccf]{color:var(--primary-color);font-weight:600}.preview-box[data-v-08518ccf]{width:100%;aspect-ratio:1;border-radius:12px;background:#f0f0f0;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;color:#999}.dark-mode .preview-box[data-v-08518ccf]{background:#2c2c2e}.preview-box img[data-v-08518ccf]{width:60%;height:60%;object-fit:contain}.preview-box.custom-preview .custom-bg-img[data-v-08518ccf]{width:100%;height:100%;object-fit:cover}.preview-box .edit-overlay[data-v-08518ccf]{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.6);color:#fff;font-size:10px;text-align:center;padding:4px}.option-label[data-v-08518ccf]{font-size:13px;color:var(--text-color)}.option-desc[data-v-08518ccf]{font-size:10px;color:var(--text-secondary-color);text-align:center;line-height:1.2}.modal-actions[data-v-08518ccf]{display:flex;gap:12px}.modal-actions .btn[data-v-08518ccf]{flex:1;height:44px;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s ease;font-family:inherit}.modal-actions .btn[data-v-08518ccf]:active{transform:scale(.98)}.modal-actions .btn.cancel-btn[data-v-08518ccf]{background:rgba(255,255,255,.72);border:1px solid rgba(255,143,171,.12);color:var(--text-secondary-color)}.dark-mode .modal-actions .btn.cancel-btn[data-v-08518ccf]{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8)}.modal-actions .btn.confirm-btn[data-v-08518ccf]{background:#f78cab;border:1px solid #f78cab;color:#fff}.modal-actions .btn.confirm-btn[data-v-08518ccf]:active{transform:scale(.98)}.dark-mode .modal-actions .btn.confirm-btn[data-v-08518ccf]{background:#f78cab;border-color:#f78cab}\n/*$vite$:1*/', document.head.appendChild(a);
+        /**
+         * @license lucide-vue-next v0.562.0 - ISC
+         *
+         * This source code is licensed under the ISC license.
+         * See the LICENSE file in the root directory of this source tree.
+         */
+        e("M", o("message-square", [
+          ["path", {
+            d: "M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z",
+            key: "18887p"
+          }]
+        ]));
+        /**
+         * @license lucide-vue-next v0.562.0 - ISC
+         *
+         * This source code is licensed under the ISC license.
+         * See the LICENSE file in the root directory of this source tree.
+         */
+        var K = o("play", [
+            ["path", {
+              d: "M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z",
+              key: "10ikf1"
+            }]
+          ]),
+          Q = e("R", o("rotate-ccw", [
+            ["path", {
+              d: "M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8",
+              key: "1357e3"
+            }],
+            ["path", {
+              d: "M3 3v5h5",
+              key: "1xhq8a"
+            }]
+          ])),
+          Y = (e("S", o("send", [
+            ["path", {
+              d: "M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z",
+              key: "1ffxy3"
+            }],
+            ["path", {
+              d: "m21.854 2.147-10.94 10.939",
+              key: "12cjpa"
+            }]
+          ])), e("a", o("square-check-big", [
+            ["path", {
+              d: "M21 10.656V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.344",
+              key: "2acyp4"
+            }],
+            ["path", {
+              d: "m9 11 3 3L22 4",
+              key: "1pflzl"
+            }]
+          ])), {
+            voice: l,
+            rate: 1,
+            volume: 100,
+            readDialogueOnly: !1
+          }),
+          Z = "".concat(C, "/tts-proxy.php"),
+          ee = function() {
+            return e = function e() {
+              ! function(e, t) {
+                if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function")
+              }(this, e), s(this, "currentSpeakingId", x(null)), s(this, "currentAbortController", null), s(this, "currentAudio", null), s(this, "onStartCallback", null), s(this, "onEndCallback", null)
+            }, t = [{
+              key: "stripHtmlTags",
+              value: function(e) {
+                return e.replace(/<script\b[\s\S]*?<\/script>/gi, "").replace(/<style\b[\s\S]*?<\/style>/gi, "").replace(/<svg\b[\s\S]*?<\/svg>/gi, "").replace(/<!doctype[^>]*>/gi, "").replace(/<[^>]*>/g, "")
+              }
+            }, {
+              key: "decodeHtmlEntities",
+              value: function(e) {
+                if ("undefined" == typeof document) return e;
+                var t = document.createElement("textarea");
+                return t.innerHTML = e, t.value
+              }
+            }, {
+              key: "extractStructuredSpeechText",
+              value: function(e) {
+                var t = e.split(/\r?\n/).map(function(e) {
+                  return e.trim()
+                }).filter(Boolean);
+                return 0 === t.length ? "" : t.map(function(e) {
+                  var t = e.match(/^[\w\u4e00-\u9fa5-]+\s*[:：]\s*(.+)$/);
+                  return ((null == t ? void 0 : t[1]) || e).trim()
+                }).join("\n")
+              }
+            }, {
+              key: "extractHtmlSpeechText",
+              value: function(e) {
+                if ("undefined" != typeof DOMParser) {
+                  var t, a, r = (new DOMParser).parseFromString(e, "text/html"),
+                    o = r.querySelector("#hidden-source"),
+                    n = null == o || null === (t = o.textContent) || void 0 === t ? void 0 : t.trim();
+                  return n ? this.extractStructuredSpeechText(n) : (r.querySelectorAll('script, style, svg, noscript, template, head, [hidden], [aria-hidden="true"]').forEach(function(e) {
+                    e.remove()
+                  }), r.querySelectorAll("[style]").forEach(function(e) {
+                    var t = e.getAttribute("style") || "";
+                    (/display\s*:\s*none/i.test(t) || /visibility\s*:\s*hidden/i.test(t)) && e.remove()
+                  }), ((null === (a = r.body) || void 0 === a ? void 0 : a.textContent) || "").trim())
+                }
+                var i = e.match(/<[^>]*id=["']hidden-source["'][^>]*>([\s\S]*?)<\/[^>]+>/i);
+                return null != i && i[1] ? this.extractStructuredSpeechText(this.stripHtmlTags(this.decodeHtmlEntities(i[1]))) : this.stripHtmlTags(this.decodeHtmlEntities(e))
+              }
+            }, {
+              key: "replaceHtmlCodeBlocksWithSpeechText",
+              value: function(e) {
+                var t = this;
+                return e.replace(/```(?:html|htm)\s*([\s\S]*?)```/gi, function(e, a) {
+                  return t.extractHtmlSpeechText(a)
+                })
+              }
+            }, {
+              key: "cleanText",
+              value: function(t, a, r) {
+                var o = arguments.length > 3 && void 0 !== arguments[3] && arguments[3];
+                if (!t) return "";
+                var i = this.stripHtmlTags(this.replaceHtmlCodeBlocksWithSpeechText(t)).replace(/\{\{user\}\}/gi, a).replace(/\{\{char\}\}/gi, r).replace(/<user>/gi, a).replace(/<char>/gi, r);
+                if (o) {
+                  for (var l, c = /“([^”]+)”|‘([^’]+)’|"([^"]+)"|(?:^|[\s\W])'([^'\n]+)'(?=$|[\s\W])|「([^」]+)」|『([^』]+)』|«([^»]+)»|„([^"]+)“/g, d = []; null !== (l = c.exec(i));) {
+                    var s = l.slice(1).find(function(e) {
+                      return void 0 !== e
+                    });
+                    s && d.push(s)
+                  }
+                  if (!(d.length > 0)) return "";
+                  i = d.join("，")
+                }
+                try {
+                  var u = n.parse(i),
+                    p = document.createElement("div");
+                  p.innerHTML = u;
+                  var v = p.textContent || p.innerText || "";
+                  return (v = v.replace(/\*/g, "")).replace(/\n\s*\n/g, "\n").trim()
+                } catch (e) {
+                  return console.warn("Markdown cleaning failed, falling back to simple regex", e), i.replace(/\*/g, "").replace(/#/g, "")
+                }
+              }
+            }, {
+              key: "stop",
+              value: function() {
+                if (this.currentAbortController && (this.currentAbortController.abort(), this.currentAbortController = null), this.currentAudio) {
+                  var e = this.currentAudio;
+                  this.currentAudio = null, e.pause(), e.removeAttribute("src"), e.load()
+                }
+                this.onEndCallback && this.onEndCallback(new Error("Preempted")), this.onStartCallback = null, this.onEndCallback = null, this.currentSpeakingId.value = null
+              }
+            }, {
+              key: "speak",
+              value: (v = c(r().m(function e(t) {
+                var a, o, n, l, c, d, s, u, p, v, f, b = this,
+                  g = arguments;
+                return r().w(function(e) {
+                  for (;;) switch (e.p = e.n) {
+                    case 0:
+                      return a = g.length > 1 && void 0 !== g[1] ? g[1] : {}, o = g.length > 2 ? g[2] : void 0, n = g.length > 3 ? g[3] : void 0, l = g.length > 4 ? g[4] : void 0, this.stop(), l && (this.currentSpeakingId.value = l), this.onStartCallback = o || null, this.onEndCallback = function(e) {
+                        b.currentSpeakingId.value = null, n && n(e)
+                      }, c = i(i({}, Y), a), this.currentAbortController = new AbortController, d = this.currentAbortController.signal, e.p = 1, e.n = 2, this.fetchOnlineSpeech(t, c, d);
+                    case 2:
+                      if ((s = e.v).ok) {
+                        e.n = 4;
+                        break
+                      }
+                      return p = Error, e.n = 3, this.readTtsErrorMessage(s);
+                    case 3:
+                      throw v = e.v, new p(v);
+                    case 4:
+                      if (s.body) {
+                        e.n = 5;
+                        break
+                      }
+                      throw new Error("Response body is empty");
+                    case 5:
+                      return e.n = 6, this.streamAudio(s.body, d);
+                    case 6:
+                      e.n = 9;
+                      break;
+                    case 7:
+                      if (e.p = 7, "AbortError" !== (f = e.v).name) {
+                        e.n = 8;
+                        break
+                      }
+                      return e.a(2);
+                    case 8:
+                      console.error("TTS Speak Error:", f), this.onEndCallback && (u = this.onEndCallback, this.onEndCallback = null, u(f));
+                    case 9:
+                      return e.a(2)
+                  }
+                }, e, this, [
+                  [1, 7]
+                ])
+              })), function(e) {
+                return v.apply(this, arguments)
+              })
+            }, {
+              key: "fetchOnlineSpeech",
+              value: (p = c(r().m(function e(t, a, o) {
+                var n, i, l, c, d;
+                return r().w(function(e) {
+                  for (;;) switch (e.n) {
+                    case 0:
+                      if (n = u(a.voice), null != (i = y()) && i.accessToken) {
+                        e.n = 1;
+                        break
+                      }
+                      throw new Error("请先登录账号后再使用语音合成");
+                    case 1:
+                      if (d = i.deviceId) {
+                        e.n = 3;
+                        break
+                      }
+                      return e.n = 2, k();
+                    case 2:
+                      d = e.v;
+                    case 3:
+                      return l = d, e.n = 4, w({
+                        device_id: l,
+                        access_token: i.accessToken,
+                        text: t,
+                        voice: n,
+                        rate: a.rate,
+                        volume: a.volume
+                      });
+                    case 4:
+                      return c = e.v, e.a(2, fetch(Z, {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(c),
+                        signal: o
+                      }))
+                  }
+                }, e)
+              })), function(e, t, a) {
+                return p.apply(this, arguments)
+              })
+            }, {
+              key: "readTtsErrorMessage",
+              value: (l = c(r().m(function e(t) {
+                var a, o, n, i;
+                return r().w(function(e) {
+                  for (;;) switch (e.p = e.n) {
+                    case 0:
+                      if (e.p = 0, !(t.headers.get("Content-Type") || "").includes("application/json")) {
+                        e.n = 2;
+                        break
+                      }
+                      return e.n = 1, t.json();
+                    case 1:
+                      if (o = e.v, !(n = (null == o ? void 0 : o.detail) || (null == o || null === (a = o.error) || void 0 === a ? void 0 : a.message) || (null == o ? void 0 : o.message))) {
+                        e.n = 2;
+                        break
+                      }
+                      return e.a(2, "TTS Server Error: ".concat(t.status, " ").concat(n));
+                    case 2:
+                      return e.n = 3, t.text();
+                    case 3:
+                      if (!(i = e.v).trim()) {
+                        e.n = 4;
+                        break
+                      }
+                      return e.a(2, "TTS Server Error: ".concat(t.status, " ").concat(i.slice(0, 200)));
+                    case 4:
+                      e.n = 6;
+                      break;
+                    case 5:
+                      e.p = 5, e.v;
+                    case 6:
+                      return e.a(2, "TTS Server Error: ".concat(t.status))
+                  }
+                }, e, null, [
+                  [0, 5]
+                ])
+              })), function(e) {
+                return l.apply(this, arguments)
+              })
+            }, {
+              key: "streamAudio",
+              value: (o = c(r().m(function e(t, a) {
+                var o, n, i, l, d, s = this;
+                return r().w(function(e) {
+                  for (;;)
+                    if (0 === e.n) return o = new MediaSource, n = URL.createObjectURL(o), i = new Audio(n), this.currentAudio = i, l = function() {
+                      return s.currentAudio === i
+                    }, d = function() {
+                      if (URL.revokeObjectURL(n), l()) {
+                        s.currentAudio = null;
+                        var e = s.onEndCallback;
+                        s.onEndCallback = null, e && e()
+                      }
+                    }, i.onended = d, i.onerror = function(e) {
+                      if (console.error("Audio playback error", e), l()) {
+                        s.currentAudio = null;
+                        var t = s.onEndCallback;
+                        s.onEndCallback = null, t && t(new Error("Audio playback failed"))
+                      }
+                    }, e.a(2, new Promise(function(e, d) {
+                      var u = function() {
+                        var u = c(r().m(function u() {
+                          var p, v, f, b, g, m, h, x, y;
+                          return r().w(function(u) {
+                            for (;;) switch (u.p = u.n) {
+                              case 0:
+                                if (p = "audio/mpeg", MediaSource.isTypeSupported(p)) {
+                                  u.n = 1;
+                                  break
+                                }
+                                return v = new Error("Browser requires specific mime-type support for ".concat(p)), l() && (s.stop(), s.onEndCallback && s.onEndCallback(v)), d(v), u.a(2);
+                              case 1:
+                                return u.p = 1, f = o.addSourceBuffer(p), b = t.getReader(), g = function() {
+                                  var e = c(r().m(function e() {
+                                    var t, n, i;
+                                    return r().w(function(e) {
+                                      for (;;) switch (e.p = e.n) {
+                                        case 0:
+                                          if (e.p = 0, !a.aborted) {
+                                            e.n = 1;
+                                            break
+                                          }
+                                          throw new Error("Aborted");
+                                        case 1:
+                                          return e.n = 2, b.read();
+                                        case 2:
+                                          if (t = e.v, n = t.done, i = t.value, !n) {
+                                            e.n = 3;
+                                            break
+                                          }
+                                          return "open" === o.readyState && (f.updating ? f.addEventListener("updateend", function() {
+                                            "open" === o.readyState && o.endOfStream()
+                                          }, {
+                                            once: !0
+                                          }) : o.endOfStream()), e.a(2);
+                                        case 3:
+                                          if (f.updating) {
+                                            e.n = 4;
+                                            break
+                                          }
+                                          f.appendBuffer(i), e.n = 6;
+                                          break;
+                                        case 4:
+                                          return e.n = 5, new Promise(function(e, t) {
+                                            var r = function() {
+                                                f.removeEventListener("updateend", o), t(new Error("Aborted"))
+                                              },
+                                              o = function() {
+                                                a.removeEventListener("abort", r), e(null)
+                                              };
+                                            f.addEventListener("updateend", o, {
+                                              once: !0
+                                            }), a.addEventListener("abort", r, {
+                                              once: !0
+                                            })
+                                          });
+                                        case 5:
+                                          f.appendBuffer(i);
+                                        case 6:
+                                          return g(), e.n = 7, new Promise(function(e) {
+                                            return setTimeout(e, 0)
+                                          });
+                                        case 7:
+                                          e.n = 9;
+                                          break;
+                                        case 8:
+                                          if (e.p = 8, e.v, "open" === o.readyState) try {
+                                            f.updating ? f.abort() : o.endOfStream()
+                                          } catch (v) {}
+                                          case 9: return e.a(2)
+                                      }
+                                    }, e, null, [
+                                      [0, 8]
+                                    ])
+                                  }));
+                                  return function() {
+                                    return e.apply(this, arguments)
+                                  }
+                                }(), g(), u.p = 2, u.n = 3, i.play();
+                              case 3:
+                                l() && s.onStartCallback && s.onStartCallback(), e(), u.n = 5;
+                                break;
+                              case 4:
+                                u.p = 4, x = u.v, m = x instanceof Error ? x : new Error("Audio playback was blocked"), console.error("Auto-play failed", m), URL.revokeObjectURL(n), l() && (s.currentAudio = null, h = s.onEndCallback, s.onEndCallback = null, h && h(m)), d(m);
+                              case 5:
+                                u.n = 7;
+                                break;
+                              case 6:
+                                u.p = 6, y = u.v, d(y);
+                              case 7:
+                                return u.a(2)
+                            }
+                          }, u, null, [
+                            [2, 4],
+                            [1, 6]
+                          ])
+                        }));
+                        return function() {
+                          return u.apply(this, arguments)
+                        }
+                      }();
+                      o.addEventListener("sourceopen", u, {
+                        once: !0
+                      })
+                    }))
+                }, e, this)
+              })), function(e, t) {
+                return o.apply(this, arguments)
+              })
+            }], t && d(e.prototype, t), a && d(e, a), Object.defineProperty(e, "prototype", {
+              writable: !1
+            }), e;
+            var e, t, a, o, l, p, v
+          }(),
+          te = e("t", new ee),
+          ae = {
+            class: "modal-content glass-card"
+          },
+          re = {
+            class: "settings-controls"
+          },
+          oe = {
+            key: 1,
+            class: "control-group row-group"
+          },
+          ne = {
+            class: "control-group"
+          },
+          ie = {
+            class: "control-group"
+          },
+          le = {
+            class: "control-group"
+          },
+          ce = ["disabled"],
+          de = {
+            class: "modal-actions"
+          },
+          se = ["disabled"],
+          ue = {
+            class: "voice-selector-card"
+          },
+          pe = {
+            class: "voice-list"
+          },
+          ve = ["onClick"],
+          fe = S({
+            __name: "TTSSettingsModal",
+            props: {
+              show: {
+                type: Boolean
+              },
+              hidePlaybackSwitches: {
+                type: Boolean
+              },
+              initialConfig: {}
+            },
+            emits: ["update:show", "confirm"],
+            setup: function(e, a) {
+              var r = a.emit,
+                o = e,
+                n = r,
+                l = p(),
+                c = v().showToast,
+                d = D(function() {
+                  return "active" === l.vipStatus && "exclusive" === l.currentChannel
+                }),
+                s = x({
+                  autoPlay: !1,
+                  readDialogueOnly: !1,
+                  voice: "zh-CN-XiaoyiNeural",
+                  volume: 100,
+                  rate: 1
+                });
+              z(function() {
+                return o.show
+              }, function(e) {
+                e ? (s.value = i(i({}, o.initialConfig), {}, {
+                  voice: u(o.initialConfig.voice)
+                }), y.value = !1, k.value = !1, w.value = "idle", l.refreshVipStatus(), l.refreshChannel()) : k.value && (te.stop(), k.value = !1, w.value = "idle")
+              });
+              var m = D(function() {
+                  var e;
+                  return (null === (e = b.find(function(e) {
+                    return e.id === s.value.voice
+                  })) || void 0 === e ? void 0 : e.name) || s.value.voice
+                }),
+                h = x(!1),
+                y = x(!1),
+                k = x(!1),
+                w = x("idle"),
+                C = D(function() {
+                  return "generating" === w.value ? "生成中..." : "playing" === w.value ? "播放中..." : "试听语音"
+                });
+
+              function S() {
+                if (!k.value) {
+                  k.value = !0, w.value = "generating";
+                  var e = s.value.readDialogueOnly ? "旁白不读，只读这句话：“这是一段语音合成的测试音频，您觉得怎么样？”" : "这是一段语音合成的测试音频，您觉得怎么样？";
+                  te.speak(e, {
+                    voice: s.value.voice,
+                    rate: s.value.rate,
+                    volume: s.value.volume,
+                    readDialogueOnly: s.value.readDialogueOnly
+                  }, function() {
+                    w.value = "playing"
+                  }, function(e) {
+                    k.value = !1, w.value = "idle", e && "Preempted" !== e.message && c("语音试听失败：".concat(e.message || "在线语音不可用"))
+                  })
+                }
+              }
+
+              function $() {
+                k.value && te.stop(), n("update:show", !1)
+              }
+
+              function J() {
+                y.value || (y.value = !0, k.value && te.stop(), n("confirm", i({}, s.value)), $())
+              }
+              f(function() {
+                return o.show
+              }, $), f(function() {
+                return h.value
+              }, function() {
+                h.value = !1
+              });
+              var X = x(!1);
+
+              function Y() {
+                X.value = !0
+              }
+
+              function Z() {
+                s.value = {
+                  autoPlay: !1,
+                  readDialogueOnly: !1,
+                  voice: "zh-CN-XiaoyiNeural",
+                  volume: 100,
+                  rate: 1
+                }, X.value = !1
+              }
+
+              function ee() {
+                d.value ? s.value.readDialogueOnly = !s.value.readDialogueOnly : "active" === l.vipStatus && "exclusive" !== l.currentChannel ? c("此功能仅限专属通道使用") : c("此功能为 VIP/SVIP 专属")
+              }
+              return function(a, r) {
+                return G(), j(E, null, [(G(), O(T, {
+                  to: "body"
+                }, [P(A, {
+                  name: "modal-fade"
+                }, {
+                  default: _(function() {
+                    return [e.show ? (G(), j("div", {
+                      key: 0,
+                      class: "modal-overlay",
+                      onClick: I($, ["self"])
+                    }, [L("div", ae, [L("button", {
+                      class: "reset-btn",
+                      onClick: Y,
+                      title: "恢复默认"
+                    }, [P(V(Q), {
+                      size: 18
+                    })]), r[13] || (r[13] = L("h3", {
+                      class: "modal-title"
+                    }, "语音设置", -1)), L("div", re, [e.hidePlaybackSwitches ? M("", !0) : (G(), j("div", {
+                      key: 0,
+                      class: B(["control-group row-group", {
+                        "opacity-50": !d.value
+                      }])
+                    }, [r[7] || (r[7] = L("div", {
+                      class: "setting-info"
+                    }, [L("span", {
+                      class: "setting-label"
+                    }, [L("span", {
+                      class: "gold-text"
+                    }, "仅朗读对话"), L("span", {
+                      class: "vip-tag"
+                    }, "专属")]), L("span", {
+                      class: "setting-hint"
+                    }, "只朗读对话内容，跳过旁白和说明")], -1)), d.value ? (G(), j("div", {
+                      key: 0,
+                      class: B(["toggle-switch vip-switch", {
+                        active: s.value.readDialogueOnly
+                      }]),
+                      onClick: I(ee, ["stop"])
+                    }, t(r[6] || (r[6] = [L("div", {
+                      class: "toggle-thumb"
+                    }, null, -1)])), 2)) : (G(), j("div", {
+                      key: 1,
+                      class: "lock-icon",
+                      onClick: I(ee, ["stop"])
+                    }, [P(V(F), {
+                      size: 16
+                    })]))], 2)), e.hidePlaybackSwitches ? M("", !0) : (G(), j("div", oe, [r[9] || (r[9] = L("div", {
+                      class: "setting-info"
+                    }, [L("span", {
+                      class: "setting-label"
+                    }, "自动播放"), L("span", {
+                      class: "setting-hint"
+                    }, "收到新消息后自动朗读")], -1)), L("div", {
+                      class: B(["toggle-switch", {
+                        active: s.value.autoPlay
+                      }]),
+                      onClick: r[0] || (r[0] = function(e) {
+                        return s.value.autoPlay = !s.value.autoPlay
+                      })
+                    }, t(r[8] || (r[8] = [L("div", {
+                      class: "toggle-thumb"
+                    }, null, -1)])), 2)])), L("div", ne, [r[11] || (r[11] = L("label", null, "选择音色/角色", -1)), L("div", {
+                      class: "selector-btn",
+                      onClick: r[1] || (r[1] = function(e) {
+                        return h.value = !0
+                      })
+                    }, [L("span", null, H(m.value), 1), r[10] || (r[10] = L("span", {
+                      class: "dropdown-arrow"
+                    }, "▼", -1))])]), L("div", ie, [L("label", null, "音量 (" + H(s.value.volume) + "%)", 1), U(L("input", {
+                      type: "range",
+                      min: "0",
+                      max: "100",
+                      step: "1",
+                      "onUpdate:modelValue": r[2] || (r[2] = function(e) {
+                        return s.value.volume = e
+                      }),
+                      class: "slider"
+                    }, null, 512), [
+                      [R, s.value.volume, void 0, {
+                        number: !0
+                      }]
+                    ])]), L("div", le, [L("label", null, "语速 (x" + H(s.value.rate) + ")", 1), U(L("input", {
+                      type: "range",
+                      min: "0.5",
+                      max: "2.0",
+                      step: "0.1",
+                      "onUpdate:modelValue": r[3] || (r[3] = function(e) {
+                        return s.value.rate = e
+                      }),
+                      class: "slider"
+                    }, null, 512), [
+                      [R, s.value.rate, void 0, {
+                        number: !0
+                      }]
+                    ])]), L("button", {
+                      class: "test-btn",
+                      disabled: k.value,
+                      onClick: S
+                    }, [P(V(K), {
+                      size: 16,
+                      class: B({
+                        "spin-icon": k.value
+                      })
+                    }, null, 8, ["class"]), N(" " + H(C.value), 1)], 8, ce)]), L("div", de, [L("button", {
+                      class: "btn btn-cancel",
+                      onClick: $
+                    }, "取消"), L("button", {
+                      class: "btn btn-confirm",
+                      disabled: y.value,
+                      onClick: J
+                    }, H(y.value ? "保存中..." : "保存"), 9, se)]), P(A, {
+                      name: "fade"
+                    }, {
+                      default: _(function() {
+                        return [h.value ? (G(), j("div", {
+                          key: 0,
+                          class: "voice-selector-overlay",
+                          onClick: r[4] || (r[4] = I(function(e) {
+                            return h.value = !1
+                          }, ["self"]))
+                        }, [L("div", ue, [r[12] || (r[12] = L("h4", null, "选择音色", -1)), L("div", pe, [(G(!0), j(E, null, q(V(b), function(e) {
+                          return G(), j("div", {
+                            key: e.id,
+                            class: B(["voice-item", {
+                              active: s.value.voice === e.id
+                            }]),
+                            onClick: function(t) {
+                              s.value.voice = e.id, h.value = !1
+                            }
+                          }, [L("span", null, H(e.name), 1), s.value.voice === e.id ? (G(), O(V(W), {
+                            key: 0,
+                            size: 16
+                          })) : M("", !0)], 10, ve)
+                        }), 128))])])])) : M("", !0)]
+                      }),
+                      _: 1
+                    })])])) : M("", !0)]
+                  }),
+                  _: 1
+                })])), P(g, {
+                  show: X.value,
+                  title: "恢复默认",
+                  message: "确定要重置语音设置为默认值吗？",
+                  "confirm-text": "确认",
+                  "cancel-text": "取消",
+                  "show-cancel": !0,
+                  onConfirm: Z,
+                  onCancel: r[5] || (r[5] = function(e) {
+                    return X.value = !1
+                  })
+                }, null, 8, ["show"])], 64)
+              }
+            }
+          }),
+          be = (e("T", m(fe, [
+            ["__scopeId", "data-v-112a07c9"]
+          ])), {
+            class: "modal-content glass-card"
+          }),
+          ge = {
+            class: "preview-section"
+          },
+          me = {
+            class: "preview-chat"
+          },
+          he = {
+            class: "preview-message preview-message--assistant"
+          },
+          xe = {
+            key: 0,
+            class: "preview-meta"
+          },
+          ye = {
+            class: "preview-avatar preview-avatar--assistant"
+          },
+          ke = ["src"],
+          we = {
+            key: 0,
+            class: "preview-avatar preview-avatar--assistant"
+          },
+          Ce = ["src"],
+          Se = {
+            class: "preview-bubble-stack"
+          },
+          ze = {
+            class: "settings-controls"
+          },
+          je = {
+            class: "control-group"
+          },
+          Ee = {
+            class: "control-group"
+          },
+          Oe = {
+            class: "control-group"
+          },
+          Pe = {
+            class: "control-group"
+          },
+          Te = ["value"],
+          Ae = {
+            class: "control-group"
+          },
+          _e = ["value"],
+          Me = {
+            class: "control-group"
+          },
+          Ie = ["value"],
+          Le = {
+            class: "modal-actions"
+          },
+          Ve = ["disabled"],
+          Be = {
+            class: "style-selector-card"
+          },
+          De = {
+            class: "style-list"
+          },
+          He = ["onClick"],
+          Ue = {
+            class: "style-item-copy"
+          },
+          Re = {
+            class: "style-item-title"
+          },
+          Ne = S({
+            __name: "BubbleSettingsModal",
+            props: {
+              show: {
+                type: Boolean
+              },
+              initialConfig: {}
+            },
+            emits: ["update:show", "confirm"],
+            setup: function(e, t) {
+              var a = t.emit,
+                o = e,
+                n = a,
+                l = [{
+                  id: "style-1",
+                  name: "样式一"
+                }, {
+                  id: "style-2",
+                  name: "样式二"
+                }],
+                d = {
+                  opacity: .75,
+                  fontSize: 15,
+                  highlightColor: "#ff9f43",
+                  bracketColor: "#1e90ff",
+                  normalColor: "#333333",
+                  styleVariant: "style-1"
+                },
+                s = x(i({}, d)),
+                u = x(!1),
+                p = x(!1),
+                v = x(!1),
+                b = h;
+              z(function() {
+                return o.show
+              }, function() {
+                var e = c(r().m(function e(t) {
+                  return r().w(function(e) {
+                    for (;;) switch (e.n) {
+                      case 0:
+                        t && (s.value = i({}, o.initialConfig), p.value = !1, v.value = !1);
+                      case 1:
+                        return e.a(2)
+                    }
+                  }, e)
+                }));
+                return function(t) {
+                  return e.apply(this, arguments)
+                }
+              }());
+              var m = D(function() {
+                  var e;
+                  return (null === (e = l.find(function(e) {
+                    return e.id === s.value.styleVariant
+                  })) || void 0 === e ? void 0 : e.name) || "样式一"
+                }),
+                y = D(function() {
+                  return {
+                    background: "rgba(255, 255, 255, ".concat(s.value.opacity, ")"),
+                    fontSize: "".concat(s.value.fontSize, "px"),
+                    color: s.value.normalColor
+                  }
+                });
+
+              function k() {
+                n("update:show", !1)
+              }
+
+              function w() {
+                v.value || (v.value = !0, n("confirm", i({}, s.value)), k())
+              }
+
+              function C() {
+                u.value = !0
+              }
+
+              function S() {
+                s.value = i({}, d), u.value = !1
+              }
+              f(function() {
+                return o.show
+              }, k), f(function() {
+                return p.value
+              }, function() {
+                p.value = !1
+              });
+              var F = x(null),
+                J = x(null),
+                X = x(null);
+
+              function K(e) {
+                var t, a, r;
+                "highlight" === e && (null === (t = F.value) || void 0 === t || t.click()), "bracket" === e && (null === (a = J.value) || void 0 === a || a.click()), "normal" === e && (null === (r = X.value) || void 0 === r || r.click())
+              }
+
+              function Y(e, t) {
+                var a = e.target;
+                a.value && ("highlight" === t && (s.value.highlightColor = a.value), "bracket" === t && (s.value.bracketColor = a.value), "normal" === t && (s.value.normalColor = a.value))
+              }
+              return function(t, a) {
+                return G(), j(E, null, [(G(), O(T, {
+                  to: "body"
+                }, [P(A, {
+                  name: "modal-fade"
+                }, {
+                  default: _(function() {
+                    return [e.show ? (G(), j("div", {
+                      key: 0,
+                      class: "modal-overlay",
+                      onClick: I(k, ["self"])
+                    }, [L("div", be, [L("button", {
+                      class: "reset-btn",
+                      onClick: C,
+                      title: "恢复默认"
+                    }, [P(V(Q), {
+                      size: 18
+                    })]), a[25] || (a[25] = L("h3", {
+                      class: "modal-title"
+                    }, "气泡设置", -1)), L("div", ge, [L("div", me, [L("div", he, ["style-1" === s.value.styleVariant ? (G(), j("div", xe, [L("div", ye, [L("img", {
+                      src: V(b),
+                      alt: "PiuPiu酱头像",
+                      class: "preview-avatar-image"
+                    }, null, 8, ke)]), a[11] || (a[11] = L("div", {
+                      class: "preview-name"
+                    }, "PiuPiu酱", -1))])) : M("", !0), L("div", {
+                      class: B(["preview-message-body", {
+                        "is-style-two": "style-2" === s.value.styleVariant
+                      }])
+                    }, ["style-2" === s.value.styleVariant ? (G(), j("div", we, [L("img", {
+                      src: V(b),
+                      alt: "PiuPiu酱头像",
+                      class: "preview-avatar-image"
+                    }, null, 8, Ce)])) : M("", !0), L("div", Se, [L("div", {
+                      class: "preview-bubble",
+                      style: $(y.value)
+                    }, [a[12] || (a[12] = N(" 这是", -1)), L("span", {
+                      style: $({
+                        color: s.value.normalColor
+                      })
+                    }, "普通文本", 4), a[13] || (a[13] = N("， ", -1)), L("span", {
+                      style: $({
+                        color: s.value.highlightColor
+                      })
+                    }, "“高亮引用”", 4), a[14] || (a[14] = N(" 和 ", -1)), L("span", {
+                      style: $({
+                        color: s.value.bracketColor
+                      })
+                    }, "（括号动作）", 4), a[15] || (a[15] = N(" 的示例效果。 ", -1))], 4)])], 2)])])]), L("div", ze, [L("div", je, [a[17] || (a[17] = L("label", null, "样式选择", -1)), L("div", {
+                      class: "selector-btn",
+                      onClick: a[0] || (a[0] = function(e) {
+                        return p.value = !0
+                      })
+                    }, [L("span", null, H(m.value), 1), a[16] || (a[16] = L("span", {
+                      class: "dropdown-arrow"
+                    }, "▼", -1))])]), L("div", Ee, [L("label", null, "透明度 (" + H(Math.round(100 * s.value.opacity)) + "%)", 1), U(L("input", {
+                      "onUpdate:modelValue": a[1] || (a[1] = function(e) {
+                        return s.value.opacity = e
+                      }),
+                      type: "range",
+                      min: "0.1",
+                      max: "1",
+                      step: "0.05",
+                      class: "slider"
+                    }, null, 512), [
+                      [R, s.value.opacity, void 0, {
+                        number: !0
+                      }]
+                    ])]), L("div", Oe, [L("label", null, "字体大小 (" + H(s.value.fontSize) + "px)", 1), U(L("input", {
+                      "onUpdate:modelValue": a[2] || (a[2] = function(e) {
+                        return s.value.fontSize = e
+                      }),
+                      type: "range",
+                      min: "12",
+                      max: "30",
+                      step: "1",
+                      class: "slider"
+                    }, null, 512), [
+                      [R, s.value.fontSize, void 0, {
+                        number: !0
+                      }]
+                    ])]), L("div", Pe, [a[19] || (a[19] = L("label", null, "高亮颜色", -1)), L("div", {
+                      class: "color-picker-container",
+                      onClick: a[4] || (a[4] = function(e) {
+                        return K("highlight")
+                      })
+                    }, [L("div", {
+                      class: "color-preview",
+                      style: $({
+                        backgroundColor: s.value.highlightColor
+                      })
+                    }, null, 4), a[18] || (a[18] = L("span", {
+                      class: "color-label"
+                    }, "点击选择颜色", -1)), L("input", {
+                      ref_key: "colorInputHighlight",
+                      ref: F,
+                      type: "color",
+                      class: "hidden-color-input",
+                      value: s.value.highlightColor,
+                      onInput: a[3] || (a[3] = function(e) {
+                        return Y(e, "highlight")
+                      })
+                    }, null, 40, Te)])]), L("div", Ae, [a[21] || (a[21] = L("label", null, "括号颜色", -1)), L("div", {
+                      class: "color-picker-container",
+                      onClick: a[6] || (a[6] = function(e) {
+                        return K("bracket")
+                      })
+                    }, [L("div", {
+                      class: "color-preview",
+                      style: $({
+                        backgroundColor: s.value.bracketColor
+                      })
+                    }, null, 4), a[20] || (a[20] = L("span", {
+                      class: "color-label"
+                    }, "点击选择颜色", -1)), L("input", {
+                      ref_key: "colorInputBracket",
+                      ref: J,
+                      type: "color",
+                      class: "hidden-color-input",
+                      value: s.value.bracketColor,
+                      onInput: a[5] || (a[5] = function(e) {
+                        return Y(e, "bracket")
+                      })
+                    }, null, 40, _e)])]), L("div", Me, [a[23] || (a[23] = L("label", null, "普通文本颜色", -1)), L("div", {
+                      class: "color-picker-container",
+                      onClick: a[8] || (a[8] = function(e) {
+                        return K("normal")
+                      })
+                    }, [L("div", {
+                      class: "color-preview",
+                      style: $({
+                        backgroundColor: s.value.normalColor
+                      })
+                    }, null, 4), a[22] || (a[22] = L("span", {
+                      class: "color-label"
+                    }, "点击选择颜色", -1)), L("input", {
+                      ref_key: "colorInputNormal",
+                      ref: X,
+                      type: "color",
+                      class: "hidden-color-input",
+                      value: s.value.normalColor,
+                      onInput: a[7] || (a[7] = function(e) {
+                        return Y(e, "normal")
+                      })
+                    }, null, 40, Ie)])])]), L("div", Le, [L("button", {
+                      class: "btn btn-cancel",
+                      onClick: k
+                    }, "取消"), L("button", {
+                      class: "btn btn-confirm",
+                      disabled: v.value,
+                      onClick: w
+                    }, H(v.value ? "保存中..." : "保存"), 9, Ve)]), P(A, {
+                      name: "fade"
+                    }, {
+                      default: _(function() {
+                        return [p.value ? (G(), j("div", {
+                          key: 0,
+                          class: "style-selector-overlay",
+                          onClick: a[9] || (a[9] = I(function(e) {
+                            return p.value = !1
+                          }, ["self"]))
+                        }, [L("div", Be, [a[24] || (a[24] = L("h4", null, "选择气泡样式", -1)), L("div", De, [(G(), j(E, null, q(l, function(e) {
+                          return L("div", {
+                            key: e.id,
+                            class: B(["style-item", {
+                              active: s.value.styleVariant === e.id
+                            }]),
+                            onClick: function(t) {
+                              s.value.styleVariant = e.id, p.value = !1
+                            }
+                          }, [L("div", Ue, [L("span", Re, H(e.name), 1)]), s.value.styleVariant === e.id ? (G(), O(V(W), {
+                            key: 0,
+                            size: 16
+                          })) : M("", !0)], 10, He)
+                        }), 64))])])])) : M("", !0)]
+                      }),
+                      _: 1
+                    })])])) : M("", !0)]
+                  }),
+                  _: 1
+                })])), P(g, {
+                  show: u.value,
+                  title: "恢复默认",
+                  message: "确定要将气泡样式恢复到默认状态吗？",
+                  "confirm-text": "确认",
+                  "cancel-text": "取消",
+                  "show-cancel": !0,
+                  onConfirm: S,
+                  onCancel: a[10] || (a[10] = function(e) {
+                    return u.value = !1
+                  })
+                }, null, 8, ["show"])], 64)
+              }
+            }
+          }),
+          qe = (e("b", m(Ne, [
+            ["__scopeId", "data-v-8231335f"]
+          ])), {
+            class: "modal-content"
+          }),
+          Ge = {
+            class: "preview-box role-preview"
+          },
+          $e = {
+            class: "option-label"
+          },
+          Fe = {
+            class: "option-desc"
+          },
+          We = {
+            class: "preview-box custom-preview"
+          },
+          Je = ["src"],
+          Xe = {
+            class: "modal-actions"
+          },
+          Ke = ["disabled"],
+          Qe = ["disabled"],
+          Ye = S({
+            __name: "BackgroundSettingsModal",
+            props: {
+              show: {
+                type: Boolean
+              },
+              currentMode: {},
+              customImage: {},
+              saving: {
+                type: Boolean
+              },
+              coverLabel: {},
+              coverDescription: {},
+              hideCover: {
+                type: Boolean
+              }
+            },
+            emits: ["update:show", "confirm"],
+            setup: function(e, a) {
+              var r = a.emit,
+                o = e,
+                n = r,
+                i = x(o.currentMode),
+                l = x(o.customImage),
+                c = x(null),
+                d = x(!1);
+
+              function s() {
+                d.value || o.saving || n("update:show", !1)
+              }
+
+              function u(e) {
+                var t;
+                (i.value = e, "custom" !== e || l.value) || (null === (t = c.value) || void 0 === t || t.click())
+              }
+
+              function p(e) {
+                var t = e.target;
+                if (t.files && t.files[0]) {
+                  var a = t.files[0],
+                    r = new FileReader;
+                  r.onload = function(e) {
+                    var t;
+                    l.value = null === (t = e.target) || void 0 === t ? void 0 : t.result, i.value = "custom"
+                  }, r.readAsDataURL(a)
+                }
+              }
+
+              function v() {
+                d.value || o.saving || (d.value = !0, n("confirm", i.value, l.value))
+              }
+              return z(function() {
+                  return o.show
+                }, function(e) {
+                  e && (d.value = !1, i.value = o.currentMode, l.value = o.customImage)
+                }), z(function() {
+                  return o.customImage
+                }, function(e) {
+                  o.show && (l.value = e)
+                }), z(function() {
+                  return o.saving
+                }, function(e) {
+                  e || (d.value = !1)
+                }), f(function() {
+                  return o.show
+                }, s),
+                function(a, r) {
+                  return G(), j(E, null, [(G(), O(T, {
+                    to: "body"
+                  }, [P(A, {
+                    name: "modal-fade"
+                  }, {
+                    default: _(function() {
+                      return [e.show ? (G(), j("div", {
+                        key: 0,
+                        class: "modal-overlay",
+                        onClick: I(s, ["self"])
+                      }, [L("div", qe, [r[7] || (r[7] = L("div", {
+                        class: "modal-header"
+                      }, [L("h3", null, "背景设置"), L("p", null, "选择聊天界面的背景样式")], -1)), L("div", {
+                        class: B(["options-grid", {
+                          "without-cover": e.hideCover
+                        }])
+                      }, [L("div", {
+                        class: B(["option-card", {
+                          active: "default" === i.value
+                        }]),
+                        onClick: r[0] || (r[0] = function(e) {
+                          return u("default")
+                        })
+                      }, t(r[4] || (r[4] = [L("div", {
+                        class: "preview-box default-preview"
+                      }, [L("img", {
+                        src: h,
+                        alt: "PiuPiu"
+                      })], -1), L("span", {
+                        class: "option-label"
+                      }, "PiuPiu酱", -1), L("span", {
+                        class: "option-desc"
+                      }, "显示默认看板娘", -1)])), 2), e.hideCover ? M("", !0) : (G(), j("div", {
+                        key: 0,
+                        class: B(["option-card", {
+                          active: "role" === i.value
+                        }]),
+                        onClick: r[1] || (r[1] = function(e) {
+                          return u("role")
+                        })
+                      }, [L("div", Ge, [P(V(J), {
+                        size: 32,
+                        "stroke-width": "1.5"
+                      })]), L("span", $e, H(e.coverLabel || "跟随角色"), 1), L("span", Fe, H(e.coverDescription || "跟随当前角色封面"), 1)], 2)), L("div", {
+                        class: B(["option-card", {
+                          active: "custom" === i.value
+                        }]),
+                        onClick: r[3] || (r[3] = function(e) {
+                          return u("custom")
+                        })
+                      }, [L("div", We, [l.value ? (G(), j("img", {
+                        key: 0,
+                        src: l.value,
+                        class: "custom-bg-img"
+                      }, null, 8, Je)) : (G(), O(V(X), {
+                        key: 1,
+                        size: 32,
+                        "stroke-width": "1.5"
+                      })), "custom" === i.value ? (G(), j("div", {
+                        key: 2,
+                        class: "edit-overlay",
+                        onClick: r[2] || (r[2] = I(function(e) {
+                          var t;
+                          return null === (t = c.value) || void 0 === t ? void 0 : t.click()
+                        }, ["stop"]))
+                      }, " 更换 ")) : M("", !0)]), r[5] || (r[5] = L("span", {
+                        class: "option-label"
+                      }, "自定义", -1)), r[6] || (r[6] = L("span", {
+                        class: "option-desc"
+                      }, "使用本地图片", -1))], 2)], 2), L("div", Xe, [L("button", {
+                        class: "btn cancel-btn",
+                        disabled: d.value || e.saving,
+                        onClick: s
+                      }, "取消", 8, Ke), L("button", {
+                        class: "btn confirm-btn",
+                        disabled: d.value || e.saving,
+                        onClick: v
+                      }, H(d.value || e.saving ? "保存中..." : "保存"), 9, Qe)])])])) : M("", !0)]
+                    }),
+                    _: 1
+                  })])), L("input", {
+                    type: "file",
+                    ref_key: "fileInput",
+                    ref: c,
+                    accept: "image/*",
+                    style: {
+                      display: "none"
+                    },
+                    onChange: p
+                  }, null, 544)], 64)
+                }
+            }
+          });
+        e("B", m(Ye, [
+          ["__scopeId", "data-v-08518ccf"]
+        ]))
+      }
+    }
+  })
+}();

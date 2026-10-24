@@ -1,0 +1,167 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function r(r, e) {
+    var t = Object.keys(r);
+    if (Object.getOwnPropertySymbols) {
+      var n = Object.getOwnPropertySymbols(r);
+      e && (n = n.filter(function(e) {
+        return Object.getOwnPropertyDescriptor(r, e).enumerable
+      })), t.push.apply(t, n)
+    }
+    return t
+  }
+
+  function e(e) {
+    for (var n = 1; n < arguments.length; n++) {
+      var o = null != arguments[n] ? arguments[n] : {};
+      n % 2 ? r(Object(o), !0).forEach(function(r) {
+        t(e, r, o[r])
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(o)) : r(Object(o)).forEach(function(r) {
+        Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(o, r))
+      })
+    }
+    return e
+  }
+
+  function t(r, e, t) {
+    return (e = i(e)) in r ? Object.defineProperty(r, e, {
+      value: t,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }) : r[e] = t, r
+  }
+
+  function n(r) {
+    return n = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(r) {
+      return typeof r
+    } : function(r) {
+      return r && "function" == typeof Symbol && r.constructor === Symbol && r !== Symbol.prototype ? "symbol" : typeof r
+    }, n(r)
+  }
+
+  function o(r, e) {
+    for (var t = 0; t < e.length; t++) {
+      var n = e[t];
+      n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(r, i(n.key), n)
+    }
+  }
+
+  function i(r) {
+    var e = function(r, e) {
+      if ("object" != n(r) || !r) return r;
+      var t = r[Symbol.toPrimitive];
+      if (void 0 !== t) {
+        var o = t.call(r, e || "default");
+        if ("object" != n(o)) return o;
+        throw new TypeError("@@toPrimitive must return a primitive value.")
+      }
+      return ("string" === e ? String : Number)(r)
+    }(r, "string");
+    return "symbol" == n(e) ? e : e + ""
+  }
+  System.register([], function(r, t) {
+    "use strict";
+    return {
+      execute: function() {
+        var t = "undefined" != typeof crypto && crypto.getRandomValues && crypto.getRandomValues.bind(crypto) || "undefined" != typeof msCrypto && "function" == typeof msCrypto.getRandomValues && msCrypto.getRandomValues.bind(msCrypto),
+          i = new Uint8Array(16);
+
+        function a() {
+          if (!t) throw new Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");
+          return t(i)
+        }
+        for (var u = [], s = 0; s < 256; ++s) u[s] = (s + 256).toString(16).substr(1);
+
+        function c(r, e, t) {
+          var n = e && t || 0;
+          "string" == typeof r && (e = "binary" === r ? new Array(16) : null, r = null);
+          var o = (r = r || {}).random || (r.rng || a)();
+          if (o[6] = 15 & o[6] | 64, o[8] = 63 & o[8] | 128, e)
+            for (var i = 0; i < 16; ++i) e[n + i] = o[i];
+          return e || function(r) {
+            var e = 0,
+              t = u;
+            return [t[r[e++]], t[r[e++]], t[r[e++]], t[r[e++]], "-", t[r[e++]], t[r[e++]], "-", t[r[e++]], t[r[e++]], "-", t[r[e++]], t[r[e++]], "-", t[r[e++]], t[r[e++]], t[r[e++]], t[r[e++]], t[r[e++]], t[r[e++]]].join("")
+          }(o)
+        }
+        r("LegacyImportService", function() {
+          return r = function r() {
+            ! function(r, e) {
+              if (!(r instanceof e)) throw new TypeError("Cannot call a class as a function")
+            }(this, r)
+          }, i = [{
+            key: "parseChatImport",
+            value: function(e) {
+              var t;
+              try {
+                t = JSON.parse(e)
+              } catch (r) {
+                throw new Error("Invalid JSON format")
+              }
+              var o = [];
+              if (Array.isArray(t)) o = t;
+              else {
+                if (!t.history || !Array.isArray(t.history)) throw new Error("Unknown chat record format");
+                o = t.history
+              }
+              if (0 === o.length) return [];
+              if (o.some(function(r) {
+                  return !r || "object" !== n(r)
+                })) throw new Error("聊天记录中包含无效消息");
+              return this.convertLegacyMessages(o)
+            }
+          }, {
+            key: "convertLegacyMessages",
+            value: function(r) {
+              var t = Date.now(),
+                n = new Set;
+              return r.map(function(o, i) {
+                var a = o,
+                  u = "assistant";
+                "user" === a.role ? u = "user" : "model" === a.role || "assistant" === a.role ? u = "assistant" : "system" === a.role && (u = "system");
+                var s = "string" == typeof a.id || "number" == typeof a.id ? String(a.id) : c();
+                s && !n.has(s) || (s = c()), n.add(s);
+                var f = Number(a.timestamp),
+                  y = Number.isFinite(f) && f > 0 ? f : t - 1e3 * (r.length - i);
+                return e(e({}, a), {}, {
+                  id: s,
+                  role: u,
+                  content: "string" == typeof a.content ? a.content : "",
+                  timestamp: y,
+                  image: "string" == typeof a.image ? a.image : a.imageUrl || void 0,
+                  speakerName: a.speakerName || a.author || void 0
+                })
+              })
+            }
+          }, {
+            key: "isLegacyFormat",
+            value: function(r) {
+              try {
+                var e = JSON.parse(r);
+                if ("PiuPiuChat" === e.app && Array.isArray(e.history)) return !0;
+                if (Array.isArray(e) && e.length > 0) {
+                  var t = e[0];
+                  if ("model" === t.role || t.imageUrl) return !0;
+                  if (!t.id) return !0
+                }
+                return !1
+              } catch (n) {
+                return !1
+              }
+            }
+          }], (t = null) && o(r.prototype, t), i && o(r, i), Object.defineProperty(r, "prototype", {
+            writable: !1
+          }), r;
+          var r, t, i
+        }())
+      }
+    }
+  })
+}();

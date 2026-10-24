@@ -1,0 +1,473 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function e() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var t, r, n = "function" == typeof Symbol ? Symbol : {},
+      o = n.iterator || "@@iterator",
+      i = n.toStringTag || "@@toStringTag";
+
+    function d(e, n, o, i) {
+      var d = n && n.prototype instanceof c ? n : c,
+        u = Object.create(d.prototype);
+      return a(u, "_invoke", function(e, a, n) {
+        var o, i, d, c = 0,
+          u = n || [],
+          s = !1,
+          p = {
+            p: 0,
+            n: 0,
+            v: t,
+            a: b,
+            f: b.bind(t, 4),
+            d: function(e, a) {
+              return o = e, i = 0, d = t, p.n = a, l
+            }
+          };
+
+        function b(e, a) {
+          for (i = e, d = a, r = 0; !s && c && !n && r < u.length; r++) {
+            var n, o = u[r],
+              b = p.p,
+              f = o[2];
+            e > 3 ? (n = f === a) && (d = o[(i = o[4]) ? 5 : (i = 3, 3)], o[4] = o[5] = t) : o[0] <= b && ((n = e < 2 && b < o[1]) ? (i = 0, p.v = a, p.n = o[1]) : b < f && (n = e < 3 || o[0] > a || a > f) && (o[4] = e, o[5] = a, p.n = f, i = 0))
+          }
+          if (n || e > 1) return l;
+          throw s = !0, a
+        }
+        return function(n, u, f) {
+          if (c > 1) throw TypeError("Generator is already running");
+          for (s && 1 === u && b(u, f), i = u, d = f;
+            (r = i < 2 ? t : d) || !s;) {
+            o || (i ? i < 3 ? (i > 1 && (p.n = -1), b(i, d)) : p.n = d : p.v = d);
+            try {
+              if (c = 2, o) {
+                if (i || (n = "next"), r = o[n]) {
+                  if (!(r = r.call(o, d))) throw TypeError("iterator result is not an object");
+                  if (!r.done) return r;
+                  d = r.value, i < 2 && (i = 0)
+                } else 1 === i && (r = o.return) && r.call(o), i < 2 && (d = TypeError("The iterator does not provide a '" + n + "' method"), i = 1);
+                o = t
+              } else if ((r = (s = p.n < 0) ? d : e.call(a, p)) !== l) break
+            } catch (r) {
+              o = t, i = 1, d = r
+            } finally {
+              c = 1
+            }
+          }
+          return {
+            value: r,
+            done: s
+          }
+        }
+      }(e, o, i), !0), u
+    }
+    var l = {};
+
+    function c() {}
+
+    function u() {}
+
+    function s() {}
+    r = Object.getPrototypeOf;
+    var p = [][o] ? r(r([][o]())) : (a(r = {}, o, function() {
+        return this
+      }), r),
+      b = s.prototype = c.prototype = Object.create(p);
+
+    function f(e) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(e, s) : (e.__proto__ = s, a(e, i, "GeneratorFunction")), e.prototype = Object.create(b), e
+    }
+    return u.prototype = s, a(b, "constructor", s), a(s, "constructor", u), u.displayName = "GeneratorFunction", a(s, i, "GeneratorFunction"), a(b), a(b, i, "Generator"), a(b, o, function() {
+      return this
+    }), a(b, "toString", function() {
+      return "[object Generator]"
+    }), (e = function() {
+      return {
+        w: d,
+        m: f
+      }
+    })()
+  }
+
+  function a(e, t, r, n) {
+    var o = Object.defineProperty;
+    try {
+      o({}, "", {})
+    } catch (e) {
+      o = 0
+    }
+    a = function(e, t, r, n) {
+      function i(t, r) {
+        a(e, t, function(e) {
+          return this._invoke(t, r, e)
+        })
+      }
+      t ? o ? o(e, t, {
+        value: r,
+        enumerable: !n,
+        configurable: !n,
+        writable: !n
+      }) : e[t] = r : (i("next", 0), i("throw", 1), i("return", 2))
+    }, a(e, t, r, n)
+  }
+
+  function t(e, a, t, r, n, o, i) {
+    try {
+      var d = e[o](i),
+        l = d.value
+    } catch (e) {
+      return void t(e)
+    }
+    d.done ? a(l) : Promise.resolve(l).then(r, n)
+  }
+  System.register(["../e/index-legacy-B0tYRju5.js", "./app-security-legacy-BdXLf8ML.js", "./refresh-cw-legacy-8ZRhP8a6.js"], function(a, r) {
+    "use strict";
+    var n, o, i, d, l, c, u, s, p, b, f, v, h, g, m, y, w, x, k, j, M, O, _, z, S, C, L, P, R;
+    return {
+      setters: [function(e) {
+        n = e.c, o = e.g, i = e.e, d = e.D, l = e.bp, c = e.bq, u = e.br, s = e.bs, p = e._
+      }, function(e) {
+        b = e.k, f = e.w, v = e.F, h = e.J, g = e.R, m = e.Z, y = e.$, w = e.M, x = e.N, k = e.L, j = e.u, M = e.Y, O = e.r, _ = e.c, z = e.W, S = e.O, C = e.Q, L = e.T, P = e.K
+      }, function(e) {
+        R = e.R
+      }],
+      execute: function() {
+        var r = document.createElement("style");
+        r.textContent = ".web-modal-overlay[data-v-d96dc1ba]{position:fixed;top:0;right:0;bottom:0;left:0;z-index:9998;display:flex;align-items:center;justify-content:center;padding:max(14px,var(--safe-area-inset-top)) 14px max(14px,var(--safe-area-inset-bottom));background:rgba(16,18,24,.72)}.web-modal[data-v-d96dc1ba]{width:min(980px,100%);height:min(var(--app-viewport-height) - 28px - var(--safe-area-inset-top) - var(--safe-area-inset-bottom),860px);display:flex;flex-direction:column;overflow:hidden;border:1px solid rgba(255,143,171,.16);border-radius:22px;background:var(--bg-color);box-shadow:0 28px 70px rgba(15,23,42,.24)}.web-modal-header[data-v-d96dc1ba]{position:relative;flex:0 0 auto;display:grid;grid-template-columns:88px minmax(0,1fr) 88px;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid rgba(255,143,171,.12);background:rgba(255,255,255,.9)}.dark-mode .web-modal-header[data-v-d96dc1ba]{background:rgba(30,31,38,.96);border-bottom-color:rgba(255,255,255,.08)}.header-actions[data-v-d96dc1ba]{display:inline-flex;align-items:center;gap:8px}.title-block[data-v-d96dc1ba]{min-width:0;display:flex;flex-direction:column;gap:3px;align-items:center;justify-content:center;text-align:center;height:40px}.title-block h3[data-v-d96dc1ba]{margin:0;color:var(--text-color);font-size:15px;font-weight:800;line-height:1.2}.title-block span[data-v-d96dc1ba]{display:none}.icon-btn[data-v-d96dc1ba]{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border:1px solid rgba(255,143,171,.12);border-radius:14px;background:rgba(255,255,255,.72);color:var(--text-color);cursor:pointer;transition:transform .16s ease,background .16s ease}.icon-btn[data-v-d96dc1ba]:active{transform:scale(.94)}.dark-mode .icon-btn[data-v-d96dc1ba]{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)}.web-frame-shell[data-v-d96dc1ba]{position:relative;flex:1 1 auto;min-height:0;background:#fff;overflow:hidden}.web-frame[data-v-d96dc1ba]{width:100%;height:100%;display:block;border:0;background:#fff}.frame-status[data-v-d96dc1ba]{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;align-items:center;justify-content:center;gap:10px;background:rgba(255,255,255,.88);color:var(--text-secondary-color);font-size:14px}.dark-mode .frame-status[data-v-d96dc1ba]{background:rgba(24,25,31,.88)}.download-panel[data-v-d96dc1ba]{flex:0 0 auto;padding:11px 14px 13px;border-top:1px solid rgba(255,143,171,.12);background:rgba(255,248,251,.96)}.dark-mode .download-panel[data-v-d96dc1ba]{background:rgba(34,29,36,.96);border-top-color:rgba(255,255,255,.08)}.download-title[data-v-d96dc1ba],.download-error[data-v-d96dc1ba]{display:flex;align-items:center;gap:8px;color:var(--text-color);font-size:13px;font-weight:700}.download-error[data-v-d96dc1ba]{color:#ef4444}.progress-bar[data-v-d96dc1ba]{height:7px;margin-top:9px;overflow:hidden;border-radius:999px;background:rgba(255,143,171,.14)}.progress-fill[data-v-d96dc1ba]{height:100%;border-radius:inherit;background:linear-gradient(90deg,#f78cab,#f7a8bf);transition:width .25s ease}.spinning[data-v-d96dc1ba]{animation:spin-d96dc1ba .9s linear infinite}@keyframes spin-d96dc1ba{to{transform:rotate(360deg)}}@media(max-width:640px){.web-modal-overlay[data-v-d96dc1ba]{padding:0}.web-modal[data-v-d96dc1ba]{width:100%;height:var(--app-viewport-height);border-radius:0;border-width:0}.web-modal-header[data-v-d96dc1ba]{padding-top:max(10px,var(--safe-area-inset-top))}}\n/*$vite$:1*/", document.head.appendChild(r);
+        /**
+         * @license lucide-vue-next v0.562.0 - ISC
+         *
+         * This source code is licensed under the ISC license.
+         * See the LICENSE file in the root directory of this source tree.
+         */
+        var T = a("A", n("arrow-left", [
+            ["path", {
+              d: "m12 19-7-7 7-7",
+              key: "1l729n"
+            }],
+            ["path", {
+              d: "M19 12H5",
+              key: "x3x0zl"
+            }]
+          ])),
+          W = (a("B", n("book-open-text", [
+            ["path", {
+              d: "M12 7v14",
+              key: "1akyts"
+            }],
+            ["path", {
+              d: "M16 12h2",
+              key: "7q9ll5"
+            }],
+            ["path", {
+              d: "M16 8h2",
+              key: "msurwy"
+            }],
+            ["path", {
+              d: "M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z",
+              key: "ruj8y"
+            }],
+            ["path", {
+              d: "M6 12h2",
+              key: "32wvfc"
+            }],
+            ["path", {
+              d: "M6 8h2",
+              key: "30oboj"
+            }]
+          ])), n("external-link", [
+            ["path", {
+              d: "M15 3h6v6",
+              key: "1q9fwt"
+            }],
+            ["path", {
+              d: "M10 14 21 3",
+              key: "gplh6r"
+            }],
+            ["path", {
+              d: "M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6",
+              key: "a6xqqp"
+            }]
+          ])),
+          E = (a("R", n("ruler", [
+            ["path", {
+              d: "M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z",
+              key: "icamh8"
+            }],
+            ["path", {
+              d: "m14.5 12.5 2-2",
+              key: "inckbg"
+            }],
+            ["path", {
+              d: "m11.5 9.5 2-2",
+              key: "fmmyf7"
+            }],
+            ["path", {
+              d: "m8.5 6.5 2-2",
+              key: "vc6u1g"
+            }],
+            ["path", {
+              d: "m17.5 15.5 2-2",
+              key: "wo5hmg"
+            }]
+          ])), {
+            key: 0,
+            class: "web-modal-overlay"
+          }),
+          F = {
+            class: "web-modal"
+          },
+          G = {
+            class: "web-modal-header"
+          },
+          q = {
+            class: "title-block"
+          },
+          U = {
+            class: "header-actions"
+          },
+          $ = {
+            class: "web-frame-shell"
+          },
+          A = ["src"],
+          D = {
+            key: 0,
+            class: "frame-status"
+          },
+          H = {
+            key: 0,
+            class: "download-panel"
+          },
+          K = {
+            class: "download-title"
+          },
+          B = {
+            class: "progress-bar"
+          },
+          N = {
+            key: 1,
+            class: "download-error"
+          },
+          V = b({
+            __name: "OfficialWebModal",
+            props: {
+              show: {
+                type: Boolean
+              },
+              title: {},
+              url: {}
+            },
+            emits: ["update:show"],
+            setup: function(a, r) {
+              var n = r.emit,
+                p = a,
+                b = n,
+                V = o().showToast,
+                Z = O(null),
+                I = O(0),
+                J = O(!1),
+                Q = O(!1),
+                Y = O(0),
+                X = O(!1),
+                ee = O(""),
+                ae = _(function() {
+                  return p.url
+                });
+
+              function te() {
+                Q.value ? V("正在下载中，请稍候", "warning") : b("update:show", !1)
+              }
+
+              function re() {
+                s(function(e) {
+                  if (-2 === e) return X.value = !0, void(Q.value = !1); - 1 !== e ? e >= 0 && e <= 100 && (Q.value = !0, Y.value = e, e >= 100 && (Q.value = !1)) : Q.value = !0
+                })
+              }
+
+              function ne() {
+                var e = window;
+                delete e.piupiuEmbeddedDownloadStarted, delete e.piupiuCloseOfficialWebModal, c()
+              }
+
+              function oe() {
+                J.value = !0, I.value += 1
+              }
+
+              function ie() {
+                var e = ee.value || p.url;
+                try {
+                  var a = new URL(e);
+                  if (!["http:", "https:"].includes(a.protocol)) throw new Error("Unsupported URL protocol");
+                  window.open(a.toString(), "_blank")
+                } catch (t) {
+                  console.warn("[OfficialWebModal] Failed to open external browser:", t), V("网页地址无效，无法跳转", "error")
+                }
+              }
+
+              function de(e) {
+                try {
+                  return new URL(e, p.url).pathname.toLowerCase().endsWith(".apk")
+                } catch (a) {
+                  return /\.apk(?:$|[?#])/i.test(e)
+                }
+              }
+
+              function le(e) {
+                return ce.apply(this, arguments)
+              }
+
+              function ce() {
+                var a;
+                return a = e().m(function a(t) {
+                  var r, n, o, i = arguments;
+                  return e().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (r = i.length > 1 && void 0 !== i[1] && i[1], !Q.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        if (n = new URL(t, p.url).toString(), Q.value = !0, X.value = !1, Y.value = 0, re(), !r) {
+                          e.n = 2;
+                          break
+                        }
+                        return V("已开始下载 APK", "success"), e.a(2);
+                      case 2:
+                        return e.p = 2, e.n = 3, u(n);
+                      case 3:
+                        e.v || (Q.value = !1, c()), e.n = 5;
+                        break;
+                      case 4:
+                        e.p = 4, o = e.v, console.warn("[OfficialWebModal] Failed to start download:", o), X.value = !0, Q.value = !1;
+                      case 5:
+                        return e.a(2)
+                    }
+                  }, a, null, [
+                    [2, 4]
+                  ])
+                }), ce = function() {
+                  var e = this,
+                    r = arguments;
+                  return new Promise(function(n, o) {
+                    var i = a.apply(e, r);
+
+                    function d(e) {
+                      t(i, n, o, d, l, "next", e)
+                    }
+
+                    function l(e) {
+                      t(i, n, o, d, l, "throw", e)
+                    }
+                    d(void 0)
+                  })
+                }, ce.apply(this, arguments)
+              }
+
+              function ue() {
+                J.value = !1;
+                try {
+                  var e, a = (null === (e = Z.value) || void 0 === e || null === (e = e.contentWindow) || void 0 === e ? void 0 : e.location.href) || "";
+                  a && (ee.value = a, de(a) && (le(a), oe()))
+                } catch (t) {
+                  ee.value = p.url
+                }
+              }
+              return i(function() {
+                  return p.show
+                }, te), f(function() {
+                  return p.show
+                }, function(e) {
+                  e ? (J.value = !0, ee.value = p.url, Q.value = !1, Y.value = 0, X.value = !1, function() {
+                    re();
+                    var e = window;
+                    e.piupiuEmbeddedDownloadStarted = function(e) {
+                      de(e) && le(e, !0)
+                    }, e.piupiuCloseOfficialWebModal = te
+                  }(), I.value += 1) : (ne(), J.value = !1)
+                }), v(function() {
+                  ne()
+                }),
+                function(e, t) {
+                  return P(), h(L, {
+                    to: "body"
+                  }, [g(m, {
+                    name: "modal-fade"
+                  }, {
+                    default: y(function() {
+                      return [a.show ? (P(), w("div", E, [k("div", F, [k("header", G, [k("button", {
+                        class: "icon-btn",
+                        type: "button",
+                        "aria-label": "关闭",
+                        onClick: te
+                      }, [g(j(T), {
+                        size: 19
+                      })]), k("div", q, [k("h3", null, M(a.title), 1), k("span", null, M(ee.value || ae.value), 1)]), k("div", U, [k("button", {
+                        class: "icon-btn",
+                        type: "button",
+                        "aria-label": "在浏览器中打开",
+                        title: "在浏览器中打开",
+                        onClick: ie
+                      }, [g(j(W), {
+                        size: 18
+                      })]), k("button", {
+                        class: "icon-btn",
+                        type: "button",
+                        "aria-label": "刷新",
+                        title: "刷新",
+                        onClick: oe
+                      }, [g(j(R), {
+                        size: 18,
+                        class: z({
+                          spinning: J.value
+                        })
+                      }, null, 8, ["class"])])])]), k("div", $, [(P(), w("iframe", {
+                        key: I.value,
+                        ref_key: "iframeRef",
+                        ref: Z,
+                        class: "web-frame",
+                        src: ae.value,
+                        title: "官方页面",
+                        allow: "clipboard-read; clipboard-write",
+                        onLoad: ue
+                      }, null, 40, A)), J.value ? (P(), w("div", D, [g(j(R), {
+                        size: 22,
+                        class: "spinning"
+                      }), t[0] || (t[0] = k("span", null, "正在加载...", -1))])) : x("", !0)]), Q.value || X.value ? (P(), w("div", H, [Q.value ? (P(), w(S, {
+                        key: 0
+                      }, [k("div", K, [g(j(d), {
+                        size: 16
+                      }), k("span", null, "正在下载 APK " + M(Y.value > 0 ? "".concat(Y.value, "%") : ""), 1)]), k("div", B, [k("div", {
+                        class: "progress-fill",
+                        style: C({
+                          width: "".concat(Y.value, "%")
+                        })
+                      }, null, 4)])], 64)) : x("", !0), X.value ? (P(), w("div", N, [g(j(l), {
+                        size: 16
+                      }), t[1] || (t[1] = k("span", null, "下载失败，请检查网络后重试", -1))])) : x("", !0)])) : x("", !0)])])) : x("", !0)]
+                    }),
+                    _: 1
+                  })])
+                }
+            }
+          });
+        /**
+         * @license lucide-vue-next v0.562.0 - ISC
+         *
+         * This source code is licensed under the ISC license.
+         * See the LICENSE file in the root directory of this source tree.
+         */
+        a("O", p(V, [
+          ["__scopeId", "data-v-d96dc1ba"]
+        ]))
+      }
+    }
+  })
+}();

@@ -1,0 +1,1169 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function e(e, n) {
+    for (var r = 0; r < n.length; r++) {
+      var o = n[r];
+      o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, t(o.key), o)
+    }
+  }
+
+  function t(e) {
+    var t = function(e, t) {
+      if ("object" != h(e) || !e) return e;
+      var n = e[Symbol.toPrimitive];
+      if (void 0 !== n) {
+        var r = n.call(e, t || "default");
+        if ("object" != h(r)) return r;
+        throw new TypeError("@@toPrimitive must return a primitive value.")
+      }
+      return ("string" === t ? String : Number)(e)
+    }(e, "string");
+    return "symbol" == h(t) ? t : t + ""
+  }
+
+  function n(e, t, n) {
+    return t = i(t),
+      function(e, t) {
+        if (t && ("object" == h(t) || "function" == typeof t)) return t;
+        if (void 0 !== t) throw new TypeError("Derived constructors may only return object or undefined");
+        return function(e) {
+          if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+          return e
+        }(e)
+      }(e, o() ? Reflect.construct(t, n || [], i(e).constructor) : t.apply(e, n))
+  }
+
+  function r(e) {
+    var t = "function" == typeof Map ? new Map : void 0;
+    return r = function(e) {
+      if (null === e || ! function(e) {
+          try {
+            return -1 !== Function.toString.call(e).indexOf("[native code]")
+          } catch (t) {
+            return "function" == typeof e
+          }
+        }(e)) return e;
+      if ("function" != typeof e) throw new TypeError("Super expression must either be null or a function");
+      if (void 0 !== t) {
+        if (t.has(e)) return t.get(e);
+        t.set(e, n)
+      }
+
+      function n() {
+        return function(e, t, n) {
+          if (o()) return Reflect.construct.apply(null, arguments);
+          var r = [null];
+          r.push.apply(r, t);
+          var i = new(e.bind.apply(e, r));
+          return n && a(i, n.prototype), i
+        }(e, arguments, i(this).constructor)
+      }
+      return n.prototype = Object.create(e.prototype, {
+        constructor: {
+          value: n,
+          enumerable: !1,
+          writable: !0,
+          configurable: !0
+        }
+      }), a(n, e)
+    }, r(e)
+  }
+
+  function o() {
+    try {
+      var e = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {}))
+    } catch (e) {}
+    return (o = function() {
+      return !!e
+    })()
+  }
+
+  function a(e, t) {
+    return a = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(e, t) {
+      return e.__proto__ = t, e
+    }, a(e, t)
+  }
+
+  function i(e) {
+    return i = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(e) {
+      return e.__proto__ || Object.getPrototypeOf(e)
+    }, i(e)
+  }
+
+  function u() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var e, t, n = "function" == typeof Symbol ? Symbol : {},
+      r = n.iterator || "@@iterator",
+      o = n.toStringTag || "@@toStringTag";
+
+    function a(n, r, o, a) {
+      var u = r && r.prototype instanceof l ? r : l,
+        s = Object.create(u.prototype);
+      return c(s, "_invoke", function(n, r, o) {
+        var a, u, c, l = 0,
+          s = o || [],
+          f = !1,
+          $ = {
+            p: 0,
+            n: 0,
+            v: e,
+            a: p,
+            f: p.bind(e, 4),
+            d: function(t, n) {
+              return a = t, u = 0, c = e, $.n = n, i
+            }
+          };
+
+        function p(n, r) {
+          for (u = n, c = r, t = 0; !f && l && !o && t < s.length; t++) {
+            var o, a = s[t],
+              p = $.p,
+              m = a[2];
+            n > 3 ? (o = m === r) && (c = a[(u = a[4]) ? 5 : (u = 3, 3)], a[4] = a[5] = e) : a[0] <= p && ((o = n < 2 && p < a[1]) ? (u = 0, $.v = r, $.n = a[1]) : p < m && (o = n < 3 || a[0] > r || r > m) && (a[4] = n, a[5] = r, $.n = m, u = 0))
+          }
+          if (o || n > 1) return i;
+          throw f = !0, r
+        }
+        return function(o, s, m) {
+          if (l > 1) throw TypeError("Generator is already running");
+          for (f && 1 === s && p(s, m), u = s, c = m;
+            (t = u < 2 ? e : c) || !f;) {
+            a || (u ? u < 3 ? (u > 1 && ($.n = -1), p(u, c)) : $.n = c : $.v = c);
+            try {
+              if (l = 2, a) {
+                if (u || (o = "next"), t = a[o]) {
+                  if (!(t = t.call(a, c))) throw TypeError("iterator result is not an object");
+                  if (!t.done) return t;
+                  c = t.value, u < 2 && (u = 0)
+                } else 1 === u && (t = a.return) && t.call(a), u < 2 && (c = TypeError("The iterator does not provide a '" + o + "' method"), u = 1);
+                a = e
+              } else if ((t = (f = $.n < 0) ? c : n.call(r, $)) !== i) break
+            } catch (t) {
+              a = e, u = 1, c = t
+            } finally {
+              l = 1
+            }
+          }
+          return {
+            value: t,
+            done: f
+          }
+        }
+      }(n, o, a), !0), s
+    }
+    var i = {};
+
+    function l() {}
+
+    function s() {}
+
+    function f() {}
+    t = Object.getPrototypeOf;
+    var $ = [][r] ? t(t([][r]())) : (c(t = {}, r, function() {
+        return this
+      }), t),
+      p = f.prototype = l.prototype = Object.create($);
+
+    function m(e) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(e, f) : (e.__proto__ = f, c(e, o, "GeneratorFunction")), e.prototype = Object.create(p), e
+    }
+    return s.prototype = f, c(p, "constructor", f), c(f, "constructor", s), s.displayName = "GeneratorFunction", c(f, o, "GeneratorFunction"), c(p), c(p, o, "Generator"), c(p, r, function() {
+      return this
+    }), c(p, "toString", function() {
+      return "[object Generator]"
+    }), (u = function() {
+      return {
+        w: a,
+        m: m
+      }
+    })()
+  }
+
+  function c(e, t, n, r) {
+    var o = Object.defineProperty;
+    try {
+      o({}, "", {})
+    } catch (e) {
+      o = 0
+    }
+    c = function(e, t, n, r) {
+      function a(t, n) {
+        c(e, t, function(e) {
+          return this._invoke(t, n, e)
+        })
+      }
+      t ? o ? o(e, t, {
+        value: n,
+        enumerable: !r,
+        configurable: !r,
+        writable: !r
+      }) : e[t] = n : (a("next", 0), a("throw", 1), a("return", 2))
+    }, c(e, t, n, r)
+  }
+
+  function l(e, t, n, r, o, a, i) {
+    try {
+      var u = e[a](i),
+        c = u.value
+    } catch (e) {
+      return void n(e)
+    }
+    u.done ? t(c) : Promise.resolve(c).then(r, o)
+  }
+
+  function s(e) {
+    return function() {
+      var t = this,
+        n = arguments;
+      return new Promise(function(r, o) {
+        var a = e.apply(t, n);
+
+        function i(e) {
+          l(a, r, o, i, u, "next", e)
+        }
+
+        function u(e) {
+          l(a, r, o, i, u, "throw", e)
+        }
+        i(void 0)
+      })
+    }
+  }
+
+  function f(e, t) {
+    return function(e) {
+      if (Array.isArray(e)) return e
+    }(e) || function(e, t) {
+      var n = null == e ? null : "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
+      if (null != n) {
+        var r, o, a, i, u = [],
+          c = !0,
+          l = !1;
+        try {
+          if (a = (n = n.call(e)).next, 0 === t) {
+            if (Object(n) !== n) return;
+            c = !1
+          } else
+            for (; !(c = (r = a.call(n)).done) && (u.push(r.value), u.length !== t); c = !0);
+        } catch (e) {
+          l = !0, o = e
+        } finally {
+          try {
+            if (!c && null != n.return && (i = n.return(), Object(i) !== i)) return
+          } finally {
+            if (l) throw o
+          }
+        }
+        return u
+      }
+    }(e, t) || m(e, t) || function() {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }()
+  }
+
+  function $(e, t) {
+    var n = "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
+    if (!n) {
+      if (Array.isArray(e) || (n = m(e)) || t && e && "number" == typeof e.length) {
+        n && (e = n);
+        var r = 0,
+          o = function() {};
+        return {
+          s: o,
+          n: function() {
+            return r >= e.length ? {
+              done: !0
+            } : {
+              done: !1,
+              value: e[r++]
+            }
+          },
+          e: function(e) {
+            throw e
+          },
+          f: o
+        }
+      }
+      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }
+    var a, i = !0,
+      u = !1;
+    return {
+      s: function() {
+        n = n.call(e)
+      },
+      n: function() {
+        var e = n.next();
+        return i = e.done, e
+      },
+      e: function(e) {
+        u = !0, a = e
+      },
+      f: function() {
+        try {
+          i || null == n.return || n.return()
+        } finally {
+          if (u) throw a
+        }
+      }
+    }
+  }
+
+  function p(e) {
+    return function(e) {
+      if (Array.isArray(e)) return d(e)
+    }(e) || function(e) {
+      if ("undefined" != typeof Symbol && null != e[Symbol.iterator] || null != e["@@iterator"]) return Array.from(e)
+    }(e) || m(e) || function() {
+      throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }()
+  }
+
+  function m(e, t) {
+    if (e) {
+      if ("string" == typeof e) return d(e, t);
+      var n = {}.toString.call(e).slice(8, -1);
+      return "Object" === n && e.constructor && (n = e.constructor.name), "Map" === n || "Set" === n ? Array.from(e) : "Arguments" === n || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n) ? d(e, t) : void 0
+    }
+  }
+
+  function d(e, t) {
+    (null == t || t > e.length) && (t = e.length);
+    for (var n = 0, r = Array(t); n < t; n++) r[n] = e[n];
+    return r
+  }
+
+  function h(e) {
+    return h = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+      return typeof e
+    } : function(e) {
+      return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
+    }, h(e)
+  }
+  System.register(["./app-security-legacy-BdXLf8ML.js"], function(t, o) {
+    "use strict";
+    var i;
+    return {
+      setters: [function(e) {
+        i = e._
+      }],
+      execute: function() {
+        var c = "hydrated",
+          l = !0,
+          m = Object.defineProperty,
+          d = new WeakMap,
+          y = function(e) {
+            return d.get(e)
+          },
+          v = (t("r", function(e, t) {
+            return d.set(t.$lazyInstance$ = e, t)
+          }), function(e, t) {
+            return (0, console.error)(e, t)
+          }),
+          b = new Map,
+          g = function(e, t, n) {
+            var r = e.$tagName$.replace(/-/g, "_"),
+              a = e.$lazyBundleId$;
+            if (a) {
+              var u = b.get(a);
+              if (u) return u[r];
+              return "jeep-sqlite" === a ? i(function() {
+                return o.import("./jeep-sqlite.entry-legacy-Wf67Dcg5.js")
+              }, void 0).then(function(e) {
+                return b.set(a, e), e[r]
+              }, v) : i(function() {
+                return o.import("./".concat(a, ".entry.js"))
+              }, void 0).then(function(e) {
+                return b.set(a, e), e[r]
+              }, v)
+            }
+          },
+          w = new Map,
+          S = "slot-fb{display:contents}slot-fb[hidden]{display:none}",
+          O = "undefined" != typeof window ? window : {},
+          j = O.document || {
+            head: {}
+          },
+          E = {
+            $flags$: 0,
+            $resourcesUrl$: "",
+            jmp: function(e) {
+              return e()
+            },
+            raf: function(e) {
+              return requestAnimationFrame(e)
+            },
+            ael: function(e, t, n, r) {
+              return e.addEventListener(t, n, r)
+            },
+            rel: function(e, t, n, r) {
+              return e.removeEventListener(t, n, r)
+            },
+            ce: function(e, t) {
+              return new CustomEvent(e, t)
+            }
+          },
+          T = function() {
+            try {
+              return new CSSStyleSheet, "function" == typeof(new CSSStyleSheet).replaceSync
+            } catch (e) {}
+            return !1
+          }(),
+          R = !1,
+          P = [],
+          k = [],
+          x = function(e, t) {
+            return function(t) {
+              e.push(t), R || (R = !0, 4 & E.$flags$ ? C(A) : E.raf(A))
+            }
+          },
+          N = function(e) {
+            for (var t = 0; t < e.length; t++) try {
+              e[t](performance.now())
+            } catch (n) {
+              v(n)
+            }
+            e.length = 0
+          },
+          A = function() {
+            N(P), N(k), (R = P.length > 0) && E.raf(A)
+          },
+          C = function(e) {
+            return Promise.resolve(t).then(e);
+            var t
+          },
+          M = x(k),
+          I = {},
+          L = function(e) {
+            return "object" === (e = h(e)) || "function" === e
+          };
+
+        function _(e) {
+          var t, n, r;
+          return null != (r = null == (n = null == (t = e.head) ? void 0 : t.querySelector('meta[name="csp-nonce"]')) ? void 0 : n.getAttribute("content")) ? r : void 0
+        }! function(e, t) {
+          for (var n in t) m(e, n, {
+            get: t[n],
+            enumerable: !0
+          })
+        }({}, {
+          err: function() {
+            return D
+          },
+          map: function() {
+            return H
+          },
+          ok: function() {
+            return z
+          },
+          unwrap: function() {
+            return B
+          },
+          unwrapErr: function() {
+            return F
+          }
+        });
+        var z = function(e) {
+            return {
+              isOk: !0,
+              isErr: !1,
+              value: e
+            }
+          },
+          D = function(e) {
+            return {
+              isOk: !1,
+              isErr: !0,
+              value: e
+            }
+          };
+
+        function H(e, t) {
+          if (e.isOk) {
+            var n = t(e.value);
+            return n instanceof Promise ? n.then(function(e) {
+              return z(e)
+            }) : z(n)
+          }
+          if (e.isErr) {
+            var r = e.value;
+            return D(r)
+          }
+          throw "should never get here"
+        }
+        var q, B = function(e) {
+            if (e.isOk) return e.value;
+            throw e.value
+          },
+          F = function(e) {
+            if (e.isErr) return e.value;
+            throw e.value
+          },
+          U = function(e) {
+            return function() {}
+          },
+          G = function(e, t) {
+            return function() {}
+          },
+          V = function(e, t) {
+            var n = {
+              $flags$: 0,
+              $tag$: e,
+              $text$: t,
+              $elm$: null,
+              $children$: null,
+              $attrs$: null
+            };
+            return n
+          },
+          W = {},
+          J = t("g", function(e) {
+            return y(e).$hostElement$
+          }),
+          K = (t("c", function(e, t, n) {
+            var r = J(e);
+            return {
+              emit: function(e) {
+                return K(r, t, {
+                  bubbles: !0,
+                  composed: !0,
+                  cancelable: !0,
+                  detail: e
+                })
+              }
+            }
+          }), function(e, t, n) {
+            var r = E.ce(t, n);
+            return e.dispatchEvent(r), r
+          }),
+          Q = new WeakMap,
+          X = function(e, t, n) {
+            var r = w.get(e);
+            T && n ? "string" == typeof(r = r || new CSSStyleSheet) ? r = t : r.replaceSync(t) : r = t, w.set(e, r)
+          },
+          Y = function(e) {
+            var t = e.$cmpMeta$,
+              n = e.$hostElement$,
+              r = t.$flags$,
+              o = (t.$tagName$, function() {}),
+              a = function(e, t) {
+                var n, r = Z(t),
+                  o = w.get(r);
+                if (e = 11 === e.nodeType ? e : j, o)
+                  if ("string" == typeof o) {
+                    e = e.head || e;
+                    var a, i = Q.get(e);
+                    if (i || Q.set(e, i = new Set), !i.has(r)) {
+                      (a = j.createElement("style")).innerHTML = o;
+                      var u = null != (n = E.$nonce$) ? n : _(j);
+                      null != u && a.setAttribute("nonce", u), (!(1 & t.$flags$) || 1 & t.$flags$ && "HEAD" !== e.nodeName) && e.insertBefore(a, e.querySelector("link")), 4 & t.$flags$ && (a.innerHTML += S), i && i.add(r)
+                    }
+                  } else e.adoptedStyleSheets.includes(o) || (e.adoptedStyleSheets = [].concat(p(e.adoptedStyleSheets), [o]));
+                return r
+              }(n.shadowRoot ? n.shadowRoot : n.getRootNode(), t);
+            10 & r && 2 & r && (n["s-sc"] = a, n.classList.add(a + "-h")), o()
+          },
+          Z = function(e, t) {
+            return "sc-" + e.$tagName$
+          },
+          ee = function(e, t, n, r, o, a) {
+            if (n !== r) {
+              var i = function(e, t) {
+                return t in e
+              }(e, t);
+              t.toLowerCase();
+              var u = L(r);
+              if ((i || u && null !== r) && !o) try {
+                if (e.tagName.includes("-")) e[t] = r;
+                else {
+                  var c = null == r ? "" : r;
+                  "list" === t ? i = !1 : null != n && e[t] == c || (e[t] = c)
+                }
+              } catch (l) {}
+              null == r || !1 === r ? !1 === r && "" !== e.getAttribute(t) || e.removeAttribute(t) : (!i || 4 & a || o) && !u && (r = !0 === r ? "" : r, e.setAttribute(t, r))
+            }
+          },
+          te = function(e, t, n) {
+            var r, o = 11 === t.$elm$.nodeType && t.$elm$.host ? t.$elm$.host : t.$elm$,
+              a = e && e.$attrs$ || I,
+              i = t.$attrs$ || I,
+              u = $(ne(Object.keys(a)));
+            try {
+              for (u.s(); !(r = u.n()).done;) {
+                var c = r.value;
+                c in i || ee(o, c, a[c], void 0, n, t.$flags$)
+              }
+            } catch (p) {
+              u.e(p)
+            } finally {
+              u.f()
+            }
+            var l, s = $(ne(Object.keys(i)));
+            try {
+              for (s.s(); !(l = s.n()).done;) {
+                var f = l.value;
+                ee(o, f, a[f], i[f], n, t.$flags$)
+              }
+            } catch (p) {
+              s.e(p)
+            } finally {
+              s.f()
+            }
+          };
+
+        function ne(e) {
+          return e.includes("ref") ? [].concat(p(e.filter(function(e) {
+            return "ref" !== e
+          })), ["ref"]) : e
+        }
+        var re = !1,
+          oe = function(e, t, n, r) {
+            var o, a, i = t.$children$[n],
+              u = 0;
+            if (o = i.$elm$ = j.createElement(i.$tag$), te(null, i, re), o.getRootNode().querySelector("body"), i.$children$)
+              for (u = 0; u < i.$children$.length; ++u)(a = oe(e, i, u)) && o.appendChild(a);
+            return o["s-hn"] = q, o
+          },
+          ae = function(e, t, n, r, o, a) {
+            var i, u = e;
+            for (u.shadowRoot && u.tagName === q && (u = u.shadowRoot); o <= a; ++o) r[o] && (i = oe(null, n, o)) && (r[o].$elm$ = i, se(u, i, t))
+          },
+          ie = function(e, t, n) {
+            for (var r = t; r <= n; ++r) {
+              var o = e[r];
+              if (o) {
+                var a = o.$elm$;
+                a && a.remove()
+              }
+            }
+          },
+          ue = function(e, t, n, r) {
+            for (var o, a = arguments.length > 4 && void 0 !== arguments[4] && arguments[4], i = 0, u = 0, c = t.length - 1, l = t[0], s = t[c], f = r.length - 1, $ = r[0], p = r[f]; i <= c && u <= f;) null == l ? l = t[++i] : null == s ? s = t[--c] : null == $ ? $ = r[++u] : null == p ? p = r[--f] : ce(l, $, a) ? (le(l, $, a), l = t[++i], $ = r[++u]) : ce(s, p, a) ? (le(s, p, a), s = t[--c], p = r[--f]) : ce(l, p, a) ? (le(l, p, a), se(e, l.$elm$, s.$elm$.nextSibling), l = t[++i], p = r[--f]) : ce(s, $, a) ? (le(s, $, a), se(e, s.$elm$, l.$elm$), s = t[--c], $ = r[++u]) : (o = oe(t && t[u], n, u), $ = r[++u], o && se(l.$elm$.parentNode, o, l.$elm$));
+            i > c ? ae(e, null == r[f + 1] ? null : r[f + 1].$elm$, n, r, u, f) : u > f && ie(t, i, c)
+          },
+          ce = function(e, t) {
+            return e.$tag$ === t.$tag$
+          },
+          le = function(e, t) {
+            var n = arguments.length > 2 && void 0 !== arguments[2] && arguments[2],
+              r = t.$elm$ = e.$elm$,
+              o = e.$children$,
+              a = t.$children$;
+            te(e, t, re), null !== o && null !== a ? ue(r, o, t, a, n) : null !== a ? ae(r, null, t, a, 0, a.length - 1) : !n && l && null !== o && ie(o, 0, o.length - 1)
+          },
+          se = function(e, t, n) {
+            return null == e ? void 0 : e.insertBefore(t, n)
+          },
+          fe = function(e, t) {
+            var n, r = arguments.length > 2 && void 0 !== arguments[2] && arguments[2],
+              o = e.$hostElement$,
+              a = e.$cmpMeta$,
+              i = e.$vnode$ || V(null, null),
+              u = (n = t) && n.$tag$ === W ? t : function(e, t) {
+                for (var n = null, r = !1, o = !1, a = [], i = function(e) {
+                    for (var t = 0; t < e.length; t++) n = e[t], Array.isArray(n) ? i(n) : null != n && "boolean" != typeof n && ((r = !L(n)) && (n = String(n)), r && o ? a[a.length - 1].$text$ += n : a.push(r ? V(null, n) : n), o = r)
+                  }, u = arguments.length, c = new Array(u > 2 ? u - 2 : 0), l = 2; l < u; l++) c[l - 2] = arguments[l];
+                i(c);
+                var s = V(e, null);
+                return s.$attrs$ = t, a.length > 0 && (s.$children$ = a), s
+              }(null, null, t);
+            if (q = o.tagName, a.$attrsToReflect$ && (u.$attrs$ = u.$attrs$ || {}, a.$attrsToReflect$.map(function(e) {
+                var t = f(e, 2),
+                  n = t[0],
+                  r = t[1];
+                return u.$attrs$[r] = o[n]
+              })), r && u.$attrs$)
+              for (var c = 0, l = Object.keys(u.$attrs$); c < l.length; c++) {
+                var s = l[c];
+                o.hasAttribute(s) && !["key", "ref", "style", "class"].includes(s) && (u.$attrs$[s] = o[s])
+              }
+            u.$tag$ = null, u.$flags$ |= 4, e.$vnode$ = u, u.$elm$ = i.$elm$ = o.shadowRoot || o, o["s-sc"], a.$flags$, le(i, u, r)
+          },
+          $e = function(e, t) {
+            t && !e.$onRenderResolve$ && t["s-p"] && t["s-p"].push(new Promise(function(t) {
+              return e.$onRenderResolve$ = t
+            }))
+          },
+          pe = function(e, t) {
+            if (e.$flags$ |= 16, !(4 & e.$flags$)) {
+              $e(e, e.$ancestorComponent$);
+              return M(function() {
+                return me(e, t)
+              })
+            }
+            e.$flags$ |= 512
+          },
+          me = function(e, t) {
+            var n, r = e.$hostElement$,
+              o = (e.$cmpMeta$.$tagName$, function() {}),
+              a = e.$lazyInstance$;
+            if (!a) throw new Error("Can't render component <".concat(r.tagName.toLowerCase(), " /> with invalid Stencil runtime! Make sure this imported component is compiled with a `externalRuntime: true` flag. For more information, please refer to https://stenciljs.com/docs/custom-elements#externalruntime"));
+            return t && (n = we(a, "componentWillLoad")), o(), de(n, function() {
+              return ye(e, a, t)
+            })
+          },
+          de = function(e, t) {
+            return he(e) ? e.then(t).catch(function(e) {
+              console.error(e), t()
+            }) : t()
+          },
+          he = function(e) {
+            return e instanceof Promise || e && e.then && "function" == typeof e.then
+          },
+          ye = function() {
+            var e = s(u().m(function e(t, n, r) {
+              var o, a, i, c, l, s, f;
+              return u().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    a = t.$hostElement$, i = U("update", t.$cmpMeta$.$tagName$), c = a["s-rc"], r && Y(t), l = U("render", t.$cmpMeta$.$tagName$), ve(t, n, a, r), c && (c.map(function(e) {
+                      return e()
+                    }), a["s-rc"] = void 0), l(), i(), s = null != (o = a["s-p"]) ? o : [], f = function() {
+                      return be(t)
+                    }, 0 === s.length ? f() : (Promise.all(s).then(f), t.$flags$ |= 4, s.length = 0);
+                  case 1:
+                    return e.a(2)
+                }
+              }, e)
+            }));
+            return function(t, n, r) {
+              return e.apply(this, arguments)
+            }
+          }(),
+          ve = function(e, t, n, r) {
+            try {
+              t = t.render(), e.$flags$ &= -17, e.$flags$ |= 2, fe(e, t, r)
+            } catch (o) {
+              v(o, e.$hostElement$)
+            }
+            return null
+          },
+          be = function(e) {
+            e.$cmpMeta$.$tagName$;
+            var t = e.$hostElement$,
+              n = function() {},
+              r = e.$lazyInstance$,
+              o = e.$ancestorComponent$;
+            64 & e.$flags$ ? n() : (e.$flags$ |= 64, Se(t), we(r, "componentDidLoad"), n(), e.$onReadyResolve$(t), o || ge()), e.$onInstanceResolve$(t), e.$onRenderResolve$ && (e.$onRenderResolve$(), e.$onRenderResolve$ = void 0), 512 & e.$flags$ && C(function() {
+              return pe(e, !1)
+            }), e.$flags$ &= -517
+          },
+          ge = function(e) {
+            Se(j.documentElement), C(function() {
+              return K(O, "appload", {
+                detail: {
+                  namespace: "jeep-sqlite"
+                }
+              })
+            })
+          },
+          we = function(e, t, n) {
+            if (e && e[t]) try {
+              return e[t](n)
+            } catch (r) {
+              v(r)
+            }
+          },
+          Se = function(e) {
+            var t;
+            return e.classList.add(null != (t = c) ? t : "hydrated")
+          },
+          Oe = function(e, t, n, r) {
+            var o = y(e);
+            if (!o) throw new Error("Couldn't find host element for \"".concat(r.$tagName$, '" as it is unknown to this Stencil runtime. This usually happens when integrating a 3rd party Stencil component with another Stencil component or application. Please reach out to the maintainers of the 3rd party Stencil component or report this on the Stencil Discord server (https://chat.stenciljs.com) or comment on this similar [GitHub issue](https://github.com/ionic-team/stencil/issues/5457).'));
+            var a, i, u = o.$hostElement$,
+              c = o.$instanceValues$.get(t),
+              l = o.$flags$,
+              s = o.$lazyInstance$;
+            a = n, i = r.$members$[t][0], n = null == a || L(a) ? a : 4 & i ? "false" !== a && ("" === a || !!a) : 1 & i ? String(a) : a;
+            var f = Number.isNaN(c) && Number.isNaN(n);
+            if ((!(8 & l) || void 0 === c) && (n !== c && !f) && (o.$instanceValues$.set(t, n), s)) {
+              if (r.$watchers$ && 128 & l) {
+                var $ = r.$watchers$[t];
+                $ && $.map(function(e) {
+                  try {
+                    s[e](n, c, t)
+                  } catch (r) {
+                    v(r, u)
+                  }
+                })
+              }
+              2 == (18 & l) && pe(o, !1)
+            }
+          },
+          je = function(e, t, n) {
+            var r, o, a = e.prototype;
+            if (t.$members$ || t.$watchers$ || e.watchers) {
+              e.watchers && !t.$watchers$ && (t.$watchers$ = e.watchers);
+              var i = Object.entries(null != (r = t.$members$) ? r : {});
+              if (i.map(function(e) {
+                  var r = f(e, 2),
+                    o = r[0],
+                    i = f(r[1], 1)[0];
+                  31 & i || 2 & n && 32 & i ? Object.defineProperty(a, o, {
+                    get: function() {
+                      return e = o, y(this).$instanceValues$.get(e);
+                      var e
+                    },
+                    set: function(e) {
+                      Oe(this, o, e, t)
+                    },
+                    configurable: !0,
+                    enumerable: !0
+                  }) : 1 & n && 64 & i && Object.defineProperty(a, o, {
+                    value: function() {
+                      for (var e = arguments.length, t = new Array(e), n = 0; n < e; n++) t[n] = arguments[n];
+                      var r, a = y(this);
+                      return null == (r = null == a ? void 0 : a.$onInstancePromise$) ? void 0 : r.then(function() {
+                        var e, n;
+                        return null == (n = a.$lazyInstance$) ? void 0 : (e = n)[o].apply(e, t)
+                      })
+                    }
+                  })
+                }), 1 & n) {
+                var u = new Map;
+                a.attributeChangedCallback = function(e, n, r) {
+                  var o = this;
+                  E.jmp(function() {
+                    var i, c = u.get(e);
+                    if (o.hasOwnProperty(c)) r = o[c], delete o[c];
+                    else {
+                      if (a.hasOwnProperty(c) && "number" == typeof o[c] && o[c] == r) return;
+                      if (null == c) {
+                        var l = y(o),
+                          s = null == l ? void 0 : l.$flags$;
+                        if (s && !(8 & s) && 128 & s && r !== n) {
+                          var f = l.$lazyInstance$,
+                            $ = null == (i = t.$watchers$) ? void 0 : i[e];
+                          null == $ || $.forEach(function(t) {
+                            null != f[t] && f[t].call(f, r, n, e)
+                          })
+                        }
+                        return
+                      }
+                    }
+                    o[c] = (null !== r || "boolean" != typeof o[c]) && r
+                  })
+                }, e.observedAttributes = Array.from(new Set([].concat(p(Object.keys(null != (o = t.$watchers$) ? o : {})), p(i.filter(function(e) {
+                  var t = f(e, 2);
+                  t[0];
+                  return 15 & t[1][0]
+                }).map(function(e) {
+                  var n, r = f(e, 2),
+                    o = r[0],
+                    a = r[1],
+                    i = a[1] || o;
+                  return u.set(i, o), 512 & a[0] && (null == (n = t.$attrsToReflect$) || n.push([o, i])), i
+                })))))
+              }
+            }
+            return e
+          },
+          Ee = function() {
+            var e = s(u().m(function e(t, n, r, o) {
+              var a, i, c, l, s, f, $, p, m, d;
+              return u().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    if (32 & n.$flags$) {
+                      e.n = 7;
+                      break
+                    }
+                    if (n.$flags$ |= 32, !r.$lazyBundleId$) {
+                      e.n = 5;
+                      break
+                    }
+                    if (!(i = g(r)) || !("then" in i)) {
+                      e.n = 2;
+                      break
+                    }
+                    return c = G(), e.n = 1, i;
+                  case 1:
+                    a = e.v, c(), e.n = 3;
+                    break;
+                  case 2:
+                    a = i;
+                  case 3:
+                    if (a) {
+                      e.n = 4;
+                      break
+                    }
+                    throw new Error('Constructor for "'.concat(r.$tagName$, "#").concat(n.$modeName$, '" was not found'));
+                  case 4:
+                    a.isProxied || (r.$watchers$ = a.watchers, je(a, r, 2), a.isProxied = !0), l = U("createInstance", r.$tagName$), n.$flags$ |= 8;
+                    try {
+                      new a(n)
+                    } catch (o) {
+                      v(o)
+                    }
+                    n.$flags$ &= -9, n.$flags$ |= 128, l(), Te(n.$lazyInstance$), e.n = 6;
+                    break;
+                  case 5:
+                    a = t.constructor, s = t.localName, customElements.whenDefined(s).then(function() {
+                      return n.$flags$ |= 128
+                    });
+                  case 6:
+                    a && a.style && ("string" == typeof a.style && (f = a.style), $ = Z(r), w.has($) || (p = U("registerStyles", r.$tagName$), X($, f, !!(1 & r.$flags$)), p()));
+                  case 7:
+                    m = n.$ancestorComponent$, d = function() {
+                      return pe(n, !0)
+                    }, m && m["s-rc"] ? m["s-rc"].push(d) : d();
+                  case 8:
+                    return e.a(2)
+                }
+              }, e)
+            }));
+            return function(t, n, r, o) {
+              return e.apply(this, arguments)
+            }
+          }(),
+          Te = function(e) {
+            we(e, "connectedCallback")
+          },
+          Re = function() {
+            var e = s(u().m(function e(t) {
+              var n;
+              return u().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    1 & E.$flags$ || (null == (n = y(t)) ? void 0 : n.$lazyInstance$) || (null == n ? void 0 : n.$onReadyPromise$) && n.$onReadyPromise$.then(function() {});
+                  case 1:
+                    return e.a(2)
+                }
+              }, e)
+            }));
+            return function(t) {
+              return e.apply(this, arguments)
+            }
+          }(),
+          Pe = function(t) {
+            var o, i, u = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {},
+              c = function() {},
+              l = [],
+              s = u.exclude || [],
+              $ = O.customElements,
+              p = j.head,
+              m = p.querySelector("meta[charset]"),
+              h = j.createElement("style"),
+              v = [],
+              b = !0;
+            Object.assign(E, u), E.$resourcesUrl$ = new URL(u.resourcesUrl || "./", j.baseURI).href;
+            var g = !1;
+            if (t.map(function(t) {
+                t[1].map(function(o) {
+                  var u, c = {
+                    $flags$: o[0],
+                    $tagName$: o[1],
+                    $members$: o[2],
+                    $listeners$: o[3]
+                  };
+                  4 & c.$flags$ && (g = !0), c.$members$ = o[2], c.$attrsToReflect$ = [], c.$watchers$ = null != (u = o[4]) ? u : {};
+                  var p = c.$tagName$,
+                    m = function(t) {
+                      function r(e) {
+                        var t;
+                        if (function(e, t) {
+                            if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function")
+                          }(this, r), (t = n(this, r, [e])).hasRegisteredEventListeners = !1, function(e, t) {
+                            var n = {
+                              $flags$: 0,
+                              $hostElement$: e,
+                              $cmpMeta$: t,
+                              $instanceValues$: new Map
+                            };
+                            n.$onInstancePromise$ = new Promise(function(e) {
+                              return n.$onInstanceResolve$ = e
+                            }), n.$onReadyPromise$ = new Promise(function(e) {
+                              return n.$onReadyResolve$ = e
+                            }), e["s-p"] = [], e["s-rc"] = [], d.set(e, n)
+                          }(e = t, c), 1 & c.$flags$)
+                          if (e.shadowRoot) {
+                            if ("open" !== e.shadowRoot.mode) throw new Error("Unable to re-use existing shadow root for ".concat(c.$tagName$, "! Mode is set to ").concat(e.shadowRoot.mode, " but Stencil only supports open shadow roots."))
+                          } else e.attachShadow({
+                            mode: "open"
+                          });
+                        return t
+                      }
+                      return function(e, t) {
+                        if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function");
+                        e.prototype = Object.create(t && t.prototype, {
+                          constructor: {
+                            value: e,
+                            writable: !0,
+                            configurable: !0
+                          }
+                        }), Object.defineProperty(e, "prototype", {
+                          writable: !1
+                        }), t && a(e, t)
+                      }(r, t), o = r, u = [{
+                        key: "connectedCallback",
+                        value: function() {
+                          var e = this;
+                          y(this), this.hasRegisteredEventListeners || (this.hasRegisteredEventListeners = !0), i && (clearTimeout(i), i = null), b ? v.push(this) : E.jmp(function() {
+                            return function(e) {
+                              if (!(1 & E.$flags$)) {
+                                var t = y(e),
+                                  n = t.$cmpMeta$,
+                                  r = (n.$tagName$, function() {});
+                                if (1 & t.$flags$)(null == t ? void 0 : t.$lazyInstance$) ? Te(t.$lazyInstance$) : (null == t ? void 0 : t.$onReadyPromise$) && t.$onReadyPromise$.then(function() {
+                                  return Te(t.$lazyInstance$)
+                                });
+                                else {
+                                  t.$flags$ |= 1;
+                                  for (var o = e; o = o.parentNode || o.host;)
+                                    if (o["s-p"]) {
+                                      $e(t, t.$ancestorComponent$ = o);
+                                      break
+                                    } n.$members$ && Object.entries(n.$members$).map(function(t) {
+                                    var n = f(t, 2),
+                                      r = n[0];
+                                    if (31 & f(n[1], 1)[0] && e.hasOwnProperty(r)) {
+                                      var o = e[r];
+                                      delete e[r], e[r] = o
+                                    }
+                                  }), Ee(e, t, n)
+                                }
+                                r()
+                              }
+                            }(e)
+                          })
+                        }
+                      }, {
+                        key: "disconnectedCallback",
+                        value: function() {
+                          var e = this;
+                          E.jmp(function() {
+                            return Re(e)
+                          })
+                        }
+                      }, {
+                        key: "componentOnReady",
+                        value: function() {
+                          return y(this).$onReadyPromise$
+                        }
+                      }], u && e(o.prototype, u), l && e(o, l), Object.defineProperty(o, "prototype", {
+                        writable: !1
+                      }), o;
+                      var o, u, l
+                    }(r(HTMLElement));
+                  c.$lazyBundleId$ = t[0], s.includes(p) || $.get(p) || (l.push(p), $.define(p, je(m, c, 1)))
+                })
+              }), l.length > 0 && (g && (h.textContent += S), h.textContent += l.sort() + "{visibility:hidden}.hydrated{visibility:inherit}", h.innerHTML.length)) {
+              h.setAttribute("data-styles", "");
+              var w = null != (o = E.$nonce$) ? o : _(j);
+              null != w && h.setAttribute("nonce", w), p.insertBefore(h, m ? m.nextSibling : p.firstChild)
+            }
+            b = !1, v.length ? v.map(function(e) {
+              return e.connectedCallback()
+            }) : E.jmp(function() {
+              return i = setTimeout(ge, 30)
+            }), c()
+          },
+          ke = function() {},
+          xe = function() {
+            var e = s(u().m(function e(t, n) {
+              return u().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    if ("undefined" != typeof window) {
+                      e.n = 1;
+                      break
+                    }
+                    return e.a(2, void 0);
+                  case 1:
+                    return e.n = 2, ke();
+                  case 2:
+                    return e.a(2, Pe([
+                      ["jeep-sqlite", [
+                        [1, "jeep-sqlite", {
+                          autoSave: [516, "autosave"],
+                          typeOrm: [516, "typeorm"],
+                          wasmPath: [513, "wasmpath"],
+                          pickText: [513, "picktext"],
+                          saveText: [513, "savetext"],
+                          buttonOptions: [513, "buttonoptions"],
+                          innerAutoSave: [32],
+                          innerTypeOrm: [32],
+                          innerWasmPath: [32],
+                          innerPickText: [32],
+                          innerSaveText: [32],
+                          innerButtonOptions: [32],
+                          echo: [64],
+                          createConnection: [64],
+                          isConnection: [64],
+                          closeConnection: [64],
+                          open: [64],
+                          close: [64],
+                          getVersion: [64],
+                          beginTransaction: [64],
+                          commitTransaction: [64],
+                          rollbackTransaction: [64],
+                          isTransactionActive: [64],
+                          execute: [64],
+                          executeSet: [64],
+                          run: [64],
+                          query: [64],
+                          getTableList: [64],
+                          isDBExists: [64],
+                          isDBOpen: [64],
+                          deleteDatabase: [64],
+                          isStoreOpen: [64],
+                          copyFromAssets: [64],
+                          isTableExists: [64],
+                          createSyncTable: [64],
+                          getSyncDate: [64],
+                          setSyncDate: [64],
+                          isJsonValid: [64],
+                          importFromJson: [64],
+                          exportToJson: [64],
+                          deleteExportedRows: [64],
+                          addUpgradeStatement: [64],
+                          isDatabase: [64],
+                          getDatabaseList: [64],
+                          checkConnectionsConsistency: [64],
+                          saveToStore: [64],
+                          saveToLocalDisk: [64],
+                          getFromLocalDiskToStore: [64],
+                          getFromHTTPRequest: [64]
+                        }, null, {
+                          autoSave: ["parseAutoSave"],
+                          typeOrm: ["parseTypeOrm"],
+                          wasmPath: ["parseWasmPath"],
+                          pickText: ["parsePickText"],
+                          saveText: ["parseSaveText"],
+                          buttonOptions: ["parseButtonOptions"]
+                        }]
+                      ]]
+                    ], n))
+                }
+              }, e)
+            }));
+            return function(t, n) {
+              return e.apply(this, arguments)
+            }
+          }();
+        ! function() {
+          if ("undefined" != typeof window && void 0 !== window.Reflect && void 0 !== window.customElements) {
+            var e = HTMLElement;
+            window.HTMLElement = function() {
+              return Reflect.construct(e, [], this.constructor)
+            }, HTMLElement.prototype = e.prototype, HTMLElement.prototype.constructor = HTMLElement, Object.setPrototypeOf(HTMLElement, e)
+          }
+        }();
+        var Ne = Object.freeze(Object.defineProperty({
+          __proto__: null,
+          defineCustomElements: xe
+        }, Symbol.toStringTag, {
+          value: "Module"
+        }));
+        t("i", Ne)
+      }
+    }
+  })
+}();

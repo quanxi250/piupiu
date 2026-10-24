@@ -1,0 +1,800 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+System.register([], function(t, r) {
+  "use strict";
+  return {
+    execute: function() {
+      t({
+        c: rt,
+        g: function(t, n) {
+          var i = R(t);
+          return i + 8 > t.length && D(6, "invalid gzip data"), U(t.subarray(i, -8), {
+            i: 2
+          }, n && n.out || new r(V(t)), n && n.dictionary)
+        },
+        s: nt
+      });
+      var r = Uint8Array,
+        n = Uint16Array,
+        i = Int32Array,
+        e = new r([0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0, 0, 0, 0]),
+        s = new r([0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 0, 0]),
+        a = new r([16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15]),
+        o = function(t, r) {
+          for (var e = new n(31), s = 0; s < 31; ++s) e[s] = r += 1 << t[s - 1];
+          var a = new i(e[30]);
+          for (s = 1; s < 30; ++s)
+            for (var o = e[s]; o < e[s + 1]; ++o) a[o] = o - e[s] << 5 | s;
+          return {
+            b: e,
+            r: a
+          }
+        },
+        h = o(e, 2),
+        f = h.b,
+        u = h.r;
+      f[28] = 258, u[258] = 28;
+      for (var l = o(s, 0), c = l.b, v = l.r, p = new n(32768), d = 0; d < 32768; ++d) {
+        var g = (43690 & d) >> 1 | (21845 & d) << 1;
+        g = (61680 & (g = (52428 & g) >> 2 | (13107 & g) << 2)) >> 4 | (3855 & g) << 4, p[d] = ((65280 & g) >> 8 | (255 & g) << 8) >> 1
+      }
+      var b = function(t, r, i) {
+          for (var e = t.length, s = 0, a = new n(r); s < e; ++s) t[s] && ++a[t[s] - 1];
+          var o, h = new n(r);
+          for (s = 1; s < r; ++s) h[s] = h[s - 1] + a[s - 1] << 1;
+          if (i) {
+            o = new n(1 << r);
+            var f = 15 - r;
+            for (s = 0; s < e; ++s)
+              if (t[s])
+                for (var u = s << 4 | t[s], l = r - t[s], c = h[t[s] - 1]++ << l, v = c | (1 << l) - 1; c <= v; ++c) o[p[c] >> f] = u
+          } else
+            for (o = new n(e), s = 0; s < e; ++s) t[s] && (o[s] = p[h[t[s] - 1]++] >> 15 - t[s]);
+          return o
+        },
+        w = new r(288);
+      for (d = 0; d < 144; ++d) w[d] = 8;
+      for (d = 144; d < 256; ++d) w[d] = 9;
+      for (d = 256; d < 280; ++d) w[d] = 7;
+      for (d = 280; d < 288; ++d) w[d] = 8;
+      var y = new r(32);
+      for (d = 0; d < 32; ++d) y[d] = 5;
+      var m = b(w, 9, 0),
+        z = b(w, 9, 1),
+        k = b(y, 5, 0),
+        M = b(y, 5, 1),
+        x = function(t) {
+          for (var r = t[0], n = 1; n < t.length; ++n) t[n] > r && (r = t[n]);
+          return r
+        },
+        C = function(t, r, n) {
+          var i = r / 8 | 0;
+          return (t[i] | t[i + 1] << 8) >> (7 & r) & n
+        },
+        S = function(t, r) {
+          var n = r / 8 | 0;
+          return (t[n] | t[n + 1] << 8 | t[n + 2] << 16) >> (7 & r)
+        },
+        T = function(t) {
+          return (t + 7) / 8 | 0
+        },
+        A = function(t, n, i) {
+          return (null == n || n < 0) && (n = 0), (null == i || i > t.length) && (i = t.length), new r(t.subarray(n, i))
+        },
+        E = ["unexpected EOF", "invalid block type", "invalid length/literal", "invalid distance", "stream finished", "no stream handler", , "no callback", "invalid UTF-8 data", "extra field too long", "date not in range 1980-2099", "filename too long", "stream finishing", "invalid zip data"],
+        D = function(t, r, n) {
+          var i = new Error(r || E[t]);
+          if (i.code = t, Error.captureStackTrace && Error.captureStackTrace(i, D), !n) throw i;
+          return i
+        },
+        U = function(t, n, i, o) {
+          var h = t.length,
+            u = o ? o.length : 0;
+          if (!h || n.f && !n.l) return i || new r(0);
+          var l = !i,
+            v = l || 2 != n.i,
+            p = n.i;
+          l && (i = new r(3 * h));
+          var d = function(t) {
+              var n = i.length;
+              if (t > n) {
+                var e = new r(Math.max(2 * n, t));
+                e.set(i), i = e
+              }
+            },
+            g = n.f || 0,
+            w = n.p || 0,
+            y = n.b || 0,
+            m = n.l,
+            k = n.d,
+            E = n.m,
+            U = n.n,
+            F = 8 * h;
+          do {
+            if (!m) {
+              g = C(t, w, 1);
+              var I = C(t, w + 1, 3);
+              if (w += 3, !I) {
+                var H = t[(N = T(w) + 4) - 4] | t[N - 3] << 8,
+                  O = N + H;
+                if (O > h) {
+                  p && D(0);
+                  break
+                }
+                v && d(y + H), i.set(t.subarray(N, O), y), n.b = y += H, n.p = w = 8 * O, n.f = g;
+                continue
+              }
+              if (1 == I) m = z, k = M, E = 9, U = 5;
+              else if (2 == I) {
+                var Y = C(t, w, 31) + 257,
+                  Z = C(t, w + 10, 15) + 4,
+                  j = Y + C(t, w + 5, 31) + 1;
+                w += 14;
+                for (var q = new r(j), B = new r(19), G = 0; G < Z; ++G) B[a[G]] = C(t, w + 3 * G, 7);
+                w += 3 * Z;
+                var J = x(B),
+                  K = (1 << J) - 1,
+                  L = b(B, J, 1);
+                for (G = 0; G < j;) {
+                  var N, P = L[C(t, w, K)];
+                  if (w += 15 & P, (N = P >> 4) < 16) q[G++] = N;
+                  else {
+                    var Q = 0,
+                      R = 0;
+                    for (16 == N ? (R = 3 + C(t, w, 3), w += 2, Q = q[G - 1]) : 17 == N ? (R = 3 + C(t, w, 7), w += 3) : 18 == N && (R = 11 + C(t, w, 127), w += 7); R--;) q[G++] = Q
+                  }
+                }
+                var V = q.subarray(0, Y),
+                  W = q.subarray(Y);
+                E = x(V), U = x(W), m = b(V, E, 1), k = b(W, U, 1)
+              } else D(1);
+              if (w > F) {
+                p && D(0);
+                break
+              }
+            }
+            v && d(y + 131072);
+            for (var X = (1 << E) - 1, $ = (1 << U) - 1, _ = w;; _ = w) {
+              var tt = (Q = m[S(t, w) & X]) >> 4;
+              if ((w += 15 & Q) > F) {
+                p && D(0);
+                break
+              }
+              if (Q || D(2), tt < 256) i[y++] = tt;
+              else {
+                if (256 == tt) {
+                  _ = w, m = null;
+                  break
+                }
+                var rt = tt - 254;
+                if (tt > 264) {
+                  var nt = e[G = tt - 257];
+                  rt = C(t, w, (1 << nt) - 1) + f[G], w += nt
+                }
+                var it = k[S(t, w) & $],
+                  et = it >> 4;
+                if (it || D(3), w += 15 & it, W = c[et], et > 3 && (nt = s[et], W += S(t, w) & (1 << nt) - 1, w += nt), w > F) {
+                  p && D(0);
+                  break
+                }
+                v && d(y + 131072);
+                var st = y + rt;
+                if (y < W) {
+                  var at = u - W,
+                    ot = Math.min(W, st);
+                  for (at + y < 0 && D(3); y < ot; ++y) i[y] = o[at + y]
+                }
+                for (; y < st; ++y) i[y] = i[y - W]
+              }
+            }
+            n.l = m, n.p = _, n.b = y, n.f = g, m && (g = 1, n.m = E, n.d = k, n.n = U)
+          } while (!g);
+          return y != i.length && l ? A(i, 0, y) : i.subarray(0, y)
+        },
+        F = function(t, r, n) {
+          n <<= 7 & r;
+          var i = r / 8 | 0;
+          t[i] |= n, t[i + 1] |= n >> 8
+        },
+        I = function(t, r, n) {
+          n <<= 7 & r;
+          var i = r / 8 | 0;
+          t[i] |= n, t[i + 1] |= n >> 8, t[i + 2] |= n >> 16
+        },
+        H = function(t, i) {
+          for (var e = [], s = 0; s < t.length; ++s) t[s] && e.push({
+            s: s,
+            f: t[s]
+          });
+          var a = e.length,
+            o = e.slice();
+          if (!a) return {
+            t: G,
+            l: 0
+          };
+          if (1 == a) {
+            var h = new r(e[0].s + 1);
+            return h[e[0].s] = 1, {
+              t: h,
+              l: 1
+            }
+          }
+          e.sort(function(t, r) {
+            return t.f - r.f
+          }), e.push({
+            s: -1,
+            f: 25001
+          });
+          var f = e[0],
+            u = e[1],
+            l = 0,
+            c = 1,
+            v = 2;
+          for (e[0] = {
+              s: -1,
+              f: f.f + u.f,
+              l: f,
+              r: u
+            }; c != a - 1;) f = e[e[l].f < e[v].f ? l++ : v++], u = e[l != c && e[l].f < e[v].f ? l++ : v++], e[c++] = {
+            s: -1,
+            f: f.f + u.f,
+            l: f,
+            r: u
+          };
+          var p = o[0].s;
+          for (s = 1; s < a; ++s) o[s].s > p && (p = o[s].s);
+          var d = new n(p + 1),
+            g = O(e[c - 1], d, 0);
+          if (g > i) {
+            s = 0;
+            var b = 0,
+              w = g - i,
+              y = 1 << w;
+            for (o.sort(function(t, r) {
+                return d[r.s] - d[t.s] || t.f - r.f
+              }); s < a; ++s) {
+              var m = o[s].s;
+              if (!(d[m] > i)) break;
+              b += y - (1 << g - d[m]), d[m] = i
+            }
+            for (b >>= w; b > 0;) {
+              var z = o[s].s;
+              d[z] < i ? b -= 1 << i - d[z]++ - 1 : ++s
+            }
+            for (; s >= 0 && b; --s) {
+              var k = o[s].s;
+              d[k] == i && (--d[k], ++b)
+            }
+            g = i
+          }
+          return {
+            t: new r(d),
+            l: g
+          }
+        },
+        O = function(t, r, n) {
+          return -1 == t.s ? Math.max(O(t.l, r, n + 1), O(t.r, r, n + 1)) : r[t.s] = n
+        },
+        Y = function(t) {
+          for (var r = t.length; r && !t[--r];);
+          for (var i = new n(++r), e = 0, s = t[0], a = 1, o = function(t) {
+              i[e++] = t
+            }, h = 1; h <= r; ++h)
+            if (t[h] == s && h != r) ++a;
+            else {
+              if (!s && a > 2) {
+                for (; a > 138; a -= 138) o(32754);
+                a > 2 && (o(a > 10 ? a - 11 << 5 | 28690 : a - 3 << 5 | 12305), a = 0)
+              } else if (a > 3) {
+                for (o(s), --a; a > 6; a -= 6) o(8304);
+                a > 2 && (o(a - 3 << 5 | 8208), a = 0)
+              }
+              for (; a--;) o(s);
+              a = 1, s = t[h]
+            } return {
+            c: i.subarray(0, e),
+            n: r
+          }
+        },
+        Z = function(t, r) {
+          for (var n = 0, i = 0; i < r.length; ++i) n += t[i] * r[i];
+          return n
+        },
+        j = function(t, r, n) {
+          var i = n.length,
+            e = T(r + 2);
+          t[e] = 255 & i, t[e + 1] = i >> 8, t[e + 2] = 255 ^ t[e], t[e + 3] = 255 ^ t[e + 1];
+          for (var s = 0; s < i; ++s) t[e + s + 4] = n[s];
+          return 8 * (e + 4 + i)
+        },
+        q = function(t, r, i, o, h, f, u, l, c, v, p) {
+          F(r, p++, i), ++h[256];
+          for (var d = H(h, 15), g = d.t, z = d.l, M = H(f, 15), x = M.t, C = M.l, S = Y(g), T = S.c, A = S.n, E = Y(x), D = E.c, U = E.n, O = new n(19), q = 0; q < T.length; ++q) ++O[31 & T[q]];
+          for (q = 0; q < D.length; ++q) ++O[31 & D[q]];
+          for (var B = H(O, 7), G = B.t, J = B.l, K = 19; K > 4 && !G[a[K - 1]]; --K);
+          var L, N, P, Q, R = v + 5 << 3,
+            V = Z(h, w) + Z(f, y) + u,
+            W = Z(h, g) + Z(f, x) + u + 14 + 3 * K + Z(O, G) + 2 * O[16] + 3 * O[17] + 7 * O[18];
+          if (c >= 0 && R <= V && R <= W) return j(r, p, t.subarray(c, c + v));
+          if (F(r, p, 1 + (W < V)), p += 2, W < V) {
+            L = b(g, z, 0), N = g, P = b(x, C, 0), Q = x;
+            var X = b(G, J, 0);
+            for (F(r, p, A - 257), F(r, p + 5, U - 1), F(r, p + 10, K - 4), p += 14, q = 0; q < K; ++q) F(r, p + 3 * q, G[a[q]]);
+            p += 3 * K;
+            for (var $ = [T, D], _ = 0; _ < 2; ++_) {
+              var tt = $[_];
+              for (q = 0; q < tt.length; ++q) {
+                var rt = 31 & tt[q];
+                F(r, p, X[rt]), p += G[rt], rt > 15 && (F(r, p, tt[q] >> 5 & 127), p += tt[q] >> 12)
+              }
+            }
+          } else L = m, N = w, P = k, Q = y;
+          for (q = 0; q < l; ++q) {
+            var nt = o[q];
+            if (nt > 255) {
+              I(r, p, L[257 + (rt = nt >> 18 & 31)]), p += N[rt + 257], rt > 7 && (F(r, p, nt >> 23 & 31), p += e[rt]);
+              var it = 31 & nt;
+              I(r, p, P[it]), p += Q[it], it > 3 && (I(r, p, nt >> 5 & 8191), p += s[it])
+            } else I(r, p, L[nt]), p += N[nt]
+          }
+          return I(r, p, L[256]), p + N[256]
+        },
+        B = new i([65540, 131080, 131088, 131104, 262176, 1048704, 1048832, 2114560, 2117632]),
+        G = new r(0),
+        J = function() {
+          for (var t = new Int32Array(256), r = 0; r < 256; ++r) {
+            for (var n = r, i = 9; --i;) n = (1 & n && -306674912) ^ n >>> 1;
+            t[r] = n
+          }
+          return t
+        }(),
+        K = function(t, a, o, h, f) {
+          if (!f && (f = {
+              l: 1
+            }, a.dictionary)) {
+            var l = a.dictionary.subarray(-32768),
+              c = new r(l.length + t.length);
+            c.set(l), c.set(t, l.length), t = c, f.w = l.length
+          }
+          return function(t, a, o, h, f, l) {
+            var c = l.z || t.length,
+              p = new r(h + c + 5 * (1 + Math.ceil(c / 7e3)) + f),
+              d = p.subarray(h, p.length - f),
+              g = l.l,
+              b = 7 & (l.r || 0);
+            if (a) {
+              b && (d[0] = l.r >> 3);
+              for (var w = B[a - 1], y = w >> 13, m = 8191 & w, z = (1 << o) - 1, k = l.p || new n(32768), M = l.h || new n(z + 1), x = Math.ceil(o / 3), C = 2 * x, S = function(r) {
+                  return (t[r] ^ t[r + 1] << x ^ t[r + 2] << C) & z
+                }, E = new i(25e3), D = new n(288), U = new n(32), F = 0, I = 0, H = l.i || 0, O = 0, Y = l.w || 0, Z = 0; H + 2 < c; ++H) {
+                var G = S(H),
+                  J = 32767 & H,
+                  K = M[G];
+                if (k[J] = K, M[G] = J, Y <= H) {
+                  var L = c - H;
+                  if ((F > 7e3 || O > 24576) && (L > 423 || !g)) {
+                    b = q(t, d, 0, E, D, U, I, O, Z, H - Z, b), O = F = I = 0, Z = H;
+                    for (var N = 0; N < 286; ++N) D[N] = 0;
+                    for (N = 0; N < 30; ++N) U[N] = 0
+                  }
+                  var P = 2,
+                    Q = 0,
+                    R = m,
+                    V = J - K & 32767;
+                  if (L > 2 && G == S(H - V))
+                    for (var W = Math.min(y, L) - 1, X = Math.min(32767, H), $ = Math.min(258, L); V <= X && --R && J != K;) {
+                      if (t[H + P] == t[H + P - V]) {
+                        for (var _ = 0; _ < $ && t[H + _] == t[H + _ - V]; ++_);
+                        if (_ > P) {
+                          if (P = _, Q = V, _ > W) break;
+                          var tt = Math.min(V, _ - 2),
+                            rt = 0;
+                          for (N = 0; N < tt; ++N) {
+                            var nt = H - V + N & 32767,
+                              it = nt - k[nt] & 32767;
+                            it > rt && (rt = it, K = nt)
+                          }
+                        }
+                      }
+                      V += (J = K) - (K = k[J]) & 32767
+                    }
+                  if (Q) {
+                    E[O++] = 268435456 | u[P] << 18 | v[Q];
+                    var et = 31 & u[P],
+                      st = 31 & v[Q];
+                    I += e[et] + s[st], ++D[257 + et], ++U[st], Y = H + P, ++F
+                  } else E[O++] = t[H], ++D[t[H]]
+                }
+              }
+              for (H = Math.max(H, Y); H < c; ++H) E[O++] = t[H], ++D[t[H]];
+              b = q(t, d, g, E, D, U, I, O, Z, H - Z, b), g || (l.r = 7 & b | d[b / 8 | 0] << 3, b -= 7, l.h = M, l.p = k, l.i = H, l.w = Y)
+            } else {
+              for (H = l.w || 0; H < c + g; H += 65535) {
+                var at = H + 65535;
+                at >= c && (d[b / 8 | 0] = g, at = c), b = j(d, b + 1, t.subarray(H, at))
+              }
+              l.i = c
+            }
+            return A(p, 0, h + T(b) + f)
+          }(t, null == a.level ? 6 : a.level, null == a.mem ? f.l ? Math.ceil(1.5 * Math.max(8, Math.min(13, Math.log(t.length)))) : 20 : 12 + a.mem, o, h, f)
+        },
+        L = function(t, r) {
+          return t[r] | t[r + 1] << 8
+        },
+        N = function(t, r) {
+          return (t[r] | t[r + 1] << 8 | t[r + 2] << 16 | t[r + 3] << 24) >>> 0
+        },
+        P = function(t, r) {
+          return N(t, r) + 4294967296 * N(t, r + 4)
+        },
+        Q = function(t, r, n) {
+          for (; n; ++r) t[r] = n, n >>>= 8
+        },
+        R = function(t) {
+          31 == t[0] && 139 == t[1] && 8 == t[2] || D(6, "invalid gzip data");
+          var r = t[3],
+            n = 10;
+          4 & r && (n += 2 + (t[10] | t[11] << 8));
+          for (var i = (r >> 3 & 1) + (r >> 4 & 1); i > 0; i -= !t[n++]);
+          return n + (2 & r)
+        },
+        V = function(t) {
+          var r = t.length;
+          return (t[r - 4] | t[r - 3] << 8 | t[r - 2] << 16 | t[r - 1] << 24) >>> 0
+        },
+        W = function() {
+          function t(t, n) {
+            if ("function" == typeof t && (n = t, t = {}), this.ondata = n, this.o = t || {}, this.s = {
+                l: 0,
+                i: 32768,
+                w: 32768,
+                z: 32768
+              }, this.b = new r(98304), this.o.dictionary) {
+              var i = this.o.dictionary.subarray(-32768);
+              this.b.set(i, 32768 - i.length), this.s.i = 32768 - i.length
+            }
+          }
+          return t.prototype.p = function(t, r) {
+            this.ondata(K(t, this.o, 0, 0, this.s), r)
+          }, t.prototype.push = function(t, n) {
+            this.ondata || D(5), this.s.l && D(4);
+            var i = t.length + this.s.z;
+            if (i > this.b.length) {
+              if (i > 2 * this.b.length - 32768) {
+                var e = new r(-32768 & i);
+                e.set(this.b.subarray(0, this.s.z)), this.b = e
+              }
+              var s = this.b.length - this.s.z;
+              this.b.set(t.subarray(0, s), this.s.z), this.s.z = this.b.length, this.p(this.b, !1), this.b.set(this.b.subarray(-32768)), this.b.set(t.subarray(s), 32768), this.s.z = t.length - s + 32768, this.s.i = 32766, this.s.w = 32768
+            } else this.b.set(t, this.s.z), this.s.z += t.length;
+            this.s.l = 1 & n, (this.s.z > this.s.w + 8191 || n) && (this.p(this.b, n || !1), this.s.w = this.s.i, this.s.i -= 2), n && (this.s = this.o = {}, this.b = G)
+          }, t.prototype.flush = function(t) {
+            if (this.ondata || D(5), this.s.l && D(4), this.p(this.b, !1), this.s.w = this.s.i, this.s.i -= 2, t) {
+              var n = new r(6);
+              n[0] = this.s.r >> 3;
+              var i = j(n, this.s.r, G);
+              this.s.r = 0, this.ondata(n.subarray(0, i >> 3), !1)
+            }
+          }, t
+        }(),
+        X = function() {
+          function t(t, n) {
+            "function" == typeof t && (n = t, t = {}), this.ondata = n;
+            var i = t && t.dictionary && t.dictionary.subarray(-32768);
+            this.s = {
+              i: 0,
+              b: i ? i.length : 0
+            }, this.o = new r(32768), this.p = new r(0), i && this.o.set(i)
+          }
+          return t.prototype.e = function(t) {
+            if (this.ondata || D(5), this.d && D(4), this.p.length) {
+              if (t.length) {
+                var n = new r(this.p.length + t.length);
+                n.set(this.p), n.set(t, this.p.length), this.p = n
+              }
+            } else this.p = t
+          }, t.prototype.c = function(t) {
+            this.s.i = +(this.d = t || !1);
+            var r = this.s.b,
+              n = U(this.p, this.s, this.o);
+            this.ondata(A(n, r, this.s.b), this.d), this.o = A(n, this.s.b - 32768), this.s.b = this.o.length, this.p = A(this.p, this.s.p / 8 | 0), this.s.p &= 7
+          }, t.prototype.push = function(t, r) {
+            this.e(t), this.c(r)
+          }, t
+        }(),
+        $ = "undefined" != typeof TextEncoder && new TextEncoder,
+        _ = "undefined" != typeof TextDecoder && new TextDecoder;
+      try {
+        _.decode(G, {
+          stream: !0
+        })
+      } catch (ot) {}
+      var tt = function(t) {
+        for (var r = "", n = 0;;) {
+          var i = t[n++],
+            e = (i > 127) + (i > 223) + (i > 239);
+          if (n + e > t.length) return {
+            s: r,
+            r: A(t, n - 1)
+          };
+          e ? 3 == e ? (i = ((15 & i) << 18 | (63 & t[n++]) << 12 | (63 & t[n++]) << 6 | 63 & t[n++]) - 65536, r += String.fromCharCode(55296 | i >> 10, 56320 | 1023 & i)) : r += 1 & e ? String.fromCharCode((31 & i) << 6 | 63 & t[n++]) : String.fromCharCode((15 & i) << 12 | (63 & t[n++]) << 6 | 63 & t[n++]) : r += String.fromCharCode(i)
+        }
+      };
+
+      function rt(t, n) {
+        if ($) return $.encode(t);
+        for (var i = t.length, e = new r(t.length + (t.length >> 1)), s = 0, a = function(t) {
+            e[s++] = t
+          }, o = 0; o < i; ++o) {
+          if (s + 5 > e.length) {
+            var h = new r(s + 8 + (i - o << 1));
+            h.set(e), e = h
+          }
+          var f = t.charCodeAt(o);
+          f < 128 || n ? a(f) : f < 2048 ? (a(192 | f >> 6), a(128 | 63 & f)) : f > 55295 && f < 57344 ? (a(240 | (f = 65536 + (1047552 & f) | 1023 & t.charCodeAt(++o)) >> 18), a(128 | f >> 12 & 63), a(128 | f >> 6 & 63), a(128 | 63 & f)) : (a(224 | f >> 12), a(128 | f >> 6 & 63), a(128 | 63 & f))
+        }
+        return A(e, 0, s)
+      }
+
+      function nt(t, r) {
+        if (r) {
+          for (var n = "", i = 0; i < t.length; i += 16384) n += String.fromCharCode.apply(null, t.subarray(i, i + 16384));
+          return n
+        }
+        if (_) return _.decode(t);
+        var e = tt(t),
+          s = e.s;
+        return (n = e.r).length && D(8), s
+      }
+      var it = function(t) {
+          var r = 0;
+          if (t)
+            for (var n in t) {
+              var i = t[n].length;
+              i > 65535 && D(9), r += i + 4
+            }
+          return r
+        },
+        et = function(t, r, n, i, e, s, a, o) {
+          var h = i.length,
+            f = n.extra,
+            u = o && o.length,
+            l = it(f);
+          Q(t, r, null != a ? 33639248 : 67324752), r += 4, null != a && (t[r++] = 20, t[r++] = n.os), t[r] = 20, r += 2, t[r++] = n.flag << 1 | (s < 0 && 8), t[r++] = e && 8, t[r++] = 255 & n.compression, t[r++] = n.compression >> 8;
+          var c = new Date(null == n.mtime ? Date.now() : n.mtime),
+            v = c.getFullYear() - 1980;
+          if ((v < 0 || v > 119) && D(10), Q(t, r, v << 25 | c.getMonth() + 1 << 21 | c.getDate() << 16 | c.getHours() << 11 | c.getMinutes() << 5 | c.getSeconds() >> 1), r += 4, -1 != s && (Q(t, r, n.crc), Q(t, r + 4, s < 0 ? -s - 2 : s), Q(t, r + 8, n.size)), Q(t, r + 12, h), Q(t, r + 14, l), r += 16, null != a && (Q(t, r, u), Q(t, r + 6, n.attrs), Q(t, r + 10, a), r += 14), t.set(i, r), r += h, l)
+            for (var p in f) {
+              var d = f[p],
+                g = d.length;
+              Q(t, r, +p), Q(t, r + 2, g), t.set(d, r + 4), r += 4 + g
+            }
+          return u && (t.set(o, r), r += u), r
+        },
+        st = function() {
+          function t(t) {
+            var r;
+            this.filename = t, this.c = (r = -1, {
+              p: function(t) {
+                for (var n = r, i = 0; i < t.length; ++i) n = J[255 & n ^ t[i]] ^ n >>> 8;
+                r = n
+              },
+              d: function() {
+                return ~r
+              }
+            }), this.size = 0, this.compression = 0
+          }
+          return t.prototype.process = function(t, r) {
+            this.ondata(null, t, r)
+          }, t.prototype.push = function(t, r) {
+            this.ondata || D(5), this.c.p(t), this.size += t.length, r && (this.crc = this.c.d()), this.process(t, r || !1)
+          }, t
+        }(),
+        at = (t("b", function() {
+          function t(t, r) {
+            var n, i = this;
+            r || (r = {}), st.call(this, t), this.d = new W(r, function(t, r) {
+              i.ondata(null, t, r)
+            }), this.compression = 8, this.flag = 1 == (n = r.level) ? 3 : n < 6 ? 2 : 9 == n ? 1 : 0
+          }
+          return t.prototype.process = function(t, r) {
+            try {
+              this.d.push(t, r)
+            } catch (ot) {
+              this.ondata(ot, null, r)
+            }
+          }, t.prototype.push = function(t, r) {
+            st.prototype.push.call(this, t, r)
+          }, t
+        }()), t("Z", function() {
+          function t(t) {
+            this.ondata = t, this.u = [], this.d = 1
+          }
+          return t.prototype.add = function(t) {
+            var n = this;
+            if (this.ondata || D(5), 2 & this.d) this.ondata(D(4 + 8 * (1 & this.d), 0, 1), null, !1);
+            else {
+              var i = rt(t.filename),
+                e = i.length,
+                s = t.comment,
+                a = s && rt(s),
+                o = e != t.filename.length || a && s.length != a.length,
+                h = e + it(t.extra) + 30;
+              e > 65535 && this.ondata(D(11, 0, 1), null, !1);
+              var f = new r(h);
+              et(f, 0, t, i, o, -1);
+              var u = [f],
+                l = function() {
+                  for (var t = 0, r = u; t < r.length; t++) {
+                    var i = r[t];
+                    n.ondata(null, i, !1)
+                  }
+                  u = []
+                },
+                c = this.d;
+              this.d = 0;
+              var v = this.u.length,
+                p = function(t, r) {
+                  var n = {};
+                  for (var i in t) n[i] = t[i];
+                  for (var i in r) n[i] = r[i];
+                  return n
+                }(t, {
+                  f: i,
+                  u: o,
+                  o: a,
+                  t: function() {
+                    t.terminate && t.terminate()
+                  },
+                  r: function() {
+                    if (l(), c) {
+                      var t = n.u[v + 1];
+                      t ? t.r() : n.d = 1
+                    }
+                    c = 1
+                  }
+                }),
+                d = 0;
+              t.ondata = function(i, e, s) {
+                if (i) n.ondata(i, e, s), n.terminate();
+                else if (d += e.length, u.push(e), s) {
+                  var a = new r(16);
+                  Q(a, 0, 134695760), Q(a, 4, t.crc), Q(a, 8, d), Q(a, 12, t.size), u.push(a), p.c = d, p.b = h + d + 16, p.crc = t.crc, p.size = t.size, c && p.r(), c = 1
+                } else c && l()
+              }, this.u.push(p)
+            }
+          }, t.prototype.end = function() {
+            var t = this;
+            2 & this.d ? this.ondata(D(4 + 8 * (1 & this.d), 0, 1), null, !0) : (this.d ? this.e() : this.u.push({
+              r: function() {
+                1 & t.d && (t.u.splice(-1, 1), t.e())
+              },
+              t: function() {}
+            }), this.d = 3)
+          }, t.prototype.e = function() {
+            for (var t = 0, n = 0, i = 0, e = 0, s = this.u; e < s.length; e++) i += 46 + (p = s[e]).f.length + it(p.extra) + (p.o ? p.o.length : 0);
+            for (var a, o, h, f, u, l = new r(i + 22), c = 0, v = this.u; c < v.length; c++) {
+              var p = v[c];
+              et(l, t, p, p.f, p.u, -p.c - 2, n, p.o), t += 46 + p.f.length + it(p.extra) + (p.o ? p.o.length : 0), n += p.b
+            }
+            a = l, o = t, h = this.u.length, f = i, u = n, Q(a, o, 101010256), Q(a, o + 8, h), Q(a, o + 10, h), Q(a, o + 12, f), Q(a, o + 16, u), this.ondata(null, l, !0), this.d = 2
+          }, t.prototype.terminate = function() {
+            for (var t = 0, r = this.u; t < r.length; t++) r[t].t();
+            this.d = 2
+          }, t
+        }()), function() {
+          function t() {}
+          return t.prototype.push = function(t, r) {
+            this.ondata(null, t, r)
+          }, t.compression = 0, t
+        }());
+      t("a", function() {
+        function t() {
+          var t = this;
+          this.i = new X(function(r, n) {
+            t.ondata(null, r, n)
+          })
+        }
+        return t.prototype.push = function(t, r) {
+          try {
+            this.i.push(t, r)
+          } catch (ot) {
+            this.ondata(ot, null, r)
+          }
+        }, t.compression = 8, t
+      }()), t("U", function() {
+        function t(t) {
+          this.onfile = t, this.k = [], this.o = {
+            0: at
+          }, this.p = G
+        }
+        return t.prototype.push = function(t, n) {
+          var i = this;
+          if (this.onfile || D(5), this.p || D(4), this.c > 0) {
+            var e = Math.min(this.c, t.length),
+              s = t.subarray(0, e);
+            if (this.c -= e, this.d ? this.d.push(s, !this.c) : this.k[0].push(s), (t = t.subarray(e)).length) return this.push(t, n)
+          } else {
+            var a = 0,
+              o = 0,
+              h = void 0,
+              f = void 0;
+            this.p.length ? t.length ? ((f = new r(this.p.length + t.length)).set(this.p), f.set(t, this.p.length)) : f = this.p : f = t;
+            for (var u = f.length, l = this.c, c = l && this.d, v = function() {
+                var t = N(f, o);
+                if (67324752 == t) {
+                  a = 1, h = o, p.d = null, p.c = 0;
+                  var r = L(f, o + 6),
+                    n = L(f, o + 8),
+                    e = 2048 & r,
+                    s = 8 & r,
+                    c = L(f, o + 26),
+                    v = L(f, o + 28);
+                  if (u > o + 30 + c + v) {
+                    var d = [];
+                    p.k.unshift(d), a = 2;
+                    var g, b = N(f, o + 18),
+                      w = N(f, o + 22),
+                      y = nt(f.subarray(o + 30, o += 30 + c), !e),
+                      m = function(t, r, n, i, e, s, a) {
+                        var o = 4294967295 == e,
+                          h = 4294967295 == s,
+                          f = r + n;
+                        if (o + h + (4294967295 == a))
+                          for (; r + 4 < f; r += 4 + L(t, r + 2))
+                            if (1 == L(t, r)) return [o ? P(t, r + 4 + 8 * h) : e, h ? P(t, r + 4) : s, a, 1];
+                        return [e, s, a, 0]
+                      }(f, o, v, 0, b, w, 0),
+                      z = m[0],
+                      k = m[1],
+                      M = m[3];
+                    s && (z = -1 - M), o += v, p.c = z;
+                    var x = {
+                      name: y,
+                      compression: n,
+                      start: function() {
+                        if (x.ondata || D(5), z) {
+                          var t = i.o[n];
+                          t || x.ondata(D(14, "unknown compression type " + n, 1), null, !1), (g = z < 0 ? new t(y) : new t(y, z, k)).ondata = function(t, r, n) {
+                            x.ondata(t, r, n)
+                          };
+                          for (var r = 0, e = d; r < e.length; r++) {
+                            var s = e[r];
+                            g.push(s, !1)
+                          }
+                          i.k[0] == d && i.c ? i.d = g : g.push(G, !0)
+                        } else x.ondata(null, G, !0)
+                      },
+                      terminate: function() {
+                        g && g.terminate && g.terminate()
+                      }
+                    };
+                    z >= 0 && (x.size = z, x.originalSize = k), p.onfile(x)
+                  }
+                  return "break"
+                }
+                if (l) {
+                  if (134695760 == t) return h = o += 12 + (-2 == l && 8), a = 3, p.c = 0, "break";
+                  if (33639248 == t) return h = o -= 4, a = 3, p.c = 0, "break"
+                }
+              }, p = this; o < u - 4 && "break" !== v(); ++o);
+            if (this.p = G, l < 0) {
+              var d = a ? f.subarray(0, h - 12 - (-2 == l && 8) - (134695760 == N(f, h - 16) && 4)) : f.subarray(0, o);
+              c ? c.push(d, !!a) : this.k[+(2 == a)].push(d)
+            }
+            if (2 & a) return this.push(f.subarray(o), n);
+            this.p = f.subarray(o)
+          }
+          n && (this.c && D(13), this.p = null)
+        }, t.prototype.register = function(t) {
+          this.o[t.compression] = t
+        }, t
+      }())
+    }
+  }
+});

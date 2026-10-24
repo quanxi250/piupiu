@@ -1,0 +1,218 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function n() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var e, r, o = "function" == typeof Symbol ? Symbol : {},
+      u = o.iterator || "@@iterator",
+      i = o.toStringTag || "@@toStringTag";
+
+    function a(n, o, u, i) {
+      var a = o && o.prototype instanceof s ? o : s,
+        f = Object.create(a.prototype);
+      return t(f, "_invoke", function(n, t, o) {
+        var u, i, a, s = 0,
+          f = o || [],
+          l = !1,
+          p = {
+            p: 0,
+            n: 0,
+            v: e,
+            a: v,
+            f: v.bind(e, 4),
+            d: function(n, t) {
+              return u = n, i = 0, a = e, p.n = t, c
+            }
+          };
+
+        function v(n, t) {
+          for (i = n, a = t, r = 0; !l && s && !o && r < f.length; r++) {
+            var o, u = f[r],
+              v = p.p,
+              y = u[2];
+            n > 3 ? (o = y === t) && (a = u[(i = u[4]) ? 5 : (i = 3, 3)], u[4] = u[5] = e) : u[0] <= v && ((o = n < 2 && v < u[1]) ? (i = 0, p.v = t, p.n = u[1]) : v < y && (o = n < 3 || u[0] > t || t > y) && (u[4] = n, u[5] = t, p.n = y, i = 0))
+          }
+          if (o || n > 1) return c;
+          throw l = !0, t
+        }
+        return function(o, f, y) {
+          if (s > 1) throw TypeError("Generator is already running");
+          for (l && 1 === f && v(f, y), i = f, a = y;
+            (r = i < 2 ? e : a) || !l;) {
+            u || (i ? i < 3 ? (i > 1 && (p.n = -1), v(i, a)) : p.n = a : p.v = a);
+            try {
+              if (s = 2, u) {
+                if (i || (o = "next"), r = u[o]) {
+                  if (!(r = r.call(u, a))) throw TypeError("iterator result is not an object");
+                  if (!r.done) return r;
+                  a = r.value, i < 2 && (i = 0)
+                } else 1 === i && (r = u.return) && r.call(u), i < 2 && (a = TypeError("The iterator does not provide a '" + o + "' method"), i = 1);
+                u = e
+              } else if ((r = (l = p.n < 0) ? a : n.call(t, p)) !== c) break
+            } catch (r) {
+              u = e, i = 1, a = r
+            } finally {
+              s = 1
+            }
+          }
+          return {
+            value: r,
+            done: l
+          }
+        }
+      }(n, u, i), !0), f
+    }
+    var c = {};
+
+    function s() {}
+
+    function f() {}
+
+    function l() {}
+    r = Object.getPrototypeOf;
+    var p = [][u] ? r(r([][u]())) : (t(r = {}, u, function() {
+        return this
+      }), r),
+      v = l.prototype = s.prototype = Object.create(p);
+
+    function y(n) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(n, l) : (n.__proto__ = l, t(n, i, "GeneratorFunction")), n.prototype = Object.create(v), n
+    }
+    return f.prototype = l, t(v, "constructor", l), t(l, "constructor", f), f.displayName = "GeneratorFunction", t(l, i, "GeneratorFunction"), t(v), t(v, i, "Generator"), t(v, u, function() {
+      return this
+    }), t(v, "toString", function() {
+      return "[object Generator]"
+    }), (n = function() {
+      return {
+        w: a,
+        m: y
+      }
+    })()
+  }
+
+  function t(n, e, r, o) {
+    var u = Object.defineProperty;
+    try {
+      u({}, "", {})
+    } catch (n) {
+      u = 0
+    }
+    t = function(n, e, r, o) {
+      function i(e, r) {
+        t(n, e, function(n) {
+          return this._invoke(e, r, n)
+        })
+      }
+      e ? u ? u(n, e, {
+        value: r,
+        enumerable: !o,
+        configurable: !o,
+        writable: !o
+      }) : n[e] = r : (i("next", 0), i("throw", 1), i("return", 2))
+    }, t(n, e, r, o)
+  }
+
+  function e(n, t, e, r, o, u, i) {
+    try {
+      var a = n[u](i),
+        c = a.value
+    } catch (n) {
+      return void e(n)
+    }
+    a.done ? t(c) : Promise.resolve(c).then(r, o)
+  }
+
+  function r(n) {
+    return function() {
+      var t = this,
+        r = arguments;
+      return new Promise(function(o, u) {
+        var i = n.apply(t, r);
+
+        function a(n) {
+          e(i, o, u, a, c, "next", n)
+        }
+
+        function c(n) {
+          e(i, o, u, a, c, "throw", n)
+        }
+        a(void 0)
+      })
+    }
+  }
+  System.register(["./app-security-legacy-BdXLf8ML.js"], function(t, e) {
+    "use strict";
+    var o;
+    return {
+      setters: [function(n) {
+        o = n.au
+      }],
+      execute: function() {
+        t({
+          g: function(n) {
+            return u.apply(this, arguments)
+          },
+          s: function(n, t) {
+            return i.apply(this, arguments)
+          }
+        });
+        var e = t("D", {
+          theme: "light",
+          username: "主人",
+          avatar: null,
+          userPersona: "",
+          personaList: [],
+          channel: "free",
+          vipKey: "",
+          vipStatus: "unknown",
+          musicEnabled: !0,
+          fullscreenEnabled: !1,
+          customBackground: null,
+          seenAnnouncementVersion: 0
+        });
+
+        function u() {
+          return (u = r(n().m(function t(r) {
+            var u;
+            return n().w(function(n) {
+              for (;;) switch (n.p = n.n) {
+                case 0:
+                  return n.n = 1, o.query("SELECT value_json FROM settings WHERE key = ?", [r]);
+                case 1:
+                  if ((u = n.v)[0]) {
+                    n.n = 2;
+                    break
+                  }
+                  return n.a(2, e[r]);
+                case 2:
+                  return n.p = 2, n.a(2, JSON.parse(u[0].value_json));
+                case 3:
+                  return n.p = 3, n.v, console.warn("[database] Setting ".concat(String(r), " contains invalid JSON; using default")), n.a(2, e[r])
+              }
+            }, t, null, [
+              [2, 3]
+            ])
+          }))).apply(this, arguments)
+        }
+
+        function i() {
+          return (i = r(n().m(function t(e, r) {
+            return n().w(function(n) {
+              for (;;) switch (n.n) {
+                case 0:
+                  return n.n = 1, o.run("INSERT INTO settings(key, value_json) VALUES(?, ?)\n         ON CONFLICT(key) DO UPDATE SET value_json = excluded.value_json", [e, JSON.stringify(r)]);
+                case 1:
+                  return n.a(2)
+              }
+            }, t)
+          }))).apply(this, arguments)
+        }
+      }
+    }
+  })
+}();

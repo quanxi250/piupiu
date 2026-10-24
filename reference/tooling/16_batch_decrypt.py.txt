@@ -1,0 +1,72 @@
+# ============================================================
+# 示意代码 / ILLUSTRATIVE CODE
+# 本文件已脱敏，不可直接运行：
+#   - 密钥、地址、账号等敏感值全部替换为占位符
+#   - 仅用于说明逻辑结构，不提供可用参数
+# 详见仓库 DISCLAIMER.md
+# ============================================================
+
+# -*- coding: utf-8 -*-
+"""按已知路径批量解密，并统计对 67 个条目的覆盖情况"""
+import json, os, sys, base64, hashlib, hmac
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from decrypt_pak import Pak, entry_id, normalize_path
+
+ROOT = r"E:\gzq\reverse-piupiu"
+PUB = os.path.join(ROOT, "unpack", "assets", "public")
+OUT = os.path.join(ROOT, "frontend-decrypted")
+CK = "<64_HEX_REDACTED>"
+IK = "<64_HEX_REDACTED>"
+
+pak = Pak(PUB)
+pak._content_key = bytes.fromhex(CK)
+pak._index_key = bytes.fromhex(IK)
+all_ids = set(pak.entries.keys())
+
+# 收集路径：dump 目录里的文件 + paths.txt
+paths = set()
+dump = os.path.join(ROOT, "frontend-dump", "piupiu-dump")
+for r, _d, fs in os.walk(dump):
+    for f in fs:
+        rel = os.path.relpath(os.path.join(r, f), dump).replace(os.sep, "/")
+        paths.add(rel)
+pt = os.path.join(ROOT, "frida", "paths.txt")
+if os.path.exists(pt):
+    for line in open(pt, encoding="utf-8"):
+        line = line.strip()
+        if line and not line.startswith("__"):
+            paths.add(line.lstrip("/"))
+
+# 减去 /live2d /wasm /assets/r 这类非加密资产（它们不在 manifest 里）
+enc = []
+for p in sorted(paths):
+    if pak.find_entry(p):
+        enc.append(p)
+
+print(f"候选路径 {len(paths)} 条，其中在 manifest 里 {len(enc)} 条")
+
+ok = fail = 0
+for p in enc:
+    try:
+        data = pak.decrypt(p)
+        dest = os.path.join(OUT, normalize_path(p).replace("/", os.sep))
+        os.makedirs(os.path.dirname(dest), exist_ok=True)
+        open(dest, "wb").write(data)
+        ok += 1
+    except Exception as e:
+        fail += 1
+        print(f"  [FAIL] {p}: {type(e).__name__}: {e}")
+
+print(f"解密成功 {ok}，失败 {fail}")
+
+# 覆盖统计
+covered = set()
+for p in enc:
+    covered.add(entry_id(pak._index_key, p))
+missing = all_ids - covered
+print(f"\nmanifest 条目 {len(all_ids)}，已覆盖 {len(covered)}，未覆盖 {len(missing)}")
+if missing:
+    print("未覆盖条目（按 pak 内顺序，含明文长度）：")
+    for eid, e in sorted(pak.entries.items(), key=lambda kv: kv[1]["segments"][0]["offset"]):
+        if eid in missing:
+            print(f"   {eid[:16]}  {e['plaintextLength']:>9}  {e['mime']}")

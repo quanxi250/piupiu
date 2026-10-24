@@ -1,0 +1,210 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+System.register(["../e/index-legacy-B0tYRju5.js", "./app-security-legacy-BdXLf8ML.js"], function(e, t) {
+  "use strict";
+  var a, n, o, r, d, i, l, c, s, p, u, b, v, g, h, x, f, m, y, k, w;
+  return {
+    setters: [function(e) {
+      a = e.c, n = e.e, o = e._
+    }, function(e) {
+      r = e.k, d = e.J, i = e.T, l = e.R, c = e.Z, s = e.$, p = e.M, u = e.N, b = e.a2, v = e.Q, g = e.L, h = e.Y, x = e.W, f = e.O, m = e.V, y = e.K, k = e.w, w = e.r
+    }],
+    execute: function() {
+      var t = document.createElement("style");
+      t.textContent = ".modal-overlay[data-v-4be2d7b1]{position:fixed;top:0;right:0;bottom:0;left:0;display:flex;align-items:center;justify-content:center;z-index:3100;padding:24px;background:radial-gradient(circle at top,rgba(247,140,171,.2),transparent 38%),rgba(16,18,27,.62)}.modal-content[data-v-4be2d7b1]{width:100%;max-width:376px;max-height:min(var(--app-viewport-height) * .82,var(--app-viewport-height) - 40px);display:flex;flex-direction:column;overflow:hidden;background:linear-gradient(180deg,rgba(255,252,254,.98),rgba(255,246,249,.98));border:1px solid rgba(247,140,171,.18);border-radius:32px;box-shadow:0 26px 60px rgba(233,136,168,.2),0 12px 28px rgba(0,0,0,.12)}.dark-mode .modal-content[data-v-4be2d7b1]{background:linear-gradient(180deg,rgba(45,34,42,.98),rgba(31,26,33,.98));border-color:rgba(255,192,214,.16)}.modal-header[data-v-4be2d7b1]{display:flex;align-items:center;justify-content:center;padding:26px 20px 18px;border-bottom:1px solid rgba(247,140,171,.12)}.dark-mode .modal-header[data-v-4be2d7b1]{border-bottom-color:rgba(255,192,214,.1)}.modal-title[data-v-4be2d7b1]{margin:0;font-size:21px;font-weight:700;line-height:1.25;color:var(--text-color);text-align:center}.modal-options[data-v-4be2d7b1]{display:flex;flex-direction:column;gap:12px;padding:18px;overflow-y:auto;flex:1;min-height:0}.modal-options.grid[data-v-4be2d7b1]{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;gap:12px;padding:18px}.option-btn[data-v-4be2d7b1]{min-height:52px;padding:14px 18px;border:1px solid rgba(247,140,171,.14);border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.92),rgba(255,247,250,.92));box-shadow:inset 0 1px rgba(255,255,255,.75),0 8px 18px rgba(247,140,171,.08);font-size:15px;font-weight:600;font-family:inherit;color:var(--text-color);cursor:pointer;text-align:center}.dark-mode .option-btn[data-v-4be2d7b1]{background:rgba(255,255,255,.05);border-color:rgba(255,192,214,.12);box-shadow:none}.grid .option-btn[data-v-4be2d7b1]{min-height:44px;padding:10px 16px;flex:0 0 auto;border-radius:999px}.option-btn[data-v-4be2d7b1]:active:not(.selected){transform:scale(.98);background:rgba(247,140,171,.12);box-shadow:0 6px 14px rgba(247,140,171,.12)}.option-btn.selected[data-v-4be2d7b1]{background:linear-gradient(180deg,#f9a7c0,#f78cab);border-color:transparent;color:#fff;box-shadow:0 12px 22px rgba(247,140,171,.28)}\n/*$vite$:1*/", document.head.appendChild(t), e("u", function(e) {
+        var t = e.threshold,
+          a = void 0 === t ? 50 : t,
+          n = e.containerRef,
+          o = e.currentPage,
+          r = e.totalPages,
+          d = e.onPageChange,
+          i = w(0),
+          l = w(0),
+          c = w(!1);
+
+        function s(e) {
+          if (1 === e.touches.length) {
+            var t = e.touches[0];
+            t && (i.value = t.clientX, l.value = t.clientY, c.value = !0)
+          }
+        }
+
+        function p(e) {
+          if (c.value && (c.value = !1, 1 === e.changedTouches.length)) {
+            var t = e.changedTouches[0];
+            if (t) {
+              var n = t.clientX,
+                s = t.clientY,
+                p = n - i.value,
+                u = s - l.value;
+              Math.abs(p) < Math.abs(u) || Math.abs(p) < a || (p < 0 ? o.value < r.value && d(o.value + 1) : o.value > 1 && d(o.value - 1))
+            }
+          }
+        }
+
+        function u() {
+          c.value = !1
+        }
+        return k(n, function(e, t, a) {
+          c.value = !1, e && (e.addEventListener("touchstart", s, {
+            passive: !0
+          }), e.addEventListener("touchend", p, {
+            passive: !0
+          }), e.addEventListener("touchcancel", u, {
+            passive: !0
+          }), a(function() {
+            c.value = !1, e.removeEventListener("touchstart", s), e.removeEventListener("touchend", p), e.removeEventListener("touchcancel", u)
+          }))
+        }, {
+          immediate: !0,
+          flush: "post"
+        }), {
+          isSwiping: c
+        }
+      }), e("C", a("chevron-down", [
+        ["path", {
+          d: "m6 9 6 6 6-6",
+          key: "qrunsl"
+        }]
+      ])), e("b", a("chevron-left", [
+        ["path", {
+          d: "m15 18-6-6 6-6",
+          key: "1wnfg3"
+        }]
+      ])), e("a", a("chevrons-left", [
+        ["path", {
+          d: "m11 17-5-5 5-5",
+          key: "13zhaf"
+        }],
+        ["path", {
+          d: "m18 17-5-5 5-5",
+          key: "h8a8et"
+        }]
+      ])), e("c", a("chevrons-right", [
+        ["path", {
+          d: "m6 17 5-5-5-5",
+          key: "xnjwq"
+        }],
+        ["path", {
+          d: "m13 17 5-5-5-5",
+          key: "17xmmf"
+        }]
+      ])), e("S", a("search", [
+        ["path", {
+          d: "m21 21-4.34-4.34",
+          key: "14j7rj"
+        }],
+        ["circle", {
+          cx: "11",
+          cy: "11",
+          r: "8",
+          key: "4ej97u"
+        }]
+      ])), e("U", a("upload", [
+        ["path", {
+          d: "M12 3v12",
+          key: "1x0j5s"
+        }],
+        ["path", {
+          d: "m17 8-5-5-5 5",
+          key: "7q97r8"
+        }],
+        ["path", {
+          d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4",
+          key: "ih7n3h"
+        }]
+      ]));
+      /**
+       * @license lucide-vue-next v0.562.0 - ISC
+       *
+       * This source code is licensed under the ISC license.
+       * See the LICENSE file in the root directory of this source tree.
+       */
+      var j = {
+          class: "modal-content"
+        },
+        z = {
+          class: "modal-header"
+        },
+        C = {
+          class: "modal-title"
+        },
+        E = ["onClick"],
+        L = r({
+          __name: "SelectModal",
+          props: {
+            show: {
+              type: Boolean
+            },
+            title: {},
+            options: {},
+            currentValue: {},
+            layout: {},
+            zIndex: {}
+          },
+          emits: ["update:show", "select"],
+          setup: function(e, t) {
+            var a = t.emit,
+              o = e,
+              r = a;
+
+            function k() {
+              r("update:show", !1)
+            }
+            return n(function() {
+                return o.show
+              }, k),
+              function(t, a) {
+                return y(), d(i, {
+                  to: "body"
+                }, [l(c, {
+                  name: "modal-fade"
+                }, {
+                  default: s(function() {
+                    var t;
+                    return [e.show ? (y(), p("div", {
+                      key: 0,
+                      class: "modal-overlay",
+                      style: v({
+                        zIndex: null !== (t = e.zIndex) && void 0 !== t ? t : 3100
+                      }),
+                      onClick: b(k, ["self"])
+                    }, [g("div", j, [g("div", z, [g("h3", C, h(e.title), 1)]), g("div", {
+                      class: x(["modal-options", {
+                        grid: "grid" === e.layout
+                      }])
+                    }, [(y(!0), p(f, null, m(e.options, function(t) {
+                      return y(), p("button", {
+                        key: t.value,
+                        class: x(["option-btn", {
+                          selected: e.currentValue === t.value
+                        }]),
+                        onClick: function(e) {
+                          return a = t.value, r("select", a), void k();
+                          var a
+                        }
+                      }, h(t.label), 11, E)
+                    }), 128))], 2)])], 4)) : u("", !0)]
+                  }),
+                  _: 1
+                })])
+              }
+          }
+        });
+      /**
+       * @license lucide-vue-next v0.562.0 - ISC
+       *
+       * This source code is licensed under the ISC license.
+       * See the LICENSE file in the root directory of this source tree.
+       */
+      e("d", o(L, [
+        ["__scopeId", "data-v-4be2d7b1"]
+      ]))
+    }
+  }
+});

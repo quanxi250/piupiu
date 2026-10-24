@@ -1,0 +1,1506 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function e(a) {
+    return e = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+      return typeof e
+    } : function(e) {
+      return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
+    }, e(a)
+  }
+
+  function a(e, a) {
+    return function(e) {
+      if (Array.isArray(e)) return e
+    }(e) || function(e, a) {
+      var t = null == e ? null : "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
+      if (null != t) {
+        var r, n, o, i, l = [],
+          d = !0,
+          c = !1;
+        try {
+          if (o = (t = t.call(e)).next, 0 === a) {
+            if (Object(t) !== t) return;
+            d = !1
+          } else
+            for (; !(d = (r = o.call(t)).done) && (l.push(r.value), l.length !== a); d = !0);
+        } catch (e) {
+          c = !0, n = e
+        } finally {
+          try {
+            if (!d && null != t.return && (i = t.return(), Object(i) !== i)) return
+          } finally {
+            if (c) throw n
+          }
+        }
+        return l
+      }
+    }(e, a) || function(e, a) {
+      if (e) {
+        if ("string" == typeof e) return t(e, a);
+        var r = {}.toString.call(e).slice(8, -1);
+        return "Object" === r && e.constructor && (r = e.constructor.name), "Map" === r || "Set" === r ? Array.from(e) : "Arguments" === r || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r) ? t(e, a) : void 0
+      }
+    }(e, a) || function() {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }()
+  }
+
+  function t(e, a) {
+    (null == a || a > e.length) && (a = e.length);
+    for (var t = 0, r = Array(a); t < a; t++) r[t] = e[t];
+    return r
+  }
+
+  function r(e, a) {
+    var t = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+      var r = Object.getOwnPropertySymbols(e);
+      a && (r = r.filter(function(a) {
+        return Object.getOwnPropertyDescriptor(e, a).enumerable
+      })), t.push.apply(t, r)
+    }
+    return t
+  }
+
+  function n(e) {
+    for (var a = 1; a < arguments.length; a++) {
+      var t = null != arguments[a] ? arguments[a] : {};
+      a % 2 ? r(Object(t), !0).forEach(function(a) {
+        o(e, a, t[a])
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : r(Object(t)).forEach(function(a) {
+        Object.defineProperty(e, a, Object.getOwnPropertyDescriptor(t, a))
+      })
+    }
+    return e
+  }
+
+  function o(a, t, r) {
+    return (t = function(a) {
+      var t = function(a, t) {
+        if ("object" != e(a) || !a) return a;
+        var r = a[Symbol.toPrimitive];
+        if (void 0 !== r) {
+          var n = r.call(a, t || "default");
+          if ("object" != e(n)) return n;
+          throw new TypeError("@@toPrimitive must return a primitive value.")
+        }
+        return ("string" === t ? String : Number)(a)
+      }(a, "string");
+      return "symbol" == e(t) ? t : t + ""
+    }(t)) in a ? Object.defineProperty(a, t, {
+      value: r,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }) : a[t] = r, a
+  }
+
+  function i() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var e, a, t = "function" == typeof Symbol ? Symbol : {},
+      r = t.iterator || "@@iterator",
+      n = t.toStringTag || "@@toStringTag";
+
+    function o(t, r, n, o) {
+      var i = r && r.prototype instanceof c ? r : c,
+        s = Object.create(i.prototype);
+      return l(s, "_invoke", function(t, r, n) {
+        var o, i, l, c = 0,
+          s = n || [],
+          u = !1,
+          f = {
+            p: 0,
+            n: 0,
+            v: e,
+            a: p,
+            f: p.bind(e, 4),
+            d: function(a, t) {
+              return o = a, i = 0, l = e, f.n = t, d
+            }
+          };
+
+        function p(t, r) {
+          for (i = t, l = r, a = 0; !u && c && !n && a < s.length; a++) {
+            var n, o = s[a],
+              p = f.p,
+              g = o[2];
+            t > 3 ? (n = g === r) && (l = o[(i = o[4]) ? 5 : (i = 3, 3)], o[4] = o[5] = e) : o[0] <= p && ((n = t < 2 && p < o[1]) ? (i = 0, f.v = r, f.n = o[1]) : p < g && (n = t < 3 || o[0] > r || r > g) && (o[4] = t, o[5] = r, f.n = g, i = 0))
+          }
+          if (n || t > 1) return d;
+          throw u = !0, r
+        }
+        return function(n, s, g) {
+          if (c > 1) throw TypeError("Generator is already running");
+          for (u && 1 === s && p(s, g), i = s, l = g;
+            (a = i < 2 ? e : l) || !u;) {
+            o || (i ? i < 3 ? (i > 1 && (f.n = -1), p(i, l)) : f.n = l : f.v = l);
+            try {
+              if (c = 2, o) {
+                if (i || (n = "next"), a = o[n]) {
+                  if (!(a = a.call(o, l))) throw TypeError("iterator result is not an object");
+                  if (!a.done) return a;
+                  l = a.value, i < 2 && (i = 0)
+                } else 1 === i && (a = o.return) && a.call(o), i < 2 && (l = TypeError("The iterator does not provide a '" + n + "' method"), i = 1);
+                o = e
+              } else if ((a = (u = f.n < 0) ? l : t.call(r, f)) !== d) break
+            } catch (a) {
+              o = e, i = 1, l = a
+            } finally {
+              c = 1
+            }
+          }
+          return {
+            value: a,
+            done: u
+          }
+        }
+      }(t, n, o), !0), s
+    }
+    var d = {};
+
+    function c() {}
+
+    function s() {}
+
+    function u() {}
+    a = Object.getPrototypeOf;
+    var f = [][r] ? a(a([][r]())) : (l(a = {}, r, function() {
+        return this
+      }), a),
+      p = u.prototype = c.prototype = Object.create(f);
+
+    function g(e) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(e, u) : (e.__proto__ = u, l(e, n, "GeneratorFunction")), e.prototype = Object.create(p), e
+    }
+    return s.prototype = u, l(p, "constructor", u), l(u, "constructor", s), s.displayName = "GeneratorFunction", l(u, n, "GeneratorFunction"), l(p), l(p, n, "Generator"), l(p, r, function() {
+      return this
+    }), l(p, "toString", function() {
+      return "[object Generator]"
+    }), (i = function() {
+      return {
+        w: o,
+        m: g
+      }
+    })()
+  }
+
+  function l(e, a, t, r) {
+    var n = Object.defineProperty;
+    try {
+      n({}, "", {})
+    } catch (e) {
+      n = 0
+    }
+    l = function(e, a, t, r) {
+      function o(a, t) {
+        l(e, a, function(e) {
+          return this._invoke(a, t, e)
+        })
+      }
+      a ? n ? n(e, a, {
+        value: t,
+        enumerable: !r,
+        configurable: !r,
+        writable: !r
+      }) : e[a] = t : (o("next", 0), o("throw", 1), o("return", 2))
+    }, l(e, a, t, r)
+  }
+
+  function d(e, a, t, r, n, o, i) {
+    try {
+      var l = e[o](i),
+        d = l.value
+    } catch (e) {
+      return void t(e)
+    }
+    l.done ? a(d) : Promise.resolve(d).then(r, n)
+  }
+
+  function c(e) {
+    return function() {
+      var a = this,
+        t = arguments;
+      return new Promise(function(r, n) {
+        var o = e.apply(a, t);
+
+        function i(e) {
+          d(o, r, n, i, l, "next", e)
+        }
+
+        function l(e) {
+          d(o, r, n, i, l, "throw", e)
+        }
+        i(void 0)
+      })
+    }
+  }
+  System.register(["./app-security-legacy-BdXLf8ML.js", "../e/index-legacy-B0tYRju5.js", "./OfficialWebModal-legacy-DGd73aKM.js", "./InviteSystemModal-legacy-BrJeYdi2.js", "./ConfirmModal-legacy-NP3AE2aY.js", "./refresh-cw-legacy-8ZRhP8a6.js", "./circle-check-legacy-DZDuDdoN.js", "./gem-legacy-Cu1O8F28.js", "./message-square-plus-legacy-BvW3kF1p.js", "./copy-legacy-wdtkFLud.js"], function(e, t) {
+    "use strict";
+    var r, o, l, d, s, u, f, p, g, b, v, x, h, m, y, k, w, z, _, S, j, C, I, O, M, P, A, T, E, q, L, D, F, U, N, B, G, Y, R, V, W, H, Z, $, J, K, Q, X, ee, ae, te, re, ne, oe, ie, le, de, ce, se, ue, fe, pe, ge, be, ve, xe, he, me;
+    return {
+      setters: [function(e) {
+        r = e.k, o = e.w, l = e.J, d = e.R, s = e.Z, u = e.$, f = e.M, p = e.N, g = e.a2, b = e.c, v = e.L, x = e.r, h = e.u, m = e.W, y = e.Y, k = e.O, w = e.V, z = e.T, _ = e.v, S = e.x, j = e.b0, C = e.b1, I = e.K, O = e.b2, M = e.G, P = e.b3, A = e.ab, T = e.aa, E = e.X, q = e.n, L = e.b4, D = e.b5, F = e.b6, U = e.aT, N = e.b7, B = e.aU, G = e.b8, Y = e.b9
+      }, function(e) {
+        R = e.c, V = e.g, W = e.e, H = e.F, Z = e.ab, $ = e.l, J = e._, K = e.b, Q = e.ac, X = e.a7, ee = e.a6, ae = e.ad, te = e.I, re = e.n, ne = e.S, oe = e.ae
+      }, function(e) {
+        ie = e.O, le = e.B, de = e.R
+      }, function(e) {
+        ce = e.G, se = e.I, ue = e.a
+      }, function(e) {
+        fe = e.C
+      }, function(e) {
+        pe = e.R
+      }, function(e) {
+        ge = e.C
+      }, function(e) {
+        be = e.C, ve = e.G
+      }, function(e) {
+        xe = e.M, he = e.I, me = e.B
+      }, null],
+      execute: function() {
+        var t = document.createElement("style");
+        t.textContent = '.modal-overlay[data-v-65ad6e0e]{position:fixed;top:0;right:0;bottom:0;left:0;z-index:3200;display:flex;align-items:center;justify-content:center;padding:calc(18px + var(--safe-area-inset-top)) 18px calc(18px + var(--safe-area-inset-bottom));background:rgba(0,0,0,.55)}.card-modal[data-v-65ad6e0e]{width:min(420px,100%);font-family:ZCOOL KuaiLe,Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;max-height:min(620px,var(--app-viewport-height) - 112px - var(--safe-area-inset-top) - var(--safe-area-inset-bottom));display:flex;flex-direction:column;overflow:hidden;border-radius:26px;background:linear-gradient(180deg,rgba(255,248,238,.98),rgba(255,255,255,.98) 38%),#fff;border:1px solid rgba(255,184,77,.24);box-shadow:0 26px 80px rgba(0,0,0,.28)}.dark-mode .card-modal[data-v-65ad6e0e]{background:linear-gradient(180deg,rgba(62,48,34,.96),rgba(28,29,35,.98) 42%),#1c1d23;border-color:rgba(255,190,96,.2)}.modal-header[data-v-65ad6e0e]{flex-shrink:0;position:relative;display:flex;justify-content:center;align-items:flex-start;text-align:center;gap:14px;padding:20px 20px 14px;border-bottom:1px solid rgba(255,184,77,.14)}.modal-header h3[data-v-65ad6e0e]{margin:0;color:var(--text-color);font-size:20px;font-weight:800}.modal-header p[data-v-65ad6e0e]{margin:5px 0 0;color:var(--text-secondary-color);font-size:12px}.header-copy[data-v-65ad6e0e]{max-width:calc(100% - 48px)}.icon-btn[data-v-65ad6e0e]{position:absolute;top:16px;right:16px;width:34px;height:34px;border:1px solid rgba(255,184,77,.2);border-radius:12px;background:rgba(255,255,255,.72);color:#c98522;display:flex;align-items:center;justify-content:center;cursor:pointer}.icon-btn[data-v-65ad6e0e]:disabled{opacity:.55;cursor:not-allowed}.dark-mode .icon-btn[data-v-65ad6e0e]{background:rgba(255,255,255,.08);color:#ffcf80}.modal-body[data-v-65ad6e0e]{flex:1;overflow-y:auto;padding:16px;overscroll-behavior:contain}.cards-list[data-v-65ad6e0e]{display:flex;flex-direction:column;gap:12px}.card-item[data-v-65ad6e0e]{display:flex;justify-content:space-between;gap:12px;padding:14px;border-radius:18px;border:1px solid rgba(255,184,77,.16);background:rgba(255,250,242,.78)}.dark-mode .card-item[data-v-65ad6e0e]{background:rgba(255,255,255,.06);border-color:rgba(255,184,77,.16)}.card-main[data-v-65ad6e0e]{min-width:0;flex:1}.card-key-row[data-v-65ad6e0e]{display:flex;align-items:center;gap:8px;min-width:0}.card-key[data-v-65ad6e0e]{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-color);font-size:15px;font-weight:800;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}.level-badge[data-v-65ad6e0e],.status-badge[data-v-65ad6e0e]{flex-shrink:0;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:800}.level-badge[data-v-65ad6e0e]{padding:4px 12px;font-size:12px;color:#fff}.level-badge.vip[data-v-65ad6e0e]{background:linear-gradient(135deg,#3498db,#2980b9);box-shadow:0 2px 8px rgba(52,152,219,.3)}.level-badge.svip[data-v-65ad6e0e]{background:linear-gradient(135deg,gold,orange);box-shadow:0 2px 8px rgba(255,165,0,.3);animation:shine-65ad6e0e 2s infinite linear}.level-badge.ssvip[data-v-65ad6e0e]{background:linear-gradient(105deg,#5b21b6,#db2777 52%,#0891b2);border:1px solid rgba(207,250,254,.7);box-shadow:0 3px 12px rgba(124,58,237,.3),0 0 14px rgba(34,211,238,.14);letter-spacing:.06em;animation:ssvipPulse-65ad6e0e 2.8s ease-in-out infinite}@keyframes ssvipPulse-65ad6e0e{0%,to{filter:brightness(1) saturate(1)}50%{filter:brightness(1.16) saturate(1.12)}}.card-meta[data-v-65ad6e0e]{display:flex;flex-direction:column;gap:3px;margin-top:8px;color:var(--text-secondary-color);font-size:12px}.card-side[data-v-65ad6e0e]{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start;gap:12px}.status-badge[data-v-65ad6e0e]{color:#1f9a5b;background:rgba(49,191,114,.14)}.status-badge.expired[data-v-65ad6e0e],.status-badge.disabled[data-v-65ad6e0e],.status-badge.invalid[data-v-65ad6e0e]{color:#d84848;background:rgba(255,77,77,.13)}.card-actions[data-v-65ad6e0e]{display:inline-flex;align-items:center;justify-content:flex-end;gap:8px}.card-action-btn[data-v-65ad6e0e]{min-width:66px;height:32px;display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:0 11px;border:1px solid transparent;border-radius:10px;background:#fff;font-size:12px;font-family:ZCOOL KuaiLe,Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-weight:800;line-height:1;cursor:pointer;transition:transform .16s ease,background-color .16s ease,border-color .16s ease,color .16s ease,box-shadow .16s ease}.card-action-btn[data-v-65ad6e0e]:active:not(:disabled){transform:translateY(0) scale(.98);box-shadow:none}.card-action-btn[data-v-65ad6e0e]:disabled{opacity:.58;cursor:not-allowed}.dark-mode .card-action-btn[data-v-65ad6e0e]{background:rgba(255,255,255,.08);box-shadow:none}.use-btn[data-v-65ad6e0e]{color:#a76516;border-color:rgba(255,166,64,.28);background:#fff9ef}.dark-mode .use-btn[data-v-65ad6e0e]{color:#ffd18a;border-color:rgba(255,190,96,.26);background:rgba(255,190,96,.1)}.unbind-btn[data-v-65ad6e0e]{color:#c74454;border-color:rgba(224,86,104,.22);background:#fff5f6}.dark-mode .unbind-btn[data-v-65ad6e0e]{color:#ff9da9;border-color:rgba(255,122,139,.24);background:rgba(255,122,139,.1)}.state-card[data-v-65ad6e0e]{min-height:160px;border-radius:20px;border:1px dashed rgba(255,184,77,.28);display:flex;align-items:center;justify-content:center;text-align:center;color:var(--text-secondary-color);font-size:14px;background:rgba(255,250,242,.56)}.state-card.empty-state[data-v-65ad6e0e]{flex-direction:column;gap:10px}.state-card.error-state[data-v-65ad6e0e]{color:#d84848}.dark-mode .state-card[data-v-65ad6e0e]{background:rgba(255,255,255,.05)}.spinning[data-v-65ad6e0e]{animation:spin-65ad6e0e .9s linear infinite}@keyframes spin-65ad6e0e{to{transform:rotate(360deg)}}@keyframes shine-65ad6e0e{0%{filter:brightness(1)}50%{filter:brightness(1.18)}to{filter:brightness(1)}}.connection-view[data-v-e385f135]{display:flex;flex-direction:column;height:100%;padding:16px;gap:20px;position:relative}.loading-overlay[data-v-e385f135]{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,.8);z-index:50;display:flex;align-items:center;justify-content:center;border-radius:24px}.dark-mode .loading-overlay[data-v-e385f135]{background:rgba(0,0,0,.7)}.loading-content[data-v-e385f135]{display:flex;flex-direction:column;align-items:center;gap:16px;color:var(--primary-color);font-weight:600}.loading-content p[data-v-e385f135]{margin:0;font-size:16px;background:linear-gradient(135deg,var(--primary-color),#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.spin[data-v-e385f135]{animation:spin-e385f135 1s linear infinite;color:var(--primary-color)}.tab-switch[data-v-e385f135]{display:flex;background:rgba(0,0,0,.05);padding:4px;border-radius:16px;align-self:center}.dark-mode .tab-switch[data-v-e385f135]{background:rgba(255,255,255,.1)}.tab-btn[data-v-e385f135]{display:flex;align-items:center;gap:6px;padding:8px 20px;border:none;background:transparent;color:var(--text-secondary-color);font-size:14px;font-weight:600;border-radius:12px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);font-family:inherit;position:relative;overflow:hidden}.tab-btn.active[data-v-e385f135]{background:var(--bg-color);color:var(--primary-color);box-shadow:0 2px 8px rgba(0,0,0,.08)}.dark-mode .tab-btn.active[data-v-e385f135]{background:rgba(255,255,255,.1);color:#fff}.tab-btn.active.gold-effect[data-v-e385f135]{background:linear-gradient(135deg,gold,orange);color:#fff;box-shadow:0 4px 12px rgba(255,165,0,.3)}.tab-btn.active.gold-effect[data-v-e385f135]:after{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,transparent 20%,rgba(255,255,255,.4) 50%,transparent 80%);transform:rotate(45deg);animation:shimmer 3s infinite linear}.tab-btn.active.gold-effect svg[data-v-e385f135]{color:#fff}.dark-mode .tab-btn.active.gold-effect[data-v-e385f135]{background:linear-gradient(135deg,#b8860b,#daa520);color:#fff}.free-card-content[data-v-e385f135]{display:flex;flex-direction:column;padding:40px;gap:40px;align-items:center;overflow-y:auto;height:100%;min-height:min-content}@media(max-width:768px){.free-card-content[data-v-e385f135]{padding:24px 20px;gap:24px;justify-content:flex-start}}.card-hero[data-v-e385f135]{text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px;isolation:isolate}.hero-icon-wrapper[data-v-e385f135]{width:96px;height:96px;border-radius:32px;background:linear-gradient(135deg,#e0f2fe,#bae6fd);display:flex;align-items:center;justify-content:center;color:#0284c7;box-shadow:0 12px 24px -8px rgba(2,132,199,.2);margin-bottom:8px}.dark-mode .hero-icon-wrapper[data-v-e385f135]{background:linear-gradient(135deg,rgba(2,132,199,.2),rgba(56,189,248,.2));color:#38bdf8}.hero-title[data-v-e385f135]{font-size:32px;font-weight:800;display:inline-block;position:relative;z-index:1;color:var(--text-color);margin:0;background:linear-gradient(120deg,var(--primary-color),#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.hero-subtitle[data-v-e385f135]{font-size:16px;color:var(--text-secondary-color);margin:0;font-weight:500}.feature-tags[data-v-e385f135]{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;position:relative;z-index:1;pointer-events:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}.feature-tag[data-v-e385f135]{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:20px;font-size:13px;font-weight:600;transition:transform .2s ease;touch-action:manipulation}.feature-tag.tag-blue[data-v-e385f135]{background:#e0f2fe;color:#0284c7}.dark-mode .feature-tag.tag-blue[data-v-e385f135]{background:rgba(2,132,199,.2);color:#38bdf8}.feature-tag.tag-green[data-v-e385f135]{background:#dcfce7;color:#16a34a}.dark-mode .feature-tag.tag-green[data-v-e385f135]{background:rgba(22,163,74,.2);color:#4ade80}.feature-tag.tag-pink[data-v-e385f135]{background:#fce7f3;color:#db2777}.dark-mode .feature-tag.tag-pink[data-v-e385f135]{background:rgba(219,39,119,.2);color:#f472b6}.free-image-card[data-v-e385f135]{width:100%;max-width:480px;background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(139,92,246,.08));border:1px solid rgba(99,102,241,.15);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;flex-shrink:0}.dark-mode .free-image-card[data-v-e385f135]{background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(139,92,246,.12));border-color:rgba(99,102,241,.25)}.free-image-header[data-v-e385f135]{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px}.free-image-icon[data-v-e385f135]{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#6366f1,#8b5cf6);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}.free-image-info[data-v-e385f135]{display:flex;flex-direction:column;align-items:center}.free-image-info h4[data-v-e385f135]{margin:0;font-size:15px;font-weight:600;color:var(--text-color)}.free-image-info p[data-v-e385f135]{margin:4px 0 0;font-size:13px;color:var(--text-secondary-color)}.highlight-purple[data-v-e385f135]{color:#6366f1;font-weight:700}.dark-mode .highlight-purple[data-v-e385f135]{color:#a78bfa}.free-image-quota[data-v-e385f135]{display:flex;flex-direction:column;gap:6px}.quota-bar[data-v-e385f135]{height:6px;background:rgba(99,102,241,.1);border-radius:3px;overflow:hidden}.dark-mode .quota-bar[data-v-e385f135]{background:rgba(99,102,241,.15)}.quota-fill[data-v-e385f135]{height:100%;background:linear-gradient(90deg,#6366f1,#8b5cf6);border-radius:3px;transition:width .5s ease}.quota-text[data-v-e385f135]{font-size:12px;color:#6366f1;font-weight:500;display:flex;align-items:center;justify-content:center;gap:4px}.dark-mode .quota-text[data-v-e385f135]{color:#a78bfa}.quota-icon[data-v-e385f135]{flex-shrink:0}.free-image-upgrade[data-v-e385f135]{margin:4px auto 0;font-size:13px;font-weight:600;color:#d97706;text-align:center;display:flex;align-items:center;justify-content:center;gap:4px;cursor:pointer;padding:6px 14px;background:rgba(245,158,11,.08);border-radius:20px;width:fit-content;transition:all .2s ease}.dark-mode .free-image-upgrade[data-v-e385f135]{color:#fbbf24;background:rgba(251,191,36,.1)}.invite-entry-link[data-v-e385f135]{margin:4px auto 0;width:fit-content;max-width:100%;border:none;border-radius:999px;min-height:40px;padding:0 18px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,rgba(255,244,240,.96),rgba(255,236,247,.96));color:#ff7d78;font-size:13px;font-weight:800;font-family:inherit;box-shadow:inset 0 1px rgba(255,255,255,.72)}.dark-mode .invite-entry-link[data-v-e385f135]{background:linear-gradient(135deg,rgba(255,166,99,.14),rgba(255,115,179,.14));color:#ffc3d8;box-shadow:inset 0 1px rgba(255,255,255,.06)}.invite-entry-link[data-v-e385f135]:active{transform:scale(.98)}.upgrade-sparkle[data-v-e385f135]{color:inherit;flex-shrink:0}.card-action[data-v-e385f135]{width:100%;max-width:480px;margin-top:auto;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;flex-shrink:0}.upgrade-link[data-v-e385f135]{display:inline-flex;align-items:center;gap:4px;font-size:14px;text-decoration:none;transition:all .2s ease;padding:8px 16px;border-radius:20px;font-weight:700;background:linear-gradient(90deg,#ff3b30,#ff9500,#fc0,#4cd964,#5ac8fa,#007aff,#5856d6,#ff2d55);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:rainbow-e385f135 3s linear infinite}@keyframes rainbow-e385f135{0%{background-position:0% center}to{background-position:200% center}}.exclusive-content[data-v-e385f135]{display:flex;flex-direction:column;align-items:center;padding:40px;gap:32px}.status-badge[data-v-e385f135]{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:24px;background:rgba(0,0,0,.05);color:var(--text-secondary-color);border:1px solid rgba(0,0,0,.05)}.status-badge .status-dot[data-v-e385f135]{width:8px;height:8px;border-radius:50%;background:#9ca3af}.status-badge.active[data-v-e385f135]{background:rgba(255,215,0,.15);color:#b8860b;border-color:rgba(255,215,0,.3)}.status-badge.active .status-dot[data-v-e385f135]{background:#b8860b;box-shadow:0 0 0 2px rgba(184,134,11,.2)}.dark-mode .status-badge.active[data-v-e385f135]{background:rgba(255,215,0,.1);color:gold;border-color:rgba(255,215,0,.2)}.dark-mode .status-badge.active .status-dot[data-v-e385f135]{background:gold;box-shadow:0 0 0 2px rgba(255,215,0,.2)}.status-badge.expired[data-v-e385f135]{background:rgba(239,68,68,.1);color:#ef4444;border-color:rgba(239,68,68,.2)}.status-badge.expired .status-dot[data-v-e385f135]{background:#ef4444}.dark-mode .status-badge[data-v-e385f135]{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.1);color:var(--text-secondary-color)}.exclusive-header[data-v-e385f135]{text-align:center;display:flex;flex-direction:column;align-items:center;gap:16px}.exclusive-header h2[data-v-e385f135]{font-size:28px;font-weight:800;color:#b8860b;margin:0;background:linear-gradient(135deg,#b8860b,#daa520);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.dark-mode .exclusive-header h2[data-v-e385f135]{color:gold;background:linear-gradient(135deg,gold,orange);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.vip-info-badge[data-v-e385f135]{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:4px}.vip-info-badge .vip-level[data-v-e385f135]{padding:4px 16px;border-radius:20px;font-size:14px;font-weight:700}.vip-info-badge .vip-level.vip[data-v-e385f135]{background:linear-gradient(135deg,#3498db,#2980b9);color:#fff;box-shadow:0 2px 8px rgba(52,152,219,.3)}.vip-info-badge .vip-level.svip[data-v-e385f135]{background:linear-gradient(135deg,gold,orange);color:#fff;box-shadow:0 2px 8px rgba(255,165,0,.3);animation:shine-e385f135 2s infinite linear}.vip-info-badge .vip-level.ssvip[data-v-e385f135]{position:relative;overflow:hidden;background:linear-gradient(105deg,#5b21b6,#db2777 48%,#0891b2);color:#fff;border:1px solid rgba(207,250,254,.72);box-shadow:0 3px 14px rgba(124,58,237,.34),0 0 18px rgba(34,211,238,.16);letter-spacing:.08em;animation:ssvip-pulse-e385f135 2.8s ease-in-out infinite}.vip-info-badge .vip-expiry[data-v-e385f135]{font-size:13px;color:var(--text-secondary-color);font-weight:500}@keyframes shine-e385f135{0%{filter:brightness(1)}50%{filter:brightness(1.2)}to{filter:brightness(1)}}.crown-icon[data-v-e385f135]{width:80px;height:80px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(255,215,0,.2),rgba(218,165,32,.1));border-radius:50%;color:#b8860b;box-shadow:0 4px 16px rgba(184,134,11,.15)}.dark-mode .crown-icon[data-v-e385f135]{background:linear-gradient(135deg,rgba(255,215,0,.15),rgba(255,165,0,.1));color:gold}.exclusive-form[data-v-e385f135]{width:100%;max-width:400px;display:flex;flex-direction:column;gap:16px}.input-group[data-v-e385f135]{position:relative;width:100%}.input-icon[data-v-e385f135]{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text-secondary-color);pointer-events:none}.key-input[data-v-e385f135]{width:100%;padding:14px 16px 14px 48px;border-radius:16px;border:1px solid rgba(0,0,0,.1);background:rgba(255,255,255,.5);font-size:15px;outline:none;transition:all .2s ease;font-family:inherit}.key-input[data-v-e385f135]:focus{background:#fff;border-color:#daa520;box-shadow:0 0 0 3px rgba(218,165,32,.1)}.dark-mode .key-input[data-v-e385f135]{background:rgba(0,0,0,.2);border-color:rgba(255,255,255,.1);color:#fff}.dark-mode .key-input[data-v-e385f135]:focus{background:rgba(0,0,0,.4);border-color:gold;box-shadow:0 0 0 3px rgba(255,215,0,.1)}.key-input.clickable-input[data-v-e385f135]{cursor:pointer}.action-row[data-v-e385f135]{display:flex;gap:12px}.action-btn[data-v-e385f135]{flex:1;padding:12px;border-radius:14px;border:none;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;transition:all .2s ease;font-family:inherit}.action-btn[data-v-e385f135]:active{transform:scale(.98)}.bind-btn[data-v-e385f135]{background:#b8860b;color:#fff;box-shadow:0 4px 12px rgba(184,134,11,.2)}.dark-mode .bind-btn[data-v-e385f135]{background:linear-gradient(135deg,gold,orange);color:#000}.unbind-btn[data-v-e385f135]{background:rgba(0,0,0,.05);color:var(--text-secondary-color)}.dark-mode .unbind-btn[data-v-e385f135]{background:rgba(255,255,255,.1)}.account-cards-corner-btn[data-v-e385f135]{position:absolute;top:14px;right:14px;z-index:2;height:34px;padding:0 10px;border:1px solid rgba(255,185,80,.28);border-radius:999px;background:rgba(255,248,235,.82);color:#a86700;display:inline-flex;align-items:center;justify-content:center;gap:5px;font-size:12px;font-weight:700;font-family:inherit;cursor:pointer;box-shadow:0 8px 22px rgba(184,134,11,.12);transition:transform .18s ease,background .18s ease}.account-cards-corner-btn[data-v-e385f135]:active{transform:scale(.96)}.dark-mode .account-cards-corner-btn[data-v-e385f135]{background:rgba(255,185,80,.12);border-color:rgba(255,185,80,.22);color:#ffcf80}.support-btn[data-v-e385f135]{width:100%;padding:14px;border-radius:16px;border:1px dashed #DAA520;background:transparent;color:#b8860b;font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:all .2s ease;margin-top:8px;font-family:inherit}.dark-mode .support-btn[data-v-e385f135]{border-color:gold;color:gold}.benefits-link[data-v-e385f135]{align-self:center;display:flex;align-items:center;gap:4px;font-size:13px;font-weight:600;text-decoration:none;margin-top:16px;transition:transform .2s ease;background:linear-gradient(90deg,#b8860b,gold,#daa520,#b8860b);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gold-flow-e385f135 3s linear infinite}.dark-mode .benefits-link[data-v-e385f135]{background:linear-gradient(90deg,gold,#fffacd,orange,gold);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}@keyframes gold-flow-e385f135{0%{background-position:0% center}to{background-position:200% center}}.acrylic-card[data-v-e385f135]{width:100%;height:100%;min-height:400px;background:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.5);border-radius:24px;box-shadow:0 8px 32px rgba(0,0,0,.05);transition:transform .3s ease,box-shadow .3s ease}.dark-mode .acrylic-card[data-v-e385f135]{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}.acrylic-card.gold-card[data-v-e385f135]{border:1px solid rgba(255,215,0,.3);background:linear-gradient(135deg,rgba(255,255,255,.7),rgba(255,248,220,.4));box-shadow:0 8px 32px rgba(255,215,0,.1);position:relative;overflow:hidden}.dark-mode .acrylic-card.gold-card[data-v-e385f135]{background:linear-gradient(135deg,rgba(255,215,0,.05),rgba(0,0,0,.2));border-color:rgba(255,215,0,.2)}.acrylic-card.gold-card[data-v-e385f135]:before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,215,0,.8),transparent);animation:scan-e385f135 4s ease-in-out infinite}.free-image-card[data-v-e385f135]{margin:16px auto 0;background:rgba(255,255,255,.6);border-radius:20px;padding:16px;border:1px solid rgba(255,255,255,.6);box-shadow:0 8px 24px rgba(99,102,241,.08);display:flex;flex-direction:column;gap:12px;flex-shrink:0}.dark-mode .free-image-card[data-v-e385f135]{background:rgba(40,40,45,.6);border-color:rgba(255,255,255,.08);box-shadow:0 8px 24px rgba(0,0,0,.2)}@keyframes scan-e385f135{0%,to{transform:translate(-100%);opacity:0}50%{transform:translate(100%);opacity:1}}.fade-enter-active[data-v-e385f135],.fade-leave-active[data-v-e385f135]{transition:opacity .3s ease,transform .3s ease}.fade-enter-from[data-v-e385f135]{opacity:0;transform:translateY(10px)}.fade-leave-to[data-v-e385f135]{opacity:0;transform:translateY(-10px)}.modal-overlay[data-v-e385f135]{position:fixed;top:0;right:0;bottom:0;left:0;background:radial-gradient(circle at top,rgba(247,140,171,.2),transparent 38%),rgba(16,18,27,.62);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px}@keyframes ssvip-pulse-e385f135{0%,to{filter:brightness(1) saturate(1)}50%{filter:brightness(1.16) saturate(1.12)}}.purchase-channel-overlay[data-v-e385f135]{z-index:1010}.benefits-modal[data-v-e385f135]{width:100%;max-width:520px;max-height:min(var(--app-viewport-height) * .86,var(--app-viewport-height) - 40px);background:linear-gradient(180deg,rgba(255,252,254,.98),rgba(255,246,249,.98));border:1px solid rgba(247,140,171,.18);border-radius:30px;box-shadow:0 26px 60px rgba(233,136,168,.22),0 12px 28px rgba(0,0,0,.14);display:flex;flex-direction:column;overflow:hidden;animation:modal-pop-e385f135 .3s cubic-bezier(.34,1.56,.64,1)}.dark-mode .benefits-modal[data-v-e385f135]{background:linear-gradient(180deg,rgba(45,34,42,.98),rgba(31,26,33,.98));border-color:rgba(255,192,214,.16)}.purchase-channel-modal[data-v-e385f135]{width:100%;max-width:440px;background:linear-gradient(180deg,rgba(255,252,254,.98),rgba(255,246,249,.98));border:1px solid rgba(247,140,171,.18);border-radius:26px;box-shadow:0 26px 60px rgba(233,136,168,.22),0 12px 28px rgba(0,0,0,.14);overflow:hidden;animation:modal-pop-e385f135 .3s cubic-bezier(.34,1.56,.64,1)}.dark-mode .purchase-channel-modal[data-v-e385f135]{background:linear-gradient(180deg,rgba(45,34,42,.98),rgba(31,26,33,.98));border-color:rgba(255,192,214,.16)}.purchase-channel-list[data-v-e385f135]{padding:18px 20px 22px;display:flex;flex-direction:column;gap:12px}.purchase-channel-btn[data-v-e385f135]{width:100%;min-height:62px;padding:13px 16px;border:1px solid rgba(247,140,171,.16);border-radius:18px;background:rgba(255,255,255,.82);color:var(--text-color);display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:6px;font-family:inherit;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,.65);transition:none}.purchase-channel-btn[data-v-e385f135]:active{transform:scale(.98)}.purchase-channel-btn.primary[data-v-e385f135]{border-color:rgba(255,172,56,.38);background:linear-gradient(180deg,rgba(255,248,235,.96),rgba(255,241,214,.96))}.dark-mode .purchase-channel-btn[data-v-e385f135]{background:rgba(255,255,255,.05);border-color:rgba(255,192,214,.12)}.dark-mode .purchase-channel-btn.primary[data-v-e385f135]{background:rgba(255,185,80,.12);border-color:rgba(255,185,80,.26)}.purchase-channel-main[data-v-e385f135]{display:flex;align-items:center;justify-content:space-between;gap:10px}.purchase-channel-title[data-v-e385f135]{min-width:0;font-size:15px;font-weight:800;text-align:left;overflow-wrap:anywhere}.purchase-channel-tag[data-v-e385f135]{flex-shrink:0;padding:3px 9px;border-radius:999px;background:rgba(247,140,171,.12);color:#d96c93;font-size:12px;font-weight:800}.primary .purchase-channel-tag[data-v-e385f135]{background:rgba(255,172,56,.16);color:#a86700}.dark-mode .purchase-channel-tag[data-v-e385f135]{color:#ffc4d7}.purchase-channel-desc[data-v-e385f135]{color:var(--text-secondary-color);font-size:12px;line-height:1.45;text-align:left}.purchase-channel-payments[data-v-e385f135]{display:flex;align-items:center;gap:10px;font-size:20px}.purchase-channel-payments .wechat[data-v-e385f135]{color:#07a94f}.purchase-channel-payments .alipay[data-v-e385f135]{color:#1677ff}.dark-mode .purchase-channel-payments .wechat[data-v-e385f135]{color:#39d87f}.dark-mode .purchase-channel-payments .alipay[data-v-e385f135]{color:#6babff}.purchase-channel-payment-label[data-v-e385f135]{padding:3px 8px;border-radius:999px;background:rgba(247,140,171,.12);color:#b9577d;font-size:11px;line-height:1.4;font-weight:600}.dark-mode .purchase-channel-payment-label[data-v-e385f135]{background:rgba(247,140,171,.16);color:#ffc4d7}.modal-header[data-v-e385f135]{padding:22px 58px 16px;display:flex;align-items:center;justify-content:center;position:relative;border-bottom:1px solid rgba(247,140,171,.12)}.modal-header h3[data-v-e385f135]{margin:0;font-size:22px;font-weight:700;color:var(--text-color);text-align:center}.dark-mode .modal-header[data-v-e385f135]{border-bottom-color:rgba(255,192,214,.1)}.close-btn[data-v-e385f135]{position:absolute;top:16px;right:18px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:rgba(247,140,171,.1);border:none;color:#d96c93;cursor:pointer;border-radius:50%;transition:none}.close-btn[data-v-e385f135]:active{transform:scale(.96);background:rgba(247,140,171,.18)}.dark-mode .close-btn[data-v-e385f135]{background:rgba(255,192,214,.12);color:#ffc4d7}.modal-content[data-v-e385f135]{padding:0;max-height:calc(var(--app-viewport-height) * .6);overflow-y:auto}.benefits-list[data-v-e385f135]{padding:24px;display:flex;flex-direction:column;gap:20px}.benefits-empty[data-v-e385f135]{padding:48px 24px;color:var(--text-secondary);text-align:center}.benefit-item[data-v-e385f135]{display:flex;align-items:flex-start;gap:16px;animation:slide-up-e385f135 .4s ease-out forwards;opacity:0}.benefit-item[data-v-e385f135]:nth-child(1){animation-delay:.1s}.benefit-item[data-v-e385f135]:nth-child(2){animation-delay:.2s}.benefit-item[data-v-e385f135]:nth-child(3){animation-delay:.3s}.benefit-item[data-v-e385f135]:nth-child(4){animation-delay:.4s}.benefit-item[data-v-e385f135]:nth-child(5){animation-delay:.5s}.benefit-item[data-v-e385f135]:nth-child(6){animation-delay:.6s}.benefit-item[data-v-e385f135]:nth-child(7){animation-delay:.7s}.benefit-item[data-v-e385f135]:nth-child(8){animation-delay:.8s}.benefit-item[data-v-e385f135]:nth-child(9){animation-delay:.9s}.benefit-item[data-v-e385f135]:nth-child(10){animation-delay:1s}.benefit-item[data-v-e385f135]:nth-child(11){animation-delay:1.1s}.benefit-item[data-v-e385f135]:nth-child(12){animation-delay:1.2s}.benefit-item[data-v-e385f135]:nth-child(13){animation-delay:1.3s}@keyframes slide-up-e385f135{0%{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}.benefit-icon[data-v-e385f135]{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff}.benefit-icon.vip-bg[data-v-e385f135]{background:linear-gradient(135deg,#b8860b,gold)}.benefit-icon.svip-bg[data-v-e385f135]{background:linear-gradient(135deg,indigo,#9400d3)}.benefit-icon.context-bg[data-v-e385f135]{background:linear-gradient(135deg,#ff8c00,#ff4500)}.benefit-icon.global-bg[data-v-e385f135]{background:linear-gradient(135deg,#00bfff,#1e90ff)}.benefit-icon.core-bg[data-v-e385f135]{background:linear-gradient(135deg,#228b22,#32cd32)}.benefit-icon.visual-bg[data-v-e385f135]{background:linear-gradient(135deg,#d35400,#e67e22)}.benefit-icon.audio-bg[data-v-e385f135]{background:linear-gradient(135deg,#8e44ad,#9b59b6)}.benefit-icon.length-bg[data-v-e385f135]{background:linear-gradient(135deg,#ff8a65,#ffb74d)}.benefit-icon.style-bg[data-v-e385f135]{background:linear-gradient(135deg,#7e57c2,#ab47bc)}.benefit-icon.memory-bg[data-v-e385f135]{background:linear-gradient(135deg,#26a69a,#66bb6a)}.benefit-icon.suggestion-bg[data-v-e385f135]{background:linear-gradient(135deg,#ff5f9f,#ff9a76)}.benefit-icon.imagegen-bg[data-v-e385f135]{background:linear-gradient(135deg,#e91e63,#f06292)}.benefit-details[data-v-e385f135]{flex:1}.benefit-details h4[data-v-e385f135]{margin:0 0 4px;font-size:16px;font-weight:700;color:var(--text-color)}.benefit-details p[data-v-e385f135]{margin:0;font-size:13px;line-height:1.5;color:var(--text-secondary-color)}.benefit-details p .highlight[data-v-e385f135]{color:#b8860b;font-weight:700}.dark-mode .benefit-details p .highlight[data-v-e385f135]{color:gold}.empty-state[data-v-e385f135]{display:flex;flex-direction:column;align-items:center;gap:12px;color:var(--text-secondary-color)}.empty-state .spin[data-v-e385f135]{animation:spin-e385f135 1s linear infinite}.modal-footer[data-v-e385f135]{padding:20px 24px;border-top:1px solid var(--border-color)}.unlock-btn[data-v-e385f135]{width:100%;padding:14px;border-radius:16px;border:none;background:linear-gradient(135deg,gold,orange);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;box-shadow:0 4px 12px rgba(255,165,0,.3);transition:all .2s ease;font-family:inherit}.unlock-btn[data-v-e385f135]:active{transform:scale(.98)}.dark-mode .unlock-btn[data-v-e385f135]{color:#000}@keyframes spin-e385f135{0%{transform:rotate(0)}to{transform:rotate(360deg)}}@keyframes modal-pop-e385f135{0%{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}.modal-enter-active[data-v-e385f135],.modal-leave-active[data-v-e385f135]{transition:opacity .3s ease}.modal-enter-from[data-v-e385f135],.modal-leave-to[data-v-e385f135]{opacity:0}.random-bg[data-v-e385f135]{background:rgba(255,152,0,.1);color:#ff9800}.dark-mode .random-bg[data-v-e385f135]{background:rgba(255,152,0,.2);color:#ffb74d}.benefits-modal .modal-content[data-v-e385f135]{padding:0;max-height:min(var(--app-viewport-height) * .6,var(--app-viewport-height) - 220px);overflow-y:auto}.benefits-modal .benefits-list[data-v-e385f135]{padding:20px;gap:12px}.benefits-modal .benefit-item[data-v-e385f135]{padding:16px;border-radius:22px;background:rgba(255,255,255,.82);border:1px solid rgba(247,140,171,.12);box-shadow:inset 0 1px rgba(255,255,255,.65)}.dark-mode .benefits-modal .benefit-item[data-v-e385f135]{background:rgba(255,255,255,.05);border-color:rgba(255,192,214,.12)}.benefits-modal .benefit-icon[data-v-e385f135]{width:46px;height:46px;border-radius:16px}.benefits-modal .benefit-details h4[data-v-e385f135]{margin-bottom:6px}.benefits-modal .benefit-details p[data-v-e385f135]{line-height:1.65}.benefits-modal .benefit-details .highlight[data-v-e385f135]{color:#f78cab}.dark-mode .benefits-modal .benefit-details .highlight[data-v-e385f135]{color:#ffc4d7}.benefits-modal .modal-footer[data-v-e385f135]{padding:18px 20px 20px;border-top:1px solid rgba(247,140,171,.12)}.dark-mode .benefits-modal .modal-footer[data-v-e385f135]{border-top-color:rgba(255,192,214,.1)}.benefits-modal .unlock-btn[data-v-e385f135]{min-height:54px;padding:14px 16px;border-radius:18px;background:linear-gradient(180deg,#f9a7c0,#f78cab);box-shadow:0 12px 22px rgba(247,140,171,.28);transition:none}\n/*$vite$:1*/', document.head.appendChild(t);
+        /**
+         * @license lucide-vue-next v0.562.0 - ISC
+         *
+         * This source code is licensed under the ISC license.
+         * See the LICENSE file in the root directory of this source tree.
+         */
+        var ye = R("arrow-right", [
+            ["path", {
+              d: "M5 12h14",
+              key: "1ays0h"
+            }],
+            ["path", {
+              d: "m12 5 7 7-7 7",
+              key: "xquz4c"
+            }]
+          ]),
+          ke = R("calendar-off", [
+            ["path", {
+              d: "M4.2 4.2A2 2 0 0 0 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 1.82-1.18",
+              key: "16swn3"
+            }],
+            ["path", {
+              d: "M21 15.5V6a2 2 0 0 0-2-2H9.5",
+              key: "yhw86o"
+            }],
+            ["path", {
+              d: "M16 2v4",
+              key: "4m81vk"
+            }],
+            ["path", {
+              d: "M3 10h7",
+              key: "1wap6i"
+            }],
+            ["path", {
+              d: "M21 10h-5.5",
+              key: "quycpq"
+            }],
+            ["path", {
+              d: "m2 2 20 20",
+              key: "1ooewy"
+            }]
+          ]),
+          we = R("circle-x", [
+            ["circle", {
+              cx: "12",
+              cy: "12",
+              r: "10",
+              key: "1mglay"
+            }],
+            ["path", {
+              d: "m15 9-6 6",
+              key: "1uzhvr"
+            }],
+            ["path", {
+              d: "m9 9 6 6",
+              key: "z0biqf"
+            }]
+          ]),
+          ze = R("coffee", [
+            ["path", {
+              d: "M10 2v2",
+              key: "7u0qdc"
+            }],
+            ["path", {
+              d: "M14 2v2",
+              key: "6buw04"
+            }],
+            ["path", {
+              d: "M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1",
+              key: "pwadti"
+            }],
+            ["path", {
+              d: "M6 2v2",
+              key: "colzsn"
+            }]
+          ]),
+          _e = R("credit-card", [
+            ["rect", {
+              width: "20",
+              height: "14",
+              x: "2",
+              y: "5",
+              rx: "2",
+              key: "ynyp8z"
+            }],
+            ["line", {
+              x1: "2",
+              x2: "22",
+              y1: "10",
+              y2: "10",
+              key: "1b3vmo"
+            }]
+          ]),
+          Se = R("headphones", [
+            ["path", {
+              d: "M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3",
+              key: "1xhozi"
+            }]
+          ]),
+          je = R("heart-handshake", [
+            ["path", {
+              d: "M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762",
+              key: "17lmqv"
+            }]
+          ]),
+          Ce = R("infinity", [
+            ["path", {
+              d: "M6 16c5 0 7-8 12-8a4 4 0 0 1 0 8c-5 0-7-8-12-8a4 4 0 1 0 0 8",
+              key: "18ogeb"
+            }]
+          ]),
+          Ie = R("layers", [
+            ["path", {
+              d: "M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z",
+              key: "zw3jo"
+            }],
+            ["path", {
+              d: "M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12",
+              key: "1wduqc"
+            }],
+            ["path", {
+              d: "M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17",
+              key: "kqbvx6"
+            }]
+          ]),
+          Oe = R("paintbrush", [
+            ["path", {
+              d: "m14.622 17.897-10.68-2.913",
+              key: "vj2p1u"
+            }],
+            ["path", {
+              d: "M18.376 2.622a1 1 0 1 1 3.002 3.002L17.36 9.643a.5.5 0 0 0 0 .707l.944.944a2.41 2.41 0 0 1 0 3.408l-.944.944a.5.5 0 0 1-.707 0L8.354 7.348a.5.5 0 0 1 0-.707l.944-.944a2.41 2.41 0 0 1 3.408 0l.944.944a.5.5 0 0 0 .707 0z",
+              key: "18tc5c"
+            }],
+            ["path", {
+              d: "M9 8c-1.804 2.71-3.97 3.46-6.583 3.948a.507.507 0 0 0-.302.819l7.32 8.883a1 1 0 0 0 1.185.204C12.735 20.405 16 16.792 16 15",
+              key: "ytzfxy"
+            }]
+          ]),
+          Me = R("unlink", [
+            ["path", {
+              d: "m18.84 12.25 1.72-1.71h-.02a5.004 5.004 0 0 0-.12-7.07 5.006 5.006 0 0 0-6.95 0l-1.72 1.71",
+              key: "yqzxt4"
+            }],
+            ["path", {
+              d: "m5.17 11.75-1.71 1.71a5.004 5.004 0 0 0 .12 7.07 5.006 5.006 0 0 0 6.95 0l1.71-1.71",
+              key: "4qinb0"
+            }],
+            ["line", {
+              x1: "8",
+              x2: "8",
+              y1: "2",
+              y2: "5",
+              key: "1041cp"
+            }],
+            ["line", {
+              x1: "2",
+              x2: "5",
+              y1: "8",
+              y2: "8",
+              key: "14m1p5"
+            }],
+            ["line", {
+              x1: "16",
+              x2: "16",
+              y1: "19",
+              y2: "22",
+              key: "rzdirn"
+            }],
+            ["line", {
+              x1: "19",
+              x2: "22",
+              y1: "16",
+              y2: "16",
+              key: "ox905f"
+            }]
+          ]),
+          Pe = R("zap", [
+            ["path", {
+              d: "M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z",
+              key: "1xq2db"
+            }]
+          ]),
+          Ae = {
+            key: 1,
+            class: "card-modal"
+          },
+          Te = {
+            class: "modal-header"
+          },
+          Ee = ["disabled"],
+          qe = {
+            class: "modal-body"
+          },
+          Le = {
+            key: 0,
+            class: "state-card error-state"
+          },
+          De = {
+            key: 1,
+            class: "state-card empty-state"
+          },
+          Fe = {
+            key: 2,
+            class: "cards-list"
+          },
+          Ue = {
+            class: "card-main"
+          },
+          Ne = {
+            class: "card-key-row"
+          },
+          Be = {
+            class: "card-key"
+          },
+          Ge = {
+            class: "card-meta"
+          },
+          Ye = {
+            key: 0
+          },
+          Re = {
+            class: "card-side"
+          },
+          Ve = {
+            class: "card-actions"
+          },
+          We = ["onClick"],
+          He = ["disabled", "onClick"],
+          Ze = r({
+            __name: "AccountCardBindingsModal",
+            props: {
+              show: {
+                type: Boolean
+              }
+            },
+            emits: ["update:show", "use-card", "card-unbound"],
+            setup: function(e, a) {
+              var t = a.emit,
+                r = e,
+                O = t,
+                M = V().showToast,
+                P = x(!1),
+                A = x(""),
+                T = x([]),
+                E = x(!1),
+                q = x(!1),
+                L = x(null),
+                D = x(!1),
+                F = b(function() {
+                  return T.value.length > 0
+                }),
+                U = b(function() {
+                  return P.value && !E.value
+                });
+
+              function N() {
+                O("update:show", !1)
+              }
+
+              function B(e) {
+                if ("active" !== e.status) return e;
+                var a, t, r = function(e) {
+                  var a, t, r, n = Number(e);
+                  if (!Number.isFinite(n) || n <= 0 || -1 === n) return null;
+                  var o = new Intl.DateTimeFormat("en-CA", {
+                      timeZone: "Asia/Shanghai",
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit"
+                    }).formatToParts(new Date(1e3 * n)),
+                    i = null === (a = o.find(function(e) {
+                      return "year" === e.type
+                    })) || void 0 === a ? void 0 : a.value,
+                    l = null === (t = o.find(function(e) {
+                      return "month" === e.type
+                    })) || void 0 === t ? void 0 : t.value,
+                    d = null === (r = o.find(function(e) {
+                      return "day" === e.type
+                    })) || void 0 === r ? void 0 : r.value;
+                  if (!i || !l || !d) return null;
+                  var c = Date.parse("".concat(i, "-").concat(l, "-").concat(d, "T00:00:00+08:00"));
+                  return Number.isFinite(c) ? c : null
+                }(e.expires_at);
+                return null === r ? e : r < (a = $(), t = Date.parse("".concat(a, "T00:00:00+08:00")), Number.isFinite(t) ? t : Date.now()) ? n(n({}, e), {}, {
+                  status: "expired",
+                  status_text: "已过期"
+                }) : e
+              }
+
+              function G(e) {
+                var a = String(e || "").trim();
+                if (!a) return "";
+                var t = a.match(/^\d{4}-\d{2}-\d{2}/);
+                if (t) return t[0];
+                var r = Date.parse(a);
+                return Number.isFinite(r) ? new Date(r).toLocaleDateString("zh-CN") : a
+              }
+
+              function Y(e) {
+                var a = String(e || "").trim();
+                if (!a) return "-";
+                var t = a.startsWith("sk-") ? a : "sk-".concat(a);
+                return t.length <= 14 ? t : "".concat(t.slice(0, 8), "...").concat(t.slice(-6))
+              }
+
+              function R(e) {
+                var a = String(e || "").trim();
+                return a.toLowerCase().startsWith("sk-") ? a.slice(3) : a
+              }
+
+              function J(e) {
+                R(localStorage.getItem("piupiu_app_vip_key") || "") === R(e) && (localStorage.setItem("piupiu_app_vip_status", "inactive"), localStorage.removeItem("piupiu_app_vip_key"), localStorage.removeItem("piupiu_vip_level"), localStorage.removeItem("piupiu_vip_expiry"))
+              }
+
+              function K() {
+                return Q.apply(this, arguments)
+              }
+
+              function Q() {
+                return (Q = c(i().m(function e() {
+                  var a, t, r, n, o;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if ((a = L.value) && !D.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        if (t = _()) {
+                          e.n = 2;
+                          break
+                        }
+                        return M("请先登录账号后解绑卡密", "warning"), L.value = null, e.a(2);
+                      case 2:
+                        return D.value = !0, e.p = 3, e.n = 4, S();
+                      case 4:
+                        return r = e.v, e.n = 5, j(a.card_key, r, t.accessToken);
+                      case 5:
+                        if ("success" === (null == (n = e.v) ? void 0 : n.status)) {
+                          e.n = 6;
+                          break
+                        }
+                        return M((null == n ? void 0 : n.message) || "解绑失败，请稍后重试", "error"), e.a(2);
+                      case 6:
+                        return J(a.card_key), O("card-unbound", a.card_key), M("卡密已解绑", "success"), L.value = null, e.n = 7, X(!1);
+                      case 7:
+                        e.n = 9;
+                        break;
+                      case 8:
+                        e.p = 8, o = e.v, console.error("解绑账号卡密失败:", o), M("解绑失败，请检查网络后重试", "error");
+                      case 9:
+                        return e.p = 9, D.value = !1, e.f(9);
+                      case 10:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [3, 8, 9, 10]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function X() {
+                return ee.apply(this, arguments)
+              }
+
+              function ee() {
+                return ee = c(i().m(function e() {
+                  var a, t, r, n, o, l, d = arguments;
+                  return i().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (a = !(d.length > 0 && void 0 !== d[0]) || d[0], t = _()) {
+                          e.n = 1;
+                          break
+                        }
+                        return A.value = "请先登录账号后查看卡密", T.value = [], a && M(A.value, "warning"), e.a(2);
+                      case 1:
+                        return P.value = !0, A.value = "", e.p = 2, e.n = 3, S();
+                      case 3:
+                        return n = e.v, e.n = 4, C(n, t.accessToken);
+                      case 4:
+                        if ("success" === (o = e.v).status) {
+                          e.n = 5;
+                          break
+                        }
+                        return A.value = o.message || "账号卡密列表获取失败", T.value = [], a && M(A.value, "error"), e.a(2);
+                      case 5:
+                        T.value = Array.isArray(null === (r = o.data) || void 0 === r ? void 0 : r.cards) ? o.data.cards.map(B) : [], a && M("卡密列表已刷新", "success"), e.n = 7;
+                        break;
+                      case 6:
+                        e.p = 6, l = e.v, console.error("刷新账号卡密失败:", l), A.value = "账号卡密列表获取失败，请检查网络后重试", T.value = [], a && M(A.value, "error");
+                      case 7:
+                        return e.p = 7, P.value = !1, E.value = !0, e.f(7);
+                      case 8:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [2, 6, 7, 8]
+                  ])
+                })), ee.apply(this, arguments)
+              }
+              return o(function() {
+                  return r.show
+                }, function() {
+                  var e = c(i().m(function e(a) {
+                    return i().w(function(e) {
+                      for (;;) switch (e.n) {
+                        case 0:
+                          if (a) {
+                            e.n = 1;
+                            break
+                          }
+                          return E.value = !1, e.a(2);
+                        case 1:
+                          return E.value = !1, e.n = 2, X(!1);
+                        case 2:
+                          return e.a(2)
+                      }
+                    }, e)
+                  }));
+                  return function(a) {
+                    return e.apply(this, arguments)
+                  }
+                }()), W(function() {
+                  return r.show
+                }, N),
+                function(a, t) {
+                  return I(), l(z, {
+                    to: "body"
+                  }, [d(s, {
+                    name: "modal-fade"
+                  }, {
+                    default: u(function() {
+                      var a;
+                      return [e.show ? (I(), f("div", {
+                        key: 0,
+                        class: "modal-overlay",
+                        onClick: g(N, ["self"])
+                      }, [U.value ? (I(), l(H, {
+                        key: 0,
+                        show: "",
+                        text: "正在刷新卡密..."
+                      })) : (I(), f("div", Ae, [v("div", Te, [t[3] || (t[3] = v("div", {
+                        class: "header-copy"
+                      }, [v("h3", null, "我的卡密"), v("p", null, "当前账号已绑定的专属通道卡密")], -1)), v("button", {
+                        class: "icon-btn refresh-btn",
+                        disabled: P.value,
+                        title: "刷新",
+                        onClick: t[0] || (t[0] = function(e) {
+                          return X(!0)
+                        })
+                      }, [d(h(pe), {
+                        size: 18,
+                        class: m({
+                          spinning: P.value
+                        })
+                      }, null, 8, ["class"])], 8, Ee)]), v("div", qe, [A.value && !P.value ? (I(), f("div", Le, y(A.value), 1)) : F.value || P.value ? (I(), f("div", Fe, [(I(!0), f(k, null, w(T.value, function(e) {
+                        return I(), f("div", {
+                          key: e.card_key,
+                          class: m(["card-item", e.status])
+                        }, [v("div", Ue, [v("div", Ne, [v("span", {
+                          class: m(["level-badge", String(e.level).toLowerCase()])
+                        }, y(e.level), 3), v("span", Be, y(Y(e.card_key)), 1)]), v("div", Ge, [v("span", null, "到期：" + y(G(e.expires_text) || "未知"), 1), e.bound_at ? (I(), f("span", Ye, "激活：" + y(G(e.bound_at)), 1)) : p("", !0)])]), v("div", Re, [v("span", {
+                          class: m(["status-badge", e.status])
+                        }, y(e.status_text), 3), v("div", Ve, [v("button", {
+                          class: "card-action-btn use-btn",
+                          onClick: function(a) {
+                            return function(e) {
+                              var a = String(e.card_key || "").trim();
+                              a ? (O("use-card", a), N()) : M("该卡密信息无效，请刷新后重试", "error")
+                            }(e)
+                          }
+                        }, [d(h(ge), {
+                          size: 15
+                        }), t[5] || (t[5] = v("span", null, "使用", -1))], 8, We), v("button", {
+                          class: "card-action-btn unbind-btn",
+                          disabled: D.value,
+                          onClick: function(a) {
+                            return function(e) {
+                              L.value = e, q.value = !0
+                            }(e)
+                          }
+                        }, [d(h(Me), {
+                          size: 15
+                        }), t[6] || (t[6] = v("span", null, "解绑", -1))], 8, He)])])], 2)
+                      }), 128))])) : (I(), f("div", De, [d(h(Z), {
+                        size: 30
+                      }), t[4] || (t[4] = v("span", null, "当前账号还没有绑定卡密", -1))]))])])), d(fe, {
+                        show: q.value,
+                        "onUpdate:show": t[1] || (t[1] = function(e) {
+                          return q.value = e
+                        }),
+                        title: "确认解绑卡密？",
+                        message: "解绑后，当前账号将不再拥有这张卡密：".concat(Y((null === (a = L.value) || void 0 === a ? void 0 : a.card_key) || "")),
+                        "confirm-text": "确认解绑",
+                        "cancel-text": "取消",
+                        danger: "",
+                        onConfirm: K,
+                        onCancel: t[2] || (t[2] = function(e) {
+                          return L.value = null
+                        })
+                      }, null, 8, ["show", "message"])])) : p("", !0)]
+                    }),
+                    _: 1
+                  })])
+                }
+            }
+          }),
+          $e = J(Ze, [
+            ["__scopeId", "data-v-65ad6e0e"]
+          ]);
+        /**
+         * @license lucide-vue-next v0.562.0 - ISC
+         *
+         * This source code is licensed under the ISC license.
+         * See the LICENSE file in the root directory of this source tree.
+         */
+        function Je(e, a) {
+          return "external" === e || "embedded" === e ? e : a
+        }
+        var Ke = {
+            class: "connection-view"
+          },
+          Qe = {
+            class: "tab-switch"
+          },
+          Xe = {
+            class: "content-area"
+          },
+          ea = {
+            class: "channel-container",
+            key: "free"
+          },
+          aa = {
+            class: "acrylic-card free-card-content"
+          },
+          ta = {
+            class: "card-hero"
+          },
+          ra = {
+            class: "hero-icon-wrapper"
+          },
+          na = {
+            class: "feature-tags"
+          },
+          oa = {
+            class: "feature-tag tag-blue"
+          },
+          ia = {
+            class: "feature-tag tag-green"
+          },
+          la = {
+            class: "feature-tag tag-pink"
+          },
+          da = {
+            class: "card-action"
+          },
+          ca = {
+            class: "channel-container",
+            key: "exclusive"
+          },
+          sa = {
+            class: "acrylic-card gold-card exclusive-content"
+          },
+          ua = {
+            class: "exclusive-header"
+          },
+          fa = {
+            key: 0
+          },
+          pa = {
+            key: 1
+          },
+          ga = {
+            key: 2
+          },
+          ba = {
+            class: "crown-icon"
+          },
+          va = {
+            key: 0,
+            class: "vip-info-badge"
+          },
+          xa = {
+            class: "vip-expiry"
+          },
+          ha = {
+            class: "exclusive-form"
+          },
+          ma = {
+            class: "input-icon"
+          },
+          ya = ["value"],
+          ka = {
+            class: "action-row"
+          },
+          wa = {
+            class: "purchase-channel-modal"
+          },
+          za = {
+            class: "purchase-channel-list"
+          },
+          _a = ["onClick"],
+          Sa = {
+            class: "purchase-channel-main"
+          },
+          ja = {
+            class: "purchase-channel-title"
+          },
+          Ca = {
+            class: "purchase-channel-tag"
+          },
+          Ia = {
+            key: 0,
+            class: "purchase-channel-desc"
+          },
+          Oa = {
+            key: 1,
+            class: "purchase-channel-payments"
+          },
+          Ma = {
+            key: 0,
+            class: "fa-brands fa-weixin wechat",
+            title: "支持微信支付",
+            "aria-label": "支持微信支付",
+            role: "img"
+          },
+          Pa = {
+            key: 1,
+            class: "fa-brands fa-alipay alipay",
+            title: "支持支付宝",
+            "aria-label": "支持支付宝",
+            role: "img"
+          },
+          Aa = {
+            class: "benefits-modal"
+          },
+          Ta = {
+            class: "modal-header"
+          },
+          Ea = {
+            class: "modal-content"
+          },
+          qa = {
+            key: 0,
+            class: "benefits-list"
+          },
+          La = {
+            class: "benefit-details"
+          },
+          Da = {
+            key: 1,
+            class: "benefits-empty"
+          },
+          Fa = {
+            class: "modal-footer"
+          },
+          Ua = "piupiu_app_vip_key",
+          Na = "piupiu_app_vip_status",
+          Ba = "piupiu_purchase_terms_version",
+          Ga = r({
+            __name: "ConnectionView",
+            setup: function(e) {
+              var t = K(),
+                r = V().showToast,
+                n = localStorage.getItem("piupiu_channel_tab"),
+                o = x("exclusive" === n ? "exclusive" : "free"),
+                b = x(""),
+                z = x(null),
+                C = x(O()),
+                R = x(!1),
+                $ = x(!1),
+                J = x(!1),
+                fe = x(!1),
+                Me = x(!1),
+                Ae = x(!1),
+                Te = x("店铺"),
+                Ee = x(""),
+                qe = {
+                  brain: me,
+                  sparkles: ne,
+                  messages: re,
+                  globe: ue,
+                  layers: Ie,
+                  image: he,
+                  headphones: Se,
+                  ruler: de,
+                  refresh: pe,
+                  gem: ve,
+                  memory: le,
+                  suggestion: xe,
+                  paintbrush: Oe
+                };
+              W(function() {
+                return Me.value
+              }, function() {
+                Me.value = !1
+              }), W(function() {
+                return $.value
+              }, function() {
+                $.value = !1
+              });
+              var Le = x(!1),
+                De = x("正在连接..."),
+                Fe = x("inactive"),
+                Ue = x(""),
+                Ne = x("");
+
+              function Be() {
+                localStorage.setItem(Na, "inactive"), localStorage.removeItem(Ua), localStorage.removeItem("piupiu_vip_level"), localStorage.removeItem("piupiu_vip_expiry")
+              }
+
+              function Ge(e) {
+                var a = String(e || "").trim();
+                return a.toLowerCase().startsWith("sk-") ? a.slice(3) : a
+              }
+
+              function Ye(e) {
+                var a = b.value || localStorage.getItem(Ua) || "";
+                a && Ge(a) === Ge(e) && (Fe.value = "inactive", b.value = "", Ue.value = "", Ne.value = "", Be(), r("当前激活卡密已解绑，专属通道已停用", "success"))
+              }
+
+              function Re(e) {
+                o.value !== e && (o.value = e, t.setChannel(e), r("free" === e ? "已切换至免费通道" : "已切换至专属通道", "success"))
+              }
+              var Ve = x(!1);
+
+              function We(e) {
+                return He.apply(this, arguments)
+              }
+
+              function He() {
+                return (He = c(i().m(function e(a) {
+                  var t;
+                  return i().w(function(e) {
+                    for (;;) switch (e.n) {
+                      case 0:
+                        if (t = String(a || "").trim()) {
+                          e.n = 1;
+                          break
+                        }
+                        return r("所选卡密无效，请刷新后重试", "error"), e.a(2);
+                      case 1:
+                        return b.value = t, e.n = 2, et();
+                      case 2:
+                        return e.a(2)
+                    }
+                  }, e)
+                }))).apply(this, arguments)
+              }
+              var Ze = x(!1),
+                Ga = x(""),
+                Ya = x(""),
+                Ra = x(null),
+                Va = x([]);
+
+              function Wa(e) {
+                "external" !== e.openMode ? (Te.value = e.title, Ee.value = e.url, Ae.value = !0) : window.open(e.url, "_blank")
+              }
+
+              function Ha() {
+                var e, a = G(),
+                  t = (null == a || null === (e = a.purchaseAgreement) || void 0 === e ? void 0 : e.version) || 1;
+                localStorage.setItem(Ba, String(t)), Ze.value = !1, Ra.value && (Ra.value(), Ra.value = null)
+              }
+
+              function Za() {
+                Ze.value = !1, Ra.value = null
+              }
+
+              function $a() {
+                var e, t, n;
+                e = function() {
+                  var e, t, n = function(e) {
+                    var a = Je(null == e ? void 0 : e.directPurchaseOpenMode, "embedded"),
+                      t = Array.isArray(null == e ? void 0 : e.directPurchaseLinks) ? e.directPurchaseLinks : [],
+                      r = t.map(function(e, t) {
+                        return {
+                          title: "string" == typeof e ? 0 === t ? "主店铺" : "备用店铺 ".concat(t) : String((null == e ? void 0 : e.title) || (null == e ? void 0 : e.name) || (0 === t ? "主店铺" : "备用店铺 ".concat(t))),
+                          url: "string" == typeof e ? e : String((null == e ? void 0 : e.url) || ""),
+                          description: null != e && e.description ? String(e.description) : void 0,
+                          primary: !0 === (null == e ? void 0 : e.primary) || 0 === t,
+                          wechatEnabled: !0 === (null == e ? void 0 : e.wechatEnabled),
+                          alipayEnabled: !0 === (null == e ? void 0 : e.alipayEnabled),
+                          openMode: "boolean" == typeof(null == e ? void 0 : e.openExternally) ? e.openExternally ? "external" : "embedded" : Je(null == e ? void 0 : e.openMode, a)
+                        }
+                      }).filter(function(e, a) {
+                        var r;
+                        return e.url && !1 !== (null === (r = t[a]) || void 0 === r ? void 0 : r.enabled)
+                      });
+                    return t.length ? r : null != e && e.directPurchaseUrl ? [{
+                      title: "主店铺",
+                      url: String(e.directPurchaseUrl),
+                      primary: !0,
+                      openMode: a,
+                      wechatEnabled: !1,
+                      alipayEnabled: !1
+                    }] : []
+                  }(z.value);
+                  if (null !== (e = z.value) && void 0 !== e && e.directPurchase && 1 === n.length) {
+                    var o = a(n, 1)[0];
+                    o && Wa(o)
+                  } else null !== (t = z.value) && void 0 !== t && t.directPurchase && n.length > 1 ? (Va.value = n, Me.value = !0) : r("暂无可用店铺，请稍后再试", "info")
+                }, t = G(), (n = null == t ? void 0 : t.purchaseAgreement) && (n.version || 0) > Number(localStorage.getItem(Ba) || 0) ? (Ga.value = n.title || "赞助者回馈福利须知", Ya.value = n.content || "", Ra.value = e, Ze.value = !0) : e()
+              }
+
+              function Ja() {
+                return Ka.apply(this, arguments)
+              }
+
+              function Ka() {
+                return (Ka = c(i().m(function e() {
+                  return i().w(function(e) {
+                    for (;;) switch (e.n) {
+                      case 0:
+                        return $.value = !1, e.n = 1, q();
+                      case 1:
+                        $a();
+                      case 2:
+                        return e.a(2)
+                    }
+                  }, e)
+                }))).apply(this, arguments)
+              }
+
+              function Qa() {
+                _() ? fe.value = !0 : r("请先登录账号后查看卡密", "warning")
+              }
+              M(c(i().m(function e() {
+                var a, t, r, n, o, l, d;
+                return i().w(function(e) {
+                  for (;;) switch (e.p = e.n) {
+                    case 0:
+                      return a = localStorage.getItem(Na), t = localStorage.getItem(Ua), a && ["active", "expired"].includes(a) && (Fe.value = a), t && (b.value = t), r = localStorage.getItem("piupiu_vip_level"), n = localStorage.getItem("piupiu_vip_expiry"), r && (Ue.value = Q(r)), n && (Ne.value = n), e.p = 1, (o = P()) && (z.value = o), e.n = 2, A();
+                    case 2:
+                      if (l = e.v) {
+                        e.n = 3;
+                        break
+                      }
+                      return e.a(2);
+                    case 3:
+                      l.paymentMethods && (z.value = l.paymentMethods, localStorage.setItem("piupiu_payment_methods", JSON.stringify(l.paymentMethods))), l.exclusiveBenefits && (C.value = l.exclusiveBenefits, localStorage.setItem("piupiu_exclusive_benefits", JSON.stringify(l.exclusiveBenefits))), e.n = 5;
+                      break;
+                    case 4:
+                      e.p = 4, d = e.v, console.error("Failed to refresh connection page config:", d);
+                    case 5:
+                      return e.a(2)
+                  }
+                }, e, null, [
+                  [1, 4]
+                ])
+              })));
+              var Xa = function(e) {
+                  b.value = e, e.trim() && et()
+                },
+                et = function() {
+                  var e = c(i().m(function e() {
+                    var a, t, n, o, l, d, c, s, u, f, p, g, v, x, h, m, y;
+                    return i().w(function(e) {
+                      for (;;) switch (e.p = e.n) {
+                        case 0:
+                          if (b.value.trim()) {
+                            e.n = 1;
+                            break
+                          }
+                          return r("请输入您的专属卡密", "warning"), e.a(2);
+                        case 1:
+                          if (Le.value = !0, De.value = "正在连接魔法服务器...", e.p = 2, a = _()) {
+                            e.n = 3;
+                            break
+                          }
+                          return r("请先登录账号后再绑定卡密", "warning"), Le.value = !1, e.a(2);
+                        case 3:
+                          return e.n = 4, S();
+                        case 4:
+                          return t = e.v, console.log("[Device] Current Device ID:", t), n = b.value.trim(), e.p = 5, De.value = "正在核验卡密信息...", e.n = 6, L(n);
+                        case 6:
+                          "success" === (o = e.v).status && o.data && o.data.key ? (n = o.data.key, b.value = n, console.log("Lookup successful, using resolved key"), r("兑换码识别成功！")) : console.log("Lookup not successful, treating input as direct key"), e.n = 8;
+                          break;
+                        case 7:
+                          e.p = 7, v = e.v, console.warn("Lookup failed, proceeding with original input:", v);
+                        case 8:
+                          return De.value = "正在验证账号绑定...", e.p = 9, e.n = 10, D(n, t, a.accessToken);
+                        case 10:
+                          if ("error" !== (l = e.v).status) {
+                            e.n = 11;
+                            break
+                          }
+                          return Fe.value = "inactive", "bound_to_other_account" === l.code ? Be() : localStorage.setItem(Na, "inactive"), r(l.message || "该卡密已绑定其他账号", "error"), Le.value = !1, e.a(2);
+                        case 11:
+                          e.n = 13;
+                          break;
+                        case 12:
+                          return e.p = 12, x = e.v, console.error("Account binding check failed:", x), r("账号绑定验证失败，请检查网络", "error"), Le.value = !1, e.a(2);
+                        case 13:
+                          return De.value = "正在加载卡密信息...", e.p = 14, e.n = 15, F(n);
+                        case 15:
+                          if ("success" !== (d = e.v).status || !d.data) {
+                            e.n = 21;
+                            break
+                          }
+                          if (c = d.data.status, s = d.data.expired_time, 1 === c && !U(s)) {
+                            e.n = 16;
+                            break
+                          }
+                          return u = "卡密无效", 2 === c && (u = "卡密已被禁用"), 3 === c && (u = "卡密已过期"), 1 === c && U(s) && (u = "卡密已过期"), console.warn("Token check failed with status:", c), Fe.value = "expired", localStorage.setItem(Na, "expired"), localStorage.removeItem("piupiu_vip_level"), localStorage.removeItem("piupiu_vip_expiry"), r(u, "error"), Le.value = !1, e.a(2);
+                        case 16:
+                          return e.p = 16, f = window.Capacitor ? window.Capacitor.platform || "native" : "web", e.n = 17, N(n, t, a.accessToken, f);
+                        case 17:
+                          if ("error" !== (p = e.v).status) {
+                            e.n = 18;
+                            break
+                          }
+                          return r(p.message || "账号绑定失败", "error"), Le.value = !1, e.a(2);
+                        case 18:
+                          console.log("Account card bound successfully"), e.n = 20;
+                          break;
+                        case 19:
+                          return e.p = 19, h = e.v, console.warn("Account bind failed:", h), r("账号绑定失败，请稍后重试", "error"), Le.value = !1, e.a(2);
+                        case 20:
+                          g = d.data.group || "default", Ue.value = oe(g), Ne.value = B(s), Fe.value = "active", b.value = n, localStorage.setItem(Na, "active"), localStorage.setItem(Ua, n), localStorage.setItem("piupiu_vip_level", Ue.value), localStorage.setItem("piupiu_vip_expiry", Ne.value), r("尊享服务已激活！", "success"), e.n = 22;
+                          break;
+                        case 21:
+                          console.warn("Token check failed:", d), Fe.value = "expired", localStorage.setItem(Na, "expired"), r("卡密无效或已过期", "error");
+                        case 22:
+                          e.n = 24;
+                          break;
+                        case 23:
+                          e.p = 23, m = e.v, console.error("Token check error:", m), r("验证卡密失败，请检查网络", "error");
+                        case 24:
+                          e.n = 26;
+                          break;
+                        case 25:
+                          e.p = 25, y = e.v, console.error("Verification error:", y), r("连接服务器失败，请检查网络", "error");
+                        case 26:
+                          return e.p = 26, Le.value = !1, e.f(26);
+                        case 27:
+                          return e.a(2)
+                      }
+                    }, e, null, [
+                      [16, 19],
+                      [14, 23],
+                      [9, 12],
+                      [5, 7],
+                      [2, 25, 26, 27]
+                    ])
+                  }));
+                  return function() {
+                    return e.apply(this, arguments)
+                  }
+                }(),
+                at = function() {
+                  b.value && "active" === Fe.value ? Ve.value = !0 : r("当前未激活尊享服务，无法进行解绑操作", "warning")
+                },
+                tt = function() {
+                  var e = c(i().m(function e() {
+                    var a, t, n, o, l, d;
+                    return i().w(function(e) {
+                      for (;;) switch (e.p = e.n) {
+                        case 0:
+                          return Ve.value = !1, Le.value = !0, De.value = "正在解除绑定...", e.p = 1, e.n = 2, S();
+                        case 2:
+                          if (a = e.v, !(t = localStorage.getItem(Ua) || b.value)) {
+                            e.n = 7;
+                            break
+                          }
+                          if (!(n = _())) {
+                            e.n = 4;
+                            break
+                          }
+                          return e.n = 3, j(t, a, n.accessToken);
+                        case 3:
+                          l = e.v, e.n = 6;
+                          break;
+                        case 4:
+                          return e.n = 5, Y(t, a);
+                        case 5:
+                          l = e.v;
+                        case 6:
+                          "success" === (o = l).status ? (r("解绑成功"), console.log("Local unbind success"), Fe.value = "inactive", b.value = "", localStorage.setItem(Na, "inactive"), localStorage.removeItem(Ua)) : r(o.message || "解绑失败", "error");
+                        case 7:
+                          e.n = 9;
+                          break;
+                        case 8:
+                          e.p = 8, d = e.v, console.error("Unbind error:", d), r("解绑请求失败，请检查网络", "error");
+                        case 9:
+                          return e.p = 9, Le.value = !1, e.f(9);
+                        case 10:
+                          return e.a(2)
+                      }
+                    }, e, null, [
+                      [1, 8, 9, 10]
+                    ])
+                  }));
+                  return function() {
+                    return e.apply(this, arguments)
+                  }
+                }();
+              return function(e, a) {
+                return I(), f("div", Ke, [d(H, {
+                  show: Le.value,
+                  text: De.value
+                }, null, 8, ["show", "text"]), d(X, {
+                  show: Ve.value,
+                  title: "解除绑定确认",
+                  message: "确定要解除账号绑定吗？解除后该卡密可绑定到其他账号，当前账号将失去尊享权限。",
+                  "confirm-text": "确认解绑",
+                  "cancel-text": "再想想",
+                  "show-cancel": "",
+                  onConfirm: tt,
+                  onCancel: a[0] || (a[0] = function(e) {
+                    return Ve.value = !1
+                  })
+                }, null, 8, ["show"]), d(ee, {
+                  show: Ze.value,
+                  title: Ga.value,
+                  content: Ya.value,
+                  onAgree: Ha,
+                  onDisagree: Za
+                }, null, 8, ["show", "title", "content"]), v("div", Qe, [v("button", {
+                  class: m(["tab-btn", {
+                    active: "free" === o.value
+                  }]),
+                  onClick: a[1] || (a[1] = function(e) {
+                    return Re("free")
+                  })
+                }, [d(h(ze), {
+                  size: 18,
+                  "stroke-width": 2
+                }), a[13] || (a[13] = v("span", null, "免费通道", -1))], 2), v("button", {
+                  class: m(["tab-btn", {
+                    active: "exclusive" === o.value,
+                    "gold-effect": "exclusive" === o.value
+                  }]),
+                  onClick: a[2] || (a[2] = function(e) {
+                    return Re("exclusive")
+                  })
+                }, [d(h(Pe), {
+                  size: 18,
+                  "stroke-width": 2
+                }), a[14] || (a[14] = v("span", null, "专属通道", -1))], 2)]), v("div", Xe, [d(s, {
+                  name: "fade",
+                  mode: "out-in"
+                }, {
+                  default: u(function() {
+                    return ["free" === o.value ? (I(), f("div", ea, [v("div", aa, [v("div", ta, [v("div", ra, [d(h(ce), {
+                      size: 48,
+                      "stroke-width": 1.5
+                    })]), a[15] || (a[15] = v("h2", {
+                      class: "hero-title"
+                    }, "免费直连", -1)), a[16] || (a[16] = v("p", {
+                      class: "hero-subtitle"
+                    }, "良心服务 · 拒绝套路 · 永久承诺", -1))]), v("div", na, [v("div", oa, [d(h(ke), {
+                      size: 16
+                    }), a[17] || (a[17] = v("span", null, "无需签到", -1))]), v("div", ia, [d(h(Ce), {
+                      size: 16
+                    }), a[18] || (a[18] = v("span", null, "永久免费", -1))]), v("div", la, [d(h(je), {
+                      size: 16
+                    }), a[19] || (a[19] = v("span", null, "良心运营", -1))])]), v("div", da, [v("a", {
+                      href: "#",
+                      class: "upgrade-link",
+                      onClick: a[3] || (a[3] = g(function(e) {
+                        return Re("exclusive")
+                      }, ["prevent"]))
+                    }, [a[20] || (a[20] = T(" 想体验更高级的模型？支持我们！ ", -1)), d(h(ye), {
+                      size: 14
+                    })]), v("button", {
+                      class: "invite-entry-link",
+                      onClick: a[4] || (a[4] = function(e) {
+                        return J.value = !0
+                      })
+                    }, [d(h(ce), {
+                      size: 15
+                    }), a[21] || (a[21] = v("span", null, "邀请好友免费领 VIP", -1)), d(h(ye), {
+                      size: 14
+                    })])])])])) : (I(), f("div", ca, [v("div", sa, [v("button", {
+                      class: "account-cards-corner-btn",
+                      onClick: Qa,
+                      title: "我的卡密"
+                    }, [d(h(ae), {
+                      size: 17
+                    }), a[22] || (a[22] = v("span", null, "我的卡密", -1))]), v("div", ua, [v("div", {
+                      class: m(["status-badge", Fe.value])
+                    }, [a[23] || (a[23] = v("span", {
+                      class: "status-dot"
+                    }, null, -1)), "active" === Fe.value ? (I(), f("span", fa, "已激活尊享服务")) : "expired" === Fe.value ? (I(), f("span", pa, "卡密无效或已过期")) : (I(), f("span", ga, "服务未激活"))], 2), v("div", ba, [d(h(be), {
+                      size: 48,
+                      "stroke-width": 1.5
+                    })]), a[24] || (a[24] = v("h2", null, "尊享服务", -1)), "active" === Fe.value && Ue.value ? (I(), f("div", va, [v("span", {
+                      class: m(["vip-level", Ue.value.toLowerCase()])
+                    }, y(Ue.value), 3), v("span", xa, "有效期至: " + y(Ne.value), 1)])) : p("", !0)]), v("div", ha, [v("div", {
+                      class: "input-group",
+                      onClick: a[5] || (a[5] = function(e) {
+                        return R.value = !0
+                      })
+                    }, [v("div", ma, [d(h(Z), {
+                      size: 20
+                    })]), v("input", {
+                      value: b.value,
+                      type: "text",
+                      placeholder: "点击输入您的专属卡密",
+                      class: "key-input clickable-input",
+                      readonly: ""
+                    }, null, 8, ya)]), v("div", ka, [v("button", {
+                      class: "action-btn bind-btn",
+                      onClick: et
+                    }, [d(h(ge), {
+                      size: 18
+                    }), a[25] || (a[25] = v("span", null, "检测并绑定", -1))]), v("button", {
+                      class: "action-btn unbind-btn",
+                      onClick: at
+                    }, [d(h(we), {
+                      size: 18
+                    }), a[26] || (a[26] = v("span", null, "解绑", -1))])]), v("button", {
+                      class: "support-btn",
+                      onClick: $a
+                    }, [d(h(_e), {
+                      size: 20
+                    }), a[27] || (a[27] = v("span", null, "发电支持 / 获取卡密", -1))]), v("a", {
+                      href: "#",
+                      class: "benefits-link gold-text-anim",
+                      onClick: a[6] || (a[6] = g(function(e) {
+                        return $.value = !0
+                      }, ["prevent"]))
+                    }, [a[28] || (a[28] = T(" 查看专属福利 ", -1)), d(h(ye), {
+                      size: 14
+                    })])])])]))]
+                  }),
+                  _: 1
+                })]), d(te, {
+                  show: R.value,
+                  "onUpdate:show": a[7] || (a[7] = function(e) {
+                    return R.value = e
+                  }),
+                  title: "输入专属卡密",
+                  placeholder: "请输入您的专属卡密...",
+                  "initial-value": b.value,
+                  "confirm-text": "确定",
+                  onConfirm: Xa
+                }, null, 8, ["show", "initial-value"]), d(se, {
+                  show: J.value,
+                  "onUpdate:show": a[8] || (a[8] = function(e) {
+                    return J.value = e
+                  })
+                }, null, 8, ["show"]), d($e, {
+                  show: fe.value,
+                  "onUpdate:show": a[9] || (a[9] = function(e) {
+                    return fe.value = e
+                  }),
+                  onUseCard: We,
+                  onCardUnbound: Ye
+                }, null, 8, ["show"]), d(ie, {
+                  show: Ae.value,
+                  "onUpdate:show": a[10] || (a[10] = function(e) {
+                    return Ae.value = e
+                  }),
+                  title: Te.value,
+                  url: Ee.value
+                }, null, 8, ["show", "title", "url"]), d(s, {
+                  name: "modal"
+                }, {
+                  default: u(function() {
+                    return [Me.value ? (I(), f("div", {
+                      key: 0,
+                      class: "modal-overlay purchase-channel-overlay",
+                      onClick: a[11] || (a[11] = g(function(e) {
+                        return Me.value = !1
+                      }, ["self"]))
+                    }, [v("div", wa, [a[30] || (a[30] = v("div", {
+                      class: "modal-header"
+                    }, [v("h3", null, "选择店铺渠道")], -1)), v("div", za, [(I(!0), f(k, null, w(Va.value, function(e, t) {
+                      return I(), f("button", {
+                        key: "".concat(e.url, "-").concat(t),
+                        class: m(["purchase-channel-btn", {
+                          primary: e.primary
+                        }]),
+                        onClick: function(a) {
+                          return function(e) {
+                            Me.value = !1, Wa(e)
+                          }(e)
+                        }
+                      }, [v("span", Sa, [v("span", ja, y(e.title), 1), v("span", Ca, y(e.primary ? "主店铺" : "备用店铺"), 1)]), e.description ? (I(), f("span", Ia, y(e.description), 1)) : p("", !0), e.wechatEnabled || e.alipayEnabled ? (I(), f("span", Oa, [a[29] || (a[29] = v("span", {
+                        class: "purchase-channel-payment-label"
+                      }, "支持", -1)), e.wechatEnabled ? (I(), f("i", Ma)) : p("", !0), e.alipayEnabled ? (I(), f("i", Pa)) : p("", !0)])) : p("", !0)], 10, _a)
+                    }), 128))])])])) : p("", !0)]
+                  }),
+                  _: 1
+                }), d(s, {
+                  name: "modal"
+                }, {
+                  default: u(function() {
+                    var e, t, r;
+                    return [$.value ? (I(), f("div", {
+                      key: 0,
+                      class: "modal-overlay",
+                      onClick: a[12] || (a[12] = g(function(e) {
+                        return $.value = !1
+                      }, ["self"]))
+                    }, [v("div", Aa, [v("div", Ta, [v("h3", null, y((null === (e = C.value) || void 0 === e ? void 0 : e.title) || "专属福利清单"), 1)]), v("div", Ea, [null !== (t = C.value) && void 0 !== t && null !== (t = t.items) && void 0 !== t && t.length ? (I(), f("div", qa, [(I(!0), f(k, null, w(C.value.items, function(e) {
+                      return I(), f("div", {
+                        key: e.id,
+                        class: "benefit-item"
+                      }, [v("div", {
+                        class: m(["benefit-icon", e.iconClass])
+                      }, [(I(), l(E((a = e.icon, qe[a] || ne)), {
+                        size: 20
+                      }))], 2), v("div", La, [v("h4", null, y(e.title), 1), v("p", null, [(I(!0), f(k, null, w(e.description, function(a, t) {
+                        return I(), f("span", {
+                          key: "".concat(e.id, "-").concat(t),
+                          class: m({
+                            highlight: a.highlight
+                          })
+                        }, y(a.text), 3)
+                      }), 128))])])]);
+                      var a
+                    }), 128))])) : (I(), f("div", Da, "福利清单加载中..."))]), v("div", Fa, [v("button", {
+                      class: "unlock-btn",
+                      onClick: Ja
+                    }, [d(h(Pe), {
+                      size: 18,
+                      fill: "currentColor"
+                    }), v("span", null, y((null === (r = C.value) || void 0 === r ? void 0 : r.unlockText) || "解锁福利"), 1)])])])])) : p("", !0)]
+                  }),
+                  _: 1
+                })])
+              }
+            }
+          });
+        e("default", J(Ga, [
+          ["__scopeId", "data-v-e385f135"]
+        ]))
+      }
+    }
+  })
+}();

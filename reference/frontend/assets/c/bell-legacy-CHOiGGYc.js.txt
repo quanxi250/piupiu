@@ -1,0 +1,34 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+System.register(["../e/index-legacy-B0tYRju5.js"], function(e, t) {
+  "use strict";
+  var c;
+  return {
+    setters: [function(e) {
+      c = e.c
+    }],
+    execute: function() {
+      /**
+       * @license lucide-vue-next v0.562.0 - ISC
+       *
+       * This source code is licensed under the ISC license.
+       * See the LICENSE file in the root directory of this source tree.
+       */
+      e("B", c("bell", [
+        ["path", {
+          d: "M10.268 21a2 2 0 0 0 3.464 0",
+          key: "vwvbt9"
+        }],
+        ["path", {
+          d: "M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326",
+          key: "11g9vi"
+        }]
+      ]))
+    }
+  }
+});

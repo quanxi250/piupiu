@@ -1,0 +1,39 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+System.register(["../e/index-legacy-B0tYRju5.js", "./ChatroomContent-legacy-1HcLb3mr.js", "./app-security-legacy-BdXLf8ML.js", "./ChatroomProfileModal-legacy-qBmzrVdN.js", "./useSwipePagination-legacy-BiiTkTjC.js", "./ConfirmModal-legacy-NP3AE2aY.js", "./gem-legacy-Cu1O8F28.js", "./heart-legacy-C1bie6cH.js", "./GlobalResourceMarketModal-legacy-BvchFYLb.js", "./trash-2-legacy-D4qdzvtP.js", "./browser-legacy-BbIUDyyy.js", "./volume-2-legacy-CkUYK7Ir.js", "./volume-x-legacy-DtasbnGi.js", "./user-round-x-legacy-BD81E5_q.js", "./GroupMemberSelector-legacy-BIJ8h7lR.js", "./message-square-plus-legacy-BvW3kF1p.js", "./BackgroundSettingsModal-legacy-B5m4oeJe.js", "./lock-legacy-DIp3fFDa.js", "./bell-legacy-CHOiGGYc.js", "./__vite-browser-external-legacy-CFzqUGuc.js", "./tavernHelperScriptStorage-legacy-BVIVfja_.js", "./ellipsis-vertical-legacy-BVt4j4Y5.js", "./copy-legacy-wdtkFLud.js", "./Live2DViewer-legacy-Cs35RHtK.js"], function(l, e) {
+  "use strict";
+  var a, n, u, s, c;
+  return {
+    setters: [function(l) {
+      a = l.u
+    }, function(l) {
+      n = l.default
+    }, function(l) {
+      u = l.k, s = l.J, c = l.K
+    }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+    execute: function() {
+      l("default", u({
+        __name: "ChatroomView",
+        setup: function(l) {
+          var e = a();
+
+          function u() {
+            e.options.history.state.back ? e.back() : e.replace({
+              name: "home"
+            })
+          }
+          return function(l, e) {
+            return c(), s(n, {
+              onBack: u
+            })
+          }
+        }
+      }))
+    }
+  }
+});

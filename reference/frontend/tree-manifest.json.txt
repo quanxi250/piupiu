@@ -1,0 +1,361 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+{
+ "files": [
+  {
+   "path": "index.html",
+   "bytes": 1544,
+   "beautified": false
+  },
+  {
+   "path": "assets/c/app-security-legacy-BdXLf8ML.js",
+   "bytes": 216115,
+   "beautified": true,
+   "beautifiedBytes": 413456
+  },
+  {
+   "path": "assets/c/BackgroundSettingsModal-legacy-B5m4oeJe.js",
+   "bytes": 50556,
+   "beautified": true,
+   "beautifiedBytes": 81375
+  },
+  {
+   "path": "assets/c/bell-legacy-CHOiGGYc.js",
+   "bytes": 580,
+   "beautified": true,
+   "beautifiedBytes": 736
+  },
+  {
+   "path": "assets/c/browser-legacy-BbIUDyyy.js",
+   "bytes": 17014,
+   "beautified": true,
+   "beautifiedBytes": 32692
+  },
+  {
+   "path": "assets/c/ChatroomContent-legacy-1HcLb3mr.js",
+   "bytes": 110584,
+   "beautified": true,
+   "beautifiedBytes": 204170
+  },
+  {
+   "path": "assets/c/ChatroomProfileModal-legacy-qBmzrVdN.js",
+   "bytes": 40105,
+   "beautified": true,
+   "beautifiedBytes": 57992
+  },
+  {
+   "path": "assets/c/ChatroomView-legacy-Dt8QizRx.js",
+   "bytes": 1360,
+   "beautified": true,
+   "beautifiedBytes": 1691
+  },
+  {
+   "path": "assets/c/ChatView-legacy-C8UPOooP.js",
+   "bytes": 387250,
+   "beautified": true,
+   "beautifiedBytes": 768580
+  },
+  {
+   "path": "assets/c/circle-check-legacy-DZDuDdoN.js",
+   "bytes": 468,
+   "beautified": true,
+   "beautifiedBytes": 648
+  },
+  {
+   "path": "assets/c/classicSummaryContext-legacy-CRgs7-fN.js",
+   "bytes": 10530,
+   "beautified": true,
+   "beautifiedBytes": 15417
+  },
+  {
+   "path": "assets/c/ConfirmModal-legacy-NP3AE2aY.js",
+   "bytes": 4014,
+   "beautified": true,
+   "beautifiedBytes": 5675
+  },
+  {
+   "path": "assets/c/ConnectionView-legacy-DbxMl1Yy.js",
+   "bytes": 65762,
+   "beautified": true,
+   "beautifiedBytes": 94524
+  },
+  {
+   "path": "assets/c/copy-legacy-wdtkFLud.js",
+   "bytes": 526,
+   "beautified": true,
+   "beautifiedBytes": 742
+  },
+  {
+   "path": "assets/c/dataBackupService-legacy-DP8RNBWM.js",
+   "bytes": 44290,
+   "beautified": true,
+   "beautifiedBytes": 89411
+  },
+  {
+   "path": "assets/c/defaultGlobalPreset-legacy-tjZgE48x.js",
+   "bytes": 8060,
+   "beautified": true,
+   "beautifiedBytes": 14721
+  },
+  {
+   "path": "assets/c/ellipsis-vertical-legacy-BVt4j4Y5.js",
+   "bytes": 525,
+   "beautified": true,
+   "beautifiedBytes": 796
+  },
+  {
+   "path": "assets/c/gem-legacy-Cu1O8F28.js",
+   "bytes": 1132,
+   "beautified": true,
+   "beautifiedBytes": 1433
+  },
+  {
+   "path": "assets/c/GlobalResourceMarketModal-legacy-BvchFYLb.js",
+   "bytes": 71101,
+   "beautified": true,
+   "beautifiedBytes": 123350
+  },
+  {
+   "path": "assets/c/heart-legacy-C1bie6cH.js",
+   "bytes": 548,
+   "beautified": true,
+   "beautifiedBytes": 661
+  },
+  {
+   "path": "assets/c/HomeView-legacy-CpTLpq7h.js",
+   "bytes": 91838,
+   "beautified": true,
+   "beautifiedBytes": 143656
+  },
+  {
+   "path": "assets/c/ImageViewer-legacy-DD5gJaNv.js",
+   "bytes": 317785,
+   "beautified": true,
+   "beautifiedBytes": 491156
+  },
+  {
+   "path": "assets/c/index-legacy-B9tS5Buf.js",
+   "bytes": 24640,
+   "beautified": true,
+   "beautifiedBytes": 44955
+  },
+  {
+   "path": "assets/c/index-legacy-BLoj_8c6.js",
+   "bytes": 312,
+   "beautified": true,
+   "beautifiedBytes": 463
+  },
+  {
+   "path": "assets/c/index-legacy-X4flypwl.js",
+   "bytes": 77469,
+   "beautified": true,
+   "beautifiedBytes": 176315
+  },
+  {
+   "path": "assets/c/InviteSystemModal-legacy-BrJeYdi2.js",
+   "bytes": 38615,
+   "beautified": true,
+   "beautifiedBytes": 60397
+  },
+  {
+   "path": "assets/c/jeep-sqlite.entry-legacy-Wf67Dcg5.js",
+   "bytes": 372220,
+   "beautified": true,
+   "beautifiedBytes": 745733
+  },
+  {
+   "path": "assets/c/legacyImportService-legacy-B36o-CNr.js",
+   "bytes": 3928,
+   "beautified": true,
+   "beautifiedBytes": 6080
+  },
+  {
+   "path": "assets/c/Live2DViewer-legacy-Cs35RHtK.js",
+   "bytes": 14964,
+   "beautified": true,
+   "beautifiedBytes": 28620
+  },
+  {
+   "path": "assets/c/lock-legacy-DIp3fFDa.js",
+   "bytes": 496,
+   "beautified": true,
+   "beautifiedBytes": 712
+  },
+  {
+   "path": "assets/c/MemoryView-legacy-DM4TzbJU.js",
+   "bytes": 33890,
+   "beautified": true,
+   "beautifiedBytes": 54995
+  },
+  {
+   "path": "assets/c/message-square-plus-legacy-BvW3kF1p.js",
+   "bytes": 1532,
+   "beautified": true,
+   "beautifiedBytes": 2314
+  },
+  {
+   "path": "assets/c/OfficialWebModal-legacy-DGd73aKM.js",
+   "bytes": 11907,
+   "beautified": true,
+   "beautifiedBytes": 19639
+  },
+  {
+   "path": "assets/c/overwriteRecovery-legacy-2YP7Wk_W.js",
+   "bytes": 11720,
+   "beautified": true,
+   "beautifiedBytes": 22499
+  },
+  {
+   "path": "assets/c/pin-legacy-Ccnvd4Oq.js",
+   "bytes": 636,
+   "beautified": true,
+   "beautifiedBytes": 792
+  },
+  {
+   "path": "assets/c/ragService-legacy-DSja2Orj.js",
+   "bytes": 1055405,
+   "beautified": true,
+   "beautifiedBytes": 1927695
+  },
+  {
+   "path": "assets/c/randomNekoService-legacy-CyYdQN96.js",
+   "bytes": 4262,
+   "beautified": true,
+   "beautifiedBytes": 7559
+  },
+  {
+   "path": "assets/c/refresh-cw-legacy-8ZRhP8a6.js",
+   "bytes": 611,
+   "beautified": true,
+   "beautifiedBytes": 853
+  },
+  {
+   "path": "assets/c/RoleHallView-legacy-OCYgw5tR.js",
+   "bytes": 247676,
+   "beautified": true,
+   "beautifiedBytes": 422493
+  },
+  {
+   "path": "assets/c/settings-legacy-BSGzoDfU.js",
+   "bytes": 3787,
+   "beautified": true,
+   "beautifiedBytes": 6375
+  },
+  {
+   "path": "assets/c/SettingsView-legacy-CYxjl7kQ.js",
+   "bytes": 85718,
+   "beautified": true,
+   "beautifiedBytes": 147995
+  },
+  {
+   "path": "assets/c/sun-legacy-xJ81SYqA.js",
+   "bytes": 1125,
+   "beautified": true,
+   "beautifiedBytes": 1665
+  },
+  {
+   "path": "assets/c/tavernHelperScriptStorage-legacy-BVIVfja_.js",
+   "bytes": 134448,
+   "beautified": true,
+   "beautifiedBytes": 190974
+  },
+  {
+   "path": "assets/c/trash-2-legacy-D4qdzvtP.js",
+   "bytes": 958,
+   "beautified": true,
+   "beautifiedBytes": 1355
+  },
+  {
+   "path": "assets/c/useMarketUploadAgreement-legacy-CIq0LfZF.js",
+   "bytes": 75111,
+   "beautified": true,
+   "beautifiedBytes": 119594
+  },
+  {
+   "path": "assets/c/usePermission-legacy-C3joXLwu.js",
+   "bytes": 805,
+   "beautified": true,
+   "beautifiedBytes": 1155
+  },
+  {
+   "path": "assets/c/useSwipePagination-legacy-BiiTkTjC.js",
+   "bytes": 5763,
+   "beautified": true,
+   "beautifiedBytes": 8483
+  },
+  {
+   "path": "assets/c/volume-2-legacy-CkUYK7Ir.js",
+   "bytes": 680,
+   "beautified": true,
+   "beautifiedBytes": 879
+  },
+  {
+   "path": "assets/c/volume-x-legacy-DtasbnGi.js",
+   "bytes": 680,
+   "beautified": true,
+   "beautifiedBytes": 951
+  },
+  {
+   "path": "assets/c/web-legacy-Bg-XDLPb.js",
+   "bytes": 6179,
+   "beautified": true,
+   "beautifiedBytes": 10082
+  },
+  {
+   "path": "assets/c/web-legacy-CltUNGlf.js",
+   "bytes": 9080,
+   "beautified": true,
+   "beautifiedBytes": 15412
+  },
+  {
+   "path": "assets/c/web-legacy-DljsdhBm.js",
+   "bytes": 20471,
+   "beautified": true,
+   "beautifiedBytes": 42894
+  },
+  {
+   "path": "assets/c/web-legacy-Dz8Nuw-I.js",
+   "bytes": 12727,
+   "beautified": true,
+   "beautifiedBytes": 23469
+  },
+  {
+   "path": "assets/c/web-legacy-Qbujwukg.js",
+   "bytes": 25285,
+   "beautified": true,
+   "beautifiedBytes": 46469
+  },
+  {
+   "path": "assets/c/x-legacy-CUolZt7f.js",
+   "bytes": 444,
+   "beautified": true,
+   "beautifiedBytes": 600
+  },
+  {
+   "path": "assets/c/__vite-browser-external-legacy-CFzqUGuc.js",
+   "bytes": 827,
+   "beautified": true,
+   "beautifiedBytes": 1368
+  },
+  {
+   "path": "assets/e/index-legacy-B0tYRju5.js",
+   "bytes": 761265,
+   "beautified": true,
+   "beautifiedBytes": 1169334
+  },
+  {
+   "path": "assets/e/polyfills-legacy-BhpoH1Hr.js",
+   "bytes": 183192,
+   "beautified": true,
+   "beautifiedBytes": 312443
+  }
+ ],
+ "count": 58,
+ "beautified": 57,
+ "beautifyFailed": 0
+}

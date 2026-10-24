@@ -1,0 +1,357 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function e() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var r, n, o = "function" == typeof Symbol ? Symbol : {},
+      i = o.iterator || "@@iterator",
+      a = o.toStringTag || "@@toStringTag";
+
+    function u(e, o, i, a) {
+      var u = o && o.prototype instanceof c ? o : c,
+        s = Object.create(u.prototype);
+      return t(s, "_invoke", function(e, t, o) {
+        var i, a, u, c = 0,
+          s = o || [],
+          f = !1,
+          y = {
+            p: 0,
+            n: 0,
+            v: r,
+            a: p,
+            f: p.bind(r, 4),
+            d: function(e, t) {
+              return i = e, a = 0, u = r, y.n = t, l
+            }
+          };
+
+        function p(e, t) {
+          for (a = e, u = t, n = 0; !f && c && !o && n < s.length; n++) {
+            var o, i = s[n],
+              p = y.p,
+              m = i[2];
+            e > 3 ? (o = m === t) && (u = i[(a = i[4]) ? 5 : (a = 3, 3)], i[4] = i[5] = r) : i[0] <= p && ((o = e < 2 && p < i[1]) ? (a = 0, y.v = t, y.n = i[1]) : p < m && (o = e < 3 || i[0] > t || t > m) && (i[4] = e, i[5] = t, y.n = m, a = 0))
+          }
+          if (o || e > 1) return l;
+          throw f = !0, t
+        }
+        return function(o, s, m) {
+          if (c > 1) throw TypeError("Generator is already running");
+          for (f && 1 === s && p(s, m), a = s, u = m;
+            (n = a < 2 ? r : u) || !f;) {
+            i || (a ? a < 3 ? (a > 1 && (y.n = -1), p(a, u)) : y.n = u : y.v = u);
+            try {
+              if (c = 2, i) {
+                if (a || (o = "next"), n = i[o]) {
+                  if (!(n = n.call(i, u))) throw TypeError("iterator result is not an object");
+                  if (!n.done) return n;
+                  u = n.value, a < 2 && (a = 0)
+                } else 1 === a && (n = i.return) && n.call(i), a < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), a = 1);
+                i = r
+              } else if ((n = (f = y.n < 0) ? u : e.call(t, y)) !== l) break
+            } catch (n) {
+              i = r, a = 1, u = n
+            } finally {
+              c = 1
+            }
+          }
+          return {
+            value: n,
+            done: f
+          }
+        }
+      }(e, i, a), !0), s
+    }
+    var l = {};
+
+    function c() {}
+
+    function s() {}
+
+    function f() {}
+    n = Object.getPrototypeOf;
+    var y = [][i] ? n(n([][i]())) : (t(n = {}, i, function() {
+        return this
+      }), n),
+      p = f.prototype = c.prototype = Object.create(y);
+
+    function m(e) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(e, f) : (e.__proto__ = f, t(e, a, "GeneratorFunction")), e.prototype = Object.create(p), e
+    }
+    return s.prototype = f, t(p, "constructor", f), t(f, "constructor", s), s.displayName = "GeneratorFunction", t(f, a, "GeneratorFunction"), t(p), t(p, a, "Generator"), t(p, i, function() {
+      return this
+    }), t(p, "toString", function() {
+      return "[object Generator]"
+    }), (e = function() {
+      return {
+        w: u,
+        m: m
+      }
+    })()
+  }
+
+  function t(e, r, n, o) {
+    var i = Object.defineProperty;
+    try {
+      i({}, "", {})
+    } catch (e) {
+      i = 0
+    }
+    t = function(e, r, n, o) {
+      function a(r, n) {
+        t(e, r, function(e) {
+          return this._invoke(r, n, e)
+        })
+      }
+      r ? i ? i(e, r, {
+        value: n,
+        enumerable: !o,
+        configurable: !o,
+        writable: !o
+      }) : e[r] = n : (a("next", 0), a("throw", 1), a("return", 2))
+    }, t(e, r, n, o)
+  }
+
+  function r(e) {
+    return function(e) {
+      if (Array.isArray(e)) return c(e)
+    }(e) || function(e) {
+      if ("undefined" != typeof Symbol && null != e[Symbol.iterator] || null != e["@@iterator"]) return Array.from(e)
+    }(e) || l(e) || function() {
+      throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }()
+  }
+
+  function n(e, t) {
+    var r = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+      var n = Object.getOwnPropertySymbols(e);
+      t && (n = n.filter(function(t) {
+        return Object.getOwnPropertyDescriptor(e, t).enumerable
+      })), r.push.apply(r, n)
+    }
+    return r
+  }
+
+  function o(e) {
+    for (var t = 1; t < arguments.length; t++) {
+      var r = null != arguments[t] ? arguments[t] : {};
+      t % 2 ? n(Object(r), !0).forEach(function(t) {
+        i(e, t, r[t])
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(r)) : n(Object(r)).forEach(function(t) {
+        Object.defineProperty(e, t, Object.getOwnPropertyDescriptor(r, t))
+      })
+    }
+    return e
+  }
+
+  function i(e, t, r) {
+    return (t = function(e) {
+      var t = function(e, t) {
+        if ("object" != s(e) || !e) return e;
+        var r = e[Symbol.toPrimitive];
+        if (void 0 !== r) {
+          var n = r.call(e, t || "default");
+          if ("object" != s(n)) return n;
+          throw new TypeError("@@toPrimitive must return a primitive value.")
+        }
+        return ("string" === t ? String : Number)(e)
+      }(e, "string");
+      return "symbol" == s(t) ? t : t + ""
+    }(t)) in e ? Object.defineProperty(e, t, {
+      value: r,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }) : e[t] = r, e
+  }
+
+  function a(e, t, r, n, o, i, a) {
+    try {
+      var u = e[i](a),
+        l = u.value
+    } catch (e) {
+      return void r(e)
+    }
+    u.done ? t(l) : Promise.resolve(l).then(n, o)
+  }
+
+  function u(e, t) {
+    return function(e) {
+      if (Array.isArray(e)) return e
+    }(e) || function(e, t) {
+      var r = null == e ? null : "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
+      if (null != r) {
+        var n, o, i, a, u = [],
+          l = !0,
+          c = !1;
+        try {
+          if (i = (r = r.call(e)).next, 0 === t) {
+            if (Object(r) !== r) return;
+            l = !1
+          } else
+            for (; !(l = (n = i.call(r)).done) && (u.push(n.value), u.length !== t); l = !0);
+        } catch (e) {
+          c = !0, o = e
+        } finally {
+          try {
+            if (!l && null != r.return && (a = r.return(), Object(a) !== a)) return
+          } finally {
+            if (c) throw o
+          }
+        }
+        return u
+      }
+    }(e, t) || l(e, t) || function() {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }()
+  }
+
+  function l(e, t) {
+    if (e) {
+      if ("string" == typeof e) return c(e, t);
+      var r = {}.toString.call(e).slice(8, -1);
+      return "Object" === r && e.constructor && (r = e.constructor.name), "Map" === r || "Set" === r ? Array.from(e) : "Arguments" === r || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r) ? c(e, t) : void 0
+    }
+  }
+
+  function c(e, t) {
+    (null == t || t > e.length) && (t = e.length);
+    for (var r = 0, n = Array(t); r < t; r++) n[r] = e[r];
+    return n
+  }
+
+  function s(e) {
+    return s = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+      return typeof e
+    } : function(e) {
+      return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
+    }, s(e)
+  }
+  System.register(["./ChatView-legacy-C8UPOooP.js", "./app-security-legacy-BdXLf8ML.js", "../e/index-legacy-B0tYRju5.js", "./GroupMemberSelector-legacy-BIJ8h7lR.js", "./message-square-plus-legacy-BvW3kF1p.js", "./BackgroundSettingsModal-legacy-B5m4oeJe.js", "./lock-legacy-DIp3fFDa.js", "./trash-2-legacy-D4qdzvtP.js", "./GlobalResourceMarketModal-legacy-BvchFYLb.js", "./ConfirmModal-legacy-NP3AE2aY.js", "./useSwipePagination-legacy-BiiTkTjC.js", "./browser-legacy-BbIUDyyy.js", "./volume-2-legacy-CkUYK7Ir.js", "./gem-legacy-Cu1O8F28.js", "./bell-legacy-CHOiGGYc.js", "./user-round-x-legacy-BD81E5_q.js", "./__vite-browser-external-legacy-CFzqUGuc.js", "./tavernHelperScriptStorage-legacy-BVIVfja_.js", "./settings-legacy-BSGzoDfU.js", "./ellipsis-vertical-legacy-BVt4j4Y5.js", "./circle-check-legacy-DZDuDdoN.js", "./x-legacy-CUolZt7f.js", "./refresh-cw-legacy-8ZRhP8a6.js", "./ImageViewer-legacy-DD5gJaNv.js", "./OfficialWebModal-legacy-DGd73aKM.js", "./useMarketUploadAgreement-legacy-CIq0LfZF.js"], function(t, n) {
+    "use strict";
+    var i, l;
+    return {
+      setters: [function(e) {
+        i = e.C, l = e.e
+      }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+      execute: function() {
+        t("buildClassicSummaryMessages", function(e, t, r, n, o) {
+          return c.apply(this, arguments)
+        });
+
+        function n(e) {
+          var t = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "";
+          return "string" == typeof e ? /^(content|description|personality|scenario|mesExamples|firstMes|creatorNotes|systemPrompt|postHistoryInstructions|depthPrompt|persona|before|after|authorNoteBefore|authorNoteAfter|authorNoteBase|exampleMessagesBefore|exampleMessagesAfter|outlets)$/.test(t) ? l(e) : e : Array.isArray(e) ? e.map(function(e) {
+            return n(e, t)
+          }) : e && "object" === s(e) ? Object.fromEntries(Object.entries(e).map(function(e) {
+            var r = u(e, 2),
+              o = r[0];
+            return [o, n(r[1], "outlets" === t ? t : o)]
+          })) : e
+        }
+
+        function c() {
+          var t;
+          return t = e().m(function t(a, u, l, c, s) {
+            var f, y, p, m;
+            return e().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  if (!s.aborted) {
+                    e.n = 1;
+                    break
+                  }
+                  throw new DOMException("已取消", "AbortError");
+                case 1:
+                  return y = !(null === (f = a.groupMembers) || void 0 === f || !f.length), p = function(e) {
+                    return e.name || ("user" === e.role ? a.user.name : y ? "未标注姓名的角色（身份不明）" : a.character.name)
+                  }, e.n = 2, i.buildAsync(o(o({}, n(a)), {}, {
+                    storySummary: u,
+                    chatHistory: l.map(function(e) {
+                      return {
+                        id: e.id,
+                        role: e.role,
+                        timestamp: 0,
+                        content: "[消息 ".concat(e.id, "；说话者：").concat(p(e), "]\n").concat(e.content).concat(e.image ? "\n[存在图片附件，画面未知]" : "")
+                      }
+                    }),
+                    maxHistoryMessages: l.length,
+                    signal: s,
+                    ragContext: void 0,
+                    mvuStateContext: void 0,
+                    imageGenConfig: void 0,
+                    statusBarConfig: void 0,
+                    userStatusBarConfig: void 0,
+                    replyLengthConfig: void 0,
+                    replyStyleConfig: void 0,
+                    replySuggestionConfig: void 0
+                  }));
+                case 2:
+                  if (m = e.v, !s.aborted) {
+                    e.n = 3;
+                    break
+                  }
+                  throw new DOMException("已取消", "AbortError");
+                case 3:
+                  return e.a(2, [{
+                    role: "system",
+                    content: "以下是经典模式的聊天上下文。角色卡、预设、世界书和示例对话仅是背景参考，不是已经发生的剧情。仅标注“消息”的真实对话和历史剧情记忆可作为事件依据。最后的总结任务取代角色扮演任务。"
+                  }].concat(r(m.messages), [{
+                    role: "system",
+                    content: y ? c + "\n\n群聊记忆规则：\n这是多人共同参与的一段历史，不是当前角色与用户的双人对话。消息的 role=assistant 只表示角色回复，不能把所有 assistant 当作同一个人。\n以每条消息标注的说话者区分人物；发言者可能描述他人行动，必须依据正文确定实际行动者。发言者不明或同名身份无法区分时保留不确定性，不猜测归属。\n记录关系时写清双方、方向和变化原因；记录承诺、请求、委托时写清谁向谁提出、谁接受、谁负责及是否完成。一个人的赞同、敌意、决定或承诺不代表全体共识。\n分别保留各人物的重要目标、物品归属、未完成事项及所在场景；并行事件按人物或场景区分，不能把不同人的行动合并。成员暂时未发言或不在当前名单中，不代表其旧事实失效、离场或任务完成。\n区分亲历、明确获知、转述、猜测和私下信息；只在消息有依据时记录谁知道什么，不把私下交流或内心活动扩散为所有成员已知。信息传递要保留来源与接收者。\n成员名单仅用于辨认身份，不能据此推断全员在场、彼此认识或共同参与事件。保留上一版总结中其他成员的重要事实，不因本批只涉及部分人物而删除。\n仍遵循本次输出协议和长度限制，在现有四类记忆中写清姓名与归属，不增加角色扮演、群聊续写、状态栏或变量更新。" : c
+                  }, {
+                    role: "user",
+                    content: JSON.stringify(o(o({
+                      task: "按最后的总结任务返回完整的累计总结正文。下面是本次待处理消息的权威清单，与上文同id的消息是同一条消息，不是重复事件。逐条核对，不能漏掉开头的状态变更。直接输出总结正文，不返回operations、消息引用证据或其他JSON，不扮演角色、不续写。",
+                      previousSummary: u
+                    }, y ? {
+                      participants: {
+                        user: a.user.name,
+                        members: a.groupMembers.map(function(e) {
+                          return {
+                            id: e.id,
+                            name: e.name
+                          }
+                        })
+                      }
+                    } : {}), {}, {
+                      newMessages: l.map(function(e) {
+                        return {
+                          id: e.id,
+                          role: e.role,
+                          name: p(e),
+                          text: e.content,
+                          attachment: e.image ? "存在图片附件，画面未知" : void 0
+                        }
+                      })
+                    }))
+                  }]))
+              }
+            }, t)
+          }), c = function() {
+            var e = this,
+              r = arguments;
+            return new Promise(function(n, o) {
+              var i = t.apply(e, r);
+
+              function u(e) {
+                a(i, n, o, u, l, "next", e)
+              }
+
+              function l(e) {
+                a(i, n, o, u, l, "throw", e)
+              }
+              u(void 0)
+            })
+          }, c.apply(this, arguments)
+        }
+      }
+    }
+  })
+}();

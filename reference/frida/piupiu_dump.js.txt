@@ -1,0 +1,168 @@
+# ============================================================
+# 示意代码 / ILLUSTRATIVE CODE
+# 本文件已脱敏，不可直接运行：
+#   - 密钥、地址、账号等敏感值全部替换为占位符
+#   - 仅用于说明逻辑结构，不提供可用参数
+# 详见仓库 DISCLAIMER.md
+# ============================================================
+
+/*
+ * piupiu_dump.js — 在已激活的 PiuPiu酱 2.7.9 进程里把解密后的前端落盘
+ *
+ * 原理
+ * ----
+ * ProtectedFrontendManager 有两条解密出口：
+ *   1) getOrDecrypt(path, entry)  → 小文件（<=512KB）整块解密
+ *   2) open(path)                 → 大文件返回 SegmentedInputStream，逐段懒解密
+ * 两条路最终都走 decryptSegment(path, index, segment, ciphertext)。
+ * 所以 hook 这一个方法，按 path 累积明文，凑满 plaintextLength 就写文件。
+ *
+ * 另外 hook unlock([B) 打印 32 字节 license secret —— 有了它就能离线解整包。
+ *
+ * 注意：spawn 冷启动时 ART 还没初始化，`Java` 是 undefined。
+ * 所以入口用轮询等待，拿到 Java 之后再 Java.perform 挂钩。
+ */
+
+var TAG = "[piupiu-dump]";
+
+function log(msg) {
+  send({ t: "log", m: TAG + " " + msg });
+}
+
+var DIR = null;
+var pending = {};
+
+function dumpDir() {
+  var ActivityThread = Java.use("android.app.ActivityThread");
+  var app = ActivityThread.currentApplication();
+  if (!app) return null;
+  var dir = app.getFilesDir().getAbsolutePath() + "/dump";
+  var File = Java.use("java.io.File");
+  var f = File.$new(dir);
+  if (!f.exists()) f.mkdirs();
+  return dir;
+}
+
+function safeName(path) {
+  return String(path).replace(/^\/+/, "").replace(/\\/g, "/");
+}
+
+function flush(path) {
+  var st = pending[path];
+  if (!st) return;
+  try {
+    var bytes = st.baos.toByteArray();
+    var dest = DIR + "/" + safeName(path);
+    var File = Java.use("java.io.File");
+    var destFile = File.$new(dest);
+    var parent = destFile.getParentFile();
+    if (parent && !parent.exists()) parent.mkdirs();
+
+    var FileOutputStream = Java.use("java.io.FileOutputStream");
+    var fos = FileOutputStream.$new(destFile);
+    fos.write(bytes);
+    fos.flush();
+    fos.close();
+    log("saved " + dest + "  (" + bytes.length + " bytes)");
+  } catch (e) {
+    log("write failed for " + path + ": " + e);
+  }
+  delete pending[path];
+}
+
+function install() {
+  if (typeof Java === "undefined" || Java === null) {
+    setTimeout(install, 10);
+    return;
+  }
+  log("Java 就绪，开始挂钩");
+  Java.perform(function () {
+    DIR = dumpDir();
+    if (!DIR) {
+      log("app context 还没就绪，1s 后重试");
+      setTimeout(install, 1000);
+      return;
+    }
+    log("输出目录: " + DIR);
+
+    var PFM = Java.use("io.piupiu.chat.ProtectedFrontendManager");
+
+    try {
+      PFM.decryptSegment.overload(
+        "java.lang.String", "int",
+        "io.piupiu.chat.ProtectedFrontendManager$Segment", "[B"
+      ).implementation = function (path, index, segment, cipher) {
+        var plain = this.decryptSegment(path, index, segment, cipher);
+        try {
+          var key = String(path);
+          if (!pending[key]) {
+            var entry = this.entryForPath(path);
+            var need = entry ? entry.plaintextLength.value : -1;
+            pending[key] = {
+              baos: Java.use("java.io.ByteArrayOutputStream").$new(),
+              need: need,
+              got: 0
+            };
+            log("begin " + key + "  need=" + need);
+          }
+          var st = pending[key];
+          st.baos.write(plain, 0, plain.length);
+          st.got += plain.length;
+          if (st.need > 0 && st.got >= st.need) flush(key);
+        } catch (e) {
+          log("accumulate error " + path + ": " + e);
+        }
+        return plain;
+      };
+      log("hooked decryptSegment");
+    } catch (e) {
+      log("decryptSegment hook failed: " + e);
+    }
+
+    try {
+      PFM.decryptFully.overload("java.lang.String").implementation = function (path) {
+        var out = this.decryptFully(path);
+        try {
+          var key = String(path);
+          if (!pending[key] && out) {
+            pending[key] = {
+              baos: Java.use("java.io.ByteArrayOutputStream").$new(),
+              need: out.length,
+              got: 0
+            };
+            pending[key].baos.write(out, 0, out.length);
+            pending[key].got = out.length;
+            flush(key);
+          }
+        } catch (e) {}
+        return out;
+      };
+      log("hooked decryptFully");
+    } catch (e) {
+      log("decryptFully hook failed: " + e);
+    }
+
+    try {
+      PFM.unlock.overload("[B").implementation = function (secret) {
+        try {
+          var hex = "";
+          for (var i = 0; i < secret.length; i++) {
+            var b = (secret[i] & 0xff).toString(16);
+            hex += (b.length === 1 ? "0" : "") + b;
+          }
+          log("UNLOCK SECRET32 = " + hex);
+        } catch (e) {
+          log("secret dump failed: " + e);
+        }
+        return this.unlock(secret);
+      };
+      log("hooked unlock");
+    } catch (e) {
+      log("unlock hook failed: " + e);
+    }
+  });
+}
+
+install();
+
+send({ t: "boot", javaType: (typeof Java) });

@@ -1,0 +1,111 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+System.register(["./app-security-legacy-BdXLf8ML.js", "../e/index-legacy-B0tYRju5.js"], function(a, e) {
+  "use strict";
+  var t, o, r, n, d, i, c, l, s, p, f, g, b, u, v, m, x, h, w, y;
+  return {
+    setters: [function(a) {
+      t = a.k, o = a.w, r = a.J, n = a.T, d = a.R, i = a.Z, c = a.$, l = a.M, s = a.N, p = a.a2, f = a.Q, g = a.L, b = a.W, u = a.u, v = a.Y, m = a.r, x = a.K
+    }, function(a) {
+      h = a.e, w = a.aO, y = a._
+    }],
+    execute: function() {
+      var e = document.createElement("style");
+      e.textContent = ".modal-overlay[data-v-737a54da]{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:3500;min-height:var(--app-viewport-height);padding:calc(16px + var(--safe-area-inset-top)) 20px calc(16px + var(--safe-area-inset-bottom));overflow:hidden}.modal-fade-leave-active[data-v-737a54da]{pointer-events:none}.modal-content[data-v-737a54da]{background:linear-gradient(180deg,rgba(255,247,250,.98),rgba(255,255,255,.98) 26%),#fff;border-radius:24px;border:1px solid rgba(255,143,171,.16);width:100%;max-width:320px;max-height:calc(var(--app-viewport-height) - 32px - var(--safe-area-inset-top) - var(--safe-area-inset-bottom));padding:24px;display:flex;flex-direction:column;align-items:center;gap:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.2)}.dark-mode .modal-content[data-v-737a54da]{background:linear-gradient(180deg,rgba(60,40,52,.96),rgba(27,28,34,.98) 28%),#1a1b21;border-color:rgba(255,143,171,.2)}.icon-wrapper[data-v-737a54da]{width:56px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,149,0,.15);color:#ff9500}.icon-wrapper.danger[data-v-737a54da]{background:rgba(255,59,48,.15);color:#ff3b30}.modal-title[data-v-737a54da]{margin:0;font-size:22px;font-weight:700;color:var(--text-color);text-align:center}.modal-message[data-v-737a54da]{margin:0;font-size:14px;line-height:1.5;color:var(--text-secondary-color);text-align:center;max-height:min(var(--app-viewport-height) * .42,280px);overflow-y:auto;overflow-wrap:anywhere;word-break:break-word;overscroll-behavior:contain}.modal-actions[data-v-737a54da]{display:flex;gap:12px;width:100%;margin-top:8px}.btn[data-v-737a54da]{flex:1;padding:12px;border:1px solid rgba(255,143,171,.12);border-radius:16px;font-size:15px;font-weight:500;cursor:pointer;transition:all .2s ease;font-family:inherit}.btn[data-v-737a54da]:active{transform:scale(.96)}.btn-cancel[data-v-737a54da]{background:rgba(255,255,255,.72);border:1px solid rgba(255,143,171,.12);color:var(--text-secondary-color)}.dark-mode .btn-cancel[data-v-737a54da]{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8)}.btn-confirm[data-v-737a54da]{background:#f78cab;border-color:#f78cab;color:#fff;box-shadow:none}.btn-confirm.danger[data-v-737a54da]{border-color:#ff3b30;background:#ff3b30}\n/*$vite$:1*/", document.head.appendChild(e);
+      var k = {
+          class: "modal-content"
+        },
+        z = {
+          class: "modal-title"
+        },
+        C = {
+          class: "modal-message"
+        },
+        _ = {
+          class: "modal-actions"
+        },
+        T = ["disabled"],
+        j = t({
+          __name: "ConfirmModal",
+          props: {
+            show: {
+              type: Boolean
+            },
+            title: {},
+            message: {},
+            confirmText: {},
+            cancelText: {},
+            danger: {
+              type: Boolean
+            },
+            zIndex: {}
+          },
+          emits: ["update:show", "confirm", "cancel"],
+          setup: function(a, e) {
+            var t = e.emit,
+              y = a,
+              j = t,
+              I = m(!1);
+
+            function $() {
+              I.value || (I.value = !0, j("confirm"), j("update:show", !1))
+            }
+
+            function B() {
+              j("cancel"), j("update:show", !1)
+            }
+            return o(function() {
+                return y.show
+              }, function(a) {
+                a && (I.value = !1)
+              }), h(function() {
+                return y.show
+              }, B),
+              function(e, t) {
+                return x(), r(n, {
+                  to: "#piupiu-modal-layer"
+                }, [d(i, {
+                  name: "modal-fade"
+                }, {
+                  default: c(function() {
+                    return [a.show ? (x(), l("div", {
+                      key: 0,
+                      class: "modal-overlay",
+                      style: f({
+                        zIndex: y.zIndex || 3500
+                      }),
+                      onClick: p(B, ["self"])
+                    }, [g("div", k, [g("div", {
+                      class: b(["icon-wrapper", {
+                        danger: a.danger
+                      }])
+                    }, [d(u(w), {
+                      size: 28,
+                      "stroke-width": 2
+                    })], 2), g("h3", z, v(a.title), 1), g("p", C, v(a.message), 1), g("div", _, [g("button", {
+                      class: "btn btn-cancel",
+                      onClick: B
+                    }, v(a.cancelText || "取消"), 1), g("button", {
+                      class: b(["btn btn-confirm", {
+                        danger: a.danger
+                      }]),
+                      disabled: I.value,
+                      onClick: $
+                    }, v(a.confirmText || "确认"), 11, T)])])], 4)) : s("", !0)]
+                  }),
+                  _: 1
+                })])
+              }
+          }
+        });
+      a("C", y(j, [
+        ["__scopeId", "data-v-737a54da"]
+      ]))
+    }
+  }
+});

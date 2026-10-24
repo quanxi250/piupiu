@@ -1,0 +1,36 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>piupiu-chat</title>
+  <!-- Public Live2D runtimes stay local and download in parallel. They still
+       execute in the original 2.6.4 order inside Live2DViewer. -->
+  <link rel="preload" href="/lib/pixi.min.js" as="script" fetchpriority="high" />
+  <link rel="preload" href="/lib/live2dcubismcore.min.js" as="script" fetchpriority="high" />
+  <link rel="preload" href="/lib/cubism4.min.js" as="script" fetchpriority="high" />
+  <link rel="preload" href="/live2d/Hiyori/Hiyori.2048/texture_00.png" as="image" crossorigin="anonymous" fetchpriority="low" />
+  <link rel="preload" href="/live2d/Hiyori/Hiyori.2048/texture_01.png" as="image" crossorigin="anonymous" fetchpriority="low" />
+  
+  <link rel="modulepreload" crossorigin href="/assets/c/app-security-legacy-BdXLf8ML.js">
+</head>
+
+<body>
+  <jeep-sqlite wasmPath="/assets"></jeep-sqlite>
+  <div id="app"></div>
+  <!-- Must exist before Vue mounts: shared Teleport host for viewport-bound app dialogs. -->
+  <div id="piupiu-modal-layer"></div>
+  <script crossorigin id="vite-legacy-polyfill" src="/assets/e/polyfills-legacy-BhpoH1Hr.js"></script>
+  <script crossorigin id="vite-legacy-entry" data-src="/assets/e/index-legacy-B0tYRju5.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+
+</html>

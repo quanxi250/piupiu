@@ -1,0 +1,2390 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function e(e) {
+    if (null != e) {
+      var n = e["function" == typeof Symbol && Symbol.iterator || "@@iterator"],
+        r = 0;
+      if (n) return n.call(e);
+      if ("function" == typeof e.next) return e;
+      if (!isNaN(e.length)) return {
+        next: function() {
+          return e && r >= e.length && (e = void 0), {
+            value: e && e[r++],
+            done: !e
+          }
+        }
+      }
+    }
+    throw new TypeError(u(e) + " is not iterable")
+  }
+
+  function n(e, n) {
+    for (var r = 0; r < n.length; r++) {
+      var t = n[r];
+      t.enumerable = t.enumerable || !1, t.configurable = !0, "value" in t && (t.writable = !0), Object.defineProperty(e, s(t.key), t)
+    }
+  }
+
+  function r() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var e, n, a = "function" == typeof Symbol ? Symbol : {},
+      i = a.iterator || "@@iterator",
+      o = a.toStringTag || "@@toStringTag";
+
+    function s(r, a, i, o) {
+      var s = a && a.prototype instanceof c ? a : c,
+        l = Object.create(s.prototype);
+      return t(l, "_invoke", function(r, t, a) {
+        var i, o, s, c = 0,
+          l = a || [],
+          f = !1,
+          d = {
+            p: 0,
+            n: 0,
+            v: e,
+            a: p,
+            f: p.bind(e, 4),
+            d: function(n, r) {
+              return i = n, o = 0, s = e, d.n = r, u
+            }
+          };
+
+        function p(r, t) {
+          for (o = r, s = t, n = 0; !f && c && !a && n < l.length; n++) {
+            var a, i = l[n],
+              p = d.p,
+              m = i[2];
+            r > 3 ? (a = m === t) && (s = i[(o = i[4]) ? 5 : (o = 3, 3)], i[4] = i[5] = e) : i[0] <= p && ((a = r < 2 && p < i[1]) ? (o = 0, d.v = t, d.n = i[1]) : p < m && (a = r < 3 || i[0] > t || t > m) && (i[4] = r, i[5] = t, d.n = m, o = 0))
+          }
+          if (a || r > 1) return u;
+          throw f = !0, t
+        }
+        return function(a, l, m) {
+          if (c > 1) throw TypeError("Generator is already running");
+          for (f && 1 === l && p(l, m), o = l, s = m;
+            (n = o < 2 ? e : s) || !f;) {
+            i || (o ? o < 3 ? (o > 1 && (d.n = -1), p(o, s)) : d.n = s : d.v = s);
+            try {
+              if (c = 2, i) {
+                if (o || (a = "next"), n = i[a]) {
+                  if (!(n = n.call(i, s))) throw TypeError("iterator result is not an object");
+                  if (!n.done) return n;
+                  s = n.value, o < 2 && (o = 0)
+                } else 1 === o && (n = i.return) && n.call(i), o < 2 && (s = TypeError("The iterator does not provide a '" + a + "' method"), o = 1);
+                i = e
+              } else if ((n = (f = d.n < 0) ? s : r.call(t, d)) !== u) break
+            } catch (n) {
+              i = e, o = 1, s = n
+            } finally {
+              c = 1
+            }
+          }
+          return {
+            value: n,
+            done: f
+          }
+        }
+      }(r, i, o), !0), l
+    }
+    var u = {};
+
+    function c() {}
+
+    function l() {}
+
+    function f() {}
+    n = Object.getPrototypeOf;
+    var d = [][i] ? n(n([][i]())) : (t(n = {}, i, function() {
+        return this
+      }), n),
+      p = f.prototype = c.prototype = Object.create(d);
+
+    function m(e) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(e, f) : (e.__proto__ = f, t(e, o, "GeneratorFunction")), e.prototype = Object.create(p), e
+    }
+    return l.prototype = f, t(p, "constructor", f), t(f, "constructor", l), l.displayName = "GeneratorFunction", t(f, o, "GeneratorFunction"), t(p), t(p, o, "Generator"), t(p, i, function() {
+      return this
+    }), t(p, "toString", function() {
+      return "[object Generator]"
+    }), (r = function() {
+      return {
+        w: s,
+        m: m
+      }
+    })()
+  }
+
+  function t(e, n, r, a) {
+    var i = Object.defineProperty;
+    try {
+      i({}, "", {})
+    } catch (e) {
+      i = 0
+    }
+    t = function(e, n, r, a) {
+      function o(n, r) {
+        t(e, n, function(e) {
+          return this._invoke(n, r, e)
+        })
+      }
+      n ? i ? i(e, n, {
+        value: r,
+        enumerable: !a,
+        configurable: !a,
+        writable: !a
+      }) : e[n] = r : (o("next", 0), o("throw", 1), o("return", 2))
+    }, t(e, n, r, a)
+  }
+
+  function a(e, n) {
+    var r = Object.keys(e);
+    if (Object.getOwnPropertySymbols) {
+      var t = Object.getOwnPropertySymbols(e);
+      n && (t = t.filter(function(n) {
+        return Object.getOwnPropertyDescriptor(e, n).enumerable
+      })), r.push.apply(r, t)
+    }
+    return r
+  }
+
+  function i(e) {
+    for (var n = 1; n < arguments.length; n++) {
+      var r = null != arguments[n] ? arguments[n] : {};
+      n % 2 ? a(Object(r), !0).forEach(function(n) {
+        o(e, n, r[n])
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(r)) : a(Object(r)).forEach(function(n) {
+        Object.defineProperty(e, n, Object.getOwnPropertyDescriptor(r, n))
+      })
+    }
+    return e
+  }
+
+  function o(e, n, r) {
+    return (n = s(n)) in e ? Object.defineProperty(e, n, {
+      value: r,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }) : e[n] = r, e
+  }
+
+  function s(e) {
+    var n = function(e, n) {
+      if ("object" != u(e) || !e) return e;
+      var r = e[Symbol.toPrimitive];
+      if (void 0 !== r) {
+        var t = r.call(e, n || "default");
+        if ("object" != u(t)) return t;
+        throw new TypeError("@@toPrimitive must return a primitive value.")
+      }
+      return ("string" === n ? String : Number)(e)
+    }(e, "string");
+    return "symbol" == u(n) ? n : n + ""
+  }
+
+  function u(e) {
+    return u = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(e) {
+      return typeof e
+    } : function(e) {
+      return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e
+    }, u(e)
+  }
+
+  function c(e, n) {
+    return function(e) {
+      if (Array.isArray(e)) return e
+    }(e) || function(e, n) {
+      var r = null == e ? null : "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
+      if (null != r) {
+        var t, a, i, o, s = [],
+          u = !0,
+          c = !1;
+        try {
+          if (i = (r = r.call(e)).next, 0 === n) {
+            if (Object(r) !== r) return;
+            u = !1
+          } else
+            for (; !(u = (t = i.call(r)).done) && (s.push(t.value), s.length !== n); u = !0);
+        } catch (e) {
+          c = !0, a = e
+        } finally {
+          try {
+            if (!u && null != r.return && (o = r.return(), Object(o) !== o)) return
+          } finally {
+            if (c) throw a
+          }
+        }
+        return s
+      }
+    }(e, n) || d(e, n) || function() {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }()
+  }
+
+  function l(e) {
+    return function(e) {
+      if (Array.isArray(e)) return p(e)
+    }(e) || function(e) {
+      if ("undefined" != typeof Symbol && null != e[Symbol.iterator] || null != e["@@iterator"]) return Array.from(e)
+    }(e) || d(e) || function() {
+      throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }()
+  }
+
+  function f(e, n) {
+    var r = "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
+    if (!r) {
+      if (Array.isArray(e) || (r = d(e)) || n && e && "number" == typeof e.length) {
+        r && (e = r);
+        var t = 0,
+          a = function() {};
+        return {
+          s: a,
+          n: function() {
+            return t >= e.length ? {
+              done: !0
+            } : {
+              done: !1,
+              value: e[t++]
+            }
+          },
+          e: function(e) {
+            throw e
+          },
+          f: a
+        }
+      }
+      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }
+    var i, o = !0,
+      s = !1;
+    return {
+      s: function() {
+        r = r.call(e)
+      },
+      n: function() {
+        var e = r.next();
+        return o = e.done, e
+      },
+      e: function(e) {
+        s = !0, i = e
+      },
+      f: function() {
+        try {
+          o || null == r.return || r.return()
+        } finally {
+          if (s) throw i
+        }
+      }
+    }
+  }
+
+  function d(e, n) {
+    if (e) {
+      if ("string" == typeof e) return p(e, n);
+      var r = {}.toString.call(e).slice(8, -1);
+      return "Object" === r && e.constructor && (r = e.constructor.name), "Map" === r || "Set" === r ? Array.from(e) : "Arguments" === r || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r) ? p(e, n) : void 0
+    }
+  }
+
+  function p(e, n) {
+    (null == n || n > e.length) && (n = e.length);
+    for (var r = 0, t = Array(n); r < n; r++) t[r] = e[r];
+    return t
+  }
+
+  function m(e, n, r, t, a, i, o) {
+    try {
+      var s = e[i](o),
+        u = s.value
+    } catch (e) {
+      return void r(e)
+    }
+    s.done ? n(u) : Promise.resolve(u).then(t, a)
+  }
+
+  function h(e) {
+    return function() {
+      var n = this,
+        r = arguments;
+      return new Promise(function(t, a) {
+        var i = e.apply(n, r);
+
+        function o(e) {
+          m(i, t, a, o, s, "next", e)
+        }
+
+        function s(e) {
+          m(i, t, a, o, s, "throw", e)
+        }
+        o(void 0)
+      })
+    }
+  }
+  System.register(["./app-security-legacy-BdXLf8ML.js", "./browser-legacy-BbIUDyyy.js", "../e/index-legacy-B0tYRju5.js", "./overwriteRecovery-legacy-2YP7Wk_W.js"], function(t, a) {
+    "use strict";
+    var s, d, p, m, b, v, w, y, g, k, E, S, I, P, M, A, O, _, j, N, R, x, D, T, C, U, B, F, L, z;
+    return {
+      setters: [function(e) {
+        s = e.au, d = e.av, p = e.bF, m = e.bG, b = e.bH, v = e.aB, w = e.aK, y = e.C
+      }, function(e) {
+        g = e.U, k = e.a, E = e.Z, S = e.b, I = e.c
+      }, function(e) {
+        P = e.bQ, M = e.bF, A = e.co, O = e.bT, _ = e.ah, j = e.bR, N = e.ch, R = e.bS, x = e.ci, D = e.cj, T = e.bI, C = e.bY, U = e.P, B = e.bH
+      }, function(e) {
+        F = e.beginProtectedOverwrite, L = e.finishProtectedOverwrite, z = e.recoverProtectedOverwrite
+      }],
+      execute: function() {
+        function a(e, n) {
+          var r = e.getUint32(n, !0) + 4294967296 * e.getUint32(n + 4, !0);
+          if (!Number.isSafeInteger(r)) throw new Error("备份文件大小超出支持范围");
+          return r
+        }
+
+        function W(e) {
+          return J.apply(this, arguments)
+        }
+
+        function J() {
+          return (J = h(r().m(function e(n) {
+            var t, i, o, s, u, c, l, f, d, p, m, h, b, v, w, y, g, k, E, S, I, P, M, A, O, _, j, N, R, x, D, T, C, U, B, F, L;
+            return r().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  return t = Math.max(0, n.size - 65557), j = Uint8Array, e.n = 1, n.slice(t).arrayBuffer();
+                case 1:
+                  N = e.v, i = new j(N), o = new DataView(i.buffer), s = -1, u = i.length - 22;
+                case 2:
+                  if (!(u >= 0)) {
+                    e.n = 4;
+                    break
+                  }
+                  if (101010256 !== o.getUint32(u, !0) || u + 22 + o.getUint16(u + 20, !0) !== i.length) {
+                    e.n = 3;
+                    break
+                  }
+                  return s = u, e.a(3, 4);
+                case 3:
+                  u--, e.n = 2;
+                  break;
+                case 4:
+                  if (!(s < 0)) {
+                    e.n = 5;
+                    break
+                  }
+                  throw new Error("备份文件不完整，缺少 ZIP 结束记录，请重新导出或下载");
+                case 5:
+                  if (c = o.getUint16(s + 10, !0), l = o.getUint32(s + 12, !0), f = o.getUint32(s + 16, !0), d = t + s, !(p = 65535 === c || 4294967295 === l || 4294967295 === f)) {
+                    e.n = 11;
+                    break
+                  }
+                  return R = DataView, e.n = 6, n.slice(d - 20, d).arrayBuffer();
+                case 6:
+                  if (x = e.v, 20 === (m = new R(x)).byteLength && 117853008 === m.getUint32(0, !0) && 0 === m.getUint32(4, !0) && 1 === m.getUint32(16, !0)) {
+                    e.n = 7;
+                    break
+                  }
+                  throw new Error("ZIP64 结束记录损坏");
+                case 7:
+                  return h = a(m, 8), D = DataView, e.n = 8, n.slice(h, h + 56).arrayBuffer();
+                case 8:
+                  if (T = e.v, 56 === (b = new D(T)).byteLength && 101075792 === b.getUint32(0, !0) && !b.getUint32(16, !0) && !b.getUint32(20, !0) && h + 12 + a(b, 4) === d - 20) {
+                    e.n = 9;
+                    break
+                  }
+                  throw new Error("ZIP64 目录损坏");
+                case 9:
+                  if (c = a(b, 32), a(b, 24) === c) {
+                    e.n = 10;
+                    break
+                  }
+                  throw new Error("不支持分卷备份");
+                case 10:
+                  l = a(b, 40), f = a(b, 48), d = h;
+                case 11:
+                  if (!(o.getUint16(s + 4, !0) || o.getUint16(s + 6, !0) || !p && o.getUint16(s + 8, !0) !== c || f + l !== d)) {
+                    e.n = 12;
+                    break
+                  }
+                  throw new Error("备份 ZIP 目录损坏或不支持分卷文件");
+                case 12:
+                  v = f + l, w = new Map, y = new TextDecoder("utf-8", {
+                    fatal: !0
+                  }), g = 0;
+                case 13:
+                  if (!(g < c)) {
+                    e.n = 27;
+                    break
+                  }
+                  return C = DataView, e.n = 14, n.slice(f, f + 46).arrayBuffer();
+                case 14:
+                  if (U = e.v, 46 === (k = new C(U)).byteLength && 33639248 === k.getUint32(0, !0)) {
+                    e.n = 15;
+                    break
+                  }
+                  throw new Error("备份 ZIP 目录不完整");
+                case 15:
+                  if (E = k.getUint16(28, !0), !((S = f + 46 + E + k.getUint16(30, !0) + k.getUint16(32, !0)) > v || 1 & k.getUint16(8, !0))) {
+                    e.n = 16;
+                    break
+                  }
+                  throw new Error("备份 ZIP 目录损坏或文件已加密");
+                case 16:
+                  return B = y, e.n = 17, n.slice(f + 46, f + 46 + E).arrayBuffer();
+                case 17:
+                  if (I = B.decode.call(B, e.v), !w.has(I)) {
+                    e.n = 18;
+                    break
+                  }
+                  throw new Error("备份含重复文件：".concat(I));
+                case 18:
+                  if (4294967295 !== (P = k.getUint32(24, !0))) {
+                    e.n = 25;
+                    break
+                  }
+                  return F = DataView, e.n = 19, n.slice(f + 46 + E, f + 46 + E + k.getUint16(30, !0)).arrayBuffer();
+                case 19:
+                  L = e.v, M = new F(L), A = !1, O = 0;
+                case 20:
+                  if (!(O + 4 <= M.byteLength)) {
+                    e.n = 24;
+                    break
+                  }
+                  if (_ = M.getUint16(O + 2, !0), !(O + 4 + _ > M.byteLength)) {
+                    e.n = 21;
+                    break
+                  }
+                  throw new Error("ZIP64 扩展字段损坏");
+                case 21:
+                  if (!(1 === M.getUint16(O, !0) && _ >= 8)) {
+                    e.n = 22;
+                    break
+                  }
+                  return P = a(M, O + 4), A = !0, e.a(3, 24);
+                case 22:
+                  O += 4 + _;
+                case 23:
+                  e.n = 20;
+                  break;
+                case 24:
+                  if (A) {
+                    e.n = 25;
+                    break
+                  }
+                  throw new Error("ZIP64 文件长度缺失");
+                case 25:
+                  w.set(I, {
+                    size: P,
+                    crc: k.getUint32(16, !0)
+                  }), f = S;
+                case 26:
+                  g++, e.n = 13;
+                  break;
+                case 27:
+                  if (f === v) {
+                    e.n = 28;
+                    break
+                  }
+                  throw new Error("备份 ZIP 目录长度不符");
+                case 28:
+                  return e.a(2, w)
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+        t({
+          exportRoleChatBackup: function() {
+            return Q("backup-export", xe)
+          },
+          importRoleChatBackup: function(e, n) {
+            return Q("backup-import", function() {
+              return function(e, n) {
+                return Qe.apply(this, arguments)
+              }(e, n)
+            })
+          },
+          inspectBackupFile: function(e) {
+            return Te.apply(this, arguments)
+          },
+          recoverInterruptedRoleChatBackupImport: en,
+          validateRoleChatBackup: Me
+        });
+        var H = Uint32Array.from({
+          length: 256
+        }, function(e, n) {
+          for (var r = n, t = 0; t < 8; t++) r = r >>> 1 ^ (1 & r ? 3988292384 : 0);
+          return r >>> 0
+        });
+
+        function Z(e, n) {
+          var r, t = f(n);
+          try {
+            for (t.s(); !(r = t.n()).done;) {
+              var a = r.value;
+              e = e >>> 8 ^ H[255 & (e ^ a)]
+            }
+          } catch (i) {
+            t.e(i)
+          } finally {
+            t.f()
+          }
+          return e
+        }
+        var q = "piupiu_role_chat_backup",
+          G = "role_chat_backup_import_stage_v1",
+          $ = "piupiu/media/backup-import",
+          V = "piupiu/tmp/backup-import";
+
+        function K() {
+          return window.AndroidDownloader
+        }
+        var X = !1,
+          Y = 0;
+
+        function Q(e, n) {
+          return ee.apply(this, arguments)
+        }
+
+        function ee() {
+          return (ee = h(r().m(function e(n, t) {
+            var a;
+            return r().w(function(e) {
+              for (;;) switch (e.p = e.n) {
+                case 0:
+                  if (!X) {
+                    e.n = 1;
+                    break
+                  }
+                  throw new Error("已有备份任务进行中，请等待完成");
+                case 1:
+                  return X = !0, Y++, M({
+                    operation: n,
+                    migrationPhase: "backup",
+                    migrationError: null,
+                    migrationErrorStack: null,
+                    migrationCurrent: 0,
+                    migrationTotal: 1,
+                    migrationMessage: "正在检查备份任务..."
+                  }), e.p = 2, e.n = 3, t();
+                case 3:
+                  return e.a(2, e.v);
+                case 4:
+                  throw e.p = 4, "AbortError" !== (null == (a = e.v) ? void 0 : a.name) ? re(a) : M({
+                    migrationPhase: "idle",
+                    migrationMessage: ""
+                  }), a;
+                case 5:
+                  return e.p = 5, X = !1, e.f(5);
+                case 6:
+                  return e.a(2)
+              }
+            }, e, null, [
+              [2, 4, 5, 6]
+            ])
+          }))).apply(this, arguments)
+        }
+
+        function ne(e, n, r, t) {
+          M({
+            backend: "sqlite",
+            migrationPhase: e,
+            migrationCurrent: n,
+            migrationTotal: r,
+            migrationMessage: t,
+            migrationError: null,
+            migrationErrorStack: null
+          })
+        }
+
+        function re(e) {
+          M({
+            backend: "sqlite",
+            migrationPhase: "failed",
+            migrationError: e instanceof Error ? e.message : String(e),
+            migrationErrorStack: e instanceof Error && e.stack || null
+          })
+        }
+
+        function te(e) {
+          M({
+            backend: "sqlite",
+            migrationPhase: "complete",
+            migrationMessage: e,
+            migrationCurrent: 1,
+            migrationTotal: 1,
+            migrationError: null,
+            migrationErrorStack: null
+          });
+          var n = Y;
+          window.setTimeout(function() {
+            n === Y && M({
+              backend: "sqlite",
+              migrationPhase: "idle",
+              migrationCurrent: 0,
+              migrationTotal: 0,
+              migrationMessage: ""
+            })
+          }, 550)
+        }
+
+        function ae(e, n) {
+          var r, t, a;
+          return {
+            id: Number(e.id),
+            roleJson: e.role_json,
+            imagePath: e.image_path || null,
+            createdAt: null !== (r = e.created_at) && void 0 !== r ? r : null,
+            updatedAt: null !== (t = e.updated_at) && void 0 !== t ? t : null,
+            isPinned: 1 === e.is_pinned,
+            pinnedAt: null !== (a = e.pinned_at) && void 0 !== a ? a : null,
+            backupOrder: n
+          }
+        }
+
+        function ie(e) {
+          return {
+            id: Number(e.id),
+            roleId: Number(e.role_id),
+            title: e.title || null,
+            sessionJson: e.session_json || "{}",
+            messageCount: Number(e.message_count || 0),
+            lastMessage: e.last_message || null,
+            createdAt: Number(e.created_at || Date.now()),
+            updatedAt: Number(e.updated_at || Date.now())
+          }
+        }
+
+        function oe(e) {
+          return {
+            index: Number(e.message_index),
+            messageId: String(e.message_id || ""),
+            role: e.role,
+            content: e.content || "",
+            timestamp: Number(e.timestamp || Date.now()),
+            messageJson: e.message_json || "{}"
+          }
+        }
+
+        function se(e) {
+          return I("".concat(JSON.stringify(e), "\n"))
+        }
+
+        function ue(e) {
+          for (var n = "", r = 0; r < e.length; r += 32768) {
+            var t = e.subarray(r, Math.min(e.length, r + 32768));
+            n += String.fromCharCode.apply(String, l(t))
+          }
+          return window.btoa(n)
+        }
+
+        function ce(e) {
+          return e.buffer.slice(e.byteOffset, e.byteOffset + e.byteLength)
+        }
+
+        function le(e) {
+          var n, r = null !== (n = null == e ? void 0 : e.data) && void 0 !== n ? n : e;
+          return "group" === (null == r ? void 0 : r.type) || Array.isArray(null == r ? void 0 : r.memberIds)
+        }
+
+        function fe(e) {
+          var n, r = null !== (n = null == e ? void 0 : e.data) && void 0 !== n ? n : e;
+          return Array.isArray(null == r ? void 0 : r.memberIds) ? r.memberIds.map(function(e) {
+            return Number(e)
+          }).filter(function(e) {
+            return Number.isFinite(e) && e > 0
+          }) : []
+        }
+
+        function de(e, n) {
+          var r, t = JSON.parse(JSON.stringify(e)),
+            a = null !== (r = null == t ? void 0 : t.data) && void 0 !== r ? r : t;
+          return Array.isArray(null == a ? void 0 : a.memberIds) && (a.memberIds = a.memberIds.map(function(e) {
+            return n.get(Number(e))
+          }).filter(function(e) {
+            return Number.isFinite(Number(e))
+          })), t
+        }
+
+        function pe(e, n) {
+          if ("string" == typeof e) return function(e, n) {
+            var r, t = e,
+              a = f(n);
+            try {
+              for (a.s(); !(r = a.n()).done;) {
+                var i = c(r.value, 2),
+                  o = i[0],
+                  s = i[1];
+                t = t.split(o).join(s)
+              }
+            } catch (u) {
+              a.e(u)
+            } finally {
+              a.f()
+            }
+            return t
+          }(e, n);
+          if (Array.isArray(e)) return e.map(function(e) {
+            return pe(e, n)
+          });
+          if (e && "object" === u(e)) {
+            for (var r = {}, t = 0, a = Object.entries(e); t < a.length; t++) {
+              var i = c(a[t], 2),
+                o = i[0],
+                s = i[1];
+              r[o] = pe(s, n)
+            }
+            return r
+          }
+          return e
+        }
+
+        function me(e, n) {
+          var r = {};
+          try {
+            r = JSON.parse(e.messageJson || "{}")
+          } catch (t) {
+            r = {}
+          }
+          return pe(i(i({}, r), {}, {
+            id: e.messageId,
+            role: e.role,
+            content: e.content,
+            timestamp: e.timestamp
+          }), n)
+        }
+
+        function he(e, n, r) {
+          var t = {};
+          try {
+            t = JSON.parse(e.sessionJson || "{}")
+          } catch (a) {
+            t = {}
+          }
+          return i(i({}, t), {}, {
+            id: r,
+            sessionId: r,
+            roleId: n,
+            title: e.title || void 0,
+            messages: [],
+            history: void 0,
+            messageCount: e.messageCount,
+            lastMessage: e.lastMessage || "暂无消息",
+            createdAt: e.createdAt,
+            updatedAt: e.updatedAt
+          })
+        }
+
+        function be(e) {
+          return ve.apply(this, arguments)
+        }
+
+        function ve() {
+          return (ve = h(r().m(function e(n) {
+            return r().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  return e.n = 1, s.setMeta(G, i(i({}, n), {}, {
+                    updatedAt: Date.now()
+                  }));
+                case 1:
+                  return e.a(2)
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function we() {
+          return ye.apply(this, arguments)
+        }
+
+        function ye() {
+          return (ye = h(r().m(function e() {
+            return r().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  return e.n = 1, s.deleteMeta(G);
+                case 1:
+                  return e.a(2)
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function ge(e, n) {
+          return ke.apply(this, arguments)
+        }
+
+        function ke() {
+          return (ke = h(r().m(function e(n, t) {
+            var a, i, o, s, u, c, l;
+            return r().w(function(e) {
+              for (;;) switch (e.p = e.n) {
+                case 0:
+                  (a = new g).register(k), i = Promise.resolve(), o = null, s = function(e) {
+                    i = i.then(h(r().m(function n() {
+                      return r().w(function(n) {
+                        for (;;) switch (n.n) {
+                          case 0:
+                            if (!o) {
+                              n.n = 1;
+                              break
+                            }
+                            return n.a(2);
+                          case 1:
+                            return n.n = 2, e();
+                          case 2:
+                            return n.a(2)
+                        }
+                      }, n)
+                    }))).catch(function(e) {
+                      o = e
+                    })
+                  }, a.onfile = function(e) {
+                    var n = t(e);
+                    n && (e.ondata = function(e, r, t) {
+                      e ? o = e : s(function() {
+                        return n(r || new Uint8Array, t)
+                      })
+                    }, e.start())
+                  }, u = n.stream().getReader(), e.p = 1;
+                case 2:
+                  return e.n = 3, u.read();
+                case 3:
+                  if (c = e.v, l = c.value, !c.done) {
+                    e.n = 6;
+                    break
+                  }
+                  return a.push(new Uint8Array, !0), e.n = 4, i;
+                case 4:
+                  if (!o) {
+                    e.n = 5;
+                    break
+                  }
+                  throw o;
+                case 5:
+                  return e.a(3, 10);
+                case 6:
+                  return a.push(l, !1), e.n = 7, i;
+                case 7:
+                  if (!o) {
+                    e.n = 8;
+                    break
+                  }
+                  throw o;
+                case 8:
+                  return e.n = 9, new Promise(function(e) {
+                    return window.setTimeout(e, 0)
+                  });
+                case 9:
+                  e.n = 2;
+                  break;
+                case 10:
+                  return e.p = 10, u.releaseLock(), e.f(10);
+                case 11:
+                  return e.a(2)
+              }
+            }, e, null, [
+              [1, , 10, 11]
+            ])
+          }))).apply(this, arguments)
+        }
+
+        function Ee(e) {
+          var n = new TextDecoder,
+            t = "";
+          return function() {
+            var a = h(r().m(function a(i, o) {
+              var s, u, c, l, d, p, m;
+              return r().w(function(r) {
+                for (;;) switch (r.p = r.n) {
+                  case 0:
+                    if (i.length > 0 && (t += n.decode(i, {
+                        stream: !o
+                      })), o && (t += n.decode()), !(t.length > 67108864)) {
+                      r.n = 1;
+                      break
+                    }
+                    throw new Error("单条备份记录过大，请分批导出后重试");
+                  case 1:
+                    s = t.split(/\n/), t = o ? "" : s.pop() || "", u = f(s), r.p = 2, u.s();
+                  case 3:
+                    if ((c = u.n()).done) {
+                      r.n = 6;
+                      break
+                    }
+                    if (l = c.value, d = l.replace(/\r$/, "").trim()) {
+                      r.n = 4;
+                      break
+                    }
+                    return r.a(3, 5);
+                  case 4:
+                    return r.n = 5, e(JSON.parse(d));
+                  case 5:
+                    r.n = 3;
+                    break;
+                  case 6:
+                    r.n = 8;
+                    break;
+                  case 7:
+                    r.p = 7, m = r.v, u.e(m);
+                  case 8:
+                    return r.p = 8, u.f(), r.f(8);
+                  case 9:
+                    if (!o) {
+                      r.n = 11;
+                      break
+                    }
+                    if (!(p = t.replace(/\r$/, "").trim())) {
+                      r.n = 10;
+                      break
+                    }
+                    return r.n = 10, e(JSON.parse(p));
+                  case 10:
+                    t = "";
+                  case 11:
+                    return r.a(2)
+                }
+              }, a, null, [
+                [2, 7, 8, 9]
+              ])
+            }));
+            return function(e, n) {
+              return a.apply(this, arguments)
+            }
+          }()
+        }
+
+        function Se(e) {
+          return Ie.apply(this, arguments)
+        }
+
+        function Ie() {
+          return Ie = h(r().m(function e(n) {
+            var t, a;
+            return r().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  return t = null, e.n = 1, ge(n, function(e) {
+                    return "manifest.json" !== e.name ? null : (n = function(e) {
+                      t = e
+                    }, a = [], i = 0, function() {
+                      var e = h(r().m(function e(t, o) {
+                        var s, u;
+                        return r().w(function(e) {
+                          for (;;) switch (e.n) {
+                            case 0:
+                              if (!((i += t.length) > 1048576)) {
+                                e.n = 1;
+                                break
+                              }
+                              throw new Error("备份说明文件过大或损坏");
+                            case 1:
+                              if (t.length > 0 && a.push(t), o) {
+                                e.n = 2;
+                                break
+                              }
+                              return e.a(2);
+                            case 2:
+                              return s = new Blob(a.map(ce), {
+                                type: "text/plain"
+                              }), u = n, e.n = 3, s.text();
+                            case 3:
+                              return e.n = 4, u(e.v);
+                            case 4:
+                              return e.a(2)
+                          }
+                        }, e)
+                      }));
+                      return function(n, r) {
+                        return e.apply(this, arguments)
+                      }
+                    }());
+                    var n, a, i
+                  });
+                case 1:
+                  if (t) {
+                    e.n = 2;
+                    break
+                  }
+                  throw new Error("备份文件缺少 manifest.json");
+                case 2:
+                  if ((a = JSON.parse(t)).appId === q) {
+                    e.n = 3;
+                    break
+                  }
+                  throw new Error("不是 PiuPiu 角色聊天备份文件");
+                case 3:
+                  if (!(!Number.isInteger(a.version) || a.version < 1 || a.version > 1)) {
+                    e.n = 4;
+                    break
+                  }
+                  throw new Error("备份版本不支持");
+                case 4:
+                  if (a.counts && !["roles", "sessions", "messages", "media"].some(function(e) {
+                      var n = a.counts[e];
+                      return !Number.isSafeInteger(n) || n < 0
+                    })) {
+                    e.n = 5;
+                    break
+                  }
+                  throw new Error("备份记录数量无效");
+                case 5:
+                  return e.a(2, a)
+              }
+            }, e)
+          })), Ie.apply(this, arguments)
+        }
+        var Pe = new WeakMap;
+
+        function Me(e) {
+          var n = Pe.get(e);
+          return n || (n = function(e) {
+            return Ae.apply(this, arguments)
+          }(e).catch(function(n) {
+            throw Pe.delete(e), n
+          }), Pe.set(e, n)), n
+        }
+
+        function Ae() {
+          return Ae = h(r().m(function e(n) {
+            var t, a, i, o, s, d, p, m, b, v, w, y, g, k, E, S, I, P, M, A, O, _, j;
+            return r().w(function(e) {
+              for (;;) switch (e.p = e.n) {
+                case 0:
+                  return e.n = 1, W(n);
+                case 1:
+                  return t = e.v, e.n = 2, Se(n);
+                case 2:
+                  return a = e.v, i = new Map, o = new Map, s = new Map, d = new Set, p = new Set, m = 0, b = function(e) {
+                    return Number.isSafeInteger(e) && Number(e) > 0
+                  }, v = function(e) {
+                    if ("string" != typeof e) throw new Error("备份内容字段不是 JSON 字符串");
+                    var n = JSON.parse(e);
+                    if (!n || "object" !== u(n) || Array.isArray(n)) throw new Error("备份内容格式不正确");
+                    return n
+                  }, e.n = 3, ge(n, function(e) {
+                    var n = t.get(e.name);
+                    if (!n || d.has(e.name)) throw new Error("备份 ZIP 文件列表不一致");
+                    d.add(e.name);
+                    var a = function() {};
+                    if ("roles.ndjson" === e.name) a = Ee(function(e) {
+                      var n;
+                      if (!b(e.id) || i.has(e.id)) throw new Error("备份角色编号重复或无效");
+                      if (null !== (n = e.imagePath) && void 0 !== n && n.startsWith("piupiu/media/") && !t.has("media/".concat(e.imagePath))) throw new Error("备份缺少角色图片");
+                      i.set(e.id, fe(v(e.roleJson)))
+                    });
+                    else if ("sessions.ndjson" === e.name) a = Ee(function(e) {
+                      if (!b(e.id) || o.has(e.id) || !b(e.roleId) || !Number.isSafeInteger(e.messageCount) || e.messageCount < 0) throw new Error("备份会话信息无效");
+                      v(e.sessionJson), o.set(e.id, {
+                        roleId: e.roleId,
+                        count: e.messageCount
+                      })
+                    });
+                    else if (/^messages\/\d+\.ndjson$/.test(e.name)) {
+                      var u = Number(e.name.split("/")[1].split(".")[0]);
+                      s.set(u, 0), a = Ee(function(e) {
+                        if (e.index !== s.get(u) || "string" != typeof e.content || "string" != typeof e.role) throw new Error("备份消息序号不连续或内容无效");
+                        v(e.messageJson), s.set(u, e.index + 1)
+                      })
+                    } else e.name.startsWith("media/piupiu/media/") && m++;
+                    var c = 0,
+                      l = -1;
+                    return function() {
+                      var t = h(r().m(function t(i, o) {
+                        return r().w(function(r) {
+                          for (;;) switch (r.n) {
+                            case 0:
+                              if (c += i.length, l = Z(l, i), !(c > n.size)) {
+                                r.n = 1;
+                                break
+                              }
+                              throw new Error("备份文件长度异常：".concat(e.name));
+                            case 1:
+                              return r.n = 2, a(i, o);
+                            case 2:
+                              if (o && p.add(e.name), !o || c === n.size && (-1 ^ l) >>> 0 === n.crc) {
+                                r.n = 3;
+                                break
+                              }
+                              throw new Error("备份文件校验失败：".concat(e.name));
+                            case 3:
+                              return r.a(2)
+                          }
+                        }, t)
+                      }));
+                      return function(e, n) {
+                        return t.apply(this, arguments)
+                      }
+                    }()
+                  });
+                case 3:
+                  if (p.size === t.size && d.size === t.size && d.has("roles.ndjson") && d.has("sessions.ndjson")) {
+                    e.n = 4;
+                    break
+                  }
+                  throw new Error("备份文件缺少角色或会话数据");
+                case 4:
+                  if (i.size === a.counts.roles && o.size === a.counts.sessions && l(s.values()).reduce(function(e, n) {
+                      return e + n
+                    }, 0) === a.counts.messages && m === a.counts.media) {
+                    e.n = 5;
+                    break
+                  }
+                  throw new Error("备份记录数量与说明文件不一致");
+                case 5:
+                  w = f(i.values()), e.p = 6, w.s();
+                case 7:
+                  if ((y = w.n()).done) {
+                    e.n = 9;
+                    break
+                  }
+                  if (!y.value.some(function(e) {
+                      return !i.has(e)
+                    })) {
+                    e.n = 8;
+                    break
+                  }
+                  throw new Error("备份群聊缺少成员角色");
+                case 8:
+                  e.n = 7;
+                  break;
+                case 9:
+                  e.n = 11;
+                  break;
+                case 10:
+                  e.p = 10, O = e.v, w.e(O);
+                case 11:
+                  return e.p = 11, w.f(), e.f(11);
+                case 12:
+                  g = f(o), e.p = 13, g.s();
+                case 14:
+                  if ((k = g.n()).done) {
+                    e.n = 16;
+                    break
+                  }
+                  if (E = c(k.value, 2), S = E[0], I = E[1], i.has(I.roleId) && s.get(S) === I.count) {
+                    e.n = 15;
+                    break
+                  }
+                  throw new Error("备份缺少角色或聊天消息文件");
+                case 15:
+                  e.n = 14;
+                  break;
+                case 16:
+                  e.n = 18;
+                  break;
+                case 17:
+                  e.p = 17, _ = e.v, g.e(_);
+                case 18:
+                  return e.p = 18, g.f(), e.f(18);
+                case 19:
+                  P = f(s.keys()), e.p = 20, P.s();
+                case 21:
+                  if ((M = P.n()).done) {
+                    e.n = 23;
+                    break
+                  }
+                  if (A = M.value, o.has(A)) {
+                    e.n = 22;
+                    break
+                  }
+                  throw new Error("备份含有未关联会话的消息");
+                case 22:
+                  e.n = 21;
+                  break;
+                case 23:
+                  e.n = 25;
+                  break;
+                case 24:
+                  e.p = 24, j = e.v, P.e(j);
+                case 25:
+                  return e.p = 25, P.f(), e.f(25);
+                case 26:
+                  return e.a(2, a)
+              }
+            }, e, null, [
+              [20, 24, 25, 26],
+              [13, 17, 18, 19],
+              [6, 10, 11, 12]
+            ])
+          })), Ae.apply(this, arguments)
+        }
+
+        function Oe(e, n) {
+          e.includes(n) || e.push(n)
+        }
+
+        function _e(e, n, r) {
+          return je.apply(this, arguments)
+        }
+
+        function je() {
+          return (je = h(r().m(function e(n, t, a) {
+            var i;
+            return r().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  if (i = ue(t), !a) {
+                    e.n = 2;
+                    break
+                  }
+                  return e.n = 1, p.writeFile({
+                    path: n,
+                    directory: m.Data,
+                    data: i,
+                    recursive: !0
+                  });
+                case 1:
+                  e.n = 3;
+                  break;
+                case 2:
+                  return e.n = 3, p.appendFile({
+                    path: n,
+                    directory: m.Data,
+                    data: i
+                  });
+                case 3:
+                  return e.a(2)
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function Ne(e, n, t, a) {
+          var i, o, s = function(e) {
+              var n = e.replace(/^piupiu\/media\//, "").replace(/\.[A-Za-z0-9]+$/, "").replace(/[^A-Za-z0-9._-]+/g, "-").slice(0, 96) || "media";
+              return "".concat(n, "-").concat(Date.now(), "-").concat(Math.random().toString(36).slice(2))
+            }(e),
+            u = (null == (o = /\.([A-Za-z0-9]{1,8})(?:[?#].*)?$/.exec(e)) || null === (i = o[1]) || void 0 === i ? void 0 : i.toLowerCase()) || "bin",
+            c = "".concat($, "/").concat(s, ".").concat(u),
+            l = "".concat(V, "/").concat(s, ".").concat(u),
+            f = !1,
+            d = !1;
+          return function() {
+            var i = h(r().m(function i(o, s) {
+              return r().w(function(r) {
+                for (;;) switch (r.n) {
+                  case 0:
+                    if (f) {
+                      r.n = 4;
+                      break
+                    }
+                    return r.n = 1, p.mkdir({
+                      path: V,
+                      directory: m.Data,
+                      recursive: !0
+                    }).catch(function() {});
+                  case 1:
+                    return r.n = 2, p.mkdir({
+                      path: $,
+                      directory: m.Data,
+                      recursive: !0
+                    }).catch(function() {});
+                  case 2:
+                    return r.n = 3, p.deleteFile({
+                      path: l,
+                      directory: m.Data
+                    }).catch(function() {});
+                  case 3:
+                    f = !0;
+                  case 4:
+                    if (!(o.length > 0)) {
+                      r.n = 6;
+                      break
+                    }
+                    return r.n = 5, _e(l, o, !d);
+                  case 5:
+                    d = !0;
+                  case 6:
+                    if (s) {
+                      r.n = 7;
+                      break
+                    }
+                    return r.a(2);
+                  case 7:
+                    if (d) {
+                      r.n = 8;
+                      break
+                    }
+                    return r.n = 8, p.writeFile({
+                      path: l,
+                      directory: m.Data,
+                      data: "",
+                      encoding: b.UTF8,
+                      recursive: !0
+                    });
+                  case 8:
+                    return r.n = 9, p.deleteFile({
+                      path: c,
+                      directory: m.Data
+                    }).catch(function() {});
+                  case 9:
+                    return r.n = 10, p.rename({
+                      from: l,
+                      to: c,
+                      directory: m.Data
+                    });
+                  case 10:
+                    return n.set(e, c), t.restoredMediaPaths = t.restoredMediaPaths || [], Oe(t.restoredMediaPaths, c), r.n = 11, be(t);
+                  case 11:
+                    a.done += 1, ne("media", a.done, Math.max(1, a.total), "正在恢复媒体文件...");
+                  case 12:
+                    return r.a(2)
+                }
+              }, i)
+            }));
+            return function(e, n) {
+              return i.apply(this, arguments)
+            }
+          }()
+        }
+        var Re = function() {
+          return e = function e(n) {
+            var r = this;
+            ! function(e, n) {
+              if (!(e instanceof n)) throw new TypeError("Cannot call a class as a function")
+            }(this, e), o(this, "zip", void 0), o(this, "chunks", []), o(this, "chunkCount", 0), o(this, "useAndroidWriter", !1), o(this, "fileName", void 0), o(this, "saveHandle", null), this.fileName = n, this.zip = new E(function(e, n, t) {
+              if (e) throw e;
+              if (n) {
+                var a, i, o, s;
+                if (r.chunkCount += 1, r.useAndroidWriter) {
+                  if (!(null === (a = K()) || void 0 === a || null === (i = a.appendBinaryDownloadChunk) || void 0 === i ? void 0 : i.call(a, ue(n)))) throw new Error("写入下载文件失败")
+                } else r.chunks.push(n);
+                if (t && r.useAndroidWriter && !(null === (o = K()) || void 0 === o || null === (s = o.finishBinaryDownload) || void 0 === s ? void 0 : s.call(o))) throw new Error("保存下载文件失败")
+              }
+            })
+          }, t = [{
+            key: "start",
+            value: (u = h(r().m(function e() {
+              var n, t, a;
+              return r().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    if ("function" != typeof(null == (t = K()) ? void 0 : t.prepareBinaryDownload)) {
+                      e.n = 2;
+                      break
+                    }
+                    if (this.useAndroidWriter = !0 === t.prepareBinaryDownload(this.fileName, "application/zip"), this.useAndroidWriter) {
+                      e.n = 1;
+                      break
+                    }
+                    throw new Error("无法创建备份文件，请检查存储空间和下载权限");
+                  case 1:
+                    e.n = 6;
+                    break;
+                  case 2:
+                    if (!window.showSaveFilePicker || !1 === (null === (n = navigator.userActivation) || void 0 === n ? void 0 : n.isActive)) {
+                      e.n = 6;
+                      break
+                    }
+                    return e.p = 3, e.n = 4, window.showSaveFilePicker({
+                      suggestedName: this.fileName,
+                      types: [{
+                        description: "PiuPiu data backup",
+                        accept: {
+                          "application/zip": [".zip"]
+                        }
+                      }]
+                    });
+                  case 4:
+                    this.saveHandle = e.v, e.n = 6;
+                    break;
+                  case 5:
+                    if (e.p = 5, "SecurityError" === (null == (a = e.v) ? void 0 : a.name)) {
+                      e.n = 6;
+                      break
+                    }
+                    throw a;
+                  case 6:
+                    return e.a(2)
+                }
+              }, e, this, [
+                [3, 5]
+              ])
+            })), function() {
+              return u.apply(this, arguments)
+            })
+          }, {
+            key: "addText",
+            value: function(e, n) {
+              var r = new S(e, {
+                level: 6
+              });
+              this.zip.add(r), r.push(I(n), !0)
+            }
+          }, {
+            key: "addNdjsonStart",
+            value: function(e) {
+              var n = new S(e, {
+                level: 6
+              });
+              return this.zip.add(n), n
+            }
+          }, {
+            key: "addBlob",
+            value: (s = h(r().m(function e(n, t) {
+              var a, i, o, s;
+              return r().w(function(e) {
+                for (;;) switch (e.n) {
+                  case 0:
+                    return a = new S(n, {
+                      level: 6
+                    }), this.zip.add(a), i = a, o = Uint8Array, e.n = 1, t.arrayBuffer();
+                  case 1:
+                    s = e.v, i.push.call(i, new o(s), !0);
+                  case 2:
+                    return e.a(2)
+                }
+              }, e, this)
+            })), function(e, n) {
+              return s.apply(this, arguments)
+            })
+          }, {
+            key: "finish",
+            value: (i = h(r().m(function e() {
+              var n, t, a, i, o, s;
+              return r().w(function(e) {
+                for (;;) switch (e.p = e.n) {
+                  case 0:
+                    if (this.zip.end(), !this.useAndroidWriter) {
+                      e.n = 1;
+                      break
+                    }
+                    return e.a(2, "downloads");
+                  case 1:
+                    if (n = new Blob(this.chunks.map(ce), {
+                        type: "application/zip"
+                      }), !this.saveHandle) {
+                      e.n = 9;
+                      break
+                    }
+                    return e.n = 2, this.saveHandle.createWritable();
+                  case 2:
+                    return t = e.v, e.p = 3, e.n = 4, t.write(n);
+                  case 4:
+                    return e.n = 5, t.close();
+                  case 5:
+                    e.n = 8;
+                    break;
+                  case 6:
+                    return e.p = 6, s = e.v, e.n = 7, null === (a = t.abort) || void 0 === a ? void 0 : a.call(t).catch(function() {});
+                  case 7:
+                    throw s;
+                  case 8:
+                    return e.a(2, "browser");
+                  case 9:
+                    return i = URL.createObjectURL(n), (o = document.createElement("a")).href = i, o.download = this.fileName, document.body.appendChild(o), o.click(), document.body.removeChild(o), window.setTimeout(function() {
+                      return URL.revokeObjectURL(i)
+                    }, 6e4), e.a(2, "browser")
+                }
+              }, e, this, [
+                [3, 6]
+              ])
+            })), function() {
+              return i.apply(this, arguments)
+            })
+          }, {
+            key: "cancel",
+            value: function() {
+              var e, n;
+              this.useAndroidWriter && (null === (e = K()) || void 0 === e || null === (n = e.cancelBinaryDownload) || void 0 === n || n.call(e))
+            }
+          }], t && n(e.prototype, t), a && n(e, a), Object.defineProperty(e, "prototype", {
+            writable: !1
+          }), e;
+          var e, t, a, i, s, u
+        }();
+
+        function xe() {
+          return De.apply(this, arguments)
+        }
+
+        function De() {
+          return (De = h(r().m(function e() {
+            var n, t, a, i, o, u, c, l, d, p, m, h, b, g, k, E, S, I, P, M, A, O, T, C, U, B, F, L, z, W, J, H, Z, G, $, V, K, X, Y, Q, ee;
+            return r().w(function(e) {
+              for (;;) switch (e.p = e.n) {
+                case 0:
+                  return n = "PiuPiu_DataBackup_".concat(_(), ".piupiu-data-backup.zip"), t = new Re(n), e.p = 1, e.n = 2, t.start();
+                case 2:
+                  return e.n = 3, j();
+                case 3:
+                  return i = e.v, e.n = 4, N();
+                case 4:
+                  return o = e.v, e.n = 5, s.query("SELECT COUNT(*) AS total FROM chat_messages");
+                case 5:
+                  u = e.v, c = Number((null === (a = u[0]) || void 0 === a ? void 0 : a.total) || 0), l = new Set, ne("backup", 0, i + o + c + 1, "正在准备数据备份..."), d = t.addNdjsonStart("roles.ndjson"), p = 0, m = 0;
+                case 6:
+                  if (!(m < i)) {
+                    e.n = 9;
+                    break
+                  }
+                  return e.n = 7, R(m, 80);
+                case 7:
+                  h = e.v, b = f(h);
+                  try {
+                    for (b.s(); !(g = b.n()).done;) E = g.value, S = ae(E, p += 1), d.push(se(S), !1), null !== (k = S.imagePath) && void 0 !== k && k.startsWith("piupiu/media/") && l.add(S.imagePath)
+                  } catch (r) {
+                    b.e(r)
+                  } finally {
+                    b.f()
+                  }
+                  return ne("roles", Math.min(m + h.length, i), i, "正在导出角色卡..."), e.n = 8, new Promise(function(e) {
+                    return window.setTimeout(e, 0)
+                  });
+                case 8:
+                  m += 80, e.n = 6;
+                  break;
+                case 9:
+                  d.push(new Uint8Array, !0), I = t.addNdjsonStart("sessions.ndjson"), P = 0, M = 0;
+                case 10:
+                  if (!(M < o)) {
+                    e.n = 23;
+                    break
+                  }
+                  return e.n = 11, x(M, 80);
+                case 11:
+                  A = e.v, O = f(A), e.p = 12, O.s();
+                case 13:
+                  if ((T = O.n()).done) {
+                    e.n = 19;
+                    break
+                  }
+                  C = T.value, U = ie(C), I.push(se(U), !1), B = t.addNdjsonStart("messages/".concat(U.id, ".ndjson")), F = 0;
+                case 14:
+                  if (!(F < U.messageCount)) {
+                    e.n = 17;
+                    break
+                  }
+                  return e.n = 15, D(U.id, F, 150);
+                case 15:
+                  L = e.v, z = f(L);
+                  try {
+                    for (z.s(); !(W = z.n()).done;) J = W.value, B.push(se(oe(J)), !1)
+                  } catch (r) {
+                    z.e(r)
+                  } finally {
+                    z.f()
+                  }
+                  return ne("messages", P += L.length, Math.max(1, c), "正在导出聊天记录..."), e.n = 16, new Promise(function(e) {
+                    return window.setTimeout(e, 0)
+                  });
+                case 16:
+                  F += 150, e.n = 14;
+                  break;
+                case 17:
+                  B.push(new Uint8Array, !0);
+                case 18:
+                  e.n = 13;
+                  break;
+                case 19:
+                  e.n = 21;
+                  break;
+                case 20:
+                  e.p = 20, Y = e.v, O.e(Y);
+                case 21:
+                  return e.p = 21, O.f(), e.f(21);
+                case 22:
+                  M += 80, e.n = 10;
+                  break;
+                case 23:
+                  return I.push(new Uint8Array, !0), e.n = 24, s.query("SELECT DISTINCT path FROM chat_media_refs WHERE path LIKE 'piupiu/media/%'");
+                case 24:
+                  e.v.forEach(function(e) {
+                    e.path && l.add(e.path)
+                  }), H = 0, Z = f(l), e.p = 25, Z.s();
+                case 26:
+                  if ((G = Z.n()).done) {
+                    e.n = 31;
+                    break
+                  }
+                  return $ = G.value, e.n = 27, v($).catch(function() {
+                    return null
+                  });
+                case 27:
+                  if (V = e.v) {
+                    e.n = 28;
+                    break
+                  }
+                  throw new Error("备份包含无法读取的媒体文件，请检查存储空间后重试");
+                case 28:
+                  return e.n = 29, t.addBlob("media/".concat($), V);
+                case 29:
+                  return ne("media", H += 1, Math.max(1, l.size), "正在打包媒体文件..."), e.n = 30, new Promise(function(e) {
+                    return window.setTimeout(e, 0)
+                  });
+                case 30:
+                  e.n = 26;
+                  break;
+                case 31:
+                  e.n = 33;
+                  break;
+                case 32:
+                  e.p = 32, Q = e.v, Z.e(Q);
+                case 33:
+                  return e.p = 33, Z.f(), e.f(33);
+                case 34:
+                  return K = {
+                    appId: q,
+                    version: 1,
+                    platform: y.getPlatform(),
+                    databaseVersion: w,
+                    exportedAt: (new Date).toISOString(),
+                    counts: {
+                      roles: i,
+                      sessions: o,
+                      messages: c,
+                      media: l.size
+                    }
+                  }, t.addText("manifest.json", JSON.stringify(K, null, 2)), e.n = 35, t.finish();
+                case 35:
+                  return X = e.v, te("数据备份已导出"), e.a(2, X);
+                case 36:
+                  throw e.p = 36, ee = e.v, t.cancel(), ee;
+                case 37:
+                  return e.a(2)
+              }
+            }, e, null, [
+              [25, 32, 33, 34],
+              [12, 20, 21, 22],
+              [1, 36]
+            ])
+          }))).apply(this, arguments)
+        }
+
+        function Te() {
+          return (Te = h(r().m(function e(n) {
+            return r().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  if (!n.name.toLowerCase().endsWith(".json")) {
+                    e.n = 1;
+                    break
+                  }
+                  return e.a(2, {
+                    kind: "settings"
+                  });
+                case 1:
+                  return e.a(2, Q("backup-import", h(r().m(function e() {
+                    var t;
+                    return r().w(function(e) {
+                      for (;;) switch (e.n) {
+                        case 0:
+                          return e.n = 1, Me(n);
+                        case 1:
+                          return t = e.v, te("备份校验完成"), e.a(2, {
+                            kind: "role-chat",
+                            manifest: t
+                          })
+                      }
+                    }, e)
+                  }))))
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function Ce(e, n, r) {
+          return Ue.apply(this, arguments)
+        }
+
+        function Ue() {
+          return (Ue = h(r().m(function e(n, t, a) {
+            var i, o;
+            return r().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  return i = new Map, o = {
+                    done: 0,
+                    total: t.counts.media
+                  }, e.n = 1, ge(n, function(e) {
+                    return e.name.startsWith("media/piupiu/media/") ? Ne(e.name.slice(6), i, a, o) : null
+                  });
+                case 1:
+                  return e.a(2, i)
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function Be() {
+          return Fe.apply(this, arguments)
+        }
+
+        function Fe() {
+          return (Fe = h(r().m(function e() {
+            var n, t;
+            return r().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  return e.n = 1, s.query("SELECT COALESCE(MAX(id), 0) AS max_id FROM chat_sessions");
+                case 1:
+                  return t = e.v, e.a(2, Number((null === (n = t[0]) || void 0 === n ? void 0 : n.max_id) || 0) + 1)
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function Le(e, n) {
+          var r = e[n];
+          return Array.isArray(r) ? r : (e[n] = [], e[n])
+        }
+
+        function ze(e, n) {
+          e.includes(n) || e.push(n)
+        }
+
+        function We(e) {
+          return e instanceof Error ? e.message : String(e)
+        }
+
+        function Je(e) {
+          return He.apply(this, arguments)
+        }
+
+        function He() {
+          return (He = h(r().m(function e(n) {
+            var t;
+            return r().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  return e.n = 1, s.query("SELECT path FROM chat_media_refs WHERE owner_type = 'message' AND owner_id = ?", [n]).catch(function() {
+                    return []
+                  });
+                case 1:
+                  return t = e.v, e.n = 2, s.run("DELETE FROM chat_media_refs WHERE owner_type = 'message' AND owner_id = ?", [n]).catch(function() {});
+                case 2:
+                  return e.n = 3, s.run("DELETE FROM chat_messages WHERE session_id = ?", [n]).catch(function() {});
+                case 3:
+                  return e.n = 4, s.run("DELETE FROM chat_sessions WHERE id = ?", [n]).catch(function() {});
+                case 4:
+                  return e.n = 5, Promise.all(t.filter(function(e) {
+                    var n;
+                    return null === (n = e.path) || void 0 === n ? void 0 : n.startsWith("piupiu/media/backup-import/")
+                  }).map(function(e) {
+                    return d(e.path).catch(function() {})
+                  }));
+                case 5:
+                  return e.a(2)
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function Ze(e, n, r, t, a) {
+          return qe.apply(this, arguments)
+        }
+
+        function qe() {
+          return (qe = h(r().m(function e(n, t, a, i, o) {
+            var s, u, c, l, f, d, p;
+            return r().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  if (s = n.entry, u = n.group, c = n.memberIds, !u || !c.some(function(e) {
+                      return !o.roleIdMap.has(e)
+                    })) {
+                    e.n = 3;
+                    break
+                  }
+                  if ("overwrite" !== a) {
+                    e.n = 1;
+                    break
+                  }
+                  throw new Error("群聊成员未能完整导入");
+                case 1:
+                  return ze(Le(i, "skippedRoleIds"), s.id), e.n = 2, be(i);
+                case 2:
+                  return console.warn("[dataBackup] Skip group role with missing imported members:", {
+                    id: s.id,
+                    memberIds: c
+                  }), e.a(2);
+                case 3:
+                  return l = de(pe(n.roleData, t), o.roleIdMap), f = s.imagePath ? t.get(s.imagePath) || s.imagePath : null, d = s.id, p = s.pinnedAt || void 0, ze(Le(i, "startedRoleIds"), s.id), e.n = 4, be(i);
+                case 4:
+                  if ("merge" !== a) {
+                    e.n = 6;
+                    break
+                  }
+                  return s.isPinned && (o.importedPinnedCount += 1, p = (o.currentOldestPinned || Date.now()) - o.importedPinnedCount), e.n = 5, U({
+                    roleData: l,
+                    imagePath: f,
+                    createdAt: s.createdAt || Date.now(),
+                    updatedAt: s.updatedAt || Date.now(),
+                    isPinned: s.isPinned,
+                    pinnedAt: p
+                  });
+                case 5:
+                  d = e.v, e.n = 7;
+                  break;
+                case 6:
+                  return e.n = 7, B({
+                    id: s.id,
+                    roleData: l,
+                    imagePath: f,
+                    createdAt: s.createdAt || Date.now(),
+                    updatedAt: s.updatedAt || Date.now(),
+                    isPinned: s.isPinned,
+                    pinnedAt: p
+                  });
+                case 7:
+                  return o.roleIdMap.set(s.id, d), i.roleIdMap[String(s.id)] = d, u ? (ze(i.completedGroupIds, d), i.groupMemberIds = i.groupMemberIds || {}, i.groupMemberIds[String(d)] = c.map(function(e) {
+                    return o.roleIdMap.get(e)
+                  }).filter(function(e) {
+                    return "number" == typeof e && Number.isFinite(e)
+                  })) : ze(i.completedRoleIds, d), e.n = 8, be(i);
+                case 8:
+                  return e.a(2)
+              }
+            }, e)
+          }))).apply(this, arguments)
+        }
+
+        function Ge(e, n, r, t, a) {
+          return $e.apply(this, arguments)
+        }
+
+        function $e() {
+          return $e = h(r().m(function n(t, a, i, o, s) {
+            var u, c, l, f, d, p, m, b, v, w;
+            return r().w(function(n) {
+              for (;;) switch (n.n) {
+                case 0:
+                  if (m = new Map, "merge" !== i) {
+                    n.n = 2;
+                    break
+                  }
+                  return n.n = 1, O();
+                case 1:
+                  b = n.v, n.n = 3;
+                  break;
+                case 2:
+                  b = null;
+                case 3:
+                  v = b, w = s.counts.roles, u = {
+                    roleIdMap: m,
+                    currentOldestPinned: v,
+                    importedPinnedCount: 0,
+                    processedRoles: 0,
+                    totalRoles: w
+                  }, c = !1, l = function() {
+                    var e = h(r().m(function e(n, t) {
+                      var s, c, l, f, d, p, m;
+                      return r().w(function(e) {
+                        for (;;) switch (e.p = e.n) {
+                          case 0:
+                            if (null === (s = o.skippedRoleIds) || void 0 === s || !s.includes(n.id)) {
+                              e.n = 1;
+                              break
+                            }
+                            return e.a(2);
+                          case 1:
+                            l = !1, f = [], e.p = 2, c = JSON.parse(n.roleJson), l = le(c), f = fe(c), e.n = 6;
+                            break;
+                          case 3:
+                            if (e.p = 3, p = e.v, "overwrite" !== i) {
+                              e.n = 4;
+                              break
+                            }
+                            throw p;
+                          case 4:
+                            return ze(Le(o, "skippedRoleIds"), n.id), u.processedRoles += 1, e.n = 5, be(o);
+                          case 5:
+                            return ne("roles", u.processedRoles, Math.max(1, u.totalRoles), "正在导入角色卡..."), console.warn("[dataBackup] Skip unreadable role backup entry:", {
+                              id: n.id,
+                              error: p
+                            }), e.a(2);
+                          case 6:
+                            if (l === t) {
+                              e.n = 7;
+                              break
+                            }
+                            return e.a(2);
+                          case 7:
+                            return e.p = 7, e.n = 8, Ze({
+                              entry: n,
+                              roleData: c,
+                              group: l,
+                              memberIds: f
+                            }, a, i, o, u);
+                          case 8:
+                            e.n = 13;
+                            break;
+                          case 9:
+                            if (e.p = 9, m = e.v, "overwrite" !== i) {
+                              e.n = 10;
+                              break
+                            }
+                            throw m;
+                          case 10:
+                            if (d = o.roleIdMap[String(n.id)], !l || !d) {
+                              e.n = 11;
+                              break
+                            }
+                            return e.n = 11, P(d).catch(function() {});
+                          case 11:
+                            return ze(Le(o, "skippedRoleIds"), n.id), e.n = 12, be(o);
+                          case 12:
+                            console.warn("[dataBackup] Skip failed role import:", {
+                              id: n.id,
+                              error: m
+                            });
+                          case 13:
+                            u.processedRoles += 1, ne("roles", u.processedRoles, Math.max(1, u.totalRoles), l ? "正在导入群聊角色..." : "正在导入角色卡...");
+                          case 14:
+                            return e.a(2)
+                        }
+                      }, e, null, [
+                        [7, 9],
+                        [2, 3]
+                      ])
+                    }));
+                    return function(n, r) {
+                      return e.apply(this, arguments)
+                    }
+                  }(), f = r().m(function e() {
+                    var n;
+                    return r().w(function(e) {
+                      for (;;) switch (e.n) {
+                        case 0:
+                          return n = p[d], e.n = 1, ge(t, function(e) {
+                            return "roles.ndjson" !== e.name ? null : (c = !0, Ee(function(e) {
+                              return l(e, n)
+                            }))
+                          });
+                        case 1:
+                          return e.a(2)
+                      }
+                    }, e)
+                  }), d = 0, p = [!1, !0];
+                case 4:
+                  if (!(d < p.length)) {
+                    n.n = 6;
+                    break
+                  }
+                  return n.d(e(f()), 5);
+                case 5:
+                  d++, n.n = 4;
+                  break;
+                case 6:
+                  if (c || !(s.counts.roles > 0)) {
+                    n.n = 7;
+                    break
+                  }
+                  throw new Error("备份文件缺少 roles.ndjson");
+                case 7:
+                  return n.a(2, u.roleIdMap)
+              }
+            }, n)
+          })), $e.apply(this, arguments)
+        }
+
+        function Ve(e, n, r, t, a) {
+          return Ke.apply(this, arguments)
+        }
+
+        function Ke() {
+          return Ke = h(r().m(function e(n, t, a, i, o) {
+            var s, u, c, l, f;
+            return r().w(function(e) {
+              for (;;) switch (e.n) {
+                case 0:
+                  if (s = new Map, u = 0, "merge" !== a) {
+                    e.n = 2;
+                    break
+                  }
+                  return e.n = 1, Be();
+                case 1:
+                  f = e.v, e.n = 3;
+                  break;
+                case 2:
+                  f = 0;
+                case 3:
+                  return c = f, l = !1, e.n = 4, ge(n, function(e) {
+                    return "sessions.ndjson" !== e.name ? null : (l = !0, Ee(function() {
+                      var e = h(r().m(function e(n) {
+                        var l, f, d;
+                        return r().w(function(e) {
+                          for (;;) switch (e.p = e.n) {
+                            case 0:
+                              if (l = t.get(n.roleId)) {
+                                e.n = 3;
+                                break
+                              }
+                              if ("overwrite" !== a) {
+                                e.n = 1;
+                                break
+                              }
+                              throw new Error("会话对应的角色未能导入");
+                            case 1:
+                              return ze(Le(i, "skippedSessionIds"), n.id), e.n = 2, be(i);
+                            case 2:
+                              return ne("sessions", u += 1, Math.max(1, o.counts.sessions), "正在导入聊天会话..."), e.a(2);
+                            case 3:
+                              return f = "merge" === a ? c++ : n.id, e.p = 4, i.sessionIdMap[String(n.id)] = f, ze(Le(i, "startedSessionIds"), f), e.n = 5, be(i);
+                            case 5:
+                              return e.n = 6, T(he(n, l, f), n.messageCount, n.lastMessage || "暂无消息");
+                            case 6:
+                              s.set(n.id, {
+                                oldId: n.id,
+                                newId: f,
+                                expectedMessages: n.messageCount,
+                                importedMessages: 0,
+                                failed: !1
+                              }), e.n = 11;
+                              break;
+                            case 7:
+                              if (e.p = 7, d = e.v, "overwrite" !== a) {
+                                e.n = 8;
+                                break
+                              }
+                              throw d;
+                            case 8:
+                              return e.n = 9, Je(f);
+                            case 9:
+                              return ze(Le(i, "skippedSessionIds"), n.id), e.n = 10, be(i);
+                            case 10:
+                              console.warn("[dataBackup] Skip failed session shell import:", {
+                                id: n.id,
+                                sessionId: f,
+                                error: d
+                              });
+                            case 11:
+                              ne("sessions", u += 1, Math.max(1, o.counts.sessions), "正在导入聊天会话...");
+                            case 12:
+                              return e.a(2)
+                          }
+                        }, e, null, [
+                          [4, 7]
+                        ])
+                      }));
+                      return function(n) {
+                        return e.apply(this, arguments)
+                      }
+                    }()))
+                  });
+                case 4:
+                  if (l || !(o.counts.sessions > 0)) {
+                    e.n = 5;
+                    break
+                  }
+                  throw new Error("备份文件缺少 sessions.ndjson");
+                case 5:
+                  return e.a(2, s)
+              }
+            }, e)
+          })), Ke.apply(this, arguments)
+        }
+
+        function Xe(e, n, r, t, a) {
+          return Ye.apply(this, arguments)
+        }
+
+        function Ye() {
+          return Ye = h(r().m(function e(n, t, a, i, o) {
+            var s, u, c, l, d, p;
+            return r().w(function(e) {
+              for (;;) switch (e.p = e.n) {
+                case 0:
+                  return s = 0, e.n = 1, ge(n, function(e) {
+                    var n = /^messages\/(\d+)\.ndjson$/.exec(e.name);
+                    if (!n) return null;
+                    var u = Number(n[1]),
+                      c = t.get(u);
+                    return c ? Ee(function() {
+                      var e = h(r().m(function e(n) {
+                        var t;
+                        return r().w(function(e) {
+                          for (;;) switch (e.p = e.n) {
+                            case 0:
+                              if (!c.failed) {
+                                e.n = 1;
+                                break
+                              }
+                              return e.a(2);
+                            case 1:
+                              return e.p = 1, e.n = 2, C(c.newId, n.index, me(n, a));
+                            case 2:
+                              c.importedMessages += 1, e.n = 5;
+                              break;
+                            case 3:
+                              if (e.p = 3, t = e.v, "overwrite" !== i.mode) {
+                                e.n = 4;
+                                break
+                              }
+                              throw t;
+                            case 4:
+                              return c.failed = !0, i.skippedMessages = i.skippedMessages || [], i.skippedMessages.push({
+                                sessionId: c.newId,
+                                index: n.index,
+                                reason: We(t)
+                              }), e.n = 5, be(i);
+                            case 5:
+                              ne("messages", s += 1, Math.max(1, o.counts.messages), "正在导入聊天记录...");
+                            case 6:
+                              return e.a(2)
+                          }
+                        }, e, null, [
+                          [1, 3]
+                        ])
+                      }));
+                      return function(n) {
+                        return e.apply(this, arguments)
+                      }
+                    }()) : null
+                  });
+                case 1:
+                  u = 0, c = f(t.values()), e.p = 2, c.s();
+                case 3:
+                  if ((l = c.n()).done) {
+                    e.n = 10;
+                    break
+                  }
+                  if (!(d = l.value).failed && d.importedMessages === d.expectedMessages) {
+                    e.n = 6;
+                    break
+                  }
+                  if ("overwrite" !== i.mode) {
+                    e.n = 4;
+                    break
+                  }
+                  throw new Error("聊天记录未完整导入");
+                case 4:
+                  return e.n = 5, Je(d.newId);
+                case 5:
+                  ze(Le(i, "skippedSessionIds"), d.oldId), e.n = 7;
+                  break;
+                case 6:
+                  ze(i.completedSessionIds, d.newId);
+                case 7:
+                  return ne("verify", u += 1, Math.max(1, t.size), "正在校验聊天记录..."), e.n = 8, be(i);
+                case 8:
+                  return e.n = 9, new Promise(function(e) {
+                    return window.setTimeout(e, 0)
+                  });
+                case 9:
+                  e.n = 3;
+                  break;
+                case 10:
+                  e.n = 12;
+                  break;
+                case 11:
+                  e.p = 11, p = e.v, c.e(p);
+                case 12:
+                  return e.p = 12, c.f(), e.f(12);
+                case 13:
+                  return e.a(2)
+              }
+            }, e, null, [
+              [2, 11, 12, 13]
+            ])
+          })), Ye.apply(this, arguments)
+        }
+
+        function Qe() {
+          return (Qe = h(r().m(function e(n, t) {
+            var a, i, o, s, u, c, f, d, p, m, h, b, v, w;
+            return r().w(function(e) {
+              for (;;) switch (e.p = e.n) {
+                case 0:
+                  return e.n = 1, Me(n);
+                case 1:
+                  return a = e.v, e.n = 2, A();
+                case 2:
+                  return i = e.v, e.n = 3, W(n);
+                case 3:
+                  if (o = e.v, s = l(o.values()).reduce(function(e, n) {
+                      return e + n.size
+                    }, 0), u = 2 * s + ("overwrite" === t ? 2 * (i.databaseBytes || 0) : 0) + 16777216, !(null != i.availableBytes && i.availableBytes < u)) {
+                    e.n = 4;
+                    break
+                  }
+                  throw new Error("可用存储空间不足以安全导入，请释放空间后重试；原数据尚未更改");
+                case 4:
+                  if (c = {
+                      active: !0,
+                      mode: t,
+                      roleIdMap: {},
+                      sessionIdMap: {},
+                      startedRoleIds: [],
+                      startedSessionIds: [],
+                      completedRoleIds: [],
+                      completedGroupIds: [],
+                      groupMemberIds: {},
+                      completedSessionIds: [],
+                      skippedRoleIds: [],
+                      skippedSessionIds: [],
+                      skippedMessages: [],
+                      restoredMediaPaths: [],
+                      updatedAt: Date.now()
+                    }, e.p = 5, "overwrite" !== t) {
+                    e.n = 6;
+                    break
+                  }
+                  return e.n = 6, F();
+                case 6:
+                  return e.n = 7, be(c);
+                case 7:
+                  return ne("backup", 0, 1, "正在读取备份 (".concat(a.counts.roles, " 个角色，").concat(a.counts.sessions, " 段聊天)...")), e.n = 8, Ce(n, a, c);
+                case 8:
+                  return m = e.v, e.n = 9, Ge(n, m, t, c, a);
+                case 9:
+                  return h = e.v, e.n = 10, Ve(n, h, t, c, a);
+                case 10:
+                  return b = e.v, e.n = 11, Xe(n, b, m, c, a);
+                case 11:
+                  if ("overwrite" !== t) {
+                    e.n = 13;
+                    break
+                  }
+                  return e.n = 12, L();
+                case 12:
+                  e.n = 14;
+                  break;
+                case 13:
+                  return e.n = 14, en(!0);
+                case 14:
+                  return e.n = 15, we();
+                case 15:
+                  te((v = ((null === (f = c.skippedRoleIds) || void 0 === f ? void 0 : f.length) || 0) + ((null === (d = c.skippedSessionIds) || void 0 === d ? void 0 : d.length) || 0) + ((null === (p = c.skippedMessages) || void 0 === p ? void 0 : p.length) || 0)) ? "导入结束，已跳过 ".concat(v, " 个异常数据项") : "角色卡和聊天记录已导入"), e.n = 21;
+                  break;
+                case 16:
+                  if (e.p = 16, w = e.v, "overwrite" !== t) {
+                    e.n = 20;
+                    break
+                  }
+                  return e.p = 17, e.n = 18, z();
+                case 18:
+                  e.n = 20;
+                  break;
+                case 19:
+                  throw e.p = 19, e.v, new Error("导入失败，原数据恢复副本已保留，请释放存储空间并重启应用，勿清除应用数据");
+                case 20:
+                  throw w;
+                case 21:
+                  return e.a(2)
+              }
+            }, e, null, [
+              [17, 19],
+              [5, 16]
+            ])
+          }))).apply(this, arguments)
+        }
+
+        function en() {
+          return nn.apply(this, arguments)
+        }
+
+        function nn() {
+          return nn = h(r().m(function n() {
+            var t, a, i, o, u, c, p, m, h, b, v, w, y, g, k, E, S, I, M, A, O, _, j, N, R, x, D, T = arguments;
+            return r().w(function(n) {
+              for (;;) switch (n.p = n.n) {
+                case 0:
+                  return a = T.length > 0 && void 0 !== T[0] && T[0], n.n = 1, s.getMeta(G);
+                case 1:
+                  if (null != (i = n.v) && i.active) {
+                    n.n = 2;
+                    break
+                  }
+                  return n.a(2, !1);
+                case 2:
+                  return a || ne("verify", 0, 1, "正在检查上次备份导入..."), R = Set, n.n = 3, s.query("SELECT id FROM roles");
+                case 3:
+                  x = n.v.map(function(e) {
+                    return Number(e.id)
+                  }), o = new R(x), u = i.completedGroupIds.filter(function(e) {
+                    var n;
+                    return !o.has(e) || ((null === (n = i.groupMemberIds) || void 0 === n ? void 0 : n[String(e)]) || []).some(function(e) {
+                      return !o.has(Number(e))
+                    })
+                  }), c = f(u), n.p = 4, m = r().m(function e() {
+                    var n;
+                    return r().w(function(e) {
+                      for (;;) switch (e.n) {
+                        case 0:
+                          return n = p.value, e.n = 1, P(n).catch(function() {
+                            return s.run("DELETE FROM roles WHERE id = ?", [n]).catch(function() {})
+                          });
+                        case 1:
+                          return e.a(2)
+                      }
+                    }, e)
+                  }), c.s();
+                case 5:
+                  if ((p = c.n()).done) {
+                    n.n = 7;
+                    break
+                  }
+                  return n.d(e(m()), 6);
+                case 6:
+                  n.n = 5;
+                  break;
+                case 7:
+                  n.n = 9;
+                  break;
+                case 8:
+                  n.p = 8, D = n.v, c.e(D);
+                case 9:
+                  return n.p = 9, c.f(), n.f(9);
+                case 10:
+                  u.forEach(function(e) {
+                    return o.delete(e)
+                  }), h = Array.from(new Set([].concat(l(i.startedSessionIds || []), l(i.completedSessionIds), l(Object.values(i.sessionIdMap || {}).map(Number))).filter(Number.isFinite))), b = 0, v = h;
+                case 11:
+                  if (!(b < v.length)) {
+                    n.n = 14;
+                    break
+                  }
+                  return g = v[b], n.n = 12, s.query("SELECT s.role_id, s.message_count, COUNT(m.session_id) AS stored_count,\n              MIN(m.message_index) AS min_index, MAX(m.message_index) AS max_index\n       FROM chat_sessions s\n       LEFT JOIN chat_messages m ON m.session_id = s.id\n       WHERE s.id = ?\n       GROUP BY s.id", [g]);
+                case 12:
+                  if (k = n.v, E = k[0], S = Number((null == E ? void 0 : E.message_count) || 0), I = Number((null == E ? void 0 : E.stored_count) || 0), M = Number(null !== (w = null == E ? void 0 : E.min_index) && void 0 !== w ? w : 0), A = Number(null !== (y = null == E ? void 0 : E.max_index) && void 0 !== y ? y : -1), O = S === I && (0 === S || 0 === M && A === S - 1), E && o.has(Number(E.role_id)) && O) {
+                    n.n = 13;
+                    break
+                  }
+                  return n.n = 13, Je(g);
+                case 13:
+                  b++, n.n = 11;
+                  break;
+                case 14:
+                  if (null === (t = i.restoredMediaPaths) || void 0 === t || !t.length) {
+                    n.n = 17;
+                    break
+                  }
+                  return n.n = 15, s.query("SELECT image_path AS path FROM roles WHERE image_path LIKE 'piupiu/media/backup-import/%'").catch(function() {
+                    return []
+                  });
+                case 15:
+                  return _ = n.v, n.n = 16, s.query("SELECT path FROM chat_media_refs WHERE path LIKE 'piupiu/media/backup-import/%'").catch(function() {
+                    return []
+                  });
+                case 16:
+                  return j = n.v, N = new Set([].concat(l(_.map(function(e) {
+                    return e.path
+                  })), l(j.map(function(e) {
+                    return e.path
+                  }))).filter(Boolean)), n.n = 17, Promise.all(i.restoredMediaPaths.filter(function(e) {
+                    return e && !N.has(e)
+                  }).map(function(e) {
+                    return d(e).catch(function() {})
+                  }));
+                case 17:
+                  return n.n = 18, we();
+                case 18:
+                  return a || te("备份导入检查完成"), n.a(2, !0)
+              }
+            }, n, null, [
+              [4, 8, 9, 10]
+            ])
+          })), nn.apply(this, arguments)
+        }
+      }
+    }
+  })
+}();

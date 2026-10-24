@@ -1,0 +1,465 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function t(e) {
+    return t = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(t) {
+      return typeof t
+    } : function(t) {
+      return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t
+    }, t(e)
+  }
+
+  function e(t, e) {
+    var n = "undefined" != typeof Symbol && t[Symbol.iterator] || t["@@iterator"];
+    if (!n) {
+      if (Array.isArray(t) || (n = function(t, e) {
+          if (t) {
+            if ("string" == typeof t) return r(t, e);
+            var n = {}.toString.call(t).slice(8, -1);
+            return "Object" === n && t.constructor && (n = t.constructor.name), "Map" === n || "Set" === n ? Array.from(t) : "Arguments" === n || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n) ? r(t, e) : void 0
+          }
+        }(t)) || e && t && "number" == typeof t.length) {
+        n && (t = n);
+        var o = 0,
+          i = function() {};
+        return {
+          s: i,
+          n: function() {
+            return o >= t.length ? {
+              done: !0
+            } : {
+              done: !1,
+              value: t[o++]
+            }
+          },
+          e: function(t) {
+            throw t
+          },
+          f: i
+        }
+      }
+      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }
+    var a, u = !0,
+      c = !1;
+    return {
+      s: function() {
+        n = n.call(t)
+      },
+      n: function() {
+        var t = n.next();
+        return u = t.done, t
+      },
+      e: function(t) {
+        c = !0, a = t
+      },
+      f: function() {
+        try {
+          u || null == n.return || n.return()
+        } finally {
+          if (c) throw a
+        }
+      }
+    }
+  }
+
+  function r(t, e) {
+    (null == e || e > t.length) && (e = t.length);
+    for (var r = 0, n = Array(e); r < e; r++) n[r] = t[r];
+    return n
+  }
+
+  function n() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var t, e, r = "function" == typeof Symbol ? Symbol : {},
+      i = r.iterator || "@@iterator",
+      a = r.toStringTag || "@@toStringTag";
+
+    function u(r, n, i, a) {
+      var u = n && n.prototype instanceof f ? n : f,
+        s = Object.create(u.prototype);
+      return o(s, "_invoke", function(r, n, o) {
+        var i, a, u, f = 0,
+          s = o || [],
+          l = !1,
+          p = {
+            p: 0,
+            n: 0,
+            v: t,
+            a: y,
+            f: y.bind(t, 4),
+            d: function(e, r) {
+              return i = e, a = 0, u = t, p.n = r, c
+            }
+          };
+
+        function y(r, n) {
+          for (a = r, u = n, e = 0; !l && f && !o && e < s.length; e++) {
+            var o, i = s[e],
+              y = p.p,
+              v = i[2];
+            r > 3 ? (o = v === n) && (u = i[(a = i[4]) ? 5 : (a = 3, 3)], i[4] = i[5] = t) : i[0] <= y && ((o = r < 2 && y < i[1]) ? (a = 0, p.v = n, p.n = i[1]) : y < v && (o = r < 3 || i[0] > n || n > v) && (i[4] = r, i[5] = n, p.n = v, a = 0))
+          }
+          if (o || r > 1) return c;
+          throw l = !0, n
+        }
+        return function(o, s, v) {
+          if (f > 1) throw TypeError("Generator is already running");
+          for (l && 1 === s && y(s, v), a = s, u = v;
+            (e = a < 2 ? t : u) || !l;) {
+            i || (a ? a < 3 ? (a > 1 && (p.n = -1), y(a, u)) : p.n = u : p.v = u);
+            try {
+              if (f = 2, i) {
+                if (a || (o = "next"), e = i[o]) {
+                  if (!(e = e.call(i, u))) throw TypeError("iterator result is not an object");
+                  if (!e.done) return e;
+                  u = e.value, a < 2 && (a = 0)
+                } else 1 === a && (e = i.return) && e.call(i), a < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), a = 1);
+                i = t
+              } else if ((e = (l = p.n < 0) ? u : r.call(n, p)) !== c) break
+            } catch (e) {
+              i = t, a = 1, u = e
+            } finally {
+              f = 1
+            }
+          }
+          return {
+            value: e,
+            done: l
+          }
+        }
+      }(r, i, a), !0), s
+    }
+    var c = {};
+
+    function f() {}
+
+    function s() {}
+
+    function l() {}
+    e = Object.getPrototypeOf;
+    var p = [][i] ? e(e([][i]())) : (o(e = {}, i, function() {
+        return this
+      }), e),
+      y = l.prototype = f.prototype = Object.create(p);
+
+    function v(t) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(t, l) : (t.__proto__ = l, o(t, a, "GeneratorFunction")), t.prototype = Object.create(y), t
+    }
+    return s.prototype = l, o(y, "constructor", l), o(l, "constructor", s), s.displayName = "GeneratorFunction", o(l, a, "GeneratorFunction"), o(y), o(y, a, "Generator"), o(y, i, function() {
+      return this
+    }), o(y, "toString", function() {
+      return "[object Generator]"
+    }), (n = function() {
+      return {
+        w: u,
+        m: v
+      }
+    })()
+  }
+
+  function o(t, e, r, n) {
+    var i = Object.defineProperty;
+    try {
+      i({}, "", {})
+    } catch (t) {
+      i = 0
+    }
+    o = function(t, e, r, n) {
+      function a(e, r) {
+        o(t, e, function(t) {
+          return this._invoke(e, r, t)
+        })
+      }
+      e ? i ? i(t, e, {
+        value: r,
+        enumerable: !n,
+        configurable: !n,
+        writable: !n
+      }) : t[e] = r : (a("next", 0), a("throw", 1), a("return", 2))
+    }, o(t, e, r, n)
+  }
+
+  function i(t, e, r, n, o, i, a) {
+    try {
+      var u = t[i](a),
+        c = u.value
+    } catch (t) {
+      return void r(t)
+    }
+    u.done ? e(c) : Promise.resolve(c).then(n, o)
+  }
+
+  function a(t) {
+    return function() {
+      var e = this,
+        r = arguments;
+      return new Promise(function(n, o) {
+        var a = t.apply(e, r);
+
+        function u(t) {
+          i(a, n, o, u, c, "next", t)
+        }
+
+        function c(t) {
+          i(a, n, o, u, c, "throw", t)
+        }
+        u(void 0)
+      })
+    }
+  }
+
+  function u(t, e) {
+    for (var r = 0; r < e.length; r++) {
+      var n = e[r];
+      n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(t, c(n.key), n)
+    }
+  }
+
+  function c(e) {
+    var r = function(e, r) {
+      if ("object" != t(e) || !e) return e;
+      var n = e[Symbol.toPrimitive];
+      if (void 0 !== n) {
+        var o = n.call(e, r || "default");
+        if ("object" != t(o)) return o;
+        throw new TypeError("@@toPrimitive must return a primitive value.")
+      }
+      return ("string" === r ? String : Number)(e)
+    }(e, "string");
+    return "symbol" == t(r) ? r : r + ""
+  }
+
+  function f(e, r, n) {
+    return r = l(r),
+      function(e, r) {
+        if (r && ("object" == t(r) || "function" == typeof r)) return r;
+        if (void 0 !== r) throw new TypeError("Derived constructors may only return object or undefined");
+        return function(t) {
+          if (void 0 === t) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+          return t
+        }(e)
+      }(e, s() ? Reflect.construct(r, n || [], l(e).constructor) : r.apply(e, n))
+  }
+
+  function s() {
+    try {
+      var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {}))
+    } catch (t) {}
+    return (s = function() {
+      return !!t
+    })()
+  }
+
+  function l(t) {
+    return l = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(t) {
+      return t.__proto__ || Object.getPrototypeOf(t)
+    }, l(t)
+  }
+
+  function p(t, e) {
+    return p = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(t, e) {
+      return t.__proto__ = e, t
+    }, p(t, e)
+  }
+  System.register(["./app-security-legacy-BdXLf8ML.js"], function(t, r) {
+    "use strict";
+    var o;
+    return {
+      setters: [function(t) {
+        o = t.bI
+      }],
+      execute: function() {
+        var r = function(t) {
+          function r() {
+            return function(t, e) {
+              if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function")
+            }(this, r), f(this, r, arguments)
+          }
+          return function(t, e) {
+            if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function");
+            t.prototype = Object.create(e && e.prototype, {
+              constructor: {
+                value: t,
+                writable: !0,
+                configurable: !0
+              }
+            }), Object.defineProperty(t, "prototype", {
+              writable: !1
+            }), e && p(t, e)
+          }(r, t), o = r, i = [{
+            key: "getId",
+            value: (d = a(n().m(function t() {
+              return n().w(function(t) {
+                for (;;)
+                  if (0 === t.n) return t.a(2, {
+                    identifier: this.getUid()
+                  })
+              }, t, this)
+            })), function() {
+              return d.apply(this, arguments)
+            })
+          }, {
+            key: "getInfo",
+            value: (v = a(n().m(function t() {
+              var e, r;
+              return n().w(function(t) {
+                for (;;) switch (t.n) {
+                  case 0:
+                    if ("undefined" != typeof navigator && navigator.userAgent) {
+                      t.n = 1;
+                      break
+                    }
+                    throw this.unavailable("Device API not available in this browser");
+                  case 1:
+                    return e = navigator.userAgent, r = this.parseUa(e), t.a(2, {
+                      model: r.model,
+                      platform: "web",
+                      operatingSystem: r.operatingSystem,
+                      osVersion: r.osVersion,
+                      manufacturer: navigator.vendor,
+                      isVirtual: !1,
+                      webViewVersion: r.browserVersion
+                    })
+                }
+              }, t, this)
+            })), function() {
+              return v.apply(this, arguments)
+            })
+          }, {
+            key: "getBatteryInfo",
+            value: (y = a(n().m(function t() {
+              var e;
+              return n().w(function(t) {
+                for (;;) switch (t.p = t.n) {
+                  case 0:
+                    if ("undefined" != typeof navigator && navigator.getBattery) {
+                      t.n = 1;
+                      break
+                    }
+                    throw this.unavailable("Device API not available in this browser");
+                  case 1:
+                    return e = {}, t.p = 2, t.n = 3, navigator.getBattery();
+                  case 3:
+                    e = t.v, t.n = 5;
+                    break;
+                  case 4:
+                    t.p = 4, t.v;
+                  case 5:
+                    return t.a(2, {
+                      batteryLevel: e.level,
+                      isCharging: e.charging
+                    })
+                }
+              }, t, this, [
+                [2, 4]
+              ])
+            })), function() {
+              return y.apply(this, arguments)
+            })
+          }, {
+            key: "getLanguageCode",
+            value: (l = a(n().m(function t() {
+              return n().w(function(t) {
+                for (;;)
+                  if (0 === t.n) return t.a(2, {
+                    value: navigator.language.split("-")[0].toLowerCase()
+                  })
+              }, t)
+            })), function() {
+              return l.apply(this, arguments)
+            })
+          }, {
+            key: "getLanguageTag",
+            value: (s = a(n().m(function t() {
+              return n().w(function(t) {
+                for (;;)
+                  if (0 === t.n) return t.a(2, {
+                    value: navigator.language
+                  })
+              }, t)
+            })), function() {
+              return s.apply(this, arguments)
+            })
+          }, {
+            key: "parseUa",
+            value: function(t) {
+              var r = {},
+                n = t.indexOf("(") + 1,
+                o = t.indexOf(") AppleWebKit"); - 1 !== t.indexOf(") Gecko") && (o = t.indexOf(") Gecko"));
+              var i = t.substring(n, o);
+              if (-1 !== t.indexOf("Android")) {
+                var a = i.replace("; wv", "").split("; ").pop();
+                a && (r.model = a.split(" Build")[0]), r.osVersion = i.split("; ")[1]
+              } else if (r.model = i.split("; ")[0], "undefined" != typeof navigator && navigator.oscpu) r.osVersion = navigator.oscpu;
+              else if (-1 !== t.indexOf("Windows")) r.osVersion = i;
+              else {
+                var u = i.split("; ").pop();
+                if (u) {
+                  var c = u.replace(" like Mac OS X", "").split(" ");
+                  r.osVersion = c[c.length - 1].replace(/_/g, ".")
+                }
+              }
+              /android/i.test(t) ? r.operatingSystem = "android" : /iPad|iPhone|iPod/.test(t) && !window.MSStream ? r.operatingSystem = "ios" : /Win/.test(t) ? r.operatingSystem = "windows" : /Mac/i.test(t) ? r.operatingSystem = "mac" : r.operatingSystem = "unknown";
+              var f = !!window.ApplePaySession,
+                s = !!window.chrome,
+                l = /Firefox/.test(t),
+                p = /Edg/.test(t),
+                y = /FxiOS/.test(t),
+                v = /CriOS/.test(t),
+                d = /EdgiOS/.test(t);
+              if (f || s && !p || y || v || d) {
+                var g;
+                g = y ? "FxiOS" : v ? "CriOS" : d ? "EdgiOS" : f ? "Version" : "Chrome";
+                var b, h = e(t.split(" "));
+                try {
+                  for (h.s(); !(b = h.n()).done;) {
+                    var m = b.value;
+                    if (m.includes(g)) {
+                      var w = m.split("/")[1];
+                      r.browserVersion = w
+                    }
+                  }
+                } catch (S) {
+                  h.e(S)
+                } finally {
+                  h.f()
+                }
+              } else if (l || p) {
+                var x = t.split("").reverse().join("").split("/")[0].split("").reverse().join("");
+                r.browserVersion = x
+              }
+              return r
+            }
+          }, {
+            key: "getUid",
+            value: function() {
+              if ("undefined" != typeof window && window.localStorage) {
+                var t = window.localStorage.getItem("_capuid");
+                return t || (t = this.uuid4(), window.localStorage.setItem("_capuid", t), t)
+              }
+              return this.uuid4()
+            }
+          }, {
+            key: "uuid4",
+            value: function() {
+              return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(t) {
+                var e = 16 * Math.random() | 0;
+                return ("x" === t ? e : 3 & e | 8).toString(16)
+              })
+            }
+          }], i && u(o.prototype, i), c && u(o, c), Object.defineProperty(o, "prototype", {
+            writable: !1
+          }), o;
+          var o, i, c, s, l, y, v, d
+        }(o);
+        t("DeviceWeb", r)
+      }
+    }
+  })
+}();

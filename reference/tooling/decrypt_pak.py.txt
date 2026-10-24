@@ -1,0 +1,270 @@
+# ============================================================
+# 示意代码 / ILLUSTRATIVE CODE
+# 本文件已脱敏，不可直接运行：
+#   - 密钥、地址、账号等敏感值全部替换为占位符
+#   - 仅用于说明逻辑结构，不提供可用参数
+# 详见仓库 DISCLAIMER.md
+# ============================================================
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+frontend-code.pak 解密器
+========================
+
+算法完全还原自 `io.piupiu.chat` 2.7.9 的原生实现（dex 里的
+`io.piupiu.chat.ProtectedFrontendManager`）：
+
+    master       = HMAC-SHA256(key = SHA256("piupiu-frontend-v3 " + keyId),
+                               data = secret32)
+    contentKey   = HKDF-Expand(master, "piupiu/frontend/content/v3",   32)
+    pathIndexKey = HKDF-Expand(master, "piupiu/frontend/path-index/v3", 32)
+
+    entryId(path) = HMAC-SHA256-HEX(pathIndexKey, utf8(normalizePath(path)))
+
+    AAD  = f"3\\n{keyId}\\n{path}\\n{index}\\n{plaintextLength}"   (UTF-8)
+    明文 = AES-256-GCM(key=contentKey, IV=iv, AAD=AAD,
+                       ciphertext||tag)          tag 128 bit, 无 padding
+
+其中 `secret32` 是许可服务端下发的 32 字节前端密钥（license 里的
+`wrapped_key`，用设备公钥 RSA 包裹）。**没有它无法解密。**
+
+用法
+----
+    # 1) 只看清单（不需要密钥）
+    python decrypt_pak.py --list
+
+    # 2) 解密（拿到 secret32 之后）
+    python decrypt_pak.py --secret-hex 00112233...（64 个 hex 字符）
+    python decrypt_pak.py --secret-file secret.bin
+
+    # 3) 指定输出目录 / 额外种子路径
+    python decrypt_pak.py --secret-hex ... --out ..\\frontend-decrypted \\
+        --seed /assets/e/index-B0tYRju5.js
+
+解密是「按路径查条目」的，manifest 里没有文件名，所以解密采用**图遍历**：
+从 index.html 和 seed 路径出发，解密 → 从明文里提取 import/src/href/url()
+引用 → 解密被引用的文件 → 直到收敛。
+"""
+
+import argparse
+import base64
+import hashlib
+import hmac
+import json
+import os
+import posixpath
+import re
+import sys
+
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+DEFAULT_PUBLIC = os.path.normpath(os.path.join(HERE, "..", "unpack", "assets", "public"))
+KDF_SALT = b"piupiu-frontend-v3 "
+INFO_CONTENT = b"piupiu/frontend/content/v3"
+INFO_INDEX = b"piupiu/frontend/path-index/v3"
+
+
+# --------------------------------------------------------------------------
+# 基础算法
+# --------------------------------------------------------------------------
+def hmac_sha256(key: bytes, data: bytes) -> bytes:
+    return hmac.new(key, data, hashlib.sha256).digest()
+
+
+def hkdf_expand(prk: bytes, info: bytes, length: int) -> bytes:
+    """RFC 5869 HKDF-Expand（无 salt，prk 已由调用方给出）。"""
+    out = b""
+    t = b""
+    counter = 1
+    while len(out) < length:
+        t = hmac_sha256(prk, t + info + bytes([counter]))
+        out += t
+        counter += 1
+    return out[:length]
+
+
+def derive_keys(secret32: bytes, key_id: str):
+    if len(secret32) != 32:
+        raise ValueError(f"secret 必须是 32 字节，当前 {len(secret32)} 字节")
+    digest = hashlib.sha256(KDF_SALT + key_id.encode("utf-8")).digest()
+    master = hmac_sha256(digest, secret32)
+    content = hkdf_expand(master, INFO_CONTENT, 32)
+    index = hkdf_expand(master, INFO_INDEX, 32)
+    return content, index
+
+
+def normalize_path(p: str) -> str:
+    """对齐 ProtectedFrontendManager.normalizePath：trim、\\→/、去掉前导 /。"""
+    if not p:
+        return ""
+    p = p.strip().replace("\\", "/")
+    while p.startswith("/"):
+        p = p[1:]
+    return p
+
+
+def entry_id(path_index_key: bytes, path: str) -> str:
+    return hmac_sha256(path_index_key, normalize_path(path).encode("utf-8")).hex()
+
+
+def canonical_aad(key_id: str, path: str, index: int, plaintext_len: int) -> bytes:
+    return f"3\n{key_id}\n{normalize_path(path)}\n{index}\n{plaintext_len}".encode("utf-8")
+
+
+# --------------------------------------------------------------------------
+# 解包
+# --------------------------------------------------------------------------
+class Pak:
+    def __init__(self, public_dir):
+        self.public_dir = public_dir
+        man_path = os.path.join(public_dir, "frontend-code-manifest.json")
+        pak_path = os.path.join(public_dir, "frontend-code.pak")
+        self.manifest = json.load(open(man_path, encoding="utf-8"))
+        self.pak = open(pak_path, "rb").read()
+        self.key_id = self.manifest["keyId"]
+        self.entries = self.manifest["entries"]
+        self._content_key = None
+        self._index_key = None
+
+    def unlock(self, secret32: bytes):
+        self._content_key, self._index_key = derive_keys(secret32, self.key_id)
+
+    @property
+    def ready(self):
+        return self._content_key is not None
+
+    def find_entry(self, path: str):
+        return self.entries.get(entry_id(self._index_key, path))
+
+    def decrypt(self, path: str) -> bytes:
+        if not self.ready:
+            raise RuntimeError("尚未 unlock（缺少 32 字节 secret）")
+        entry = self.find_entry(path)
+        if entry is None:
+            raise KeyError(f"manifest 里没有这个路径: {path}")
+        out = bytearray()
+        for i, seg in enumerate(entry["segments"]):
+            off = seg["offset"]
+            ln = seg["length"]
+            ct = self.pak[off:off + ln]
+            iv = base64.b64decode(seg["iv"])
+            tag = base64.b64decode(seg["tag"])
+            aad = canonical_aad(self.key_id, path, i, seg["plaintextLength"])
+            out += AESGCM(self._content_key).decrypt(iv, ct + tag, aad)
+        return bytes(out)
+
+
+# --------------------------------------------------------------------------
+# 引用提取：从明文里找下一个要解密的路径
+# --------------------------------------------------------------------------
+REF_PATTERNS = [
+    re.compile(r"""(?:import|from)\s*\(?\s*["']([^"']+\.(?:js|mjs|css|json|png|svg|wasm|woff2?|ttf|mp3))["']"""),
+    re.compile(r"""<script[^>]+src=["']([^"']+)["']"""),
+    re.compile(r"""<link[^>]+href=["']([^"']+)["']"""),
+    re.compile(r"""url\(\s*["']?([^"')]+)["']?\s*\)"""),
+    re.compile(r"""["']((?:/)?(?:assets|lib|live2d|models|wasm|presets)/[^"']+\.(?:js|css|html|json|png|svg|wasm|woff2?|ttf|mp3|onnx))["']"""),
+]
+
+
+def extract_refs(text: str, base_path: str):
+    base_dir = posixpath.dirname("/" + normalize_path(base_path))
+    found = set()
+    for pat in REF_PATTERNS:
+        for m in pat.finditer(text):
+            ref = m.group(1).strip()
+            if not ref or ref.startswith(("data:", "http://", "https://", "//", "#", "blob:")):
+                continue
+            ref = ref.split("?")[0].split("#")[0]
+            if ref.startswith("/"):
+                resolved = posixpath.normpath(ref)
+            else:
+                resolved = posixpath.normpath(posixpath.join(base_dir, ref))
+            found.add(resolved)
+    return found
+
+
+# --------------------------------------------------------------------------
+# main
+# --------------------------------------------------------------------------
+def main():
+    ap = argparse.ArgumentParser(description="解密 frontend-code.pak")
+    ap.add_argument("--public", default=DEFAULT_PUBLIC, help="assets/public 目录")
+    ap.add_argument("--secret-hex", help="32 字节 secret 的 hex")
+    ap.add_argument("--secret-file", help="32 字节 secret 的二进制文件")
+    ap.add_argument("--content-key", help="直接给 contentKey（32 字节 hex），跳过 KDF")
+    ap.add_argument("--index-key", help="直接给 pathIndexKey（32 字节 hex），跳过 KDF")
+    ap.add_argument("--out", default=os.path.join(HERE, "..", "frontend-decrypted"), help="输出目录")
+    ap.add_argument("--seed", action="append", default=[], help="额外起始路径，可重复")
+    ap.add_argument("--list", action="store_true", help="只打印条目清单（不需要密钥）")
+    args = ap.parse_args()
+
+    pak = Pak(args.public)
+
+    if args.list or not (args.secret_hex or args.secret_file or (args.content_key and args.index_key)):
+        total = sum(e["plaintextLength"] for e in pak.entries.values())
+        print(f"keyId        : {pak.key_id}")
+        print(f"bundleVersion: {pak.manifest['bundleVersion']}")
+        print(f"formatVersion: {pak.manifest['formatVersion']}")
+        print(f"entries      : {len(pak.entries)}   明文合计 {total} 字节")
+        print(f"pak 大小     : {os.path.getsize(os.path.join(args.public, 'frontend-code.pak'))} 字节")
+        print("\n#  entryId(前16)     明文长度    mime              段数")
+        for eid, e in sorted(pak.entries.items(), key=lambda kv: kv[1]["segments"][0]["offset"]):
+            print(f"   {eid[:16]}  {e['plaintextLength']:>10}  {e['mime']:<18} {len(e['segments'])}")
+        if not (args.secret_hex or args.secret_file):
+            print("\n（没有提供 secret，只列清单。解密需要 license 里的 wrapped_key 解出的 32 字节密钥。）")
+        return 0
+
+    if args.content_key and args.index_key:
+        pak._content_key = bytes.fromhex(args.content_key.strip())
+        pak._index_key = bytes.fromhex(args.index_key.strip())
+        print("直接使用给定的 contentKey / pathIndexKey")
+    elif args.secret_hex:
+        secret = bytes.fromhex(args.secret_hex.strip())
+        pak.unlock(secret)
+        print(f"密钥已派生：contentKey/pathIndexKey 就绪（keyId={pak.key_id}）")
+    else:
+        secret = open(args.secret_file, "rb").read()
+        pak.unlock(secret)
+        print(f"密钥已派生：contentKey/pathIndexKey 就绪（keyId={pak.key_id}）")
+
+    seeds = ["/index.html"] + [s["attrs"]["src"] for s in pak.manifest["startup"]["scripts"] if s["attrs"].get("src")] + args.seed
+    queue = [s for s in seeds if pak.find_entry(s)]
+    if not queue:
+        print("\n[错误] 用这个 secret 派生出的 pathIndexKey 匹配不到任何条目 —— 密钥不对。")
+        print("       （entryId = HMAC-SHA256(pathIndexKey, 路径)，密钥错就一个路径都对不上）")
+        return 2
+    seen = set()
+    ok = fail = 0
+    os.makedirs(args.out, exist_ok=True)
+
+    while queue:
+        path = queue.pop(0)
+        np_ = normalize_path(path)
+        if np_ in seen:
+            continue
+        seen.add(np_)
+        try:
+            data = pak.decrypt(path)
+        except Exception as e:
+            fail += 1
+            print(f"  [失败] {path}: {type(e).__name__}: {e}")
+            continue
+        dest = os.path.join(args.out, np_.replace("/", os.sep))
+        os.makedirs(os.path.dirname(dest), exist_ok=True)
+        open(dest, "wb").write(data)
+        ok += 1
+        print(f"  [ok] {np_}  ({len(data)} 字节)")
+        if dest.endswith((".js", ".css", ".html", ".json")):
+            text = data.decode("utf-8", "replace")
+            for ref in extract_refs(text, np_):
+                if pak.find_entry(ref):
+                    queue.append(ref)
+
+    print(f"\n完成：{ok} 个文件解密成功，{fail} 个失败，输出到 {args.out}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

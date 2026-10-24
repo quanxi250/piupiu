@@ -1,0 +1,1144 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function e(e) {
+    return function(e) {
+      if (Array.isArray(e)) return o(e)
+    }(e) || function(e) {
+      if ("undefined" != typeof Symbol && null != e[Symbol.iterator] || null != e["@@iterator"]) return Array.from(e)
+    }(e) || n(e) || function() {
+      throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }()
+  }
+
+  function t() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var e, r, n = "function" == typeof Symbol ? Symbol : {},
+      o = n.iterator || "@@iterator",
+      i = n.toStringTag || "@@toStringTag";
+
+    function l(t, n, o, i) {
+      var l = n && n.prototype instanceof s ? n : s,
+        d = Object.create(l.prototype);
+      return a(d, "_invoke", function(t, a, n) {
+        var o, i, l, s = 0,
+          d = n || [],
+          u = !1,
+          p = {
+            p: 0,
+            n: 0,
+            v: e,
+            a: f,
+            f: f.bind(e, 4),
+            d: function(t, a) {
+              return o = t, i = 0, l = e, p.n = a, c
+            }
+          };
+
+        function f(t, a) {
+          for (i = t, l = a, r = 0; !u && s && !n && r < d.length; r++) {
+            var n, o = d[r],
+              f = p.p,
+              v = o[2];
+            t > 3 ? (n = v === a) && (l = o[(i = o[4]) ? 5 : (i = 3, 3)], o[4] = o[5] = e) : o[0] <= f && ((n = t < 2 && f < o[1]) ? (i = 0, p.v = a, p.n = o[1]) : f < v && (n = t < 3 || o[0] > a || a > v) && (o[4] = t, o[5] = a, p.n = v, i = 0))
+          }
+          if (n || t > 1) return c;
+          throw u = !0, a
+        }
+        return function(n, d, v) {
+          if (s > 1) throw TypeError("Generator is already running");
+          for (u && 1 === d && f(d, v), i = d, l = v;
+            (r = i < 2 ? e : l) || !u;) {
+            o || (i ? i < 3 ? (i > 1 && (p.n = -1), f(i, l)) : p.n = l : p.v = l);
+            try {
+              if (s = 2, o) {
+                if (i || (n = "next"), r = o[n]) {
+                  if (!(r = r.call(o, l))) throw TypeError("iterator result is not an object");
+                  if (!r.done) return r;
+                  l = r.value, i < 2 && (i = 0)
+                } else 1 === i && (r = o.return) && r.call(o), i < 2 && (l = TypeError("The iterator does not provide a '" + n + "' method"), i = 1);
+                o = e
+              } else if ((r = (u = p.n < 0) ? l : t.call(a, p)) !== c) break
+            } catch (r) {
+              o = e, i = 1, l = r
+            } finally {
+              s = 1
+            }
+          }
+          return {
+            value: r,
+            done: u
+          }
+        }
+      }(t, o, i), !0), d
+    }
+    var c = {};
+
+    function s() {}
+
+    function d() {}
+
+    function u() {}
+    r = Object.getPrototypeOf;
+    var p = [][o] ? r(r([][o]())) : (a(r = {}, o, function() {
+        return this
+      }), r),
+      f = u.prototype = s.prototype = Object.create(p);
+
+    function v(e) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(e, u) : (e.__proto__ = u, a(e, i, "GeneratorFunction")), e.prototype = Object.create(f), e
+    }
+    return d.prototype = u, a(f, "constructor", u), a(u, "constructor", d), d.displayName = "GeneratorFunction", a(u, i, "GeneratorFunction"), a(f), a(f, i, "Generator"), a(f, o, function() {
+      return this
+    }), a(f, "toString", function() {
+      return "[object Generator]"
+    }), (t = function() {
+      return {
+        w: l,
+        m: v
+      }
+    })()
+  }
+
+  function a(e, t, r, n) {
+    var o = Object.defineProperty;
+    try {
+      o({}, "", {})
+    } catch (e) {
+      o = 0
+    }
+    a = function(e, t, r, n) {
+      function i(t, r) {
+        a(e, t, function(e) {
+          return this._invoke(t, r, e)
+        })
+      }
+      t ? o ? o(e, t, {
+        value: r,
+        enumerable: !n,
+        configurable: !n,
+        writable: !n
+      }) : e[t] = r : (i("next", 0), i("throw", 1), i("return", 2))
+    }, a(e, t, r, n)
+  }
+
+  function r(e, t) {
+    return function(e) {
+      if (Array.isArray(e)) return e
+    }(e) || function(e, t) {
+      var a = null == e ? null : "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"];
+      if (null != a) {
+        var r, n, o, i, l = [],
+          c = !0,
+          s = !1;
+        try {
+          if (o = (a = a.call(e)).next, 0 === t) {
+            if (Object(a) !== a) return;
+            c = !1
+          } else
+            for (; !(c = (r = o.call(a)).done) && (l.push(r.value), l.length !== t); c = !0);
+        } catch (e) {
+          s = !0, n = e
+        } finally {
+          try {
+            if (!c && null != a.return && (i = a.return(), Object(i) !== i)) return
+          } finally {
+            if (s) throw n
+          }
+        }
+        return l
+      }
+    }(e, t) || n(e, t) || function() {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")
+    }()
+  }
+
+  function n(e, t) {
+    if (e) {
+      if ("string" == typeof e) return o(e, t);
+      var a = {}.toString.call(e).slice(8, -1);
+      return "Object" === a && e.constructor && (a = e.constructor.name), "Map" === a || "Set" === a ? Array.from(e) : "Arguments" === a || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a) ? o(e, t) : void 0
+    }
+  }
+
+  function o(e, t) {
+    (null == t || t > e.length) && (t = e.length);
+    for (var a = 0, r = Array(t); a < t; a++) r[a] = e[a];
+    return r
+  }
+
+  function i(e, t, a, r, n, o, i) {
+    try {
+      var l = e[o](i),
+        c = l.value
+    } catch (e) {
+      return void a(e)
+    }
+    l.done ? t(c) : Promise.resolve(c).then(r, n)
+  }
+
+  function l(e) {
+    return function() {
+      var t = this,
+        a = arguments;
+      return new Promise(function(r, n) {
+        var o = e.apply(t, a);
+
+        function l(e) {
+          i(o, r, n, l, c, "next", e)
+        }
+
+        function c(e) {
+          i(o, r, n, l, c, "throw", e)
+        }
+        l(void 0)
+      })
+    }
+  }
+  System.register(["./app-security-legacy-BdXLf8ML.js", "./useSwipePagination-legacy-BiiTkTjC.js", "../e/index-legacy-B0tYRju5.js", "./ConfirmModal-legacy-NP3AE2aY.js", "./pin-legacy-Ccnvd4Oq.js", "./copy-legacy-wdtkFLud.js", "./trash-2-legacy-D4qdzvtP.js", "./ellipsis-vertical-legacy-BVt4j4Y5.js", "./x-legacy-CUolZt7f.js"], function(a, n) {
+    "use strict";
+    var o, i, c, s, d, u, p, f, v, b, m, g, y, h, x, w, k, j, P, z, C, S, M, _, A, I, T, F, O, B, U, E, L, D, N, W, R, V, G, Q, $, H, Y, q, J, K, X, Z, ee, te, ae, re, ne, oe, ie;
+    return {
+      setters: [function(e) {
+        o = e.k, i = e.J, c = e.R, s = e.Z, d = e.$, u = e.M, p = e.N, f = e.a2, v = e.L, b = e.c, m = e.Y, g = e.u, y = e.O, h = e.V, x = e.Q, w = e.X, k = e.T, j = e.K, P = e.W, z = e.r, C = e.w, S = e.ac, M = e.P, _ = e.a0, A = e.aa, I = e._
+      }, function(e) {
+        T = e.U, F = e.u, O = e.C, B = e.S, U = e.a, E = e.b, L = e.c, D = e.d
+      }, function(e) {
+        N = e.e, W = e.p, R = e.q, V = e.D, G = e._, Q = e.g, $ = e.r, H = e.b, Y = e.F, q = e.u, J = e.t, K = e.v, X = e.w
+      }, function(e) {
+        Z = e.C
+      }, function(e) {
+        ee = e.P
+      }, function(e) {
+        te = e.C
+      }, function(e) {
+        ae = e.T, re = e.a, ne = e.C
+      }, function(e) {
+        oe = e.E
+      }, function(e) {
+        ie = e.X
+      }],
+      execute: function() {
+        var le = document.createElement("style");
+        le.textContent = ".modal-overlay[data-v-51544d04]{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.7);width:100%;display:flex;align-items:center;justify-content:center;z-index:2000;padding:20px}.modal-content[data-v-51544d04]{position:relative;background:rgba(255,255,255,.98);border-radius:28px;width:100%;max-width:320px;box-shadow:0 20px 40px rgba(0,0,0,.15);display:flex;flex-direction:column;padding:0 0 24px;overflow:hidden;border:1px solid rgba(255,255,255,.5)}.dark-mode .modal-content[data-v-51544d04]{background:rgba(30,30,30,.98);border-color:rgba(255,255,255,.1)}.cover-section[data-v-51544d04]{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,#ffeef5,#fff5f8)}.dark-mode .cover-section[data-v-51544d04]{background:#1a1a1a}.cover-image[data-v-51544d04]{width:100%;height:100%;object-fit:cover}.role-name[data-v-51544d04]{margin:16px 20px 10px;font-size:20px;font-weight:800;color:var(--text-color);text-align:center}.last-message-box[data-v-51544d04]{margin:0 24px 20px;padding:12px 16px;background:rgba(var(--primary-rgb),.04);border-radius:16px;border:1px dashed rgba(var(--primary-rgb),.15)}.dark-mode .last-message-box[data-v-51544d04]{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.05)}.last-message[data-v-51544d04]{margin:0;font-size:14px;line-height:1.5;color:var(--text-secondary-color);text-align:center;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.chat-btn[data-v-51544d04]{margin:0 20px;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;border:none;border-radius:16px;background:var(--primary-color);color:#fff;font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;box-shadow:0 8px 20px rgba(var(--primary-rgb),.25);transition:all .2s cubic-bezier(.175,.885,.32,1.275)}.chat-btn[data-v-51544d04]:active{transform:scale(.97);box-shadow:0 4px 10px rgba(var(--primary-rgb),.2)}.action-buttons[data-v-51544d04]{display:flex;justify-content:space-between;margin:20px 20px 0;padding-top:18px;border-top:1px solid rgba(0,0,0,.06)}.dark-mode .action-buttons[data-v-51544d04]{border-top-color:rgba(255,255,255,.08)}.action-btn[data-v-51544d04]{display:flex;flex-direction:column;align-items:center;gap:8px;border:none;background:transparent;cursor:pointer;flex:1;transition:all .2s}.action-btn[data-v-51544d04]:active{transform:scale(.9)}.action-icon[data-v-51544d04]{width:46px;height:46px;display:flex;align-items:center;justify-content:center;border-radius:16px;background:color-mix(in srgb,var(--action-color) 12%,transparent);color:var(--action-color)}.dark-mode .action-icon[data-v-51544d04]{background:color-mix(in srgb,var(--action-color) 18%,transparent)}.action-label[data-v-51544d04]{font-size:11px;font-weight:600;color:var(--text-secondary-color)}.memory-card[data-v-c0f18b71]{position:relative;display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.4);border-radius:16px;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:all .2s ease;cursor:pointer;user-select:none;-webkit-user-select:none}.memory-card.selectable[data-v-c0f18b71]{padding-left:52px}.memory-card[data-v-c0f18b71]:active{transform:scale(.99);background:rgba(255,255,255,.85)}.memory-card.pinned[data-v-c0f18b71]{border-color:var(--primary-color);background:rgba(255,240,245,.8)}.memory-card.selected[data-v-c0f18b71]{border-color:var(--primary-color);background:rgba(var(--primary-rgb),.08);box-shadow:0 6px 16px rgba(var(--primary-rgb),.16)}.dark-mode .memory-card[data-v-c0f18b71]{background:rgba(40,40,40,.8);border-color:rgba(255,255,255,.1)}.dark-mode .memory-card[data-v-c0f18b71]:active{background:rgba(50,50,50,.9)}.dark-mode .memory-card.pinned[data-v-c0f18b71]{background:rgba(60,40,50,.8)}.dark-mode .memory-card.selected[data-v-c0f18b71]{background:rgba(var(--primary-rgb),.18);border-color:rgba(var(--primary-rgb),.65)}.selection-overlay[data-v-c0f18b71]{position:absolute;top:0;right:0;bottom:0;left:0;border-radius:16px;background:rgba(0,0,0,.08);display:flex;align-items:center;justify-content:flex-start;padding-left:14px;transition:all .2s ease;z-index:1;pointer-events:none}.selection-overlay.is-selected[data-v-c0f18b71]{background:rgba(var(--primary-rgb),.18)}.selection-overlay.is-selected .checkbox-circle[data-v-c0f18b71]{background:var(--primary-color);border-color:var(--primary-color);transform:scale(1.08)}.checkbox-circle[data-v-c0f18b71]{width:24px;height:24px;border-radius:50%;border:2px solid white;background:rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center;transition:all .2s cubic-bezier(.34,1.56,.64,1);box-shadow:0 2px 8px rgba(0,0,0,.15)}.avatar-wrapper[data-v-c0f18b71]{width:48px;height:48px;flex-shrink:0;position:relative;z-index:2}.avatar[data-v-c0f18b71]{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.5);box-shadow:0 2px 6px rgba(0,0,0,.1)}.content[data-v-c0f18b71]{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px;position:relative;z-index:2}.header[data-v-c0f18b71]{display:flex;align-items:center;justify-content:space-between;gap:8px}.title-row[data-v-c0f18b71]{display:flex;align-items:center;gap:6px;min-width:0}.role-name[data-v-c0f18b71]{font-size:15px;font-weight:600;color:var(--text-color);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pin-badge[data-v-c0f18b71]{width:22px;height:22px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.35);color:var(--primary-color);box-shadow:0 2px 12px rgba(0,0,0,.08);flex-shrink:0}.dark-mode .pin-badge[data-v-c0f18b71]{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.2)}.time[data-v-c0f18b71]{font-size:12px;color:var(--text-secondary-color);flex-shrink:0}.last-message[data-v-c0f18b71]{font-size:13px;color:var(--text-secondary-color);line-height:1.4;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.action-trigger[data-v-c0f18b71]{display:flex;align-items:center;justify-content:center;width:28px;height:40px;color:var(--text-secondary-color);cursor:pointer;flex-shrink:0;border:none;background:transparent;position:relative;z-index:2;font-family:inherit}.action-trigger[data-v-c0f18b71]:active{color:var(--primary-color);transform:scale(.96)}.memory-view[data-v-5258698f]{display:flex;flex-direction:column;min-height:100%;padding:16px;gap:12px;position:relative}.batch-header[data-v-5258698f]{display:flex;align-items:center;justify-content:space-between;background:var(--primary-color);color:#fff;padding:12px 16px;border-radius:16px;box-shadow:0 4px 16px rgba(255,107,157,.3);z-index:10}.batch-header.slide-down[data-v-5258698f]{animation:slideDown-5258698f .3s ease}.batch-info[data-v-5258698f]{display:flex;align-items:center;gap:8px}.batch-title[data-v-5258698f]{font-size:16px;font-weight:600}.batch-cancel-btn[data-v-5258698f]{background:rgba(255,255,255,.2);border:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;transition:all .2s}.batch-cancel-btn[data-v-5258698f]:active{background:rgba(255,255,255,.3);transform:scale(.95)}.controls-bar[data-v-5258698f]{display:flex;gap:8px;align-items:center}.control-btn[data-v-5258698f]{display:flex;align-items:center;justify-content:center;gap:4px;padding:10px 14px;min-width:44px;background:var(--glass-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:12px;cursor:pointer;transition:all .2s ease;font-family:inherit}.control-btn[data-v-5258698f]:active{transform:scale(.98);background:rgba(255,255,255,.95)}.control-btn .control-text[data-v-5258698f]{font-size:13px;font-weight:600;color:var(--primary-color);white-space:nowrap}.control-btn svg[data-v-5258698f]{color:var(--primary-color);flex-shrink:0}.control-btn .danger-icon[data-v-5258698f]{color:#ff4757}.search-box[data-v-5258698f]{flex:1;min-width:0;display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--glass-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:12px}.search-box .search-icon[data-v-5258698f]{color:var(--text-secondary-color);flex-shrink:0}.search-box .search-input[data-v-5258698f]{flex:1;min-width:0;border:none;background:transparent;font-size:13px;font-family:inherit;color:var(--text-color);outline:none}.search-box .search-input[data-v-5258698f]::placeholder{color:var(--text-secondary-color);opacity:.6}.pagination-bar[data-v-5258698f]{display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 12px;background:var(--glass-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:14px}.page-btn[data-v-5258698f]{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border:none;border-radius:8px;background:transparent;color:var(--primary-color);cursor:pointer;transition:all .2s ease}.page-btn[data-v-5258698f]:active:not(:disabled){background:rgba(255,107,157,.1)}.page-btn[data-v-5258698f]:disabled{color:var(--text-secondary-color);opacity:.4;cursor:not-allowed}.page-info[data-v-5258698f]{font-size:15px;font-weight:600;font-family:inherit;color:var(--text-color);min-width:50px;text-align:center}.page-info .separator[data-v-5258698f]{color:var(--primary-color);margin:0 2px}.memory-list[data-v-5258698f]{display:flex;flex-direction:column;gap:10px;flex:1}.memory-list.batch-active[data-v-5258698f]{padding-bottom:88px}.empty-state[data-v-5258698f]{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;gap:16px;color:var(--text-secondary-color)}.empty-state .empty-icon[data-v-5258698f]{opacity:.5}.empty-state p[data-v-5258698f]{font-size:14px;opacity:.7}.memory-card-skeleton[data-v-5258698f]{display:flex;align-items:center;gap:14px;padding:14px;border:1px solid var(--glass-border);border-radius:16px;background:var(--glass-bg)}.memory-skeleton-avatar[data-v-5258698f],.memory-skeleton-content i[data-v-5258698f]{display:block;background:linear-gradient(90deg,rgba(255,143,171,.1),rgba(255,143,171,.24),rgba(255,143,171,.1));background-size:240% 100%;animation:memory-skeleton-shimmer-5258698f 1.2s ease-in-out infinite}.memory-skeleton-avatar[data-v-5258698f]{width:54px;height:54px;flex:none;border-radius:14px}.memory-skeleton-content[data-v-5258698f]{flex:1;display:grid;gap:10px}.memory-skeleton-content i[data-v-5258698f]{height:14px;border-radius:999px}.memory-skeleton-content i[data-v-5258698f]:first-child{width:46%}.memory-skeleton-content i[data-v-5258698f]:last-child{width:82%}@keyframes memory-skeleton-shimmer-5258698f{0%{background-position:120% 0}to{background-position:-120% 0}}.batch-bottom-bar[data-v-5258698f]{position:fixed;bottom:20px;left:50%;transform:translate(-50%);width:calc(100% - 32px);max-width:600px;background:var(--glass-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:16px;padding:12px;display:flex;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.15);z-index:100}.batch-bottom-bar.slide-up[data-v-5258698f]{animation:slideUp-5258698f .3s ease}.batch-delete-btn[data-v-5258698f]{display:flex;align-items:center;justify-content:center;gap:8px;background:#ff4d4f;color:#fff;border:none;padding:12px 24px;border-radius:12px;font-size:16px;font-weight:600;width:100%;cursor:pointer;transition:all .2s;font-family:inherit}.batch-delete-btn span[data-v-5258698f]{font-family:inherit;font-weight:600}.batch-delete-btn[data-v-5258698f]:disabled{background:#ffccc7;cursor:not-allowed}.batch-delete-btn[data-v-5258698f]:not(:disabled):active{transform:scale(.98);background:#cf1322}@keyframes slideDown-5258698f{0%{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}@keyframes slideUp-5258698f{0%{opacity:0;transform:translate(-50%,10px)}to{opacity:1;transform:translate(-50%)}}\n/*$vite$:1*/", document.head.appendChild(le);
+        var ce = {
+            class: "modal-content glass-effect"
+          },
+          se = {
+            class: "cover-section"
+          },
+          de = ["src", "alt"],
+          ue = {
+            class: "role-name"
+          },
+          pe = {
+            class: "last-message-box"
+          },
+          fe = {
+            class: "last-message"
+          },
+          ve = {
+            class: "action-buttons"
+          },
+          be = ["onClick"],
+          me = {
+            class: "action-icon"
+          },
+          ge = {
+            class: "action-label"
+          },
+          ye = o({
+            __name: "MemoryDetailModal",
+            props: {
+              show: {
+                type: Boolean
+              },
+              memory: {}
+            },
+            emits: ["update:show", "chat", "pin", "export", "import", "delete", "copy"],
+            setup: function(e, t) {
+              var a = t.emit,
+                r = e,
+                n = a,
+                o = b(function() {
+                  var e;
+                  if (null === (e = r.memory) || void 0 === e || !e.roleAvatar) return R;
+                  var t = r.memory.roleAvatar;
+                  return t.startsWith("data:") || t.startsWith("http") || t.startsWith("/") || t.startsWith("blob:") ? t : "data:image/png;base64,".concat(t)
+                });
+
+              function l() {
+                n("update:show", !1)
+              }
+
+              function P() {
+                r.memory && (n("chat", r.memory.id), l())
+              }
+              N(function() {
+                return r.show
+              }, l);
+              var z = b(function() {
+                var e, t, a = [{
+                  key: "pin",
+                  icon: ee,
+                  label: null !== (e = r.memory) && void 0 !== e && e.isPinned ? "取消置顶" : "置顶",
+                  color: "#FF9500"
+                }];
+                return null !== (t = r.memory) && void 0 !== t && t.isGroup || a.push({
+                  key: "export",
+                  icon: T,
+                  label: "导出",
+                  color: "#AF52DE"
+                }, {
+                  key: "import",
+                  icon: V,
+                  label: "导入",
+                  color: "#34C759"
+                }), a.push({
+                  key: "copy",
+                  icon: te,
+                  label: "复制",
+                  color: "#007AFF"
+                }, {
+                  key: "delete",
+                  icon: ae,
+                  label: "删除",
+                  color: "#FF3B30"
+                }), a
+              });
+              return function(t, a) {
+                return j(), i(k, {
+                  to: "body"
+                }, [c(s, {
+                  name: "modal-fade",
+                  appear: ""
+                }, {
+                  default: d(function() {
+                    return [e.show && e.memory ? (j(), u("div", {
+                      key: 0,
+                      class: "modal-overlay",
+                      onClick: f(l, ["self"])
+                    }, [v("div", ce, [v("div", se, [v("img", {
+                      src: o.value,
+                      alt: e.memory.roleName,
+                      class: "cover-image"
+                    }, null, 8, de)]), v("h2", ue, m(e.memory.roleName), 1), v("div", pe, [v("p", fe, m(e.memory.lastMessage), 1)]), v("button", {
+                      class: "chat-btn",
+                      onClick: P
+                    }, [c(g(W), {
+                      size: 20,
+                      "stroke-width": 2.5
+                    }), a[0] || (a[0] = v("span", null, "继续聊天", -1))]), v("div", ve, [(j(!0), u(y, null, h(z.value, function(t) {
+                      return j(), u("button", {
+                        key: t.key,
+                        class: "action-btn",
+                        style: x({
+                          "--action-color": t.color
+                        }),
+                        onClick: function(a) {
+                          return n(t.key, e.memory.id)
+                        }
+                      }, [v("div", me, [(j(), i(w(t.icon), {
+                        size: 20,
+                        "stroke-width": 2.2
+                      }))]), v("span", ge, m(t.label), 1)], 12, be)
+                    }), 128))])])])) : p("", !0)]
+                  }),
+                  _: 1
+                })])
+              }
+            }
+          }),
+          he = G(ye, [
+            ["__scopeId", "data-v-51544d04"]
+          ]),
+          xe = {
+            class: "checkbox-circle"
+          },
+          we = {
+            class: "avatar-wrapper"
+          },
+          ke = ["src", "alt"],
+          je = {
+            class: "content"
+          },
+          Pe = {
+            class: "header"
+          },
+          ze = {
+            class: "title-row"
+          },
+          Ce = {
+            class: "role-name"
+          },
+          Se = {
+            key: 0,
+            class: "pin-badge"
+          },
+          Me = {
+            class: "time"
+          },
+          _e = {
+            class: "last-message"
+          },
+          Ae = o({
+            __name: "MemoryCard",
+            props: {
+              id: {},
+              name: {},
+              avatar: {
+                default: null
+              },
+              lastMessage: {},
+              updatedAt: {},
+              isPinned: {
+                type: Boolean,
+                default: !1
+              },
+              selectable: {
+                type: Boolean,
+                default: !1
+              },
+              selected: {
+                type: Boolean,
+                default: !1
+              }
+            },
+            emits: ["click", "long-press", "select", "action"],
+            setup: function(e, t) {
+              var a = t.emit,
+                r = e,
+                n = a,
+                o = b(function() {
+                  return r.avatar ? r.avatar.startsWith("data:") || r.avatar.startsWith("http") || r.avatar.startsWith("/") || r.avatar.startsWith("blob:") ? r.avatar : "data:image/png;base64,".concat(r.avatar) : R
+                }),
+                l = null,
+                s = z(!1);
+
+              function d() {
+                s.value = !1, y(), l = setTimeout(function() {
+                  s.value = !0, n("long-press", r.id)
+                }, 500)
+              }
+
+              function y() {
+                l && (clearTimeout(l), l = null)
+              }
+
+              function h() {
+                s.value ? s.value = !1 : r.selectable ? n("select", r.id) : n("click", r.id)
+              }
+
+              function x() {
+                r.selectable || n("action", r.id)
+              }
+              return function(t, a) {
+                return j(), u("div", {
+                  class: P(["memory-card", {
+                    pinned: e.isPinned,
+                    selected: e.selected,
+                    selectable: e.selectable
+                  }]),
+                  onMousedown: d,
+                  onTouchstart: d,
+                  onMouseup: y,
+                  onTouchend: y,
+                  onTouchmove: y,
+                  onMouseleave: y,
+                  onClick: h,
+                  onContextmenu: a[0] || (a[0] = f(function() {}, ["prevent"]))
+                }, [e.selectable ? (j(), u("div", {
+                  key: 0,
+                  class: P(["selection-overlay", {
+                    "is-selected": e.selected
+                  }])
+                }, [v("div", xe, [e.selected ? (j(), i(g(re), {
+                  key: 0,
+                  size: 14,
+                  "stroke-width": "3",
+                  color: "white"
+                })) : p("", !0)])], 2)) : p("", !0), v("div", we, [v("img", {
+                  src: o.value,
+                  alt: e.name,
+                  class: "avatar"
+                }, null, 8, ke)]), v("div", je, [v("div", Pe, [v("div", ze, [v("span", Ce, m(e.name), 1), e.isPinned && !e.selectable ? (j(), u("div", Se, [c(g(ee), {
+                  size: 12,
+                  "stroke-width": 2.5
+                })])) : p("", !0)]), v("span", Me, m(e.updatedAt), 1)]), v("p", _e, m(e.lastMessage), 1)]), e.selectable ? p("", !0) : (j(), u("button", {
+                  key: 1,
+                  class: "action-trigger",
+                  onClick: f(x, ["stop"])
+                }, [c(g(oe), {
+                  size: 18,
+                  "stroke-width": 2
+                })]))], 34)
+              }
+            }
+          }),
+          Ie = G(Ae, [
+            ["__scopeId", "data-v-c0f18b71"]
+          ]),
+          Te = {
+            class: "memory-view"
+          },
+          Fe = {
+            key: 0,
+            class: "batch-header slide-down"
+          },
+          Oe = {
+            class: "batch-info"
+          },
+          Be = {
+            class: "batch-title"
+          },
+          Ue = {
+            class: "controls-bar"
+          },
+          Ee = {
+            class: "control-text"
+          },
+          Le = {
+            class: "search-box"
+          },
+          De = {
+            class: "pagination-bar"
+          },
+          Ne = ["disabled"],
+          We = ["disabled"],
+          Re = {
+            class: "page-info"
+          },
+          Ve = ["disabled"],
+          Ge = ["disabled"],
+          Qe = {
+            key: 1,
+            class: "empty-state"
+          },
+          $e = {
+            key: 0
+          },
+          He = {
+            key: 1
+          },
+          Ye = {
+            key: 1,
+            class: "batch-bottom-bar slide-up"
+          },
+          qe = ["disabled"],
+          Je = o({
+            __name: "MemoryView",
+            setup: function(a) {
+              var o = q(),
+                s = Q().showToast,
+                d = $(),
+                f = H(),
+                x = b(function() {
+                  return d.viewState
+                }),
+                w = z(""),
+                k = z(!1),
+                T = z(null),
+                N = [5, 10, 15, 20].map(function(e) {
+                  return {
+                    value: e,
+                    label: "".concat(e, "条/页")
+                  }
+                }),
+                W = z(!1),
+                R = z(!1),
+                V = z(null),
+                G = z(!1),
+                ee = z(!1),
+                te = z(new Set),
+                re = z(!1),
+                oe = z(null),
+                le = b(function() {
+                  return d.memories
+                }),
+                ce = b(function() {
+                  return le.value
+                }),
+                se = null;
+
+              function de(e) {
+                x.value.perPage = Number(e), x.value.currentPage = 1, W.value = !1
+              }
+
+              function ue(e) {
+                e >= 1 && e <= x.value.totalPages && (x.value.currentPage = e)
+              }
+
+              function pe(e) {
+                return fe.apply(this, arguments)
+              }
+
+              function fe() {
+                return (fe = l(t().m(function e(a) {
+                  var r;
+                  return t().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (!ee.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return me(a.id), e.a(2);
+                      case 1:
+                        return e.p = 1, e.n = 2, o.push({
+                          name: "chat",
+                          query: {
+                            sessionId: a.id.toString()
+                          }
+                        });
+                      case 2:
+                        e.n = 4;
+                        break;
+                      case 3:
+                        e.p = 3, r = e.v, console.error("[MemoryView] Failed to prepare legacy session:", r), s("打开聊天记录失败，请重试", "error");
+                      case 4:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [1, 3]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function ve(e) {
+                ee.value || (ee.value = !0, te.value.clear(), k.value = !1, T.value = null, f.setNavBarHidden(!0)), me(e)
+              }
+
+              function be(e) {
+                ee.value && me(e)
+              }
+
+              function me(e) {
+                te.value.has(e) ? te.value.delete(e) : te.value.add(e)
+              }
+
+              function ge() {
+                ee.value = !1, te.value.clear(), re.value = !1, f.setNavBarHidden(!1)
+              }
+
+              function ye() {
+                0 !== te.value.size ? re.value = !0 : s("请先选择要删除的回忆", "warning")
+              }
+
+              function xe() {
+                return we.apply(this, arguments)
+              }
+
+              function we() {
+                return (we = l(t().m(function e() {
+                  var a, r, n;
+                  return t().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        return w.value = "正在批量删除回忆...", e.p = 1, e.n = 2, d.deleteMemories(Array.from(te.value));
+                      case 2:
+                        a = e.v, r = a.successCount, n = a.failedIds, r > 0 && 0 === n.length ? s("成功删除 ".concat(r, " 段回忆"), "success") : r > 0 ? s("成功删除 ".concat(r, " 段回忆，").concat(n.length, " 段删除失败"), "warning") : s("删除失败", "error");
+                      case 3:
+                        return e.p = 3, w.value = "", e.f(3);
+                      case 4:
+                        ge();
+                      case 5:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [1, , 3, 4]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function ke(e) {
+                return je.apply(this, arguments)
+              }
+
+              function je() {
+                return (je = l(t().m(function e(a) {
+                  var r, n;
+                  return t().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        return e.p = 0, e.n = 1, d.togglePin(a);
+                      case 1:
+                        r = e.v, T.value = d.memories.find(function(e) {
+                          return e.id === a
+                        }) || null, k.value = !1, s(r ? "已置顶" : "已取消置顶", "success"), e.n = 3;
+                        break;
+                      case 2:
+                        e.p = 2, n = e.v, console.error("[MemoryView] Failed to update pin state:", n), s("操作失败", "error");
+                      case 3:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [0, 2]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function Pe(e) {
+                return ze.apply(this, arguments)
+              }
+
+              function ze() {
+                return (ze = l(t().m(function e(a) {
+                  var r;
+                  return t().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        return e.p = 0, e.n = 1, K(a);
+                      case 1:
+                        return e.n = 2, d.refreshMemory();
+                      case 2:
+                        s("复制成功", "success"), k.value = !1, e.n = 4;
+                        break;
+                      case 3:
+                        e.p = 3, r = e.v, console.error("[MemoryView] Failed to copy session:", r), s("复制失败", "error");
+                      case 4:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [0, 3]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function Ce(e) {
+                V.value = e, R.value = !0, k.value = !1
+              }
+
+              function Se() {
+                return Me.apply(this, arguments)
+              }
+
+              function Me() {
+                return (Me = l(t().m(function e() {
+                  var a;
+                  return t().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (null === V.value) {
+                          e.n = 5;
+                          break
+                        }
+                        return w.value = "正在删除回忆...", e.p = 1, e.n = 2, d.deleteMemory(V.value);
+                      case 2:
+                        s("删除成功", "success"), e.n = 4;
+                        break;
+                      case 3:
+                        e.p = 3, a = e.v, console.error("[MemoryView] Failed to delete memory:", a), s("删除失败", "error");
+                      case 4:
+                        return e.p = 4, w.value = "", V.value = null, e.f(4);
+                      case 5:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [1, 3, 4, 5]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function _e() {
+                return Ae.apply(this, arguments)
+              }
+
+              function Ae() {
+                return (Ae = l(t().m(function e() {
+                  var a;
+                  return t().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        return w.value = "正在清空回忆...", e.p = 1, e.n = 2, d.clearAllMemories();
+                      case 2:
+                        s("所有回忆已清空", "success"), G.value = !1, e.n = 4;
+                        break;
+                      case 3:
+                        e.p = 3, a = e.v, console.error("[MemoryView] Failed to clear memories:", a), s("清空失败", "error");
+                      case 4:
+                        return e.p = 4, w.value = "", e.f(4);
+                      case 5:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [1, 3, 4, 5]
+                  ])
+                }))).apply(this, arguments)
+              }
+              C(function() {
+                return x.value.searchQuery
+              }, function() {
+                null !== se && window.clearTimeout(se), se = window.setTimeout(function() {
+                  x.value.currentPage = 1, d.loadPage(1, !0)
+                }, 180)
+              }), C([function() {
+                return x.value.currentPage
+              }, function() {
+                return x.value.perPage
+              }], function() {
+                var e = l(t().m(function e(a) {
+                  var n, o;
+                  return t().w(function(e) {
+                    for (;;) switch (e.n) {
+                      case 0:
+                        return n = r(a, 1), o = n[0], e.n = 1, d.loadPage(o, !0);
+                      case 1:
+                        return e.a(2)
+                    }
+                  }, e)
+                }));
+                return function(t) {
+                  return e.apply(this, arguments)
+                }
+              }(), {
+                immediate: !0
+              }), C(function() {
+                return x.value.perPage
+              }, function(e) {
+                localStorage.setItem("piupiu_memory_perpage", e.toString())
+              }), S(function() {
+                null !== se && window.clearTimeout(se), f.setNavBarHidden(!1), f.clearBackButtonInterceptor("memory-batch-mode")
+              }), F({
+                containerRef: oe,
+                currentPage: b(function() {
+                  return x.value.currentPage
+                }),
+                totalPages: b(function() {
+                  return x.value.totalPages
+                }),
+                onPageChange: ue
+              }), C(ee, function(e) {
+                e ? f.setBackButtonInterceptor("memory-batch-mode", function() {
+                  return !!ee.value && (ge(), !0)
+                }) : f.clearBackButtonInterceptor("memory-batch-mode")
+              });
+              var Je = z(null),
+                Ke = z(null);
+
+              function Xe(e) {
+                return Ze.apply(this, arguments)
+              }
+
+              function Ze() {
+                return (Ze = l(t().m(function e(a) {
+                  var r, n, o, i, l, c, d, u, p;
+                  return t().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (!w.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        return w.value = "正在导出聊天记录...", e.p = 2, e.n = 3, X(a);
+                      case 3:
+                        if ((r = e.v) && r.messages && 0 !== r.messages.length) {
+                          e.n = 4;
+                          break
+                        }
+                        return s("该回忆没有聊天记录", "info"), e.a(2);
+                      case 4:
+                        n = JSON.stringify(r.messages, null, 2), o = (new Date).toISOString().replace(/[-:T.]/g, "").slice(0, 14), i = (r.title || "Memory").replace(/[\\/:*?"<>|]/g, "_"), l = "PiuPiu_Memory_".concat(i, "_").concat(o, ".json"), window.AndroidDownloader && window.AndroidDownloader.saveTextFile ? window.AndroidDownloader.saveTextFile(l, n) : (c = new Blob([n], {
+                          type: "application/json"
+                        }), d = URL.createObjectURL(c), (u = document.createElement("a")).href = d, u.download = l, document.body.appendChild(u), u.click(), document.body.removeChild(u), URL.revokeObjectURL(d)), s("导出成功", "success"), k.value = !1, e.n = 6;
+                        break;
+                      case 5:
+                        e.p = 5, p = e.v, console.error("Export failed:", p), s("导出失败", "error");
+                      case 6:
+                        return e.p = 6, w.value = "", e.f(6);
+                      case 7:
+                        return e.a(2)
+                    }
+                  }, e, null, [
+                    [2, 5, 6, 7]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function et(e) {
+                Ke.value = e, Je.value && (Je.value.value = "", Je.value.click())
+              }
+
+              function tt(e) {
+                var a = e.target;
+                if (a.files && 0 !== a.files.length) {
+                  var r = a.files[0];
+                  if (r) {
+                    w.value = "正在导入聊天记录...";
+                    var o = new FileReader;
+                    o.onload = function() {
+                      var e = l(t().m(function e(a) {
+                        var r, o, i, c, u, p, f;
+                        return t().w(function(e) {
+                          for (;;) switch (e.p = e.n) {
+                            case 0:
+                              return e.p = 0, o = null === (r = a.target) || void 0 === r ? void 0 : r.result, e.n = 1, I(l(t().m(function e() {
+                                var a, r;
+                                return t().w(function(e) {
+                                  for (;;) switch (e.n) {
+                                    case 0:
+                                      return e.n = 1, n.import("./legacyImportService-legacy-B36o-CNr.js");
+                                    case 1:
+                                      return a = e.v, r = a.LegacyImportService, e.a(2, {
+                                        LegacyImportService: r
+                                      })
+                                  }
+                                }, e)
+                              })), void 0);
+                            case 1:
+                              if (i = e.v, c = i.LegacyImportService, 0 !== (u = c.parseChatImport(o)).length) {
+                                e.n = 2;
+                                break
+                              }
+                              return s("导入的文件没有包含有效的聊天记录", "warning"), e.a(2);
+                            case 2:
+                              if (null === Ke.value) {
+                                e.n = 5;
+                                break
+                              }
+                              return e.n = 3, J(Ke.value, u);
+                            case 3:
+                              return s("导入成功，聊天记录已更新", "success"), e.n = 4, d.refreshMemory();
+                            case 4:
+                              k.value = !1;
+                            case 5:
+                              e.n = 7;
+                              break;
+                            case 6:
+                              e.p = 6, f = e.v, console.error("Import parse error:", f), p = f.message || "未知错误", s("导入失败：".concat(p), "error");
+                            case 7:
+                              return e.p = 7, w.value = "", Ke.value = null, e.f(7);
+                            case 8:
+                              return e.a(2)
+                          }
+                        }, e, null, [
+                          [0, 6, 7, 8]
+                        ])
+                      }));
+                      return function(t) {
+                        return e.apply(this, arguments)
+                      }
+                    }(), o.onerror = function() {
+                      w.value = "", Ke.value = null, s("读取文件失败", "error")
+                    }, o.readAsText(r)
+                  }
+                }
+              }
+              return function(t, a) {
+                return j(), u("div", Te, [ee.value ? (j(), u("div", Fe, [v("div", Oe, [v("span", Be, "已选择 " + m(te.value.size) + " 项", 1)]), v("button", {
+                  class: "batch-cancel-btn",
+                  onClick: ge
+                }, [c(g(ie), {
+                  size: 20
+                })])])) : p("", !0), v("div", Ue, [v("button", {
+                  class: "control-btn",
+                  onClick: a[0] || (a[0] = function(e) {
+                    return W.value = !0
+                  })
+                }, [v("span", Ee, m(x.value.perPage) + "条/页", 1), c(g(O), {
+                  size: 14,
+                  "stroke-width": 2.5
+                })]), v("div", Le, [c(g(B), {
+                  size: 16,
+                  "stroke-width": 2,
+                  class: "search-icon"
+                }), M(v("input", {
+                  "onUpdate:modelValue": a[1] || (a[1] = function(e) {
+                    return x.value.searchQuery = e
+                  }),
+                  type: "text",
+                  placeholder: "搜索回忆...",
+                  class: "search-input"
+                }, null, 512), [
+                  [_, x.value.searchQuery]
+                ])]), ee.value ? p("", !0) : (j(), u("button", {
+                  key: 0,
+                  class: "control-btn",
+                  onClick: a[2] || (a[2] = function(e) {
+                    return G.value = !0
+                  }),
+                  title: "清空所有回忆"
+                }, [c(g(ae), {
+                  size: 16,
+                  "stroke-width": 2,
+                  class: "danger-icon"
+                })]))]), v("div", De, [v("button", {
+                  class: "page-btn",
+                  disabled: 1 === x.value.currentPage,
+                  onClick: a[3] || (a[3] = function(e) {
+                    return ue(1)
+                  })
+                }, [c(g(U), {
+                  size: 18,
+                  "stroke-width": 2
+                })], 8, Ne), v("button", {
+                  class: "page-btn",
+                  disabled: 1 === x.value.currentPage,
+                  onClick: a[4] || (a[4] = function(e) {
+                    return ue(x.value.currentPage - 1)
+                  })
+                }, [c(g(E), {
+                  size: 18,
+                  "stroke-width": 2
+                })], 8, We), v("span", Re, [A(m(x.value.currentPage), 1), a[13] || (a[13] = v("span", {
+                  class: "separator"
+                }, "/", -1)), A(m(x.value.totalPages), 1)]), v("button", {
+                  class: "page-btn",
+                  disabled: x.value.currentPage === x.value.totalPages,
+                  onClick: a[5] || (a[5] = function(e) {
+                    return ue(x.value.currentPage + 1)
+                  })
+                }, [c(g(ne), {
+                  size: 18,
+                  "stroke-width": 2
+                })], 8, Ve), v("button", {
+                  class: "page-btn",
+                  disabled: x.value.currentPage === x.value.totalPages,
+                  onClick: a[6] || (a[6] = function(e) {
+                    return ue(x.value.totalPages)
+                  })
+                }, [c(g(L), {
+                  size: 18,
+                  "stroke-width": 2
+                })], 8, Ge)]), v("div", {
+                  ref_key: "memoryListRef",
+                  ref: oe,
+                  class: P(["memory-list", {
+                    "batch-active": ee.value
+                  }])
+                }, [g(d).loading && 0 === ce.value.length ? (j(!0), u(y, {
+                  key: 0
+                }, h(Math.min(6, x.value.perPage), function(t) {
+                  return j(), u("div", {
+                    key: "memory-skeleton-".concat(t),
+                    class: "memory-card-skeleton"
+                  }, e(a[14] || (a[14] = [v("span", {
+                    class: "memory-skeleton-avatar"
+                  }, null, -1), v("span", {
+                    class: "memory-skeleton-content"
+                  }, [v("i"), v("i")], -1)])))
+                }), 128)) : 0 === le.value.length ? (j(), u("div", Qe, [a[15] || (a[15] = v("div", {
+                  class: "empty-icon"
+                }, [v("svg", {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  width: "48",
+                  height: "48",
+                  viewBox: "0 0 24 24",
+                  fill: "none",
+                  stroke: "currentColor",
+                  "stroke-width": "1.5",
+                  "stroke-linecap": "round",
+                  "stroke-linejoin": "round"
+                }, [v("path", {
+                  d: "M7.9 20A9 9 0 1 0 4 16.1L2 22Z"
+                })])], -1)), 0 === g(d).total ? (j(), u("p", $e, "还没有任何回忆~")) : (j(), u("p", He, "没有匹配的回忆"))])) : p("", !0), (j(!0), u(y, null, h(ce.value, function(e) {
+                  return j(), i(Ie, {
+                    key: e.id,
+                    id: e.id,
+                    name: e.roleName,
+                    avatar: e.roleAvatar,
+                    "last-message": e.lastMessage,
+                    "updated-at": e.updatedAt,
+                    "is-pinned": e.isPinned,
+                    selectable: ee.value,
+                    selected: te.value.has(e.id),
+                    onClick: function(t) {
+                      return pe(e)
+                    },
+                    onLongPress: ve,
+                    onSelect: be,
+                    onAction: function(t) {
+                      return function(e) {
+                        ee.value || (T.value = e, k.value = !0)
+                      }(e)
+                    }
+                  }, null, 8, ["id", "name", "avatar", "last-message", "updated-at", "is-pinned", "selectable", "selected", "onClick", "onAction"])
+                }), 128))], 2), ee.value ? (j(), u("div", Ye, [v("button", {
+                  class: "batch-delete-btn",
+                  disabled: 0 === te.value.size,
+                  onClick: ye
+                }, [c(g(ae), {
+                  size: 20
+                }), v("span", null, "删除 (" + m(te.value.size) + ")", 1)], 8, qe)])) : p("", !0), c(he, {
+                  show: k.value,
+                  "onUpdate:show": a[7] || (a[7] = function(e) {
+                    return k.value = e
+                  }),
+                  memory: T.value,
+                  onChat: a[8] || (a[8] = function(e) {
+                    return pe(T.value)
+                  }),
+                  onPin: ke,
+                  onDelete: Ce,
+                  onCopy: Pe,
+                  onExport: Xe,
+                  onImport: et
+                }, null, 8, ["show", "memory"]), v("input", {
+                  type: "file",
+                  ref_key: "fileInput",
+                  ref: Je,
+                  accept: ".json",
+                  style: {
+                    display: "none"
+                  },
+                  onChange: tt
+                }, null, 544), c(D, {
+                  show: W.value,
+                  "onUpdate:show": a[9] || (a[9] = function(e) {
+                    return W.value = e
+                  }),
+                  title: "选择每页显示数量",
+                  options: g(N),
+                  "current-value": x.value.perPage,
+                  layout: "list",
+                  onSelect: de
+                }, null, 8, ["show", "options", "current-value"]), c(Z, {
+                  show: R.value,
+                  "onUpdate:show": a[10] || (a[10] = function(e) {
+                    return R.value = e
+                  }),
+                  title: "删除回忆",
+                  message: "确定要删除这段回忆吗？聊天记录将被永久删除。",
+                  "confirm-text": "删除",
+                  danger: !0,
+                  onConfirm: Se
+                }, null, 8, ["show"]), c(Z, {
+                  show: G.value,
+                  "onUpdate:show": a[11] || (a[11] = function(e) {
+                    return G.value = e
+                  }),
+                  title: "清空所有回忆",
+                  message: "确定要清空所有回忆吗？此操作不可恢复，所有聊天记录将被永久删除。",
+                  "confirm-text": "清空",
+                  danger: !0,
+                  onConfirm: _e
+                }, null, 8, ["show"]), c(Z, {
+                  show: re.value,
+                  "onUpdate:show": a[12] || (a[12] = function(e) {
+                    return re.value = e
+                  }),
+                  title: "批量删除回忆",
+                  message: "确定要删除选中的 ".concat(te.value.size, " 段回忆吗？聊天记录将被永久删除。"),
+                  "confirm-text": "确认删除",
+                  danger: !0,
+                  onConfirm: xe
+                }, null, 8, ["show", "message"]), c(Y, {
+                  show: Boolean(w.value),
+                  text: w.value
+                }, null, 8, ["show", "text"])])
+              }
+            }
+          });
+        a("default", G(Je, [
+          ["__scopeId", "data-v-5258698f"]
+        ]))
+      }
+    }
+  })
+}();

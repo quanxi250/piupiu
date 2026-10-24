@@ -1,0 +1,79 @@
+# ============================================================
+# 示意代码 / ILLUSTRATIVE CODE
+# 本文件已脱敏，不可直接运行：
+#   - 密钥、地址、账号等敏感值全部替换为占位符
+#   - 仅用于说明逻辑结构，不提供可用参数
+# 详见仓库 DISCLAIMER.md
+# ============================================================
+
+import frida, json, time, sys
+
+PKG_LABEL = "PiuPiu酱"
+
+dev = frida.get_usb_device(timeout=10)
+procs = dev.enumerate_processes()
+target = [p for p in procs if p.name == PKG_LABEL or p.name == "io.piupiu.chat"]
+if not target:
+    print("app 没在跑"); sys.exit(1)
+pid = target[0].pid
+print("attach pid:", pid, target[0].name, flush=True)
+
+SRC = r"""
+function hex(bytes) {
+    var s = "";
+    for (var i = 0; i < bytes.length; i++) {
+        var b = (bytes[i] & 0xff).toString(16);
+        s += (b.length === 1 ? "0" : "") + b;
+    }
+    return s;
+}
+
+Java.perform(function () {
+    try {
+        var AT = Java.use("android.app.ActivityThread");
+        var act = AT.currentActivity();
+        send({ k: "activity", v: act ? String(act.getClass().getName()) : null });
+        if (!act) return;
+
+        var Main = Java.use("io.piupiu.chat.MainActivity");
+        var fld = Main.class.getDeclaredField("protectedFrontendManager");
+        fld.setAccessible(true);
+        var mgr = fld.get(act);
+        send({ k: "mgr", v: mgr ? String(mgr) : null });
+        if (!mgr) return;
+
+        var PFM = Java.use("io.piupiu.chat.ProtectedFrontendManager");
+        var c = PFM.class;
+        send({ k: "class", v: String(c.getName()) });
+
+        function readBytes(name) {
+            try {
+                var f = c.getDeclaredField(name);
+                f.setAccessible(true);
+                var v = f.get(mgr);
+                if (!v) return null;
+                return hex(v);
+            } catch (e) { return "ERR:" + e; }
+        }
+        send({ k: "contentKey",   v: readBytes("contentKey") });
+        send({ k: "pathIndexKey", v: readBytes("pathIndexKey") });
+        send({ k: "status",       v: readBytes("status") });
+
+        // 顺带看看 entries 数量
+        try {
+            var fe = c.getDeclaredField("entries");
+            fe.setAccessible(true);
+            var entries = fe.get(mgr);
+            send({ k: "entries", v: entries ? String(entries.size()) : null });
+        } catch (e) { send({ k: "entries", v: "ERR:" + e }); }
+    } catch (e) {
+        send({ k: "fatal", v: String(e) + " | " + (e.stack || "") });
+    }
+});
+"""
+
+session = dev.attach(pid)
+script = session.create_script(SRC)
+script.on("message", lambda m, d: print(json.dumps(m, ensure_ascii=False), flush=True))
+script.load()
+time.sleep(4)

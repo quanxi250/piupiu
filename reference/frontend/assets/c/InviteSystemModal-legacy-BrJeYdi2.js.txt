@@ -1,0 +1,1114 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+! function() {
+  function e() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var r, n, t = "function" == typeof Symbol ? Symbol : {},
+      o = t.iterator || "@@iterator",
+      i = t.toStringTag || "@@toStringTag";
+
+    function d(e, t, o, i) {
+      var d = t && t.prototype instanceof l ? t : l,
+        s = Object.create(d.prototype);
+      return a(s, "_invoke", function(e, a, t) {
+        var o, i, d, l = 0,
+          s = t || [],
+          u = !1,
+          f = {
+            p: 0,
+            n: 0,
+            v: r,
+            a: p,
+            f: p.bind(r, 4),
+            d: function(e, a) {
+              return o = e, i = 0, d = r, f.n = a, c
+            }
+          };
+
+        function p(e, a) {
+          for (i = e, d = a, n = 0; !u && l && !t && n < s.length; n++) {
+            var t, o = s[n],
+              p = f.p,
+              b = o[2];
+            e > 3 ? (t = b === a) && (d = o[(i = o[4]) ? 5 : (i = 3, 3)], o[4] = o[5] = r) : o[0] <= p && ((t = e < 2 && p < o[1]) ? (i = 0, f.v = a, f.n = o[1]) : p < b && (t = e < 3 || o[0] > a || a > b) && (o[4] = e, o[5] = a, f.n = b, i = 0))
+          }
+          if (t || e > 1) return c;
+          throw u = !0, a
+        }
+        return function(t, s, b) {
+          if (l > 1) throw TypeError("Generator is already running");
+          for (u && 1 === s && p(s, b), i = s, d = b;
+            (n = i < 2 ? r : d) || !u;) {
+            o || (i ? i < 3 ? (i > 1 && (f.n = -1), p(i, d)) : f.n = d : f.v = d);
+            try {
+              if (l = 2, o) {
+                if (i || (t = "next"), n = o[t]) {
+                  if (!(n = n.call(o, d))) throw TypeError("iterator result is not an object");
+                  if (!n.done) return n;
+                  d = n.value, i < 2 && (i = 0)
+                } else 1 === i && (n = o.return) && n.call(o), i < 2 && (d = TypeError("The iterator does not provide a '" + t + "' method"), i = 1);
+                o = r
+              } else if ((n = (u = f.n < 0) ? d : e.call(a, f)) !== c) break
+            } catch (n) {
+              o = r, i = 1, d = n
+            } finally {
+              l = 1
+            }
+          }
+          return {
+            value: n,
+            done: u
+          }
+        }
+      }(e, o, i), !0), s
+    }
+    var c = {};
+
+    function l() {}
+
+    function s() {}
+
+    function u() {}
+    n = Object.getPrototypeOf;
+    var f = [][o] ? n(n([][o]())) : (a(n = {}, o, function() {
+        return this
+      }), n),
+      p = u.prototype = l.prototype = Object.create(f);
+
+    function b(e) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(e, u) : (e.__proto__ = u, a(e, i, "GeneratorFunction")), e.prototype = Object.create(p), e
+    }
+    return s.prototype = u, a(p, "constructor", u), a(u, "constructor", s), s.displayName = "GeneratorFunction", a(u, i, "GeneratorFunction"), a(p), a(p, i, "Generator"), a(p, o, function() {
+      return this
+    }), a(p, "toString", function() {
+      return "[object Generator]"
+    }), (e = function() {
+      return {
+        w: d,
+        m: b
+      }
+    })()
+  }
+
+  function a(e, r, n, t) {
+    var o = Object.defineProperty;
+    try {
+      o({}, "", {})
+    } catch (e) {
+      o = 0
+    }
+    a = function(e, r, n, t) {
+      function i(r, n) {
+        a(e, r, function(e) {
+          return this._invoke(r, n, e)
+        })
+      }
+      r ? o ? o(e, r, {
+        value: n,
+        enumerable: !t,
+        configurable: !t,
+        writable: !t
+      }) : e[r] = n : (i("next", 0), i("throw", 1), i("return", 2))
+    }, a(e, r, n, t)
+  }
+
+  function r(e, a, r, n, t, o, i) {
+    try {
+      var d = e[o](i),
+        c = d.value
+    } catch (e) {
+      return void r(e)
+    }
+    d.done ? a(c) : Promise.resolve(c).then(n, t)
+  }
+
+  function n(e) {
+    return function() {
+      var a = this,
+        n = arguments;
+      return new Promise(function(t, o) {
+        var i = e.apply(a, n);
+
+        function d(e) {
+          r(i, t, o, d, c, "next", e)
+        }
+
+        function c(e) {
+          r(i, t, o, d, c, "throw", e)
+        }
+        d(void 0)
+      })
+    }
+  }
+  System.register(["../e/index-legacy-B0tYRju5.js", "./app-security-legacy-BdXLf8ML.js", "./copy-legacy-wdtkFLud.js", "./refresh-cw-legacy-8ZRhP8a6.js"], function(a, r) {
+    "use strict";
+    var t, o, i, d, c, l, s, u, f, p, b, v, g, x, h, m, w, k, y, _, z, C, j, I, P, V, X, S, M, O, T, B, G, R, N, E, U, F, q, $, H, A, J, K, L, Q, W, Y, Z;
+    return {
+      setters: [function(e) {
+        t = e.c, o = e.g, i = e.e, d = e.S, c = e._, l = e.ar, s = e.a0, u = e.as, f = e.F, p = e.I
+      }, function(e) {
+        b = e.k, v = e.J, g = e.R, x = e.Z, h = e.$, m = e.M, w = e.N, k = e.a2, y = e.L, _ = e.u, z = e.Y, C = e.c, j = e.T, I = e.K, P = e.bg, V = e.bh, X = e.bi, S = e.r, M = e.bc, O = e.w, T = e.O, B = e.W, G = e.aa, R = e.V, N = e.Q, E = e.ah, U = e.ai, F = e.bj, q = e.bk, $ = e.bl, H = e.bm, A = e.bn, J = e.bo, K = e.bp, L = e.bq, Q = e.br, W = e.bs
+      }, function(e) {
+        Y = e.C
+      }, function(e) {
+        Z = e.R
+      }],
+      execute: function() {
+        var r = document.createElement("style");
+        r.textContent = ".modal-overlay[data-v-9f599c85]{position:fixed;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.72);z-index:3200;display:flex;align-items:center;justify-content:center;padding:20px}.modal-content[data-v-9f599c85]{width:min(100%,360px);border-radius:26px;padding:22px;background:radial-gradient(circle at top left,rgba(255,195,220,.45),transparent 38%),linear-gradient(145deg,rgba(255,251,254,.98),rgba(250,246,255,.96));box-shadow:0 18px 44px rgba(0,0,0,.18);display:flex;flex-direction:column;gap:14px}.dark-mode .modal-content[data-v-9f599c85]{background:radial-gradient(circle at top left,rgba(255,136,187,.22),transparent 38%),linear-gradient(145deg,rgba(48,33,58,.98),rgba(36,29,48,.98));border:1px solid rgba(255,255,255,.08)}.reward-head[data-v-9f599c85]{display:flex;align-items:flex-start;gap:12px}.reward-icon[data-v-9f599c85]{width:48px;height:48px;border-radius:16px;display:flex;align-items:center;justify-content:center;color:#fff;background:linear-gradient(135deg,#ff8db4,#ffb65e);box-shadow:0 10px 22px rgba(255,151,188,.28);flex-shrink:0}.reward-text h3[data-v-9f599c85]{margin:0;font-size:18px;font-weight:800;color:var(--text-color)}.reward-text p[data-v-9f599c85]{margin:5px 0 0;font-size:12px;line-height:1.55;color:var(--text-secondary-color)}.reward-badge[data-v-9f599c85]{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:0 12px;border-radius:999px;background:rgba(255,141,180,.12);color:#ff5e95;font-size:12px;font-weight:800}.dark-mode .reward-badge[data-v-9f599c85]{background:rgba(255,141,180,.18);color:#ffc0d9}.reward-code-box[data-v-9f599c85]{padding:18px 16px;border-radius:20px;background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.75);font-size:22px;font-weight:900;letter-spacing:.08em;line-height:1.45;text-align:center;color:#ff5e95;word-break:break-word}.dark-mode .reward-code-box[data-v-9f599c85]{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.08);color:#ffd4e5}.reward-hint[data-v-9f599c85]{margin:0;font-size:12px;line-height:1.5;color:var(--text-secondary-color)}.modal-actions[data-v-9f599c85]{display:flex;gap:10px}.btn[data-v-9f599c85]{flex:1;height:44px;border:none;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:14px;font-weight:800;font-family:inherit;cursor:pointer}.btn[data-v-9f599c85]:active{transform:scale(.98)}.btn-copy[data-v-9f599c85]{background:linear-gradient(135deg,#ff8eb5,#ffb56a);color:#fff}.btn-close[data-v-9f599c85]{background:rgba(0,0,0,.06);color:var(--text-secondary-color)}.dark-mode .btn-close[data-v-9f599c85]{background:rgba(255,255,255,.08);color:rgba(255,255,255,.82)}.modal-overlay[data-v-62c49fe1]{position:fixed;top:0;right:0;bottom:0;left:0;background:radial-gradient(circle at top,rgba(255,143,171,.16),transparent 34%),rgba(16,18,24,.68);z-index:3000;display:flex;align-items:center;justify-content:center;padding:20px}.modal-content[data-v-62c49fe1]{width:100%;max-width:380px;max-height:min(var(--app-viewport-height) * .88,var(--app-viewport-height) - 40px - var(--safe-area-inset-top) - var(--safe-area-inset-bottom));background:linear-gradient(180deg,rgba(255,247,250,.98),rgba(255,255,255,.98) 30%),#fff;border:1px solid rgba(255,143,171,.16);border-radius:24px;padding:22px;box-shadow:0 28px 70px rgba(15,23,42,.22),0 1px rgba(255,255,255,.55) inset;display:flex;flex-direction:column;gap:16px;overflow:hidden;font-family:inherit}.dark-mode .modal-content[data-v-62c49fe1]{background:linear-gradient(180deg,rgba(60,40,52,.96),rgba(27,28,34,.98) 28%),#1a1b21;border-color:rgba(255,143,171,.2)}.modal-header[data-v-62c49fe1]{display:flex;align-items:flex-start;justify-content:center;position:relative;gap:12px;flex-shrink:0}.modal-title[data-v-62c49fe1]{margin:0;width:100%;padding:0 44px;box-sizing:border-box;font-size:24px;font-weight:700;color:var(--text-color);text-align:center}.modal-desc[data-v-62c49fe1]{margin:6px 0 0;font-size:14px;line-height:1.6;color:var(--text-secondary-color);text-align:center}.tab-nav[data-v-62c49fe1]{display:flex;gap:8px;padding:6px;border-radius:16px;background:rgba(255,255,255,.78);border:1px solid rgba(255,143,171,.12);flex-shrink:0}.dark-mode .tab-nav[data-v-62c49fe1]{background:rgba(255,255,255,.06)}.tab-btn[data-v-62c49fe1]{flex:1;height:42px;border:none;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;gap:6px;background:transparent;color:var(--text-secondary-color);font-size:13px;font-weight:700;font-family:inherit;cursor:pointer}.tab-btn.active[data-v-62c49fe1]{background:rgba(255,143,171,.12);color:#d4688d;box-shadow:none}.dark-mode .tab-btn.active[data-v-62c49fe1]{background:rgba(255,255,255,.1);color:#ffc4dd;box-shadow:none}.tab-btn[data-v-62c49fe1]:active{transform:scale(.98)}.refresh-btn[data-v-62c49fe1]{position:absolute;right:0;width:34px;height:34px;border:1px solid rgba(255,143,171,.12);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--text-secondary-color);background:rgba(255,255,255,.72);cursor:pointer;flex-shrink:0}.dark-mode .refresh-btn[data-v-62c49fe1]{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08)}.refresh-btn[data-v-62c49fe1]:disabled{opacity:.5;cursor:not-allowed}.refresh-btn[data-v-62c49fe1]:active:not(:disabled){transform:scale(.96)}.spinning[data-v-62c49fe1]{animation:spin-62c49fe1 .9s linear infinite}.sections-body[data-v-62c49fe1]{flex:1;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;gap:14px;scrollbar-width:none;-ms-overflow-style:none}.sections-body[data-v-62c49fe1]::-webkit-scrollbar{width:0;height:0;display:none}.section-card[data-v-62c49fe1]{padding:16px;border-radius:20px;background:rgba(255,255,255,.72);border:1px solid rgba(255,143,171,.12);box-shadow:none}.dark-mode .section-card[data-v-62c49fe1]{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08);box-shadow:none}.invite-section[data-v-62c49fe1],.milestone-section[data-v-62c49fe1],.bind-section[data-v-62c49fe1]{background:rgba(255,255,255,.72)}.section-head[data-v-62c49fe1]{display:flex;align-items:flex-start;gap:12px}.section-icon[data-v-62c49fe1]{width:40px;height:40px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}.invite-icon[data-v-62c49fe1]{background:linear-gradient(135deg,#ff7eb6,#ff9f7a)}.milestone-icon[data-v-62c49fe1]{background:linear-gradient(135deg,#ffb45e,#ff7f93)}.bind-icon[data-v-62c49fe1]{background:linear-gradient(135deg,#5fa8ff,#9b7dff)}.section-text[data-v-62c49fe1]{flex:1;min-width:0}.section-text h4[data-v-62c49fe1]{margin:0;font-size:15px;font-weight:700;color:var(--text-color)}.section-text p[data-v-62c49fe1]{margin:5px 0 0;font-size:12px;line-height:1.45;color:var(--text-secondary-color)}.soft-action-btn[data-v-62c49fe1]{height:34px;padding:0 12px;border:1px solid rgba(255,143,171,.12);border-radius:12px;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;font-family:inherit;color:#d4688d;background:rgba(255,255,255,.72);cursor:pointer;flex-shrink:0}.dark-mode .soft-action-btn[data-v-62c49fe1]{background:rgba(255,255,255,.08);color:#ffc1db}.soft-action-btn[data-v-62c49fe1]:active{transform:scale(.96)}.invite-code-box[data-v-62c49fe1]{margin-top:14px;padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.98);border:1px solid rgba(255,143,171,.12);font-size:26px;font-weight:800;letter-spacing:.16em;text-align:center;color:#ff5f98;box-shadow:inset 0 1px rgba(255,255,255,.75),0 8px 18px rgba(0,0,0,.05)}.dark-mode .invite-code-box[data-v-62c49fe1]{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.08);color:#ffd2e6;box-shadow:inset 0 1px rgba(255,255,255,.04),0 10px 22px rgba(0,0,0,.16)}.stats-row[data-v-62c49fe1]{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.stat-chip[data-v-62c49fe1]{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 12px;border-radius:999px;background-color:rgba(255,255,255,.88);background:rgba(255,255,255,.88);color:#6d5cff;font-size:12px;font-weight:700;border:1px solid rgba(255,255,255,.78)}.dark-mode .stat-chip[data-v-62c49fe1]{background:rgba(255,255,255,.08);color:#ddd4ff;border-color:rgba(255,255,255,.06)}.stat-chip.muted[data-v-62c49fe1]{color:var(--text-secondary-color)}.milestone-list[data-v-62c49fe1]{margin-top:14px;display:flex;flex-direction:column;gap:12px}.milestone-item[data-v-62c49fe1]{padding:15px;border-radius:20px;background:rgba(255,255,255,.98);border:1px solid rgba(255,143,171,.12);box-shadow:inset 0 1px rgba(255,255,255,.6),0 8px 18px rgba(0,0,0,.04)}.dark-mode .milestone-item[data-v-62c49fe1]{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08);box-shadow:inset 0 1px rgba(255,255,255,.05)}.milestone-item.ready[data-v-62c49fe1]{border-color:rgba(255,171,95,.36);background:rgba(255,248,242,.98);box-shadow:inset 0 1px rgba(255,255,255,.62),0 8px 18px rgba(0,0,0,.04)}.dark-mode .milestone-item.ready[data-v-62c49fe1]{background:rgba(255,255,255,.07);border-color:rgba(255,193,145,.16)}.milestone-item.claimed[data-v-62c49fe1]{border-color:rgba(255,136,186,.34);background:rgba(255,248,252,.98);box-shadow:inset 0 1px rgba(255,255,255,.62),0 8px 18px rgba(0,0,0,.04)}.dark-mode .milestone-item.claimed[data-v-62c49fe1]{background:rgba(255,255,255,.07);border-color:rgba(255,187,218,.16)}.milestone-top[data-v-62c49fe1]{display:flex;align-items:center;gap:12px}.milestone-mark[data-v-62c49fe1]{width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#ff9c66;background:rgba(255,255,255,.74);border:1px solid rgba(255,196,145,.32);box-shadow:0 10px 20px rgba(255,171,95,.12)}.dark-mode .milestone-mark[data-v-62c49fe1]{background:rgba(255,255,255,.08);border-color:rgba(255,222,194,.08);box-shadow:none}.milestone-mark.ready[data-v-62c49fe1]{color:#ff8e54;background:linear-gradient(135deg,rgba(255,248,234,.98),rgba(255,236,243,.94))}.milestone-mark.claimed[data-v-62c49fe1]{color:#ff629d;background:linear-gradient(135deg,rgba(255,241,248,.98),rgba(255,247,231,.94))}.milestone-meta[data-v-62c49fe1]{flex:1;min-width:0}.milestone-title-row[data-v-62c49fe1]{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.milestone-title[data-v-62c49fe1]{font-size:14px;font-weight:800;color:var(--text-color)}.milestone-threshold-chip[data-v-62c49fe1]{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;border-radius:999px;background:rgba(255,255,255,.78);color:#ff8b57;font-size:11px;font-weight:800;border:1px solid rgba(255,198,151,.34)}.dark-mode .milestone-threshold-chip[data-v-62c49fe1]{background:rgba(255,255,255,.08);border-color:rgba(255,230,206,.08);color:#ffd1b5}.milestone-subtitle[data-v-62c49fe1]{margin-top:4px;font-size:12px;color:var(--text-secondary-color)}.milestone-btn[data-v-62c49fe1]{min-width:92px;height:38px;padding:0 14px;border:none;border-radius:14px;background:linear-gradient(135deg,#ff9a62,#ffb95e);color:#fff;font-size:12px;font-weight:800;font-family:inherit;cursor:pointer;flex-shrink:0;box-shadow:0 10px 18px rgba(255,154,98,.22)}.milestone-btn.ready[data-v-62c49fe1]{background:linear-gradient(135deg,#ff9860,#ff7dac);box-shadow:0 10px 18px rgba(255,125,172,.2)}.milestone-btn.claimed[data-v-62c49fe1]{background:rgba(255,255,255,.84);color:#ff6ea4;box-shadow:none}.dark-mode .milestone-btn.claimed[data-v-62c49fe1]{background:rgba(255,255,255,.08);color:#ffc0db}.milestone-btn[data-v-62c49fe1]:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}.milestone-btn[data-v-62c49fe1]:active:not(:disabled){transform:scale(.98)}.milestone-progress-row[data-v-62c49fe1]{display:flex;align-items:center;gap:10px;margin-top:14px}.milestone-track[data-v-62c49fe1]{flex:1;height:10px;border-radius:999px;overflow:hidden;background:rgba(255,186,120,.18)}.dark-mode .milestone-track[data-v-62c49fe1]{background:rgba(255,255,255,.08)}.milestone-fill[data-v-62c49fe1]{height:100%;border-radius:inherit;background:linear-gradient(90deg,#ffb05c,#ff79ac);box-shadow:0 0 16px rgba(255,140,98,.28)}.milestone-progress-text[data-v-62c49fe1]{min-width:56px;text-align:right;font-size:12px;font-weight:700;color:#ff9b60}.dark-mode .milestone-progress-text[data-v-62c49fe1]{color:#ffd0ab}.milestone-hint[data-v-62c49fe1]{margin:12px 0 0;font-size:12px;color:var(--text-secondary-color)}.bound-state[data-v-62c49fe1]{margin-top:14px;padding:15px;border-radius:18px;background:rgba(255,255,255,.78);border:1px solid rgba(255,143,171,.12)}.dark-mode .bound-state[data-v-62c49fe1]{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.08)}.bound-label[data-v-62c49fe1]{font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--text-secondary-color)}.bound-code[data-v-62c49fe1]{margin-top:8px;font-size:22px;font-weight:800;letter-spacing:.12em;color:#6d5cff}.bound-hint[data-v-62c49fe1]{margin:8px 0 0;font-size:12px;line-height:1.5;color:var(--text-secondary-color)}.reward-panel[data-v-62c49fe1]{margin-top:14px;padding:14px;border-radius:18px;background:linear-gradient(135deg,rgba(255,241,228,.92),rgba(255,248,239,.94)),rgba(255,255,255,.74);border:1px solid rgba(255,143,171,.12)}.dark-mode .reward-panel[data-v-62c49fe1]{background:linear-gradient(135deg,rgba(93,58,23,.45),rgba(69,45,26,.55)),rgba(255,255,255,.04);border-color:rgba(255,191,127,.16)}.reward-chip[data-v-62c49fe1]{display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.78);color:#ff8a36;font-size:12px;font-weight:800}.dark-mode .reward-chip[data-v-62c49fe1]{background:rgba(255,255,255,.08);color:#ffd7a8}.reward-btn[data-v-62c49fe1]{width:100%;height:44px;margin-top:10px;border:1px solid #f78cab;border-radius:16px;background:#f78cab;color:#fff;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit}.reward-btn[data-v-62c49fe1]:disabled{opacity:.55;cursor:not-allowed}.reward-btn[data-v-62c49fe1]:active:not(:disabled){transform:scale(.98)}.dark-mode .reward-btn[data-v-62c49fe1]{background:#f78cab;border-color:#f78cab}.input-shell[data-v-62c49fe1]{margin-top:14px;padding:4px;border-radius:18px;background:rgba(245,246,250,.96);border:1px solid rgba(255,143,171,.12);box-shadow:inset 0 1px rgba(255,255,255,.72),0 6px 14px rgba(0,0,0,.04)}.dark-mode .input-shell[data-v-62c49fe1]{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.08);box-shadow:none}.input-shell[data-v-62c49fe1]:focus-within{border-color:rgba(109,92,255,.22)}.input-shell-btn[data-v-62c49fe1]{width:100%;text-align:left;cursor:pointer}.input-shell-btn[data-v-62c49fe1]:active{transform:scale(.995)}.invite-input[data-v-62c49fe1]{width:100%;height:46px;padding:0 16px;border:none;background:transparent;color:var(--text-color);font-size:16px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;outline:none;font-family:inherit}.invite-input[data-v-62c49fe1]::placeholder{color:rgba(0,0,0,.32);letter-spacing:normal;text-transform:none}.dark-mode .invite-input[data-v-62c49fe1]::placeholder{color:rgba(255,255,255,.3)}.faux-input[data-v-62c49fe1]{display:flex;align-items:center;min-height:46px;word-break:break-all;font-family:inherit}.faux-input.placeholder[data-v-62c49fe1]{color:rgba(0,0,0,.32);letter-spacing:normal;text-transform:none}.dark-mode .faux-input.placeholder[data-v-62c49fe1]{color:rgba(255,255,255,.3)}.input-hint[data-v-62c49fe1]{margin:10px 2px 0;font-size:12px;line-height:1.45;color:var(--text-secondary-color)}.bind-btn[data-v-62c49fe1]{width:100%;height:46px;margin-top:12px;border:1px solid #f78cab;border-radius:16px;background:#f78cab;color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}.bind-btn[data-v-62c49fe1]:disabled{opacity:.5;cursor:not-allowed}.bind-btn[data-v-62c49fe1]:active:not(:disabled){transform:scale(.98)}.dark-mode .bind-btn[data-v-62c49fe1]{background:#f78cab;border-color:#f78cab}.modal-actions[data-v-62c49fe1]{display:flex;gap:12px;flex-shrink:0}.btn[data-v-62c49fe1]{width:100%;padding:12px;border:1px solid rgba(255,143,171,.12);border-radius:16px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}.btn[data-v-62c49fe1]:active{transform:scale(.98)}.btn-cancel[data-v-62c49fe1]{background:rgba(255,255,255,.72);color:var(--text-secondary-color)}.dark-mode .btn-cancel[data-v-62c49fe1]{background:rgba(255,255,255,.06);color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.08)}@keyframes spin-62c49fe1{0%{transform:rotate(0)}to{transform:rotate(360deg)}}\n/*$vite$:1*/", document.head.appendChild(r);
+        /**
+         * @license lucide-vue-next v0.562.0 - ISC
+         *
+         * This source code is licensed under the ISC license.
+         * See the LICENSE file in the root directory of this source tree.
+         */
+        var D = a("G", t("gift", [
+            ["rect", {
+              x: "3",
+              y: "8",
+              width: "18",
+              height: "4",
+              rx: "1",
+              key: "bkv52"
+            }],
+            ["path", {
+              d: "M12 8v13",
+              key: "1c76mn"
+            }],
+            ["path", {
+              d: "M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7",
+              key: "6wjy6b"
+            }],
+            ["path", {
+              d: "M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5",
+              key: "1ihvrl"
+            }]
+          ])),
+          ee = (a("a", t("globe", [
+            ["circle", {
+              cx: "12",
+              cy: "12",
+              r: "10",
+              key: "1mglay"
+            }],
+            ["path", {
+              d: "M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20",
+              key: "13o1zl"
+            }],
+            ["path", {
+              d: "M2 12h20",
+              key: "9i4pu4"
+            }]
+          ])), {
+            class: "modal-content glass-card"
+          }),
+          ae = {
+            class: "reward-head"
+          },
+          re = {
+            class: "reward-icon"
+          },
+          ne = {
+            class: "reward-text"
+          },
+          te = {
+            class: "reward-badge"
+          },
+          oe = {
+            class: "reward-code-box"
+          },
+          ie = {
+            class: "modal-actions"
+          },
+          de = b({
+            __name: "InviteRewardCodeModal",
+            props: {
+              show: {
+                type: Boolean
+              },
+              rewardCode: {},
+              rewardName: {}
+            },
+            emits: ["update:show"],
+            setup: function(a, r) {
+              var t = r.emit,
+                c = a,
+                l = t,
+                s = o().showToast,
+                u = C(function() {
+                  return c.rewardName || "VIP 奖励"
+                }),
+                f = C(function() {
+                  return c.rewardCode || "VIP-XXXX-XXXX-XXXX-XXXX"
+                });
+
+              function p() {
+                l("update:show", !1)
+              }
+
+              function b() {
+                return P.apply(this, arguments)
+              }
+
+              function P() {
+                return (P = n(e().m(function a() {
+                  var r;
+                  return e().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (c.rewardCode) {
+                          e.n = 1;
+                          break
+                        }
+                        return s("卡密还没准备好哦", "warning"), e.a(2);
+                      case 1:
+                        return e.p = 1, e.n = 2, navigator.clipboard.writeText(c.rewardCode);
+                      case 2:
+                        s("卡密已复制", "success"), e.n = 4;
+                        break;
+                      case 3:
+                        e.p = 3, r = e.v, console.warn("[InviteReward] Copy failed:", r), s("复制失败，请手动复制", "warning");
+                      case 4:
+                        return e.a(2)
+                    }
+                  }, a, null, [
+                    [1, 3]
+                  ])
+                }))).apply(this, arguments)
+              }
+              return i(function() {
+                  return c.show
+                }, p),
+                function(e, r) {
+                  return I(), v(j, {
+                    to: "body"
+                  }, [g(x, {
+                    name: "modal-fade"
+                  }, {
+                    default: h(function() {
+                      return [a.show ? (I(), m("div", {
+                        key: 0,
+                        class: "modal-overlay",
+                        onClick: k(p, ["self"])
+                      }, [y("div", ee, [y("div", ae, [y("div", re, [g(_(D), {
+                        size: 22
+                      })]), y("div", ne, [y("h3", null, z(u.value) + "已送达", 1), r[0] || (r[0] = y("p", null, "收好这份奖励，去解锁一段新的专属体验吧。", -1))])]), y("div", te, [g(_(d), {
+                        size: 14
+                      }), r[1] || (r[1] = y("span", null, "邀请奖励", -1))]), y("div", oe, z(f.value), 1), r[3] || (r[3] = y("p", {
+                        class: "reward-hint"
+                      }, "这张卡密只展示给当前账号，记得及时复制保存哦。", -1)), y("div", ie, [y("button", {
+                        class: "btn btn-copy",
+                        onClick: b
+                      }, [g(_(Y), {
+                        size: 16
+                      }), r[2] || (r[2] = y("span", null, "复制卡密", -1))]), y("button", {
+                        class: "btn btn-close",
+                        onClick: p
+                      }, "知道啦")])])])) : w("", !0)]
+                    }),
+                    _: 1
+                  })])
+                }
+            }
+          }),
+          ce = c(de, [
+            ["__scopeId", "data-v-9f599c85"]
+          ]),
+          le = b({
+            __name: "RewardCaptchaModal",
+            props: {
+              show: {
+                type: Boolean
+              },
+              rewardName: {},
+              threshold: {},
+              mode: {}
+            },
+            emits: ["update:show", "verified"],
+            setup: function(e, a) {
+              var r = a.emit,
+                n = e,
+                t = r,
+                o = C(function() {
+                  return n.mode || "reward"
+                }),
+                i = C(function() {
+                  return n.rewardName || ("bind" === o.value ? "邀请码绑定" : "奖励卡密")
+                }),
+                d = C(function() {
+                  return "bind" === o.value ? "绑定前验证一下" : "领取前验证一下"
+                }),
+                c = C(function() {
+                  return "bind" === o.value ? "拖动滑块完成验证后，才能绑定邀请码。" : "拖动滑块完成验证后，才能获取 ".concat(i.value, "。")
+                }),
+                s = C(function() {
+                  return "bind" === o.value ? "邀请码绑定验证" : "邀请奖励验证"
+                });
+
+              function u(e) {
+                t("update:show", e)
+              }
+
+              function f() {
+                var e;
+                return "bind" === o.value ? P() : V(null !== (e = n.threshold) && void 0 !== e ? e : null)
+              }
+
+              function p(e, a, r, n) {
+                return X(e, a, r, n)
+              }
+              return function(a, r) {
+                return I(), v(l, {
+                  show: e.show,
+                  title: d.value,
+                  description: c.value,
+                  "badge-text": s.value,
+                  "issue-challenge": f,
+                  "verify-challenge": p,
+                  "onUpdate:show": u,
+                  onVerified: r[0] || (r[0] = function(e) {
+                    return t("verified", e)
+                  })
+                }, null, 8, ["show", "title", "description", "badge-text"])
+              }
+            }
+          }),
+          se = {
+            class: "modal-content glass-card"
+          },
+          ue = {
+            class: "modal-header"
+          },
+          fe = ["disabled"],
+          pe = {
+            class: "tab-nav"
+          },
+          be = {
+            class: "sections-body"
+          },
+          ve = {
+            class: "section-card invite-section"
+          },
+          ge = {
+            class: "section-head"
+          },
+          xe = {
+            class: "section-icon invite-icon"
+          },
+          he = {
+            class: "invite-code-box"
+          },
+          me = {
+            class: "stats-row"
+          },
+          we = {
+            class: "stat-chip"
+          },
+          ke = {
+            class: "stat-chip muted"
+          },
+          ye = {
+            class: "section-card milestone-section"
+          },
+          _e = {
+            class: "section-head"
+          },
+          ze = {
+            class: "section-icon milestone-icon"
+          },
+          Ce = {
+            class: "milestone-list"
+          },
+          je = {
+            class: "milestone-top"
+          },
+          Ie = {
+            class: "milestone-meta"
+          },
+          Pe = {
+            class: "milestone-title-row"
+          },
+          Ve = {
+            class: "milestone-title"
+          },
+          Xe = {
+            class: "milestone-threshold-chip"
+          },
+          Se = {
+            class: "milestone-subtitle"
+          },
+          Me = ["disabled", "onClick"],
+          Oe = {
+            class: "milestone-progress-row"
+          },
+          Te = {
+            class: "milestone-track"
+          },
+          Be = {
+            class: "milestone-progress-text"
+          },
+          Ge = {
+            class: "milestone-hint"
+          },
+          Re = {
+            key: 1,
+            class: "section-card bind-section"
+          },
+          Ne = {
+            class: "section-head"
+          },
+          Ee = {
+            class: "section-icon bind-icon"
+          },
+          Ue = {
+            key: 0,
+            class: "bound-state"
+          },
+          Fe = {
+            class: "bound-code"
+          },
+          qe = {
+            class: "reward-panel"
+          },
+          $e = {
+            class: "reward-chip"
+          },
+          He = ["disabled"],
+          Ae = {
+            class: "input-hint"
+          },
+          Je = ["disabled"],
+          Ke = b({
+            __name: "InviteSystemModal",
+            props: {
+              show: {
+                type: Boolean
+              }
+            },
+            emits: ["update:show", "updated"],
+            setup: function(a, r) {
+              var t = r.emit,
+                c = a,
+                l = t,
+                b = o().showToast,
+                P = S(M()),
+                V = S(""),
+                X = S(!1),
+                ee = S(!1),
+                ae = S(!1),
+                re = S("奖励准备中..."),
+                ne = S(!1),
+                te = S(null),
+                oe = S("VIP 天卡"),
+                ie = S(!1),
+                de = S(!1),
+                Ke = S(!1),
+                Le = S(null),
+                Qe = S("VIP 天卡"),
+                We = S("mine"),
+                Ye = C(function() {
+                  return E(V.value)
+                }),
+                Ze = C(function() {
+                  var e;
+                  return Boolean(null === (e = P.value) || void 0 === e ? void 0 : e.own_invite_code)
+                }),
+                De = C(function() {
+                  var e;
+                  return Boolean(null === (e = P.value) || void 0 === e ? void 0 : e.bound_invite_code)
+                }),
+                ea = C(function() {
+                  var e;
+                  return Boolean(null === (e = P.value) || void 0 === e ? void 0 : e.reward_claimed)
+                }),
+                aa = C(function() {
+                  var e;
+                  return Boolean(null === (e = P.value) || void 0 === e ? void 0 : e.can_claim_reward)
+                }),
+                ra = C(function() {
+                  var e, a;
+                  return null !== (e = null === (a = P.value) || void 0 === a ? void 0 : a.milestone_rewards) && void 0 !== e ? e : []
+                }),
+                na = C(function() {
+                  var e, a;
+                  return null !== (e = null === (a = P.value) || void 0 === a ? void 0 : a.invite_count) && void 0 !== e ? e : 0
+                }),
+                ta = C(function() {
+                  return ae.value ? "奖励准备中..." : ea.value ? "查看卡密" : "领取奖励"
+                }),
+                oa = C(function() {
+                  var e;
+                  return Boolean(Ye.value) && Ye.value === ((null === (e = P.value) || void 0 === e ? void 0 : e.own_invite_code) || "")
+                }),
+                ia = C(function() {
+                  return !X.value && !ee.value && !De.value && U(Ye.value) && !oa.value
+                });
+
+              function da() {
+                l("update:show", !1)
+              }
+
+              function ca() {
+                De.value || ee.value || X.value || ae.value || (Ke.value = !0)
+              }
+
+              function la(e) {
+                var a = E(e);
+                V.value = a, e.trim() && !U(a) && b("没有识别到有效邀请码", "warning")
+              }
+
+              function sa(e) {
+                e && (P.value = e, l("updated", e))
+              }
+
+              function ua(e, a) {
+                te.value = e, oe.value = a, ne.value = !0
+              }
+
+              function fa(e, a) {
+                var r, n = null === (r = P.value) || void 0 === r ? void 0 : r.device_id;
+                n && L(W(null != a ? a : null), e, n)
+              }
+
+              function pa(e, a) {
+                var r = function(e) {
+                  var a, r, n = null === (a = P.value) || void 0 === a ? void 0 : a.device_id;
+                  if (!n) return null;
+                  var t = W(null != e ? e : null),
+                    o = Q(t, n);
+                  if (o) return o;
+                  if (!e) {
+                    var i, d = (null === (i = P.value) || void 0 === i ? void 0 : i.reward_code) || null;
+                    return d ? (L(t, d, n), d) : null
+                  }
+                  var c = null === (r = P.value) || void 0 === r ? void 0 : r.milestone_rewards.find(function(a) {
+                      return a.threshold === e
+                    }),
+                    l = (null == c ? void 0 : c.reward_code) || null;
+                  return l ? (L(t, l, n), l) : null
+                }(a);
+                return !!r && (ua(r, e), !0)
+              }
+
+              function ba(e, a) {
+                Le.value = null != a ? a : null, Qe.value = e, ie.value = !0
+              }
+
+              function va(e) {
+                var a = Math.min(na.value, e.threshold);
+                return "".concat(Math.max(a / e.threshold * 100, 4), "%")
+              }
+
+              function ga(e) {
+                var a = Math.min(na.value, e.threshold);
+                return "".concat(a, "/").concat(e.threshold)
+              }
+
+              function xa(e) {
+                if (e.claimed) return "奖励已领取，可随时查看卡密";
+                if (e.can_claim) return "人数达标，现在就能领取";
+                var a = Math.max(e.threshold - na.value, 0);
+                return "再邀请 ".concat(a, " 人就能解锁")
+              }
+
+              function ha(e) {
+                return e.claimed ? "查看卡密" : "领取奖励"
+              }
+
+              function ma() {
+                return wa.apply(this, arguments)
+              }
+
+              function wa() {
+                return wa = n(e().m(function a() {
+                  var r, n, t, o, i = arguments;
+                  return e().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (r = i.length > 0 && void 0 !== i[0] && i[0], n = i.length > 1 && void 0 !== i[1] && i[1], !X.value) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        return X.value = !0, e.p = 2, e.n = 3, F(void 0, n);
+                      case 3:
+                        (t = e.v).data && sa(t.data), r || "success" === t.status ? r || "success" !== t.status || b("邀请码已同步", "success") : b(t.message || "邀请码同步失败", "warning"), e.n = 5;
+                        break;
+                      case 4:
+                        e.p = 4, o = e.v, console.warn("[Invite] Sync failed:", o), r || b("邀请码同步失败，请稍后重试", "error");
+                      case 5:
+                        return e.p = 5, X.value = !1, e.f(5);
+                      case 6:
+                        return e.a(2)
+                    }
+                  }, a, null, [
+                    [2, 4, 5, 6]
+                  ])
+                })), wa.apply(this, arguments)
+              }
+
+              function ka() {
+                return ya.apply(this, arguments)
+              }
+
+              function ya() {
+                return (ya = n(e().m(function a() {
+                  return e().w(function(e) {
+                    for (;;) switch (e.n) {
+                      case 0:
+                        if (!(ee.value || X.value || ae.value)) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        if (Ze.value) {
+                          e.n = 2;
+                          break
+                        }
+                        return e.n = 2, ma(!0);
+                      case 2:
+                        if (!De.value) {
+                          e.n = 3;
+                          break
+                        }
+                        return b("当前账号已经绑定过邀请码啦", "warning"), e.a(2);
+                      case 3:
+                        if (U(Ye.value)) {
+                          e.n = 4;
+                          break
+                        }
+                        return b("邀请码格式不对哦", "warning"), e.a(2);
+                      case 4:
+                        if (!oa.value) {
+                          e.n = 5;
+                          break
+                        }
+                        return b("不能绑定自己的邀请码", "warning"), e.a(2);
+                      case 5:
+                        de.value = !0;
+                      case 6:
+                        return e.a(2)
+                    }
+                  }, a)
+                }))).apply(this, arguments)
+              }
+
+              function _a(e) {
+                return za.apply(this, arguments)
+              }
+
+              function za() {
+                return (za = n(e().m(function a(r) {
+                  var n, t, o;
+                  return e().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (!(ee.value || X.value || ae.value)) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        return ee.value = !0, e.p = 2, e.n = 3, q(Ye.value, r);
+                      case 3:
+                        if ((n = e.v).data && sa(n.data), "success" !== n.status) {
+                          e.n = 4;
+                          break
+                        }
+                        return V.value = "", b("邀请码绑定成功", "success"), e.a(2);
+                      case 4:
+                        t = new Set(["invite_code_not_found", "reward_verify_token_invalid", "reward_verify_token_expired", "reward_verify_token_used"]), b(n.message || "邀请码绑定失败", t.has(n.code) ? "warning" : "error"), e.n = 6;
+                        break;
+                      case 5:
+                        e.p = 5, o = e.v, console.warn("[Invite] Bind failed:", o), b("邀请码绑定失败，请稍后重试", "error");
+                      case 6:
+                        return e.p = 6, ee.value = !1, e.f(6);
+                      case 7:
+                        return e.a(2)
+                    }
+                  }, a, null, [
+                    [2, 5, 6, 7]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function Ca() {
+                return ja.apply(this, arguments)
+              }
+
+              function ja() {
+                return (ja = n(e().m(function a() {
+                  return e().w(function(e) {
+                    for (;;) switch (e.n) {
+                      case 0:
+                        if (!(ae.value || X.value || ee.value)) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        if (De.value) {
+                          e.n = 2;
+                          break
+                        }
+                        return b("先绑定邀请码再来领奖哦", "warning"), e.a(2);
+                      case 2:
+                        if (!pa("VIP 天卡")) {
+                          e.n = 3;
+                          break
+                        }
+                        return e.a(2);
+                      case 3:
+                        ba("VIP 天卡");
+                      case 4:
+                        return e.a(2)
+                    }
+                  }, a)
+                }))).apply(this, arguments)
+              }
+
+              function Ia() {
+                return (Ia = n(e().m(function a(r) {
+                  return e().w(function(e) {
+                    for (;;) switch (e.n) {
+                      case 0:
+                        if (!(ae.value || X.value || ee.value)) {
+                          e.n = 1;
+                          break
+                        }
+                        return e.a(2);
+                      case 1:
+                        if (!pa(r.product_name, r.threshold)) {
+                          e.n = 2;
+                          break
+                        }
+                        return e.a(2);
+                      case 2:
+                        if (r.claimed || r.can_claim) {
+                          e.n = 3;
+                          break
+                        }
+                        return b("邀请人数还没达到奖励门槛哦", "warning"), e.a(2);
+                      case 3:
+                        ba(r.product_name, r.threshold);
+                      case 4:
+                        return e.a(2)
+                    }
+                  }, a)
+                }))).apply(this, arguments)
+              }
+
+              function Pa(e) {
+                return Va.apply(this, arguments)
+              }
+
+              function Va() {
+                return (Va = n(e().m(function a(r) {
+                  var n, t, o, i, d, c, l, s, u, f, p, v, g, x, h;
+                  return e().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (n = Le.value, t = Qe.value, re.value = n ? "".concat(t, "准备中...") : "奖励准备中...", ae.value = !0, e.p = 1, n) {
+                          e.n = 6;
+                          break
+                        }
+                        return e.n = 2, $();
+                      case 2:
+                        if ((d = e.v).data && sa(d.data), "success" === d.status) {
+                          e.n = 3;
+                          break
+                        }
+                        return c = new Set(["reward_not_available"]), b(d.message || "奖励领取失败", c.has(d.code) ? "warning" : "error"), e.a(2);
+                      case 3:
+                        return e.n = 4, H(r);
+                      case 4:
+                        if ((l = e.v).data && sa(l.data), s = (null === (i = l.data) || void 0 === i ? void 0 : i.reward_code) || null, "success" !== l.status || !s) {
+                          e.n = 5;
+                          break
+                        }
+                        return fa(s), ua(s, t), b("claim_reward_success" === d.code ? "VIP 天卡到手啦" : "卡密已为你取回", "success"), e.a(2);
+                      case 5:
+                        return u = new Set(["reward_not_available", "reward_verify_required", "reward_verify_token_invalid", "reward_verify_token_expired", "reward_verify_token_used"]), b(l.message || "卡密获取失败", u.has(l.code) ? "warning" : "error"), e.a(2);
+                      case 6:
+                        return e.n = 7, A(n);
+                      case 7:
+                        if ((f = e.v).data && sa(f.data), "success" === f.status) {
+                          e.n = 8;
+                          break
+                        }
+                        return p = new Set(["milestone_not_reached"]), b(f.message || "奖励领取失败", p.has(f.code) ? "warning" : "error"), e.a(2);
+                      case 8:
+                        return e.n = 9, J(n, r);
+                      case 9:
+                        if ((v = e.v).data && sa(v.data), g = null === (o = v.data) || void 0 === o ? void 0 : o.milestone_rewards.find(function(e) {
+                            return e.threshold === n
+                          }), "success" !== v.status || null == g || !g.reward_code) {
+                          e.n = 10;
+                          break
+                        }
+                        return fa(g.reward_code, n), ua(g.reward_code, g.product_name), b("claim_inviter_reward_success" === f.code ? "".concat(g.product_name, "到手啦") : "卡密已为你取回", "success"), e.a(2);
+                      case 10:
+                        x = new Set(["milestone_not_reached", "reward_verify_required", "reward_verify_token_invalid", "reward_verify_token_expired", "reward_verify_token_used"]), b(v.message || "卡密获取失败", x.has(v.code) ? "warning" : "error"), e.n = 12;
+                        break;
+                      case 11:
+                        e.p = 11, h = e.v, console.warn("[InviteReward] Reward fetch failed:", h), b("卡密获取失败，请稍后重试", "error");
+                      case 12:
+                        return e.p = 12, ae.value = !1, Le.value = null, Qe.value = "VIP 天卡", e.f(12);
+                      case 13:
+                        return e.a(2)
+                    }
+                  }, a, null, [
+                    [1, 11, 12, 13]
+                  ])
+                }))).apply(this, arguments)
+              }
+
+              function Xa() {
+                return Sa.apply(this, arguments)
+              }
+
+              function Sa() {
+                return (Sa = n(e().m(function a() {
+                  var r, n, t;
+                  return e().w(function(e) {
+                    for (;;) switch (e.p = e.n) {
+                      case 0:
+                        if (n = null === (r = P.value) || void 0 === r ? void 0 : r.own_invite_code) {
+                          e.n = 1;
+                          break
+                        }
+                        return b("邀请码还没同步好哦", "warning"), e.a(2);
+                      case 1:
+                        return e.p = 1, e.n = 2, navigator.clipboard.writeText(K(n));
+                      case 2:
+                        b("邀请文案已复制", "success"), e.n = 4;
+                        break;
+                      case 3:
+                        e.p = 3, t = e.v, console.warn("[Invite] Copy failed:", t), b("复制失败，请手动复制", "warning");
+                      case 4:
+                        return e.a(2)
+                    }
+                  }, a, null, [
+                    [1, 3]
+                  ])
+                }))).apply(this, arguments)
+              }
+              return O(function() {
+                  return c.show
+                }, function() {
+                  var a = n(e().m(function a(r) {
+                    return e().w(function(e) {
+                      for (;;) switch (e.n) {
+                        case 0:
+                          if (r) {
+                            e.n = 1;
+                            break
+                          }
+                          return e.a(2);
+                        case 1:
+                          return P.value = M(), V.value = "", te.value = null, oe.value = "VIP 天卡", ne.value = !1, ie.value = !1, de.value = !1, Ke.value = !1, Le.value = null, Qe.value = "VIP 天卡", We.value = "mine", e.n = 2, ma(!0);
+                        case 2:
+                          return e.a(2)
+                      }
+                    }, a)
+                  }));
+                  return function(e) {
+                    return a.apply(this, arguments)
+                  }
+                }()), i(function() {
+                  return c.show
+                }, da),
+                function(e, r) {
+                  return I(), m(T, null, [(I(), v(j, {
+                    to: "body"
+                  }, [g(x, {
+                    name: "modal-fade"
+                  }, {
+                    default: h(function() {
+                      var e, n, t;
+                      return [a.show ? (I(), m("div", {
+                        key: 0,
+                        class: "modal-overlay",
+                        onClick: k(da, ["self"])
+                      }, [y("div", se, [y("div", ue, [r[7] || (r[7] = y("div", null, [y("h3", {
+                        class: "modal-title"
+                      }, "邀请系统"), y("p", {
+                        class: "modal-desc"
+                      }, "看看邀请码、奖励和绑定情况吧。")], -1)), y("button", {
+                        class: "refresh-btn",
+                        disabled: X.value || ae.value,
+                        onClick: r[0] || (r[0] = function(e) {
+                          return ma(!1, !0)
+                        }),
+                        title: "同步邀请码"
+                      }, [g(_(Z), {
+                        size: 16,
+                        class: B({
+                          spinning: X.value
+                        })
+                      }, null, 8, ["class"])], 8, fe)]), y("div", pe, [y("button", {
+                        class: B(["tab-btn", {
+                          active: "mine" === We.value
+                        }]),
+                        onClick: r[1] || (r[1] = function(e) {
+                          return We.value = "mine"
+                        })
+                      }, [g(_(s), {
+                        size: 16
+                      }), r[8] || (r[8] = G(" 我的邀请 ", -1))], 2), y("button", {
+                        class: B(["tab-btn", {
+                          active: "reward" === We.value
+                        }]),
+                        onClick: r[2] || (r[2] = function(e) {
+                          return We.value = "reward"
+                        })
+                      }, [g(_(d), {
+                        size: 16
+                      }), r[9] || (r[9] = G(" 绑定邀请 ", -1))], 2)]), y("div", be, ["mine" === We.value ? (I(), m(T, {
+                        key: 0
+                      }, [y("section", ve, [y("div", ge, [y("div", xe, [g(_(D), {
+                        size: 18
+                      })]), r[11] || (r[11] = y("div", {
+                        class: "section-text"
+                      }, [y("h4", null, "我的邀请码"), y("p", null, "每台设备都会生成一枚专属邀请码。")], -1)), y("button", {
+                        class: "soft-action-btn",
+                        onClick: Xa
+                      }, [g(_(Y), {
+                        size: 15
+                      }), r[10] || (r[10] = y("span", null, "复制", -1))])]), y("div", he, z((null === (e = P.value) || void 0 === e ? void 0 : e.own_invite_code) || "--------"), 1), y("div", me, [y("div", we, [g(_(s), {
+                        size: 14
+                      }), y("span", null, "已邀请 " + z(na.value) + " 人", 1)]), y("div", ke, [y("span", null, z(De.value ? "已绑定 ".concat(null === (n = P.value) || void 0 === n ? void 0 : n.bound_invite_code) : "暂未绑定邀请码"), 1)])])]), y("section", ye, [y("div", _e, [y("div", ze, [g(_(d), {
+                        size: 18
+                      })]), r[12] || (r[12] = y("div", {
+                        class: "section-text"
+                      }, [y("h4", null, "邀请人数奖励"), y("p", null, "邀请越多，奖励越多。")], -1))]), y("div", Ce, [(I(!0), m(T, null, R(ra.value, function(e) {
+                        return I(), m("div", {
+                          key: e.threshold,
+                          class: B(["milestone-item", {
+                            claimed: e.claimed,
+                            ready: e.can_claim
+                          }])
+                        }, [y("div", je, [y("div", {
+                          class: B(["milestone-mark", {
+                            claimed: e.claimed,
+                            ready: e.can_claim
+                          }])
+                        }, [g(_(D), {
+                          size: 16
+                        })], 2), y("div", Ie, [y("div", Pe, [y("div", Ve, z(e.product_name), 1), y("span", Xe, z(e.threshold) + " 人档", 1)]), y("div", Se, "邀请 " + z(e.threshold) + " 人解锁", 1)]), y("button", {
+                          class: B(["milestone-btn", {
+                            claimed: e.claimed,
+                            ready: e.can_claim && !e.claimed
+                          }]),
+                          disabled: ae.value || !e.can_claim && !e.claimed,
+                          onClick: function(a) {
+                            return function(e) {
+                              return Ia.apply(this, arguments)
+                            }(e)
+                          }
+                        }, z(ha(e)), 11, Me)]), y("div", Oe, [y("div", Te, [y("div", {
+                          class: "milestone-fill",
+                          style: N({
+                            width: va(e)
+                          })
+                        }, null, 4)]), y("span", Be, z(ga(e)), 1)]), y("p", Ge, z(xa(e)), 1)], 2)
+                      }), 128))])])], 64)) : (I(), m("section", Re, [y("div", Ne, [y("div", Ee, [g(_(u), {
+                        size: 18
+                      })]), r[13] || (r[13] = y("div", {
+                        class: "section-text"
+                      }, [y("h4", null, "绑定别人的邀请码"), y("p", null, "每个账号只能绑定一次，绑定后不能更改。")], -1))]), De.value ? (I(), m("div", Ue, [r[14] || (r[14] = y("div", {
+                        class: "bound-label"
+                      }, "当前已绑定", -1)), y("div", Fe, z(null === (t = P.value) || void 0 === t ? void 0 : t.bound_invite_code), 1), r[15] || (r[15] = y("p", {
+                        class: "bound-hint"
+                      }, "当前账号已绑定，之后不能再更换邀请码。", -1)), y("div", qe, [y("div", $e, [g(_(d), {
+                        size: 14
+                      }), y("span", null, z(ea.value ? "VIP 天卡已送达" : "可领 1 张 VIP 天卡"), 1)]), y("button", {
+                        class: "reward-btn",
+                        disabled: ae.value || !aa.value && !ea.value,
+                        onClick: Ca
+                      }, z(ta.value), 9, He)])])) : (I(), m(T, {
+                        key: 1
+                      }, [y("button", {
+                        class: "input-shell input-shell-btn",
+                        type: "button",
+                        onClick: ca
+                      }, [y("div", {
+                        class: B(["invite-input faux-input", {
+                          placeholder: !V.value
+                        }])
+                      }, z(V.value || "请输入邀请码或粘贴邀请文案"), 3)]), y("p", Ae, z(oa.value ? "不能绑定自己的邀请码。" : "可直接粘贴邀请文案，会自动识别邀请码。"), 1), y("button", {
+                        class: "bind-btn",
+                        disabled: !ia.value,
+                        onClick: ka
+                      }, z(ee.value ? "绑定中..." : "立即绑定"), 9, Je)], 64))]))]), y("div", {
+                        class: "modal-actions"
+                      }, [y("button", {
+                        class: "btn btn-cancel",
+                        onClick: da
+                      }, "关闭")])])])) : w("", !0)]
+                    }),
+                    _: 1
+                  })])), g(f, {
+                    show: ae.value,
+                    text: re.value
+                  }, null, 8, ["show", "text"]), g(ce, {
+                    show: ne.value,
+                    "onUpdate:show": r[3] || (r[3] = function(e) {
+                      return ne.value = e
+                    }),
+                    "reward-code": te.value,
+                    "reward-name": oe.value
+                  }, null, 8, ["show", "reward-code", "reward-name"]), g(le, {
+                    show: ie.value,
+                    "onUpdate:show": r[4] || (r[4] = function(e) {
+                      return ie.value = e
+                    }),
+                    "reward-name": Qe.value,
+                    threshold: Le.value,
+                    mode: "reward",
+                    onVerified: Pa
+                  }, null, 8, ["show", "reward-name", "threshold"]), g(le, {
+                    show: de.value,
+                    "onUpdate:show": r[5] || (r[5] = function(e) {
+                      return de.value = e
+                    }),
+                    "reward-name": "邀请码绑定",
+                    mode: "bind",
+                    onVerified: _a
+                  }, null, 8, ["show"]), g(p, {
+                    show: Ke.value,
+                    "onUpdate:show": r[6] || (r[6] = function(e) {
+                      return Ke.value = e
+                    }),
+                    title: "输入邀请码",
+                    "initial-value": V.value,
+                    placeholder: "请输入邀请码或粘贴邀请文案",
+                    "confirm-text": "确定",
+                    "cancel-text": "取消",
+                    "max-length": 360,
+                    "error-message": "邀请码不能为空哦",
+                    onConfirm: la
+                  }, null, 8, ["show", "initial-value"])], 64)
+                }
+            }
+          });
+        /**
+         * @license lucide-vue-next v0.562.0 - ISC
+         *
+         * This source code is licensed under the ISC license.
+         * See the LICENSE file in the root directory of this source tree.
+         */
+        a("I", c(Ke, [
+          ["__scopeId", "data-v-62c49fe1"]
+        ]))
+      }
+    }
+  })
+}();

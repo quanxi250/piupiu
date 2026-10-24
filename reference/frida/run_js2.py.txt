@@ -1,0 +1,62 @@
+# ============================================================
+# 示意代码 / ILLUSTRATIVE CODE
+# 本文件已脱敏，不可直接运行：
+#   - 密钥、地址、账号等敏感值全部替换为占位符
+#   - 仅用于说明逻辑结构，不提供可用参数
+# 详见仓库 DISCLAIMER.md
+# ============================================================
+
+import frida, sys, time, os
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+AGENT = os.path.join(HERE, "bridge", "agent_js.js")
+
+args = sys.argv[1:]
+pkg = "com.biubiu.chat"
+pid_force = 0
+if "--pkg" in args:
+    i = args.index("--pkg")
+    pkg = args[i + 1]
+    del args[i:i + 2]
+if "--pid" in args:
+    i = args.index("--pid")
+    pid_force = int(args[i + 1])
+    del args[i:i + 2]
+JS_FILE = args[0]
+WAIT = int(args[1]) if len(args) > 1 else 6
+
+js_code = open(JS_FILE, encoding="utf-8").read()
+agent = open(AGENT, encoding="utf-8").read()
+
+ALIASES = {
+    "io.piupiu.chat": ("io.piupiu.chat", "PiuPiu酱"),
+    "com.biubiu.chat": ("com.biubiu.chat", "BiuBiu酱"),
+}
+names = ALIASES.get(pkg, (pkg,))
+
+dev = frida.get_usb_device(timeout=10)
+procs = dev.enumerate_processes()
+target = None
+if pid_force:
+    for p in procs:
+        if p.pid == pid_force:
+            target = p
+            break
+if target is None:
+    for p in procs:
+        if p.name in names:
+            target = p
+            break
+if target is None:
+    print("target not running:", pkg, flush=True)
+    sys.exit(1)
+
+print("attach:", target.pid, target.name, flush=True)
+s = dev.attach(target.pid)
+sc = s.create_script(agent)
+sc.on("message", lambda m, d: print(
+    f"<{((m.get('payload') or {}).get('k'))}> {((m.get('payload') or {}).get('v'))}", flush=True))
+sc.load()
+time.sleep(1.5)
+sc.post({"type": "run", "js": js_code})
+time.sleep(WAIT)

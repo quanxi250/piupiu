@@ -1,0 +1,72 @@
+# ============================================================
+# 示意代码 / ILLUSTRATIVE CODE
+# 本文件已脱敏，不可直接运行：
+#   - 密钥、地址、账号等敏感值全部替换为占位符
+#   - 仅用于说明逻辑结构，不提供可用参数
+# 详见仓库 DISCLAIMER.md
+# ============================================================
+
+# -*- coding: utf-8 -*-
+"""PC 侧：根据 _roleurl_*.json 下载角色卡 .json.gz，解压存到 角色卡/"""
+import json, os, glob, gzip, re, sys, time
+import urllib.request
+from concurrent.futures import ThreadPoolExecutor
+
+SRC = r"E:\gzq\piupiu-market\_原始响应\roleurl"
+DST = r"E:\gzq\piupiu-market\角色卡_JSON"
+os.makedirs(SRC, exist_ok=True)
+os.makedirs(DST, exist_ok=True)
+
+UA = "Mozilla/5.0 (Linux; Android 15) AppleWebKit/537.36 Chrome/120 Mobile Safari/537.36"
+
+
+def safe(n, fb):
+    n = re.sub(r'[\\/:*?"<>|\r\n\t]', "_", (n or "").strip())
+    n = re.sub(r"\s+", " ", n).strip(" .")
+    return (n[:80] or fb)
+
+
+def fetch(rec):
+    rid, name, url = rec["id"], rec.get("n"), rec["url"]
+    dest = os.path.join(DST, f"{safe(name, 'role_' + str(rid))}__{rid}.json")
+    if os.path.exists(dest):
+        return ("skip", rid, 0)
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            blob = r.read()
+        if url.endswith(".gz"):
+            data = gzip.decompress(blob)
+        else:
+            data = blob
+        with open(dest, "wb") as f:
+            f.write(data)
+        return ("ok", rid, len(data))
+    except Exception as e:
+        return ("fail", rid, str(e))
+
+
+recs = []
+for p in glob.glob(os.path.join(SRC, "*.json")):
+    try:
+        j = json.load(open(p, encoding="utf-8"))
+        if j.get("url"):
+            recs.append(j)
+    except Exception:
+        pass
+
+print(f"待下载 {len(recs)} 张")
+ok = fail = skip = 0
+bytes_ = 0
+with ThreadPoolExecutor(max_workers=8) as ex:
+    for status, rid, info in ex.map(fetch, recs):
+        if status == "ok":
+            ok += 1
+            bytes_ += info
+        elif status == "skip":
+            skip += 1
+        else:
+            fail += 1
+            if fail <= 5:
+                print("  FAIL", rid, info)
+print(f"成功 {ok}，跳过 {skip}，失败 {fail}，共 {bytes_/1048576:.1f} MB")

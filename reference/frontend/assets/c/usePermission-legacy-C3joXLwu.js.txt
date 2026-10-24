@@ -1,0 +1,42 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+System.register(["../e/index-legacy-B0tYRju5.js"], function(e, t) {
+  "use strict";
+  var a, n;
+  return {
+    setters: [function(e) {
+      a = e.c, n = e.g
+    }],
+    execute: function() {
+      e("u", function() {
+        var e = n().showToast;
+        return {
+          checkExclusiveFeaturePermission: function() {
+            var t = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : "该功能",
+              a = localStorage.getItem("piupiu_channel_tab"),
+              n = localStorage.getItem("piupiu_app_vip_status");
+            return "exclusive" !== a ? (e("".concat(t, "仅限专属通道使用"), "warning"), !1) : "active" === n || (e("请先激活尊享服务", "warning"), !1)
+          }
+        }
+      }), e("P", a("pencil-line", [
+        ["path", {
+          d: "M13 21h8",
+          key: "1jsn5i"
+        }],
+        ["path", {
+          d: "m15 5 4 4",
+          key: "1mk7zo"
+        }],
+        ["path", {
+          d: "M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z",
+          key: "1a8usu"
+        }]
+      ]))
+    }
+  }
+});

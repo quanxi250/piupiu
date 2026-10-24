@@ -1,0 +1,27 @@
+// ============================================================
+// 示意源码 / ILLUSTRATIVE SOURCE
+// 本文件由加密前端资源还原并美化，仅用于阅读与分析。
+// 扩展名为 .js.txt，不会被任何运行环境加载。
+// 详见仓库 DISCLAIMER.md
+// ============================================================
+
+System.register(["./app-security-legacy-BdXLf8ML.js"], function(e, t) {
+  "use strict";
+  var n, r;
+  return {
+    setters: [function(e) {
+      n = e.z, r = e._
+    }],
+    execute: function() {
+      e("Device", n("Device", {
+        web: function() {
+          return r(function() {
+            return t.import("./web-legacy-CltUNGlf.js")
+          }, void 0).then(function(e) {
+            return new e.DeviceWeb
+          })
+        }
+      }))
+    }
+  }
+});
